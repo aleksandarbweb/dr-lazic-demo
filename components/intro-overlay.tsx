@@ -1,501 +1,485 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
+
+const INTRO_SESSION_KEY = 'dr-terzic-site-intro-seen'
+
+// Testing controls:
+// - In development this stays true so a hard refresh shows the intro every time.
+// - Set to false locally if you want to test the production sessionStorage behavior.
+const FORCE_INTRO_IN_DEVELOPMENT = process.env.NODE_ENV !== 'production'
+
+// Set to true if you want to temporarily remove the intro without touching the layout.
+const DISABLE_SITE_INTRO = false
+
+const INTRO_DURATION_MS = 2900
+const REDUCED_MOTION_DURATION_MS = 1100
+const INTRO_EXIT_DURATION_MS = 850
+const REDUCED_MOTION_EXIT_DURATION_MS = 280
+const INTRO_HARD_TIMEOUT_MS = 4800
+
+const networkNodes = [
+  { id: 'n1', x: 132, y: 148, tone: 'white', r: 3.2 },
+  { id: 'n2', x: 214, y: 102, tone: 'red', r: 4.4 },
+  { id: 'n3', x: 292, y: 168, tone: 'white', r: 2.8 },
+  { id: 'n4', x: 194, y: 252, tone: 'white', r: 3.4 },
+  { id: 'n5', x: 336, y: 278, tone: 'red', r: 3.8 },
+  { id: 'n6', x: 724, y: 120, tone: 'white', r: 3.1 },
+  { id: 'n7', x: 818, y: 172, tone: 'red', r: 4.2 },
+  { id: 'n8', x: 892, y: 266, tone: 'white', r: 3 },
+  { id: 'n9', x: 742, y: 306, tone: 'white', r: 2.8 },
+  { id: 'n10', x: 628, y: 238, tone: 'red', r: 3.7 },
+  { id: 'n11', x: 210, y: 438, tone: 'red', r: 3.6 },
+  { id: 'n12', x: 324, y: 492, tone: 'white', r: 3 },
+  { id: 'n13', x: 690, y: 480, tone: 'white', r: 3.1 },
+  { id: 'n14', x: 804, y: 420, tone: 'red', r: 3.9 },
+]
+
+const networkLines = [
+  ['n1', 'n2'],
+  ['n2', 'n3'],
+  ['n1', 'n4'],
+  ['n3', 'n5'],
+  ['n4', 'n5'],
+  ['n6', 'n7'],
+  ['n7', 'n8'],
+  ['n8', 'n9'],
+  ['n9', 'n10'],
+  ['n6', 'n10'],
+  ['n11', 'n12'],
+  ['n13', 'n14'],
+  ['n5', 'n10'],
+]
+
+function lockPageScroll() {
+  const html = document.documentElement
+  const body = document.body
+  const previous = {
+    htmlOverflow: html.style.overflow,
+    bodyOverflow: body.style.overflow,
+  }
+
+  html.classList.add('intro-active')
+  body.classList.add('intro-active')
+  html.style.overflow = 'hidden'
+  body.style.overflow = 'hidden'
+
+  return () => {
+    html.classList.remove('intro-active')
+    html.classList.remove('intro-revealing')
+    body.classList.remove('intro-active')
+    body.classList.remove('intro-revealing')
+    html.style.overflow = previous.htmlOverflow
+    body.style.overflow = previous.bodyOverflow
+  }
+}
+
+function revealSite() {
+  document.documentElement.classList.add('intro-revealing')
+  document.body.classList.add('intro-revealing')
+}
+
+function shouldShowIntro() {
+  if (DISABLE_SITE_INTRO) return false
+
+  try {
+    if (window.localStorage.getItem('dr-terzic-disable-intro') === '1') {
+      return false
+    }
+
+    if (window.localStorage.getItem('dr-terzic-force-intro') === '1') {
+      return true
+    }
+
+    if (FORCE_INTRO_IN_DEVELOPMENT) {
+      return true
+    }
+
+    if (window.sessionStorage.getItem(INTRO_SESSION_KEY) === '1') {
+      return false
+    }
+
+    window.sessionStorage.setItem(INTRO_SESSION_KEY, '1')
+    return true
+  } catch {
+    return true
+  }
+}
 
 export function IntroOverlay() {
   const { t } = useTranslation()
+  const reduceMotion = useReducedMotion()
+  const [shouldRender, setShouldRender] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isExiting, setIsExiting] = useState(false)
+  const unlockScrollRef = useRef<(() => void) | null>(null)
+  const finishedRef = useRef(false)
 
   useEffect(() => {
-    // ── Lock scroll ──
-    // Target both to ensure absolutely no grey bar / scrollbar gutter
-    document.documentElement.classList.add('intro-active')
-    document.body.classList.add('intro-active')
-    document.documentElement.style.overflow = 'hidden'
-    document.body.style.overflow = 'hidden'
+    if (!shouldShowIntro()) return
 
-    // Helpers
-    const delay = (ms: number) => new Promise(r => setTimeout(r, ms))
+    const duration = reduceMotion ? REDUCED_MOTION_DURATION_MS : INTRO_DURATION_MS
+    finishedRef.current = false
+    unlockScrollRef.current = lockPageScroll()
+    setShouldRender(true)
 
-    // ── Create Elements ──
-    const overlay = document.createElement('div')
-    overlay.id = 'introOverlay'
-    overlay.setAttribute('aria-hidden', 'true')
-    document.body.appendChild(overlay)
+    const entryFrame = window.requestAnimationFrame(() => {
+      setIsVisible(true)
+    })
 
-    // Background layer (Video)
-    const introBg = document.createElement('video')
-    introBg.className = 'intro-bg'
-    introBg.src = '/Videos/overlay intro video - skin.MOV'
-    introBg.autoplay = true
-    introBg.muted = true
-    introBg.loop = true
-    introBg.setAttribute('playsinline', 'true')
-    introBg.setAttribute('muted', 'true')
-    introBg.setAttribute('autoplay', 'true')
-    overlay.appendChild(introBg)
-
-    const introWash = document.createElement('div')
-    introWash.className = 'intro-wash'
-    overlay.appendChild(introWash)
-
-    // Grain Canvas
-    const grainCanvas = document.createElement('canvas')
-    grainCanvas.id = 'introGrain'
-    overlay.appendChild(grainCanvas)
-
-    // Reveal Container
-    const reveal = document.createElement('div')
-    reveal.className = 'intro-reveal'
-    overlay.appendChild(reveal)
-
-    // Logo Wrap
-    const logoWrap = document.createElement('div')
-    logoWrap.className = 'intro-logo-wrap'
-    reveal.appendChild(logoWrap)
-
-    const logoMask = document.createElement('div')
-    logoMask.className = 'intro-logo-mask'
-    logoWrap.appendChild(logoMask)
-
-    const logoImg = document.createElement('img')
-    logoImg.id = 'introLogo'
-    logoImg.src = '/images/Logos/dr terzic beli logo.png'
-    logoImg.alt = 'Dr Terzić'
-    logoMask.appendChild(logoImg)
-
-    // Copy
-    const copy = document.createElement('div')
-    copy.className = 'intro-copy'
-    reveal.appendChild(copy)
-
-    const kicker = document.createElement('div')
-    kicker.className = 'intro-kicker'
-    kicker.textContent = t.home.hero.sloganEyebrow || 'VIŠE OD 20 GODINA SA VAMA'
-    copy.appendChild(kicker)
-
-    const title = document.createElement('h1')
-    title.className = 'intro-title'
-    title.textContent = t.home.hero.sloganMain || 'Briga o zdravlju i lepoti'
-    copy.appendChild(title)
-
-    const sub = document.createElement('div')
-    sub.className = 'intro-sub'
-    sub.textContent = t.home.hero.sloganItalic || 'na prirodan i bezbedan način.'
-    copy.appendChild(sub)
-
-    // Bars
-    const barsContainer = document.createElement('div')
-    barsContainer.className = 'intro-bars'
-    for (let i = 0; i < 6; i++) {
-      const span = document.createElement('span')
-      barsContainer.appendChild(span)
-    }
-    overlay.appendChild(barsContainer)
-
-    // ── Inject CSS ──
-    const styleTag = document.createElement('style')
-    styleTag.id = 'intro-styles'
-    styleTag.textContent = `
-      :root {
-        --intro-bg: #000;
-        --intro-text: #ffffff;
-        --intro-muted: #e0e0e0;
-        --intro-red: #ff4d4d;
-        --intro-shadow: rgba(0, 0, 0, 0.4);
-        --intro-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      }
-
-      html.intro-active,
-      body.intro-active {
-        overflow: hidden !important;
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
-        height: 100% !important;
-        width: 100% !important;
-      }
-      
-      html.intro-active::-webkit-scrollbar,
-      body.intro-active::-webkit-scrollbar {
-        display: none !important;
-      }
-
-      body.intro-active main,
-      body.intro-active nav,
-      body.intro-active footer,
-      body.intro-active main h1,
-      body.intro-active main p,
-      body.intro-active main div.mt-10 {
-        opacity: 0 !important;
-        transform: translateY(30px) !important;
-        filter: blur(12px) !important;
-        transition: none !important;
-      }
-
-      #introOverlay {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        overflow: hidden;
-        background: transparent; /* VERY IMPORTANT: Must be transparent to reveal site underneath */
-        display: grid;
-        place-items: center;
-        isolation: isolate;
-      }
-
-      .intro-bg {
-        position: absolute;
-        inset: -2%;
-        width: 104%;
-        height: 104%;
-        object-fit: cover;
-        transform: scale(1.03);
-        z-index: 0;
-        will-change: transform, opacity;
-      }
-
-      .intro-wash {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        z-index: 0;
-        opacity: 1;
-        will-change: transform, opacity;
-      }
-
-      #introGrain {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.12;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .intro-reveal {
-        position: relative;
-        z-index: 3;
-        width: min(92vw, 1280px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        padding: 2rem;
-        text-align: center;
-      }
-
-      .intro-logo-wrap {
-        width: min(86vw, 1180px);
-        opacity: 0;
-        transform: translateY(26px) scale(0.985);
-        filter: blur(10px);
-        transition:
-          opacity 1s var(--intro-ease),
-          transform 1.2s var(--intro-ease),
-          filter 1.2s var(--intro-ease);
-        will-change: transform, opacity, filter;
-      }
-
-      .intro-logo-wrap.is-in {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-
-      .intro-logo-mask {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .intro-logo-mask::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(245,240,232,0) 0%,
-          rgba(255,255,255,0.65) 46%,
-          rgba(255,255,255,0) 58%
-        );
-        transform: translateX(-140%);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .intro-logo-wrap.sweep .intro-logo-mask::after {
-        opacity: 1;
-        animation: introLightSweep 1.5s var(--intro-ease) forwards;
-      }
-
-      #introLogo {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-height: 42vh;
-        object-fit: contain;
-        transform-origin: center center;
-        filter: drop-shadow(0 10px 18px var(--intro-shadow));
-        will-change: transform, filter;
-      }
-
-      .intro-copy {
-        margin-top: 0.75rem;
-        max-width: 900px;
-        opacity: 0;
-        transform: translateY(18px);
-        transition:
-          opacity 0.9s var(--intro-ease),
-          transform 0.9s var(--intro-ease),
-          filter 0.9s var(--intro-ease);
-        will-change: transform, opacity;
-      }
-
-      .intro-copy.is-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .intro-kicker {
-        font-size: 11px;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        color: var(--intro-red);
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-
-      .intro-title {
-        margin: 0;
-        font-family: var(--font-playfair), serif;
-        font-size: clamp(2.1rem, 4.3vw, 4.6rem);
-        line-height: 1.08;
-        font-weight: 600;
-        color: var(--intro-text);
-      }
-
-      .intro-sub {
-        margin-top: 0.45rem;
-        font-family: var(--font-playfair), serif;
-        font-size: clamp(1.35rem, 2.7vw, 2.6rem);
-        line-height: 1.15;
-        font-style: italic;
-        color: var(--intro-muted);
-        font-weight: 400;
-      }
-
-      .intro-bars {
-        position: absolute;
-        inset: 0;
-        z-index: 20;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        pointer-events: none;
-        opacity: 0;
-      }
-
-      .intro-bars span {
-        display: block;
-        height: 100%;
-        background: #000;
-        transform: scaleY(1);
-        transform-origin: top center;
-        will-change: transform, opacity;
-      }
-
-      @keyframes introLightSweep {
-        to { transform: translateX(140%); }
-      }
-
-      @keyframes introBarOpen {
-        to { transform: scaleY(0); }
-      }
-
-      @keyframes introBgLift {
-        to { transform: scale(1.1); opacity: 0; }
-      }
-
-      #introOverlay.is-revealing .intro-bars {
-        opacity: 1;
-      }
-
-      #introOverlay.is-revealing .intro-bars span {
-        animation: introBarOpen 1.2s var(--intro-ease) forwards;
-      }
-
-      #introOverlay.is-revealing .intro-bars span:nth-child(2) { animation-delay: 0.05s; }
-      #introOverlay.is-revealing .intro-bars span:nth-child(3) { animation-delay: 0.1s; }
-      #introOverlay.is-revealing .intro-bars span:nth-child(4) { animation-delay: 0.15s; }
-      #introOverlay.is-revealing .intro-bars span:nth-child(5) { animation-delay: 0.2s; }
-      #introOverlay.is-revealing .intro-bars span:nth-child(6) { animation-delay: 0.25s; }
-
-      #introOverlay.is-revealing .intro-bg,
-      #introOverlay.is-revealing .intro-wash {
-        animation: introBgLift 1.3s var(--intro-ease) forwards;
-      }
-
-      #introOverlay.is-out .intro-copy {
-        opacity: 0;
-        transform: translateY(-10px);
-        filter: blur(8px);
-        transition: all 0.8s var(--intro-ease);
-      }
-
-      #introOverlay.is-out .intro-logo-wrap {
-        transform: translateY(-6px) scale(1.02);
-        filter: blur(2px);
-        opacity: 0;
-        transition: all 0.8s var(--intro-ease);
-      }
-    `
-    document.head.appendChild(styleTag)
-
-    // ── Grain Animation ──
-    const ctx = grainCanvas.getContext('2d')!
-    let grainRAF: number
-    function resizeGrain() {
-      grainCanvas.width = window.innerWidth
-      grainCanvas.height = window.innerHeight
-    }
-    resizeGrain()
-    window.addEventListener('resize', resizeGrain)
-
-    function renderGrain() {
-      const w = grainCanvas.width
-      const h = grainCanvas.height
-      const imageData = ctx.createImageData(w, h)
-      const d = imageData.data
-      for (let i = 0; i < d.length; i += 4) {
-        const v = Math.random() * 255
-        d[i] = v
-        d[i + 1] = v
-        d[i + 2] = v
-        d[i + 3] = 15 // Very subtle
-      }
-      ctx.putImageData(imageData, 0, 0)
-      grainRAF = requestAnimationFrame(renderGrain)
-    }
-    renderGrain()
-
-    // ── Timeline ──
-    async function run() {
-      await delay(200)
-
-      // Step 1: Logo fades in
-      logoWrap.classList.add('is-in')
-      await delay(600)
-
-      // Step 2: Light sweep
-      logoWrap.classList.add('sweep')
-      await delay(800)
-
-      // Step 3: Copy fades in
-      copy.classList.add('is-in')
-      await delay(2500)
-
-      // Step 4: Outro starts - fade/blur content
-      overlay.classList.add('is-out')
-      await delay(600)
-
-      // Step 5: Reveal website via bars
-      overlay.classList.add('is-revealing')
-      
-      // Target website elements for coordinated reveal
-      const nav = document.querySelector('nav') as HTMLElement | null
-      const main = document.querySelector('main') as HTMLElement | null
-      const footer = document.querySelector('footer') as HTMLElement | null
-      
-      const revealStyle = 'opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1), transform 2.2s cubic-bezier(0.22, 1, 0.36, 1), filter 2.2s cubic-bezier(0.22, 1, 0.36, 1)'
-
-      if (nav) {
-        nav.style.setProperty('transition', revealStyle, 'important')
-        nav.style.setProperty('opacity', '1', 'important')
-        nav.style.setProperty('transform', 'translateY(0)', 'important')
-        nav.style.setProperty('filter', 'blur(0)', 'important')
-      }
-
-      // Slightly stagger the main content reveal
-      await delay(300)
-
-      if (main) {
-        // Individual staggered reveal for hero elements
-        const heroTitle = main.querySelector('h1') as HTMLElement | null
-        const heroButtons = main.querySelector('div.mt-10') as HTMLElement | null
-        const heroParagraphs = main.querySelectorAll('p')
-
-        const elementRevealStyle = 'opacity 2.5s cubic-bezier(0.22, 1, 0.36, 1), transform 2.5s cubic-bezier(0.22, 1, 0.36, 1), filter 2.5s cubic-bezier(0.22, 1, 0.36, 1)'
-
-        if (heroTitle) {
-          heroTitle.style.setProperty('transition', elementRevealStyle, 'important')
-          setTimeout(() => {
-            heroTitle.style.setProperty('opacity', '1', 'important')
-            heroTitle.style.setProperty('transform', 'translateY(0)', 'important')
-            heroTitle.style.setProperty('filter', 'blur(0)', 'important')
-          }, 100)
-        }
-
-        heroParagraphs.forEach((p, index) => {
-          const el = p as HTMLElement
-          el.style.setProperty('transition', elementRevealStyle, 'important')
-          setTimeout(() => {
-            el.style.setProperty('opacity', '1', 'important')
-            el.style.setProperty('transform', 'translateY(0)', 'important')
-            el.style.setProperty('filter', 'blur(0)', 'important')
-          }, 300 + (index * 150))
-        })
-
-        if (heroButtons) {
-          heroButtons.style.setProperty('transition', elementRevealStyle, 'important')
-          setTimeout(() => {
-            heroButtons.style.setProperty('opacity', '1', 'important')
-            heroButtons.style.setProperty('transform', 'translateY(0)', 'important')
-            heroButtons.style.setProperty('filter', 'blur(0)', 'important')
-          }, 700)
-        }
-        
-        main.style.setProperty('transition', revealStyle, 'important')
-        main.style.setProperty('opacity', '1', 'important')
-        main.style.setProperty('transform', 'translateY(0)', 'important')
-        main.style.setProperty('filter', 'blur(0)', 'important')
-      }
-
-      if (footer) {
-        footer.style.setProperty('transition', revealStyle, 'important')
-        footer.style.setProperty('opacity', '1', 'important')
-        footer.style.setProperty('transform', 'translateY(0)', 'important')
-        footer.style.setProperty('filter', 'blur(0)', 'important')
-      }
-
-      await delay(2500)
-
-      // Cleanup
-      cancelAnimationFrame(grainRAF)
-      window.removeEventListener('resize', resizeGrain)
-      overlay.remove()
-      styleTag.remove()
-      document.documentElement.classList.remove('intro-active')
-      document.body.classList.remove('intro-active')
-      document.documentElement.style.overflow = ''
-      document.body.style.overflow = ''
+    const finishIntro = () => {
+      if (finishedRef.current) return
+      finishedRef.current = true
+      setIsExiting(true)
+      revealSite()
+      setIsVisible(false)
     }
 
-    run()
+    const introTimer = window.setTimeout(finishIntro, duration)
+    const hardTimer = window.setTimeout(() => {
+      revealSite()
+      setIsVisible(false)
+      setShouldRender(false)
+      unlockScrollRef.current?.()
+      unlockScrollRef.current = null
+    }, INTRO_HARD_TIMEOUT_MS)
 
     return () => {
-      cancelAnimationFrame(grainRAF)
-      window.removeEventListener('resize', resizeGrain)
-      const el = document.getElementById('introOverlay')
-      if (el) el.remove()
-      const styles = document.getElementById('intro-styles')
-      if (styles) styles.remove()
-      document.documentElement.classList.remove('intro-active')
-      document.body.classList.remove('intro-active')
-      document.documentElement.style.overflow = ''
-      document.body.style.overflow = ''
+      window.cancelAnimationFrame(entryFrame)
+      window.clearTimeout(introTimer)
+      window.clearTimeout(hardTimer)
+      unlockScrollRef.current?.()
+      unlockScrollRef.current = null
+      setIsExiting(false)
     }
-  }, [t])
+  }, [reduceMotion])
 
-  return null
+  const completeExit = () => {
+    unlockScrollRef.current?.()
+    unlockScrollRef.current = null
+    setIsExiting(false)
+    setShouldRender(false)
+  }
+
+  const nodeById = Object.fromEntries(networkNodes.map((node) => [node.id, node]))
+  const animationMode = reduceMotion
+    ? {}
+    : {
+        x: [0, 10, -6, 0],
+        y: [0, -8, 6, 0],
+        rotate: [0, 0.6, -0.4, 0],
+      }
+
+  return (
+    <AnimatePresence onExitComplete={completeExit}>
+      {shouldRender && isVisible ? (
+        <motion.div
+          aria-hidden="true"
+          className="fixed inset-0 z-[99999] grid place-items-center overflow-hidden bg-[#070505] text-white"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            scale: reduceMotion ? 1 : 1.01,
+            filter: reduceMotion ? 'blur(0px)' : 'blur(3px)',
+            transition: {
+              duration: (reduceMotion ? REDUCED_MOTION_EXIT_DURATION_MS : INTRO_EXIT_DURATION_MS) / 1000,
+              ease: [0.22, 1, 0.36, 1],
+            },
+          }}
+        >
+          <style>{`
+            html.intro-active,
+            body.intro-active {
+              overflow: hidden !important;
+            }
+
+            body.intro-active nav,
+            body.intro-active main,
+            body.intro-active footer {
+              opacity: 0;
+              transform: translateY(12px);
+              filter: blur(4px);
+              transition:
+                opacity 850ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 850ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 850ms cubic-bezier(0.22, 1, 0.36, 1);
+              will-change: opacity, transform, filter;
+            }
+
+            body.intro-revealing nav,
+            body.intro-revealing main,
+            body.intro-revealing footer {
+              opacity: 1;
+              transform: translateY(0);
+              filter: blur(0);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              body.intro-active nav,
+              body.intro-active main,
+              body.intro-active footer {
+                transform: none;
+                filter: none;
+                transition: opacity 260ms ease;
+              }
+            }
+          `}</style>
+
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(circle at 50% 44%, rgba(126, 20, 24, 0.34), transparent 28%), radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.09), transparent 24%), radial-gradient(circle at 82% 72%, rgba(126, 20, 24, 0.24), transparent 30%), linear-gradient(135deg, #120707 0%, #050404 44%, #140808 100%)',
+            }}
+          />
+
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_46%)] opacity-80" />
+          <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.045),transparent_28%,rgba(122,18,24,0.12)_52%,transparent_74%)]" />
+
+          <motion.svg
+            className="absolute inset-0 h-full w-full opacity-90"
+            viewBox="0 0 1000 640"
+            preserveAspectRatio="xMidYMid slice"
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              transition: { duration: reduceMotion ? 0.12 : 0.62, ease: [0.22, 1, 0.36, 1] },
+            }}
+          >
+            <defs>
+              <linearGradient id="skinLayer" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                <stop offset="34%" stopColor="rgba(255,255,255,0.32)" />
+                <stop offset="62%" stopColor="rgba(147,30,36,0.5)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </linearGradient>
+              <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </radialGradient>
+            </defs>
+
+            <motion.g
+              animate={animationMode}
+              transition={{ duration: 10, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            >
+              <path
+                d="M-80 420 C 120 330, 255 478, 420 390 S 710 306, 1080 390"
+                fill="none"
+                stroke="url(#skinLayer)"
+                strokeWidth="1.4"
+                opacity="0.36"
+              />
+              <path
+                d="M-100 470 C 110 390, 270 540, 456 454 S 746 374, 1100 458"
+                fill="none"
+                stroke="url(#skinLayer)"
+                strokeWidth="0.9"
+                opacity="0.26"
+              />
+              <path
+                d="M-120 512 C 150 458, 312 586, 530 498 S 810 440, 1120 512"
+                fill="none"
+                stroke="url(#skinLayer)"
+                strokeWidth="0.7"
+                opacity="0.18"
+              />
+            </motion.g>
+
+            <motion.g
+              animate={
+                reduceMotion
+                  ? {}
+                  : {
+                      x: [0, -12, 8, 0],
+                      y: [0, 10, -4, 0],
+                    }
+              }
+              transition={{ duration: 12, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            >
+              {networkLines.map(([from, to], index) => {
+                const a = nodeById[from]
+                const b = nodeById[to]
+                if (!a || !b) return null
+
+                return (
+                  <motion.line
+                    key={`${from}-${to}`}
+                    x1={a.x}
+                    y1={a.y}
+                    x2={b.x}
+                    y2={b.y}
+                    stroke={index % 4 === 0 ? 'rgba(172, 38, 45, 0.62)' : 'rgba(255, 246, 236, 0.32)'}
+                    strokeWidth={index % 4 === 0 ? 1.05 : 0.7}
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{
+                      pathLength: 1,
+                      opacity: index % 4 === 0 ? 0.48 : 0.34,
+                      transition: {
+                        delay: reduceMotion ? 0 : 0.16 + index * 0.022,
+                        duration: reduceMotion ? 0.01 : 0.62,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    }}
+                  />
+                )
+              })}
+
+              {networkNodes.map((node, index) => {
+                const isRed = node.tone === 'red'
+
+                return (
+                  <motion.g key={node.id}>
+                    <circle
+                      cx={node.x}
+                      cy={node.y}
+                      r={node.r * 3.5}
+                      fill={isRed ? 'rgba(147,30,36,0.16)' : 'url(#nodeGlow)'}
+                      opacity={isRed ? 0.72 : 0.18}
+                    />
+                    <motion.circle
+                      cx={node.x}
+                      cy={node.y}
+                      r={node.r}
+                      fill={isRed ? '#a8242b' : '#fff6ec'}
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{
+                        opacity: isRed ? [0.45, 0.85, 0.55] : [0.34, 0.7, 0.44],
+                        scale: reduceMotion ? 1 : [0.92, 1.18, 0.96],
+                        transition: {
+                          delay: reduceMotion ? 0 : 0.12 + index * 0.018,
+                          duration: reduceMotion ? 0.01 : 3.8 + (index % 4) * 0.45,
+                          repeat: reduceMotion ? 0 : Infinity,
+                          repeatType: 'mirror',
+                          ease: 'easeInOut',
+                        },
+                      }}
+                    />
+                  </motion.g>
+                )
+              })}
+            </motion.g>
+          </motion.svg>
+
+          <div
+            className="absolute inset-0 opacity-[0.055]"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+              backgroundSize: '42px 42px',
+              maskImage: 'radial-gradient(circle at center, black, transparent 72%)',
+            }}
+          />
+
+          <motion.div
+            className="relative z-10 flex w-[min(94vw,1180px)] flex-col items-center px-5 text-center"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 18, scale: reduceMotion ? 1 : 0.985 }}
+            animate={
+              isExiting
+                ? {
+                    opacity: 0,
+                    y: reduceMotion ? 0 : -4,
+                    scale: reduceMotion ? 1 : 0.985,
+                    filter: reduceMotion ? 'blur(0px)' : 'blur(3px)',
+                    transition: {
+                      duration: (reduceMotion ? REDUCED_MOTION_EXIT_DURATION_MS : INTRO_EXIT_DURATION_MS) / 1000,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    filter: 'blur(0px)',
+                    transition: {
+                      delay: reduceMotion ? 0 : 0.12,
+                      duration: reduceMotion ? 0.12 : 0.62,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  }
+            }
+          >
+            <motion.div
+              className="relative w-full"
+              animate={reduceMotion ? {} : { y: [0, -3, 0] }}
+              transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <div className="absolute left-1/2 top-1/2 h-[72%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8e1f26]/20 blur-3xl" />
+              <motion.img
+                src="/images/Logos/dr terzic beli logo.png"
+                alt="Dr Terzić"
+                loading="eager"
+                decoding="async"
+                className="relative mx-auto h-auto w-full max-w-[680px] object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.48)]"
+                initial={{ opacity: 0, filter: 'blur(10px)' }}
+                animate={{
+                  opacity: 1,
+                  filter: 'blur(0px)',
+                  transition: {
+                    delay: reduceMotion ? 0 : 0.18,
+                    duration: reduceMotion ? 0.12 : 0.64,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+              />
+              <motion.div
+                className="absolute inset-y-0 left-0 w-1/3 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)]"
+                initial={{ x: '-150%', opacity: 0 }}
+                animate={{
+                  x: reduceMotion ? '-150%' : '260%',
+                  opacity: reduceMotion ? 0 : [0, 0.8, 0],
+                  transition: {
+                    delay: 0.72,
+                    duration: 1.35,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+              />
+            </motion.div>
+
+            <motion.div
+              className="mt-5 w-full max-w-[1040px] sm:mt-7"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: reduceMotion ? 0.06 : 0.72,
+                  duration: reduceMotion ? 0.12 : 0.48,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
+            >
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-[#c6353d] sm:text-xs">
+                {t.home.hero.sloganEyebrow || 'VIŠE OD 20 GODINA SA VAMA'}
+              </p>
+              <p className="text-[clamp(1.9rem,4.6vw,4.15rem)] font-semibold leading-[1.06] text-[#fff8ef] lg:whitespace-nowrap">
+                {t.home.hero.sloganMain || 'Briga o zdravlju i lepoti'}
+              </p>
+              <p className="mt-2 text-[clamp(1.2rem,3.2vw,2.45rem)] italic leading-[1.14] text-[#eee0d2]">
+                {t.home.hero.sloganItalic || 'na prirodan i bezbedan način.'}
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="absolute bottom-8 left-1/2 h-px w-[min(64vw,420px)] -translate-x-1/2 overflow-hidden bg-white/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: reduceMotion ? 0 : 1, transition: { delay: 0.92, duration: 0.32 } }}
+          >
+            <motion.div
+              className="h-full w-1/2 bg-[linear-gradient(90deg,transparent,#b12b32,transparent)]"
+              animate={{ x: ['-100%', '220%'] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  )
 }
