@@ -1,0 +1,301 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #faf9f7;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #b91c1c;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f3f0;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0ece7;
+  --muted-foreground: #6b6b6b;
+  --accent: #b91c1c;
+  --accent-foreground: #ffffff;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: #e5e0da;
+  --input: #e5e0da;
+  --ring: #b91c1c;
+  --radius: 0px;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius));
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf9f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4cfc8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b91c1c;
+}
+
+/* Luxury typography enhancements */
+.luxury-heading {
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+/* Elegant underline animation */
+.elegant-underline {
+  position: relative;
+}
+
+.elegant-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #b91c1c;
+  transition: width 0.3s ease;
+}
+
+.elegant-underline:hover::after {
+  width: 100%;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+/* Subtle grain/noise texture for dark sections */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  z-index: 1;
+}
+
+/* Tabular nums for aligned stat displays */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes blackhole-suck {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-16vw, 18vh, 0) scale(0.2) rotate(-22deg);
+    filter: blur(14px);
+  }
+}
+
+@keyframes blackhole-pulse {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes blackhole-text-in {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body.blackhole-active {
+  overflow: hidden;
+}
+
+body.blackhole-active main > * {
+  opacity: 0 !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+
+.blackhole-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.chaos-text {
+  max-width: 94vw;
+  text-align: center;
+  color: #fff4ea;
+  font-size: clamp(1.6rem, 5.2vw, 4.5rem);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chaos-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px) rotate(8deg) scale(0.88);
+  animation: chaos-char-in 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes chaos-char-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) rotate(8deg) scale(0.88);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) rotate(-4deg) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes brainrot-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); filter: hue-rotate(0deg); }
+  25% { transform: translate(-10px, 10px) rotate(-5deg); filter: hue-rotate(90deg) drop-shadow(10px 10px 0px red); }
+  50% { transform: translate(15px, -15px) rotate(8deg) scale(1.5); filter: hue-rotate(180deg) invert(100%); }
+  75% { transform: translate(-15px, -10px) rotate(-10deg) scale(0.5); filter: hue-rotate(270deg) drop-shadow(-10px -10px 0px blue); }
+}
+
+@keyframes brainrot-flash {
+  0%, 100% { background-color: black; }
+  10% { background-color: red; }
+  20% { background-color: blue; }
+  30% { background-color: lime; }
+  40% { background-color: fuchsia; }
+  50% { background-color: yellow; }
+  60% { background-color: cyan; }
+  70% { background-color: white; }
+  80% { background-color: magenta; }
+  90% { background-color: rgba(0, 0, 0, 0.5); }
+}
+
+@keyframes brainrot-text-glitch {
+  0% { transform: skewX(0deg); text-shadow: 0 0 0px red; }
+  10% { transform: skewX(-20deg); text-shadow: 20px 0 0px blue, -20px 0 0px red; letter-spacing: 15px; font-weight: 900; }
+  20% { transform: skewX(20deg); text-shadow: -25px 15px 0px lime, 25px -15px 0px fuchsia; font-weight: 100; }
+  30% { transform: skewX(-10deg) scaleY(2); text-shadow: 15px -15px 10px yellow; }
+  40% { transform: skewX(10deg) scaleY(0.2); text-shadow: -30px 30px 0px cyan; letter-spacing: -15px; }
+  50% { transform: skewX(-40deg) scale(1.5); filter: hue-rotate(90deg); }
+  60% { transform: skewX(40deg) scale(0.5); filter: hue-rotate(180deg); }
+  70% { transform: skewX(0deg) scale(2) rotate(15deg); }
+  80% { transform: skewX(0deg) scale(0.2) rotate(-15deg); }
+  90% { transform: skewX(-25deg); filter: blur(10px) invert(100%); }
+  100% { transform: skewX(0deg); text-shadow: 0 0 0px red; letter-spacing: normal; filter: blur(0px); }
+}
+
+@keyframes brainrot-number {
+  0% { transform: scale(1) rotate(0deg); filter: blur(0px) drop-shadow(0 0 0 red); }
+  25% { transform: scale(1.5) rotate(20deg); filter: blur(10px) drop-shadow(50px 50px 0 blue); }
+  50% { transform: scale(0.5) rotate(-20deg); filter: blur(0px) drop-shadow(-50px -50px 0 lime); }
+  75% { transform: scale(2) rotate(45deg); filter: blur(5px) drop-shadow(0 50px 100px fuchsia); color: yellow; }
+  100% { transform: scale(1) rotate(0deg); filter: blur(0px) drop-shadow(0 0 0 red); }
+}
+
+.brainrot-shake { animation: brainrot-shake 0.15s infinite; }
+.brainrot-flash { animation: brainrot-flash 0.1s infinite; }
+.brainrot-glitch { animation: brainrot-text-glitch 0.2s infinite; display: inline-block; }
+.brainrot-number { animation: brainrot-number 0.3s cubic-bezier(0.1, 2, 0.5, 1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  body.blackhole-active main > * {
+    animation: none;
+  }
+
+  .chaos-text span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
