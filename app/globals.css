@@ -66,24 +66,20 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Elegant scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #faf9f7;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d4cfc8;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b91c1c;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* Luxury typography enhancements */
