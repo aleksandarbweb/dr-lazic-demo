@@ -1,47 +1,66 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Instagram, ChevronDown } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { navItems } from '@/lib/nav'
 
-// The actual translation key is validated in the component.
-
-const navLinksData = [
-  { href: '/', translationKey: 'home' as const },
-  { href: '/o-nama', translationKey: 'about' as const },
-  { 
-    href: '/usluge', 
-    translationKey: 'services' as const,
-    dropdown: [
-      { label: 'Dermatologija', href: '/usluge#dermatologija' },
-      { label: 'Estetika', href: '/usluge#estetika' },
-      { label: 'Estetska dermatologija', href: '/usluge#estetska-dermatologija' },
-      { label: 'Laserski tretmani', href: '/usluge#laserski-tretmani' },
-      { label: 'Dermatovenerologija', href: '/usluge#dermatovenerologija' },
-      { label: 'Kozmetologija', href: '/usluge#kozmetologija' },
-    ]
-  },
-  { href: '/oprema', translationKey: 'equipment' as const },
-  { href: '/galerija', translationKey: 'gallery' as const },
-]
+const navLinksData = navItems.filter(item => item.translationKey !== 'contact')
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const pathname = usePathname()
   const { t } = useTranslation()
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const menu = menuRef.current
+    if (!menu) return
+
+    const focusables = menu.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled])'
+    )
+    const first = focusables[0]
+    const last = focusables[focusables.length - 1]
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+        return
+      }
+      if (e.key !== 'Tab') return
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last?.focus()
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault()
+          first?.focus()
+        }
+      }
+    }
+
+    first?.focus()
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMobileMenuOpen])
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -50,11 +69,16 @@ export function Navbar() {
     }
   }
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+    setOpenMobileDropdown(null)
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#e5ddd3]/60' 
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#e5ddd3]/60'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -71,10 +95,10 @@ export function Navbar() {
                 className="h-12 w-auto sm:h-14"
               />
             </Link>
-            <a 
-              href="https://www.instagram.com/dr.terzic" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.instagram.com/dr.terzic"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 ml-[6px] text-[#5f5a55] hover:text-[#b91c1c] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/50 rounded-sm"
               title="Pratite nas na Instagramu"
             >
@@ -86,17 +110,26 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center ml-auto gap-8 xl:gap-10">
             {navLinksData.map((link) => (
-              <div key={link.href} className={link.dropdown ? "group relative" : ""}>
+              <div
+                key={link.href}
+                className={link.dropdown ? 'group relative' : ''}
+                onMouseEnter={() => link.dropdown && setServicesOpen(true)}
+                onMouseLeave={() => link.dropdown && setServicesOpen(false)}
+              >
                 <Link
                   href={link.href}
+                  aria-expanded={link.dropdown ? servicesOpen : undefined}
+                  aria-haspopup={link.dropdown ? 'true' : undefined}
                   className={`relative flex items-center gap-1.5 text-[12px] xl:text-[13px] font-medium tracking-[0.15em] uppercase transition-colors duration-300 hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 focus-visible:ring-offset-2 py-4 ${
-                    pathname === link.href 
-                      ? 'text-[#b91c1c]' 
+                    pathname === link.href
+                      ? 'text-[#b91c1c]'
                       : 'text-[#1a1a1a]'
                   }`}
                 >
                   {t.nav[link.translationKey]}
-                  {link.dropdown && <ChevronDown size={14} className="transition-transform duration-300 group-hover:rotate-180" />}
+                  {link.dropdown && (
+                    <ChevronDown size={14} className="transition-transform duration-300 group-hover:rotate-180" />
+                  )}
                   {pathname === link.href && (
                     <span className="absolute bottom-2 left-0 w-full h-[1px] bg-[#b91c1c]" />
                   )}
@@ -111,7 +144,7 @@ export function Navbar() {
                           href={subLink.href}
                           className="px-6 py-3.5 text-[#1a1a1a] hover:text-[#b91c1c] hover:bg-[#faf9f7] transition-colors font-medium tracking-wide uppercase text-[11px]"
                         >
-                          {subLink.label}
+                          {t.nav.categoriesDropdown[subLink.categoryKey]}
                         </Link>
                       ))}
                     </div>
@@ -133,12 +166,14 @@ export function Navbar() {
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center gap-3 ml-auto">
             <LanguageSwitcher />
             <button
               className="p-2 text-[#1a1a1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/80"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -148,30 +183,66 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e5e0da] max-h-[80vh] overflow-y-auto">
+        <div
+          id="mobile-menu"
+          ref={menuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigacioni meni"
+          className="lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e5e0da] max-h-[80vh] overflow-y-auto"
+        >
           <div className="px-6 py-8 space-y-5">
             {navLinksData.map((link) => (
               <div key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 ${
-                    pathname === link.href ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'
-                  }`}
-                  onClick={() => !link.dropdown && setIsMobileMenuOpen(false)}
-                >
-                  <span>{t.nav[link.translationKey]}</span>
-                  {link.dropdown && <ChevronDown size={18} className="text-[#6b6b6b]" />}
-                </Link>
-                {link.dropdown && (
+                {link.dropdown ? (
+                  <button
+                    className={`w-full flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 ${
+                      pathname === link.href ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'
+                    }`}
+                    aria-expanded={openMobileDropdown === link.href}
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === link.href ? null : link.href
+                      )
+                    }
+                  >
+                    <span>{t.nav[link.translationKey]}</span>
+                    <ChevronDown
+                      size={18}
+                      className={`text-[#6b6b6b] transition-transform duration-300 ${
+                        openMobileDropdown === link.href ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={`flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 ${
+                      pathname === link.href ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'
+                    }`}
+                    onClick={closeMobileMenu}
+                  >
+                    {t.nav[link.translationKey]}
+                  </Link>
+                )}
+
+                {link.dropdown && openMobileDropdown === link.href && (
                   <div className="mt-2 pl-4 space-y-4 border-l-2 border-[#e5e0da]/50 py-2">
+                    <Link
+                      href={link.href}
+                      className="block text-[#b91c1c] text-xs font-semibold tracking-wider uppercase transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      {t.nav[link.translationKey]} →
+                    </Link>
                     {link.dropdown.map((subLink) => (
                       <Link
                         key={subLink.href}
                         href={subLink.href}
                         className="block text-[#6b6b6b] hover:text-[#b91c1c] text-xs font-semibold tracking-wider uppercase transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={closeMobileMenu}
                       >
-                        {subLink.label}
+                        {t.nav.categoriesDropdown[subLink.categoryKey]}
                       </Link>
                     ))}
                   </div>
@@ -181,7 +252,7 @@ export function Navbar() {
             <Link
               href="/kontakt"
               className="mt-6 block rounded-full bg-[#b91c1c] px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               {t.nav.bookAppointment}
             </Link>

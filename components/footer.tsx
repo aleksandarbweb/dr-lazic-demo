@@ -4,15 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
+import { navItems } from '@/lib/nav'
 
-const navLinksData = [
-  { href: '/', translationKey: 'home' },
-  { href: '/o-nama', translationKey: 'about' },
-  { href: '/usluge', translationKey: 'services' },
-  { href: '/oprema', translationKey: 'equipment' },
-  { href: '/galerija', translationKey: 'gallery' },
-  { href: '/kontakt', translationKey: 'contact' },
-] as const
+const navLinksData = navItems
 
 export function Footer() {
   const { t } = useTranslation()
@@ -91,7 +85,7 @@ export function Footer() {
                   <p>Kosovska 51, Beograd, 11000</p>
                   <div className="flex items-center gap-2 mt-1.5">
                     <a
-                      href="https://maps.app.goo.gl/1QuFk4f2xaXxMegp7"
+                      href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
                       target="_blank"
                       rel="noreferrer"
                       className="transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
@@ -100,7 +94,7 @@ export function Footer() {
                     </a>
                     <span className="text-white/25">·</span>
                     <a
-                      href="https://maps.apple/p/ad.WyF4.88me0~"
+                      href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
                       target="_blank"
                       rel="noreferrer"
                       className="transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"

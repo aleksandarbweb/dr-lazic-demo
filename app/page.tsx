@@ -52,7 +52,6 @@ const doctorsConfig = [
   {
     imageSrc: "/images/people/Marta/marta new in labcoat 1.png",
     profileHref: "/o-nama#marta-terzic",
-    enableFocusEasterEgg: true
   },
   {
     imageSrc: "/images/people/Biljana/drbiljanapetkovicheadshot.png",
@@ -61,17 +60,13 @@ const doctorsConfig = [
   }
 ]
 
-const heroTrustItems = [
-  { label: '20+ godina iskustva' },
-  { label: '60+ tretmana' },
-  { label: 'Individualan pristup' },
-]
 
 export default function HomePage() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const servicesCarouselRef = useRef<HTMLDivElement>(null)
   const mobileServicesRef = useRef<HTMLDivElement>(null)
   const testimonialsCarouselRef = useRef<HTMLDivElement>(null)
+  const testimonialsDesktopRef = useRef<HTMLDivElement>(null)
   const partnersCarouselRef = useRef<HTMLDivElement>(null)
   const shouldReduce = useReducedMotion()
   
@@ -97,11 +92,12 @@ export default function HomePage() {
     ...doctorsConfig[index]
   }))
 
-  // ── Auto-scrolling Marquees (Desktop Services & Partners) ──
+  // ── Auto-scrolling Marquees (Desktop Services, Partners & Testimonials) ──
   useEffect(() => {
     const containers = [
       { ref: servicesCarouselRef, speed: 0.012, paused: servicesPaused },
-      { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused }
+      { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused },
+      { ref: testimonialsDesktopRef, speed: 0.014, paused: testimonialsPaused },
     ]
 
     const frameIds: number[] = []
@@ -136,7 +132,7 @@ export default function HomePage() {
     })
 
     return () => frameIds.forEach(id => cancelAnimationFrame(id))
-  }, [servicesPaused, partnersPaused])
+  }, [servicesPaused, partnersPaused, testimonialsPaused])
 
   // ── Infinite Scroll Jump Logic (Mobile Interactive Carousels) ──
   useEffect(() => {
@@ -204,6 +200,7 @@ export default function HomePage() {
   const loopingServices = [...services, ...services]
   const tripleServices = [...services, ...services, ...services]
   const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials]
+  const loopingTestimonials = [...testimonials, ...testimonials]
   const loopingPartners = [...partners, ...partners]
 
   const pauseServices = () => {
@@ -253,7 +250,7 @@ export default function HomePage() {
                 initial={shouldReduce ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-5xl font-serif leading-[1.05] text-[#181512] sm:text-6xl md:text-7xl lg:text-8xl"
+                className={`text-5xl font-serif leading-[1.05] text-[#181512] sm:text-6xl md:text-7xl ${language === 'ru' ? 'lg:text-5xl xl:text-6xl' : 'lg:text-7xl xl:text-8xl'}`}
               >
                 {t.home.hero.titleLine1}
                 <br />
@@ -278,7 +275,7 @@ export default function HomePage() {
                   className="group inline-flex w-full items-center justify-center gap-4 pl-6 pr-3 py-3 rounded-full bg-[#b91c1c] text-sm font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:w-auto sm:gap-5 sm:pl-7 sm:pr-3"
                 >
                   <span>{t.home.hero.ctaPrimary}</span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(32,72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
                     <span aria-hidden="true" className="text-base leading-none">
                       →
                     </span>
@@ -299,14 +296,14 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                 className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
               >
-                {heroTrustItems.map((item, i) => (
+                {t.home.hero.trustItems.map((item, i) => (
                   <span
-                    key={item.label}
+                    key={item}
                     className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#7a756f]"
                   >
                     {i > 0 && <span className="text-[#d6cec4]" aria-hidden="true">·</span>}
                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#b91c1c]/40" />
-                    {item.label}
+                    {item}
                   </span>
                 ))}
               </motion.div>
@@ -464,7 +461,7 @@ export default function HomePage() {
             
             <FadeUp delay={0.3}>
               <h2 className="font-serif text-3xl italic leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                &ldquo;{t.home.philosophy.quote.replace(/^"|"$/g, '').replace(/^"|"$/g, '')}&rdquo;
+                &ldquo;{t.home.philosophy.quote.replace(/^["“]|["”]$/g, '')}&rdquo;
               </h2>
             </FadeUp>
             
@@ -558,16 +555,21 @@ export default function HomePage() {
             </div>
           </div>
 
-          <StaggerChildren className="hidden gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:flex md:items-stretch" staggerDelay={0.1}>
-            {testimonials.map((testimonial, i) => (
-              <StaggerItem
-                key={`${testimonial.author}-${i}`}
-                className="min-w-full snap-start md:min-w-[calc((100%-3rem)/3)]"
+          <div
+            ref={testimonialsDesktopRef}
+            className="no-scrollbar hidden md:flex gap-6 overflow-x-auto"
+            onMouseEnter={pauseTestimonials}
+            onMouseLeave={resumeTestimonials}
+          >
+            {loopingTestimonials.map((testimonial, i) => (
+              <div
+                key={`${testimonial.author}-desktop-${i}`}
+                className="flex-shrink-0 w-[calc((100%-3rem)/3)]"
               >
                 <TestimonialCard {...testimonial} />
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerChildren>
+          </div>
         </div>
       </section>
 

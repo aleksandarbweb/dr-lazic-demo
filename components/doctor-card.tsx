@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from "motion/react"
 
 interface DoctorCardProps {
@@ -13,8 +12,6 @@ interface DoctorCardProps {
   imageSrc: string
   reversed?: boolean
   profileHref?: string
-  enableFocusEasterEgg?: boolean
-  onFocusEasterEggTrigger?: () => void
 }
 
 export function DoctorCard({
@@ -24,47 +21,10 @@ export function DoctorCard({
   imageSrc,
   reversed,
   profileHref,
-  enableFocusEasterEgg = false,
-  onFocusEasterEggTrigger,
 }: DoctorCardProps) {
-  const router = useRouter()
-  const [focusClicks, setFocusClicks] = useState(0)
-  const [firstClickAt, setFirstClickAt] = useState<number | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: true, margin: "-80px" })
   const shouldReduce = useReducedMotion()
-
-  const bioParts = useMemo(() => {
-    if (!enableFocusEasterEgg) {
-      return { before: bio, after: '' }
-    }
-    const matchIndex = bio.toLowerCase().indexOf('fokus')
-    if (matchIndex === -1) {
-      return { before: bio, after: '' }
-    }
-    return {
-      before: bio.slice(0, matchIndex),
-      after: bio.slice(matchIndex + 'fokus'.length),
-    }
-  }, [bio, enableFocusEasterEgg])
-
-  useEffect(() => {
-    if (focusClicks >= 7 && firstClickAt && Date.now() - firstClickAt <= 10000) {
-      onFocusEasterEggTrigger?.()
-      router.push('/faktor')
-    }
-  }, [focusClicks, firstClickAt, onFocusEasterEggTrigger, router])
-
-  useEffect(() => {
-    if (focusClicks === 0 || !firstClickAt) return
-    const timeout = window.setTimeout(() => {
-      if (Date.now() - firstClickAt > 10000) {
-        setFocusClicks(0)
-        setFirstClickAt(null)
-      }
-    }, 300)
-    return () => window.clearTimeout(timeout)
-  }, [focusClicks, firstClickAt])
 
   return (
     <>
@@ -116,25 +76,7 @@ export function DoctorCard({
             )}
           </h3>
           <p className="mb-6 text-sm font-medium uppercase tracking-[0.15em] text-[#b91c1c]">{title}</p>
-          <p className="text-[#5f5a55] leading-relaxed font-light">
-            {bioParts.before}
-            {enableFocusEasterEgg && bioParts.after ? (
-              <>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!firstClickAt) setFirstClickAt(Date.now())
-                    setFocusClicks((prev) => prev + 1)
-                  }}
-                  className="mx-[1px] bg-transparent p-0 text-inherit font-inherit leading-inherit focus-visible:outline-none cursor-text select-none"
-                  aria-label="Fokus"
-                >
-                  Fokus
-                </button>
-                {bioParts.after}
-              </>
-            ) : null}
-          </p>
+          <p className="text-[#5f5a55] leading-relaxed font-light">{bio}</p>
         </div>
       </motion.div>
     </>

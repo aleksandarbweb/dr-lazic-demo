@@ -2,30 +2,20 @@
 
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
+import { useTranslation } from '@/lib/i18n/LanguageContext'
 
-const services = [
-  'Botoks i fileri',
-  'Morpheus8 RF Microneedling',
-  'Laserska epilacija',
-  'Hemijski pilinzi',
-  'PRP tretman',
-  'Profhilo',
-  'Dermoskopija',
-  'Medicinska dermatologija',
-  'Drugo'
-]
-
-const workingHours = [
-  { day: 'Ponedeljak', hours: '10:00 - 18:00' },
-  { day: 'Utorak', hours: '10:00 - 18:00' },
-  { day: 'Sreda', hours: '10:00 - 18:00' },
-  { day: 'Četvrtak', hours: '10:00 - 18:00' },
-  { day: 'Petak', hours: '10:00 - 18:00' },
-  { day: 'Subota', hours: 'Zatvoreno' },
-  { day: 'Nedelja', hours: 'Zatvoreno' },
+const workingHoursData = [
+  '10:00 - 18:00',
+  '10:00 - 18:00',
+  '10:00 - 18:00',
+  '10:00 - 18:00',
+  '10:00 - 18:00',
+  null,
+  null,
 ]
 
 export default function KontaktPage() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,15 +29,13 @@ export default function KontaktPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
+
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
+
     setIsSubmitting(false)
     setIsSubmitted(true)
     setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-    
-    // Reset success message after 5 seconds
+
     setTimeout(() => setIsSubmitted(false), 5000)
   }
 
@@ -65,14 +53,14 @@ export default function KontaktPage() {
         <div className="hidden md:block absolute right-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
-            Javite nam se
+            {t.kontakt.eyebrow}
           </p>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#1a1a1a]">
-            Kontakt
+            {t.kontakt.title}
           </h1>
           <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
           <p className="text-[#6b6b6b] mt-8 max-w-xl mx-auto font-light">
-            Javite nam se za više informacija ili zakazivanje pregleda
+            {t.kontakt.subtitle}
           </p>
         </div>
       </section>
@@ -83,22 +71,26 @@ export default function KontaktPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Kontakt forma</p>
+              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.formEyebrow}</p>
               <h2 className="font-serif text-3xl text-[#1a1a1a] mb-8">
-                Pošaljite Nam Poruku
+                {t.kontakt.formTitle}
               </h2>
               <div className="w-16 h-[2px] bg-[#b91c1c] mb-10" />
 
               {isSubmitted && (
-                <div className="mb-8 p-5 bg-[#b91c1c]/5 border border-[#b91c1c]/30 text-[#b91c1c]">
-                  Hvala vam na poruci! Kontaktiraćemo vas u najkraćem mogućem roku.
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="mb-8 p-5 bg-[#b91c1c]/5 border border-[#b91c1c]/30 text-[#b91c1c]"
+                >
+                  {t.kontakt.successMessage}
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
-                    Ime i prezime *
+                    {t.kontakt.nameLabel}
                   </label>
                   <input
                     type="text"
@@ -108,14 +100,14 @@ export default function KontaktPage() {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
-                    placeholder="Vaše ime i prezime"
+                    placeholder={t.kontakt.namePlaceholder}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
-                      Email *
+                      {t.kontakt.emailLabel}
                     </label>
                     <input
                       type="email"
@@ -125,12 +117,12 @@ export default function KontaktPage() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
-                      placeholder="vas@email.com"
+                      placeholder={t.kontakt.emailPlaceholder}
                     />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
-                      Telefon *
+                      {t.kontakt.phoneLabel}
                     </label>
                     <input
                       type="tel"
@@ -140,14 +132,14 @@ export default function KontaktPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
-                      placeholder="+381 XX XXX XXXX"
+                      placeholder={t.kontakt.phonePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
-                    Koja usluga vas zanima?
+                    {t.kontakt.serviceLabel}
                   </label>
                   <select
                     id="service"
@@ -156,8 +148,8 @@ export default function KontaktPage() {
                     onChange={handleChange}
                     className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
                   >
-                    <option value="">Izaberite uslugu</option>
-                    {services.map((service) => (
+                    <option value="">{t.kontakt.servicePlaceholder}</option>
+                    {t.kontakt.services.map((service) => (
                       <option key={service} value={service}>{service}</option>
                     ))}
                   </select>
@@ -165,7 +157,7 @@ export default function KontaktPage() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
-                    Poruka *
+                    {t.kontakt.messageLabel}
                   </label>
                   <textarea
                     id="message"
@@ -175,7 +167,7 @@ export default function KontaktPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors resize-none"
-                    placeholder="Opišite vaše potrebe ili postavite pitanje..."
+                    placeholder={t.kontakt.messagePlaceholder}
                   />
                 </div>
 
@@ -185,11 +177,11 @@ export default function KontaktPage() {
                   className="w-full bg-[#b91c1c] text-white px-10 py-5 text-sm font-medium tracking-[0.15em] uppercase hover:bg-[#991b1b] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
                 >
                   {isSubmitting ? (
-                    'Slanje...'
+                    t.kontakt.submittingButton
                   ) : (
                     <>
                       <Send size={18} />
-                      Pošaljite poruku
+                      {t.kontakt.submitButton}
                     </>
                   )}
                 </button>
@@ -198,9 +190,9 @@ export default function KontaktPage() {
 
             {/* Contact Info */}
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Kako do nas</p>
+              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.infoEyebrow}</p>
               <h2 className="font-serif text-3xl text-[#1a1a1a] mb-8">
-                Informacije
+                {t.kontakt.infoTitle}
               </h2>
               <div className="w-16 h-[2px] bg-[#b91c1c] mb-10" />
 
@@ -211,11 +203,11 @@ export default function KontaktPage() {
                     <MapPin size={24} className="text-[#b91c1c]" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">Adresa</h3>
+                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.addressLabel}</h3>
                     <p className="text-[#6b6b6b] font-light">Kosovska 51, Beograd, 11000</p>
                     <div className="flex gap-3 mt-2 text-sm">
                       <a
-                        href="https://maps.app.goo.gl/1QuFk4f2xaXxMegp7"
+                        href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
                         target="_blank"
                         rel="noreferrer"
                         className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors"
@@ -223,7 +215,7 @@ export default function KontaktPage() {
                         Google Maps
                       </a>
                       <a
-                        href="https://maps.apple/p/ad.WyF4.88me0~"
+                        href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
                         target="_blank"
                         rel="noreferrer"
                         className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors"
@@ -240,7 +232,7 @@ export default function KontaktPage() {
                     <Phone size={24} className="text-[#b91c1c]" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">Telefon</h3>
+                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.phoneContactLabel}</h3>
                     <a href="tel:+381628412909" className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors">
                       +381 62 841 29 09
                     </a>
@@ -253,7 +245,7 @@ export default function KontaktPage() {
                     <Mail size={24} className="text-[#b91c1c]" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">Email</h3>
+                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.emailContactLabel}</h3>
                     <a href="mailto:mdterzic@gmail.com" className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors">
                       mdterzic@gmail.com
                     </a>
@@ -266,13 +258,13 @@ export default function KontaktPage() {
                     <Clock size={24} className="text-[#b91c1c]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-[#1a1a1a] font-medium mb-4">Radno vreme</h3>
+                    <h3 className="text-[#1a1a1a] font-medium mb-4">{t.kontakt.hoursLabel}</h3>
                     <div className="space-y-2">
-                      {workingHours.map((item) => (
-                        <div key={item.day} className="flex justify-between text-sm">
-                          <span className="text-[#6b6b6b] font-light">{item.day}</span>
-                          <span className={item.hours === 'Zatvoreno' ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'}>
-                            {item.hours}
+                      {t.kontakt.workingDays.map((day, i) => (
+                        <div key={day} className="flex justify-between text-sm">
+                          <span className="text-[#6b6b6b] font-light">{day}</span>
+                          <span className={workingHoursData[i] === null ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'}>
+                            {workingHoursData[i] ?? t.kontakt.closed}
                           </span>
                         </div>
                       ))}
@@ -281,19 +273,19 @@ export default function KontaktPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Map */}
               <div className="mt-12 aspect-video w-full overflow-hidden rounded-[1.5rem] border border-[#e5ddd3] bg-[#f5f3f0] p-1.5 shadow-lg">
                 <div className="h-full w-full overflow-hidden rounded-[calc(1.5rem-0.375rem)] border border-[#efe7dd]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.4776961904257!2d20.4794!3d44.8039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDQ4JzE0LjAiTiAyMMKwMjgnNDUuOCJF!5e0!3m2!1sen!2srs!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, filter: 'grayscale(0.35) sepia(0.2) saturate(0.85) hue-rotate(-10deg) contrast(0.92)' }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Lokacija ordinacije Dr. Terzić"
-                />
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.4903897087634!2d20.465245076415652!3d44.81157337107071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aadeeb46a91%3A0x758c96041e4f1d68!2sDr%20Terzic!5e0!3m2!1sen!2srs!4v1782281143179!5m2!1sen!2srs"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'grayscale(0.35) sepia(0.2) saturate(0.85) hue-rotate(-10deg) contrast(0.92)' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Lokacija ordinacije Dr. Terzić"
+                  />
                 </div>
               </div>
             </div>

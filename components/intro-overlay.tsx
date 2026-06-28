@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
+import Image from 'next/image'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 // Set to true if you want to temporarily remove the intro without touching the layout.
 const DISABLE_SITE_INTRO = false
-const INTRO_VIDEO_SRC = '/videos/drterzicintro.MOV'
+const INTRO_VIDEO_SRC = '/videos/drterzicintro.mp4'
 const INTRO_HOLD_MS = 4500
 const REDUCED_MOTION_HOLD_MS = 1200
 const INTRO_FADE_SECONDS = 1.5
@@ -57,6 +58,7 @@ export function IntroOverlay() {
       onAnimationComplete={() => {
         if (!active) {
           introHasCompleted = true
+          document.getElementById('main-content')?.focus()
           setMounted(false)
         }
       }}
@@ -93,11 +95,12 @@ export function IntroOverlay() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <motion.img
+          <Image
             src="/images/Logos/dr terzic beli logo.png"
             alt="Dr Terzić"
-            loading="eager"
-            decoding="async"
+            width={680}
+            height={200}
+            priority
             className="relative mx-auto h-auto w-full max-w-[680px] object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.48)]"
           />
         </motion.div>

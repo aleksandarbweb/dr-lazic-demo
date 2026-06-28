@@ -27,13 +27,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Load language from localStorage if available
     const savedLang = localStorage.getItem('site_language') as Language
     if (savedLang && ['sr', 'en', 'ru'].includes(savedLang)) {
       setLanguage(savedLang)
     }
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (mounted) {
+      document.documentElement.lang = language
+    }
+  }, [language, mounted])
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang)
