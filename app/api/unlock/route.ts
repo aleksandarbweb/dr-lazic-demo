@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GATE_COOKIE, GATE_TOKEN, getGatePassword } from '@/lib/site-gate'
+import { GATE_COOKIE, GATE_TOKEN, getGatePassword, safeNextPath } from '@/lib/site-gate'
 
 export async function POST(req: NextRequest) {
   const form = await req.formData()
   const password = String(form.get('password') ?? '')
-  const nextRaw = String(form.get('next') ?? '/')
-  const next = nextRaw.startsWith('/') ? nextRaw : '/'
+  const next = safeNextPath(String(form.get('next') ?? '/'))
 
   if (password !== getGatePassword()) {
-    return NextResponse.redirect(new URL(`${next}?gate_error=1`, req.url), 303)
+    const url = new URL(next, req.url)
+    url.searchParams.set('gate_error', '1')
+    return NextResponse.redirect(url, 303)
   }
 
   const res = NextResponse.redirect(new URL(next, req.url), 303)

@@ -10,12 +10,27 @@ export function getGatePassword(): string {
   return process.env.SITE_PASSWORD || 'admindrterzic'
 }
 
+/** Only allow same-origin absolute paths; reject protocol-relative / backslash tricks. */
+export function safeNextPath(raw: string): string {
+  return raw.startsWith('/') && !raw.startsWith('//') && !raw.startsWith('/\\') ? raw : '/'
+}
+
+/** Escape a string for safe interpolation into an HTML attribute. */
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+}
+
 /**
  * Self-contained HTML for the lock screen, rendered directly by middleware so it
  * is not wrapped by the site's layout (navbar/footer/intro overlay).
  */
 export function lockHtml(nextPath: string, error: boolean): string {
-  const safeNext = nextPath.startsWith('/') ? nextPath : '/'
+  const safeNext = escapeHtml(safeNextPath(nextPath))
   const errorBlock = error
     ? `<p class="err" role="alert">Pogrešna lozinka. Pokušajte ponovo.</p>`
     : ''
