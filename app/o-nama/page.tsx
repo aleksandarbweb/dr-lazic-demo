@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 import { SectionTitle } from '@/components/section-title'
-import { Target, Shield, Award } from 'lucide-react'
+import { HeartHandshake, ShieldCheck, Award, CircleUserRound } from 'lucide-react'
 import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primitives'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
-const valueIcons = [Target, Shield, Award]
+const valueIcons = [HeartHandshake, ShieldCheck, Award]
 
 export default function ONamaPage() {
   const { t } = useTranslation()
@@ -25,6 +25,9 @@ export default function ONamaPage() {
               {t.onama.title}
             </h1>
             <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
+            <p className="text-[#6b6b6b] mt-8 max-w-2xl mx-auto font-light leading-relaxed">
+              {t.onama.heroIntro}
+            </p>
           </div>
         </FadeUp>
       </section>
@@ -55,7 +58,7 @@ export default function ONamaPage() {
             </div>
             <FadeUp delay={0.3} className="relative aspect-[4/3] w-full overflow-hidden shadow-2xl">
               <Image
-                src="/images/ordinacijaonama.png"
+                src="/images/Services/ordinacijaonama.png"
                 alt="Unutrašnjost ordinacije Dr. Terzić"
                 fill
                 className="object-cover"
@@ -100,6 +103,9 @@ export default function ONamaPage() {
                 <p className="text-[#6b6b6b] leading-relaxed mb-5 font-light">
                   {t.onama.marta.bio2}
                 </p>
+                <p className="text-[#6b6b6b] leading-relaxed mb-5 font-light">
+                  {t.onama.marta.bio3}
+                </p>
                 <div className="mt-8">
                   <h4 className="text-[#1a1a1a] font-medium mb-4 text-sm tracking-wide uppercase">
                     {t.onama.marta.specializationsTitle}
@@ -118,7 +124,8 @@ export default function ONamaPage() {
           </div>
 
           {/* Dr. Biljana Petković */}
-          <div id="biljana-petkovic" className="scroll-mt-28">
+          {/* TODO: replace with real CV content from Marta — bio below is provisional pending client-supplied CV (see docs/client-content-map-2026-07-09.md §7) */}
+          <div id="biljana-petkovic" className="scroll-mt-28 mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
               <div className="lg:col-span-1 lg:order-2">
                 <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
@@ -158,6 +165,38 @@ export default function ONamaPage() {
                     ))}
                   </ul>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Rest of the team */}
+          <div className="pt-16 border-t border-[#e5e0da]">
+            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-10 text-center">
+              {t.onama.otherTeamTitle}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+              <div className="flex gap-5 items-start">
+                <div className="flex-shrink-0 flex h-16 w-16 items-center justify-center rounded-full border border-[#e5e0da] bg-white">
+                  <CircleUserRound size={30} className="text-[#b91c1c]" />
+                </div>
+                <div>
+                  <h4 className="font-serif text-xl text-[#1a1a1a] mb-1">{t.onama.snezana.name}</h4>
+                  <p className="text-[#b91c1c] text-xs font-medium tracking-[0.1em] uppercase mb-3">{t.onama.snezana.title}</p>
+                  <p className="text-[#6b6b6b] text-sm leading-relaxed font-light">{t.onama.snezana.bio}</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-6 content-start">
+                {t.onama.otherTeam.map((member) => (
+                  <div key={member.name} className="flex gap-4 items-center">
+                    <div className="flex-shrink-0 flex h-11 w-11 items-center justify-center rounded-full border border-[#e5e0da] bg-white">
+                      <CircleUserRound size={20} className="text-[#b91c1c]" />
+                    </div>
+                    <div>
+                      <p className="text-[#1a1a1a] font-medium">{member.name}</p>
+                      <p className="text-[#6b6b6b] text-xs uppercase tracking-[0.1em]">{member.title}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

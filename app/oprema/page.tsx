@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { Zap, Radio, Snowflake, Search, Thermometer, type LucideIcon } from 'lucide-react'
+import { Zap, Radio, Snowflake, ScanFace, Thermometer, Sparkles, Waves, PenTool, type LucideIcon } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 type DeviceKey = keyof ReturnType<typeof useTranslation>['t']['oprema']['devices']
@@ -13,11 +13,14 @@ const deviceConfig: Array<{
   manufacturer: string
   id: string
 }> = [
-  { key: 'lightSheer', icon: Zap, name: 'Light Sheer ET', manufacturer: 'Lumenis', id: 'light-sheer' },
-  { key: 'fotona', icon: Zap, name: 'SP Spectro', manufacturer: 'Fotona', id: 'fotona' },
+  { key: 'avalancheLase', icon: Zap, name: 'AvalancheLase', manufacturer: 'Fotona', id: 'avalanchelase' },
+  { key: 'spDynamis', icon: Zap, name: 'SP Dynamis', manufacturer: 'Fotona', id: 'sp-dynamis' },
+  { key: 'harmonyXL', icon: Sparkles, name: 'Harmony XL Pro', manufacturer: 'Alma', id: 'harmony-xl-pro' },
+  { key: 'morpheus8', icon: Waves, name: 'Morpheus 8', manufacturer: 'InMode', id: 'morpheus8' },
   { key: 'ellman', icon: Radio, name: 'Ellman', manufacturer: 'Ellman', id: 'ellman' },
-  { key: 'cryopen', icon: Snowflake, name: 'CryoPen', manufacturer: 'CryoPen', id: 'cryopen' },
-  { key: 'dermlite', icon: Search, name: 'DermLite DL3', manufacturer: 'DermLite', id: 'dermlite' },
+  { key: 'cryopen', icon: Snowflake, name: 'CryoPro & CryoPen', manufacturer: 'CryoPen', id: 'cryopen' },
+  { key: 'dermlite', icon: ScanFace, name: 'DermLite DL5 & Canfield D200EVO', manufacturer: 'DermLite / Canfield', id: 'dermlite' },
+  { key: 'dermapen', icon: PenTool, name: 'Dermapen', manufacturer: 'Dermapen', id: 'dermapen' },
   { key: 'zimmer', icon: Thermometer, name: 'Zimmer Cryo 6 & Cryo Tube CL02', manufacturer: 'Zimmer', id: 'zimmer' },
 ]
 

@@ -18,3 +18,9 @@ node_modules
 
 # Build artifacts
 tsconfig.tsbuildinfo
+
+# Local Claude / Playwright temp files
+.playwright-mcp/
+
+# Client raw input files
+docs/client-input/*.docx

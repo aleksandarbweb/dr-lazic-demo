@@ -18,7 +18,7 @@ export const en = {
     },
   },
   footer: {
-    description: 'Over 20 years of experience in medical and aesthetic dermatology.',
+    description: 'Over 25 years of experience in medical and aesthetic dermatology.',
     navigation: 'Navigation',
     contact: 'Contact',
     addressLabel: 'Address',
@@ -31,23 +31,23 @@ export const en = {
   },
   home: {
     hero: {
-      sloganEyebrow: 'Over 20 years with you',
+      sloganEyebrow: 'Over 25 years with you',
       sloganMain: 'Caring for your health and beauty',
       sloganItalic: 'in a natural and safe way.',
-      slogan: 'Over 20 years with you. Caring for your health and beauty in a natural and safe way.',
+      slogan: 'Over 25 years with you. Caring for your health and beauty in a natural and safe way.',
       badge: 'Specialist Dermatovenereology Clinic',
-      titleLine1: 'Exclusive care for',
-      titleLine2: 'your skin',
-      description: 'Over 20 years of experience in medical and aesthetic dermatology. We build trust through careful diagnostics, natural results, and long-term care for your skin health.',
+      titleLine1: 'Personalized care',
+      titleLine2: 'for your skin',
+      description: 'Over 25 years of experience in medical and aesthetic dermatology. We build our patients\' trust through an individual approach, dedicated diagnostics and treatment, careful treatment selection, natural results, and long-term care for skin health.',
       ctaPrimary: 'Contact Us',
       ctaSecondary: 'Our Services',
-      trustItems: ['20+ years of experience', '60+ treatments', 'Individual approach'],
+      trustItems: ['25+ years of experience', '60+ treatments', 'Individual approach'],
     },
     stats: [
-      { value: '20+', label: 'Years of Experience' },
+      { value: '25+', label: 'Years of Experience' },
       { value: '2', label: 'Dermatology Specialists' },
       { value: '60+', label: 'Dermatological Treatments' },
-      { value: '1000+', label: 'Satisfied Patients' }
+      { value: '15000+', label: 'Satisfied Patients' }
     ],
     servicesSection: {
       title: 'Our Services',
@@ -93,8 +93,8 @@ export const en = {
     doctorsList: [
       {
         name: 'Dr. Marta Terzic',
-        title: 'Dermatovenereology Specialist',
-        bio: 'Dermatovenereology specialist with over 20 years of experience in medical and aesthetic dermatology. Dr. Marta Terzic focuses on an individualized approach, natural results, and long-term skin health.'
+        title: 'Founder and Dermatovenereology Specialist',
+        bio: 'Over 25 years of experience in dermatology, dermoscopy, and aesthetic and regenerative medicine. A regional pioneer of laser dermatology, educator, and national trainer for hyaluronic fillers and botulinum toxin. Committed to natural results, skin health, and an individual approach for every patient.'
       },
       {
         name: 'Dr. Biljana Petkovic',
@@ -223,23 +223,26 @@ export const en = {
   onama: {
     eyebrow: 'Meet us',
     title: 'About Us',
+    heroIntro: 'For over 25 years we have been dedicated to the health and beauty of your skin. Dr. Terzić Clinic brings together dermatology, laser dermatology, radiowave surgery, dermoscopy, and aesthetic and regenerative medicine — with an individual approach and treatment plan built on trust and natural results.',
     storyEyebrow: 'Our story',
-    storyTitle: 'A Tradition of Excellence',
-    storyP1: 'Dr. Terzić Clinic was founded with a vision of providing top-tier dermatological care in Belgrade. From the very beginning, our mission has been to combine medical expertise with the most advanced technologies to give our patients the best possible results.',
-    storyP2: 'Today, with over 20 years of experience, our clinic is synonymous with quality and reliability in the field of dermatovenereology. We are proud of the trust placed in us by thousands of satisfied patients.',
-    storyP3: 'Our team consists of two dermatovenereology specialists who continuously advance their knowledge and follow the latest trends in medical and aesthetic dermatology. We are equipped with state-of-the-art devices from world-leading manufacturers such as Lumenis and Fotona.',
-    specialistsTitle: 'Our Specialists',
+    storyTitle: 'About Us',
+    storyP1: 'Dr. Terzić Clinic was founded in 2004 with a vision of bringing together, in one place, top-tier dermatological diagnostics and skin treatment, modern aesthetic medicine, and an individual approach to every patient.',
+    storyP2: 'For over two decades we have provided services in general dermatology, dermoscopy, radiowave surgery, laser dermatology, and aesthetic and regenerative medicine. Our goal is to preserve skin health and improve our patients\' quality of life through expertise, experience, and the application of the latest medical advances.',
+    storyP3: 'The clinic\'s founder, Dr. Marta Terzić, a dermatovenereology specialist with over 25 years of experience, is among the regional pioneers of medical laser use in dermatology. Years of practice, continuous training at home and abroad, and a large number of successfully performed procedures have made Dr. Terzić Clinic a recognized center for dermatology and aesthetic medicine.',
+    specialistsTitle: 'Our Team',
+    otherTeamTitle: 'The Rest of Our Team',
     valuesTitle: 'Our Values',
     values: [
-      { title: 'Precision', description: 'We perform every treatment with maximum precision and care, using the most advanced equipment and proven methods.' },
       { title: 'Trust', description: 'We build long-term relationships with our patients based on honesty, transparency, and professional integrity.' },
-      { title: 'Results', description: 'We are committed to achieving visible and lasting results that exceed our patients\' expectations.' },
+      { title: 'Safety', description: 'We perform every treatment with maximum precision and care, using the most advanced medical equipment, proven materials, and methods.' },
+      { title: 'Results', description: 'We are committed to achieving visible and natural results that make our patients feel confident and satisfied.' },
     ],
     marta: {
       specializationsTitle: 'Specializations:',
-      bio1: 'Dr. Marta Terzić is a dermatovenereology specialist with over 20 years of experience in medical and aesthetic dermatology. She graduated from the Faculty of Medicine at the University of Belgrade, where she later completed her specialization in dermatovenereology.',
-      bio2: 'She specializes in aesthetic facial procedures, including Morpheus8 RF microneedling, laser treatments, biorevitalization, and anti-aging protocols. In her work, she insists on natural results and treatments tailored to the individual needs of each patient.',
-      specializations: ['Botox and hyaluronic fillers', 'Morpheus8 RF treatments', 'Laser treatments', 'Biorevitalization', 'Chemical peels', 'Anti-aging procedures'],
+      bio1: 'Dr. Marta Terzić is a dermatovenereology specialist with over 25 years of experience in diagnosing, treating, and improving skin health. She graduated from the Faculty of Medicine at the University of Belgrade and completed her specialization in dermatovenereology in 1999. In 2004 she founded Dr. Terzić Clinic, where she still practices today with the same dedication to every patient. She is among the first physicians in the region to introduce laser use in dermatology, with tens of thousands of laser treatments performed.',
+      bio2: 'Over the past fifteen years she has focused particularly on aesthetic and regenerative medicine, continuously training with leading international experts. In daily practice she works with hyaluronic fillers, botulinum toxin, collagen biostimulators, PRP treatments, biorevitalization, mesotherapy, and laser rejuvenation and regeneration procedures. She practices an individual, holistic approach — her goal is not to change identity, but to preserve health, natural beauty, and patient confidence.',
+      bio3: 'Her expertise and commitment to natural results have also been recognized by Allergan, which appointed her national trainer for dermal fillers and botulinum toxin type A. She has been a member of the International Dermoscopy Society since 2004 and regularly lectures at domestic and international professional congresses.',
+      specializations: ['Hyaluronic fillers', 'Botulinum toxin', 'Collagen biostimulators', 'PRP treatments', 'Biorevitalization', 'Mesotherapy', 'Laser rejuvenation procedures', 'Dermoscopy'],
     },
     biljana: {
       specializationsTitle: 'Specializations:',
@@ -247,6 +250,16 @@ export const en = {
       bio2: 'In addition to general and pediatric dermatology, her focus areas include dermoscopy, radiowave procedures, laser treatments, aesthetic procedures, and anti-aging medicine. She is a member of domestic and international associations and continuously advances her knowledge at congresses and symposia.',
       specializations: ['Dermoscopy', 'Radiowave procedures', 'Laser treatments', 'Aesthetic procedures', 'Anti-aging medicine', 'General and pediatric dermatology'],
     },
+    snezana: {
+      name: 'Snežana Stojković',
+      title: 'Clinic Manager and Nurse',
+      bio: 'Snežana has been an indispensable member of our team since day one — her professionalism, organizational skills, and dedication contribute daily to the clinic running smoothly. She is patients\' first point of contact, and her kindness and patience make every patient feel safe, informed, and welcome.',
+    },
+    otherTeam: [
+      { name: 'Milica Dobrić', title: 'Medical Cosmetologist' },
+      { name: 'Melissa Ćelović', title: 'Medical Cosmetologist' },
+      { name: 'Sonja Bubulj', title: 'Medical Cosmetologist' },
+    ],
   },
   oprema: {
     eyebrow: 'Our technology',
@@ -258,15 +271,15 @@ export const en = {
     ctaDescription: 'Contact us for more information about our devices and the treatments that are right for you',
     ctaButton: 'Contact us',
     devices: {
-      lightSheer: {
-        subtitle: 'Diode Laser System',
-        description: 'The world gold standard in dermatology for permanent hair removal. Medical diode laser with an active cooling system for maximum safety and comfort.',
+      avalancheLase: {
+        subtitle: 'Laser System',
+        description: 'Medical laser system for permanent hair removal with an active cooling system for maximum safety and comfort.',
         treatments: [
           'Laser hair removal — permanent hair elimination',
           'Laser treatment for ingrown hair problems (folliculitis)',
         ],
       },
-      fotona: {
+      spDynamis: {
         subtitle: 'Laser System',
         description: 'The most advanced laser system for a wide range of dermatological and aesthetic treatments. Combination of Nd:YAG and Er:YAG technology for personalized results.',
         treatments: [
@@ -275,40 +288,68 @@ export const en = {
           'Laser treatments for stretch marks',
           'Removal of hyperpigmentation and melasma',
           'Laser removal of vascular lesions on the face',
-          'Facial redness — rosacea',
-          'Dilated capillaries — telangiectasiae (face and legs)',
-          'Spider naevi and angiomas',
+          'Rosacea treatment',
+          'Acne treatment',
           'Laser removal of benign lesions (keratoses, papillomas, warts...)',
           'Laser treatment of fungal infections of the nail area',
-          'Laser hair removal — permanent hair elimination',
-          'Laser treatment for ingrown hair problems (folliculitis)',
+        ],
+      },
+      harmonyXL: {
+        subtitle: 'IPL & Laser Platform',
+        description: 'Multifunctional IPL and laser platform for treating redness, pigmentation, and skin rejuvenation.',
+        treatments: [
+          'Rosacea treatment',
+          'Poikiloderma treatment',
+          'Skin rejuvenation',
+          'Pigmentation removal',
+          'Acne treatment',
+          'Scar removal',
+        ],
+      },
+      morpheus8: {
+        subtitle: 'RF Microneedling',
+        description: 'Radiofrequency microneedling that combines microneedles with RF energy to stimulate collagen and tighten the skin.',
+        treatments: [
+          'Skin rejuvenation',
+          'Skin tightening',
+          'Stretch mark treatments',
+          'Targeted reduction of localized fat',
         ],
       },
       ellman: {
         subtitle: 'Radiosurgery',
         description: 'Precise radiowave surgery for painless and effective removal of benign skin lesions with minimal damage to surrounding tissue.',
         treatments: [
-          'Wart removal',
-          'Condyloma removal',
+          'Removal of viral warts, condylomas, and molluscum contagiosum',
           'Removal of papillomas and keratoses',
           'Electrolysis (permanent removal of grey and blond hairs)',
         ],
       },
       cryopen: {
-        subtitle: 'Liquid Nitrogen Therapy',
+        subtitle: 'CryoPro & CryoPen — liquid nitrogen therapy',
         description: 'Precise cryotherapy for targeted removal of skin lesions using controlled freezing. Minimally invasive treatment without anesthesia.',
         treatments: [
-          'Removal of warts on hands and feet',
+          'Removal of viral warts on hands and feet',
           'Condyloma removal',
           'Keratosis removal',
         ],
       },
       dermlite: {
         subtitle: 'Dermoscope',
-        description: 'Professional dermoscope for detailed diagnosis of skin lesions and moles. Enables early screening and precise monitoring of skin changes.',
+        description: 'DermLite DL5 and Canfield D200EVO dermoscope for detailed diagnosis of skin lesions and moles, including digital AI diagnostics and trichoscopy.',
         treatments: [
           'Mole diagnostics',
           'Mapping — full-body mole examination and marking',
+          'Digital AI diagnostics',
+          'Trichoscopy — AI dermoscopic hair and scalp analysis',
+        ],
+      },
+      dermapen: {
+        subtitle: 'Microneedling',
+        description: 'Medical needle microneedling to stimulate skin regeneration and improve skin quality.',
+        treatments: [
+          'Hair growth stimulation',
+          'Facial skin quality — pores, pigmentation, fine lines',
         ],
       },
       zimmer: {

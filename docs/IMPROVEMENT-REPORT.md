@@ -296,8 +296,10 @@ Each milestone = one working session (roughly), shippable, verified, committed.
 - [ ] **Fix all broken image paths** — `galerija/page.tsx`: point every entry at
   real files under `/images/Services/…`; remove/replace the two nonexistent
   doctor-placeholder entries (real headshots exist under `/images/people/`).
-  `o-nama/page.tsx`: `/images/Services/ordinacijaonama.png`. Grep the whole
-  repo for `/images/` and verify every reference against `public/`.
+  ~~`o-nama/page.tsx`: `/images/Services/ordinacijaonama.png`~~ **done
+  2026-07-10** (fixed opportunistically during the content pass, verified in
+  Playwright — see Changelog). `galerija/page.tsx` and the repo-wide grep are
+  still outstanding — this bullet stays unchecked until those are done too.
 - [ ] **Intro overlay: once per session + skippable** — sessionStorage guard
   (survives hard loads), click/Escape/“Preskoči” skips, keep reduced-motion
   short-circuit, and `document.documentElement`/body overflow cleanup on skip.
@@ -307,9 +309,15 @@ Each milestone = one working session (roughly), shippable, verified, committed.
   own voice (no fake patients), or (b) hide section behind a clearly-labeled
   placeholder flag until real Google reviews arrive. Delete the fake
   `testimonialsList` from all three translation files or clearly repurpose.
-- [ ] **Stats honesty pass** — keep "20+ godina", "2 specijaliste", "60+
-  tretmana" (verifiable); replace "1000+ pacijenata" with a verifiable fact
-  (e.g. "3 jezika" / equipment count) until client confirms a number.
+- [ ] **Stats honesty pass** — keep "25+ godina" (updated from client DOCX,
+  2026-07-10), "2 specijaliste", "60+ tretmana"; "1000+ pacijenata" was
+  replaced with client-provided "15000+ zadovoljnih pacijenata" during the
+  2026-07-10 content pass — **this is unverified and needs Marta's written
+  confirmation**, it is not yet a settled fact. See
+  `docs/client-content-map-2026-07-09.md` §2 for the full list of numbers
+  needing confirmation (including "više stotina hiljada procedura", which was
+  intentionally *not* shipped as a hard number — see that doc for why). This
+  bullet stays unchecked until the numbers are confirmed with the client.
 - [ ] **Honest contact section** — remove the fake async submit. Interim: form
   fields disabled-styled out, replaced by prominent direct actions (tel:,
   mailto:, Instagram DM, maps) presented as the primary path. (Real form is a
@@ -541,3 +549,56 @@ Unchanged policy: raise with the client, don't build unprompted.
   production (wrong paths); intro replays every hard load; fake testimonials
   live; `/usluge` not internationalized; fonts missing Cyrillic subset. No code
   changes yet — next session starts at M0.
+- 2026-07-10 — **Client content intake pass** (Marta's
+  `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx`), run ahead of the
+  M0→M8 order at explicit user request — this is content-foundation work, not
+  a milestone cherry-pick, and M0 integrity items remain the top priority for
+  the next session. Full mapping, ready-vs-pending breakdown, and every
+  numerical claim flagged for client confirmation are in
+  `docs/client-content-map-2026-07-09.md` (read this before touching Serbian
+  copy again). Summary of what shipped:
+  - **Homepage**: new hero ("Personalizovana briga o vašoj koži"), updated
+    stats (25+/2/60+/15000+ — the 15000+ patients figure is client-provided
+    and unverified, see content map §2), Dr. Marta's homepage bio/title
+    updated from DOCX.
+  - **O nama**: full rewrite of the clinic story from DOCX (kept to 3
+    paragraphs, not the full DOCX wall of text); "Naši Specijalisti" →
+    "Naš tim"; values changed to Poverenje/Bezbednost/Rezultati (was
+    Preciznost/Poverenje/Rezultati); Dr. Marta's bio expanded to 3 paragraphs
+    with real credentials (Allergan national trainer, IDS member); added
+    Snežana Stojković (bio) and Milica/Melissa/Sonja (name+role only, no
+    invented bios); Dr. Biljana's section explicitly TODO-flagged pending her
+    CV from Marta — bio left unchanged, not rewritten from nothing; fixed the
+    long-standing broken image path `/images/ordinacijaonama.png` →
+    `/images/Services/ordinacijaonama.png` (one M0 bullet, partially — see
+    that bullet, `galerija/page.tsx` is still broken).
+  - **Services**: verified `akne` and the 3 existing flagship laser pages
+    need no changes. Added 3 new hand-written flagship pages with real DOCX
+    content: `/usluge/full-face`, `/usluge/bradavice-papilomi-keratoze-moluske`,
+    `/usluge/kapilari-i-hemangiomi-laser`. Did not touch catalog i18n or retire
+    `buildServiceCopy()` — that's M4.
+  - **Oprema**: corrected/expanded equipment to match the DOCX's 9 devices
+    (AvalancheLase, SP Dynamis, Harmony XL Pro, Morpheus8, Ellman, CryoPro/
+    CryoPen, DermLite DL5 + Canfield D200EVO, Dermapen); kept Zimmer
+    cryolipolysis (absent from DOCX, not deleted without client confirmation —
+    see content map §5).
+  - All new/changed i18n keys got real EN/RU translations (AI-assisted, not
+    client-reviewed — flagged in content map §6), so the build's
+    `Dictionary = typeof sr` type check stays satisfied and EN/RU never show a
+    missing string.
+  - Verified: `npx tsc --noEmit` clean, `npm run build` passes (65 routes,
+    `ignoreBuildErrors` still on — untouched, that's M0), Playwright spot
+    checks on home/o-nama/oprema/full-face at 1440×900 and 390×844, SR/EN/RU
+    all render correctly, zero *new* console errors (only the pre-existing
+    M0 gate/image-optimizer 400s and missing-favicon 404s, unchanged from
+    before this session).
+  - **Not done, explicitly out of scope**: M0 integrity items (broken gallery
+    paths, fake testimonials, fake form success, intro-replay,
+    `ignoreBuildErrors`, `three` removal) — still first priority next session.
+  - **Repo housekeeping note (not caused by this session)**: `IMPROVEMENT-REPORT.md`
+    at repo root is tracked in git but was already deleted from the working
+    tree before this session started, and the entire `docs/` directory
+    (including this file's current copy) is untracked. This looks like an
+    uncommitted `root → docs/` file move from a prior session. Not fixed here
+    per "don't commit unless asked" — flagging so it gets staged deliberately
+    rather than lost.

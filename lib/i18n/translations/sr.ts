@@ -18,7 +18,7 @@ export const sr = {
     },
   },
   footer: {
-    description: 'Više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji.',
+    description: 'Više od 25 godina iskustva u medicinskoj i estetskoj dermatologiji.',
     navigation: 'Navigacija',
     contact: 'Kontakt',
     addressLabel: 'Adresa',
@@ -31,23 +31,23 @@ export const sr = {
   },
   home: {
     hero: {
-      sloganEyebrow: 'Više od 20 godina sa vama',
+      sloganEyebrow: 'Više od 25 godina sa vama',
       sloganMain: 'Briga o zdravlju i lepoti',
       sloganItalic: 'na prirodan i bezbedan način.',
-      slogan: 'Više od 20 godina sa vama. Briga o zdravlju i lepoti na prirodan i bezbedan način.',
+      slogan: 'Više od 25 godina sa vama. Briga o zdravlju i lepoti na prirodan i bezbedan način.',
       badge: 'Specijalistička dermatovenerološka ordinacija',
-      titleLine1: 'Ekskluzivna nega',
-      titleLine2: 'vaše kože',
-      description: 'Više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Poverenje naših pacijenata gradimo pažljivom dijagnostikom, prirodnim rezultatima i dugoročnom brigom o zdravlju kože.',
+      titleLine1: 'Personalizovana briga',
+      titleLine2: 'o vašoj koži',
+      description: 'Više od 25 godina iskustva u medicinskoj i estetskoj dermatologiji. Poverenje naših pacijenata gradimo individualnim pristupom, posvećenom dijagnostikom i lečenjem, pažljivim biranjem tretmana, prirodnim rezultatima i dugoročnom brigom o zdravlju kože.',
       ctaPrimary: 'Kontaktirajte nas',
       ctaSecondary: 'Naše usluge',
-      trustItems: ['20+ godina iskustva', '60+ tretmana', 'Individualan pristup'],
+      trustItems: ['25+ godina iskustva', '60+ tretmana', 'Individualan pristup'],
     },
     stats: [
-      { value: '20+', label: 'Godina iskustva' },
+      { value: '25+', label: 'Godina iskustva' },
       { value: '2', label: 'Specijalista dermatologa' },
       { value: '60+', label: 'Dermatoloških tretmana' },
-      { value: '1000+', label: 'Zadovoljnih pacijenata' }
+      { value: '15000+', label: 'Zadovoljnih pacijenata' }
     ],
     servicesSection: {
       title: 'Naše Usluge',
@@ -93,8 +93,8 @@ export const sr = {
     doctorsList: [
       {
         name: 'Dr. Marta Terzić',
-        title: 'Specijalista dermatovenerologije',
-        bio: 'Specijalista dermatovenerologije sa više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Fokus dr Marte Terzić je individualan pristup, prirodni rezultati i dugoročno zdravlje kože.'
+        title: 'Osnivač ordinacije i specijalista dermatovenerologije',
+        bio: 'Više od 25 godina iskustva u dermatologiji, dermoskopiji, estetskoj i regenerativnoj medicini. Pionir laserske dermatologije u regionu, edukator i nacionalni trener za primenu hijaluronskih filera i botulinum toksina. Posvećena prirodnim rezultatima, zdravlju kože i individualnom pristupu svakom pacijentu.'
       },
       {
         name: 'Dr. Biljana Petković',
@@ -223,23 +223,26 @@ export const sr = {
   onama: {
     eyebrow: 'Upoznajte nas',
     title: 'O Nama',
+    heroIntro: 'Više od 25 godina posvećeni smo zdravlju i lepoti kože. Ordinacija Dr Terzić objedinjuje dermatologiju, lasersku dermatologiju, radiotalasnu hirurgiju, dermoskopiju, estetsku i regenerativnu medicinu — sa individualnim pristupom i planom terapije zasnovanim na poverenju i prirodnim rezultatima.',
     storyEyebrow: 'Naša priča',
-    storyTitle: 'Tradicija Izvrsnosti',
-    storyP1: 'Ordinacija Dr. Terzić osnovana je sa vizijom pružanja vrhunske dermatološke nege u Beogradu. Od samog početka, naša misija je bila kombinovanje medicinskog znanja sa najsavremenijim tehnologijama kako bismo našim pacijentima omogućili najbolje moguće rezultate.',
-    storyP2: 'Danas, sa više od 20 godina iskustva, naša ordinacija predstavlja sinonim za kvalitet i pouzdanost u oblasti dermatovenerologije. Ponosni smo na poverenje koje nam ukazuju hiljade zadovoljnih pacijenata.',
-    storyP3: 'Naš tim čine dva specijalista dermatovenerologije koji kontinuirano usavršavaju svoje znanje i prate najnovije trendove u medicinskoj i estetskoj dermatologiji. Opremljeni smo najsavremenijim uređajima vodećih svetskih proizvođača poput Lumenis i Fotona.',
-    specialistsTitle: 'Naši Specijalisti',
+    storyTitle: 'O nama',
+    storyP1: 'Ordinacija Dr Terzić osnovana je 2004. godine sa vizijom da na jednom mestu objedini vrhunsku dermatološku dijagnostiku i lečenje kože, savremenu estetsku medicinu i individualan pristup svakom pacijentu.',
+    storyP2: 'Već više od dve decenije pružamo usluge iz oblasti opšte dermatologije, dermoskopije, radiotalasne hirurgije, laserske dermatologije, estetske i regenerativne medicine. Naš cilj je da kroz stručnost, iskustvo i primenu najsavremenijih medicinskih dostignuća očuvamo zdravlje kože i unapredimo kvalitet života naših pacijenata.',
+    storyP3: 'Osnivač ordinacije, dr Marta Terzić, specijalista dermatovenerologije sa više od 25 godina iskustva, među pionirima je primene medicinskih lasera u dermatologiji na prostoru regiona. Dugogodišnji rad, kontinuirano usavršavanje u zemlji i inostranstvu, kao i veliki broj uspešno izvedenih procedura, učinili su Ordinaciju Dr Terzić prepoznatljivim centrom za dermatologiju i estetsku medicinu.',
+    specialistsTitle: 'Naš tim',
+    otherTeamTitle: 'Ostatak tima',
     valuesTitle: 'Naše Vrednosti',
     values: [
-      { title: 'Preciznost', description: 'Svaki tretman sprovodimo sa maksimalnom preciznošću i pažnjom, koristeći najsavremeniju opremu i proverene metode.' },
       { title: 'Poverenje', description: 'Gradimo dugoročne odnose sa našim pacijentima zasnovane na iskrenosti, transparentnosti i profesionalnom integritetu.' },
-      { title: 'Rezultati', description: 'Posvećeni smo postizanju vidljivih i trajnih rezultata koji prevazilaze očekivanja naših pacijenata.' },
+      { title: 'Bezbednost', description: 'Svaki tretman sprovodimo sa maksimalnom preciznošću i pažnjom, koristeći najsavremeniju medicinsku opremu, proverene materijale i metode.' },
+      { title: 'Rezultati', description: 'Posvećeni smo postizanju vidljivih i prirodnih rezultata koji naše pacijente čine sigurnim i zadovoljnim.' },
     ],
     marta: {
       specializationsTitle: 'Specijalizacije:',
-      bio1: 'Dr. Marta Terzić je specijalista dermatovenerologije sa više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Diplomirala je na Medicinskom fakultetu Univerziteta u Beogradu, gde je kasnije završila i specijalizaciju iz dermatovenerologije.',
-      bio2: 'Posebno se bavi estetskim procedurama lica, uključujući Morpheus8 RF microneedling, laserske tretmane, biorevitalizaciju i anti-age protokole. U svom radu insistira na prirodnim rezultatima i tretmanima koji su u skladu sa individualnim potrebama pacijenta.',
-      specializations: ['Botoks i hijaluronski fileri', 'Morpheus8 RF tretmani', 'Laserski tretmani', 'Biorevitalizacija', 'Hemijski pilinzi', 'Anti-aging procedure'],
+      bio1: 'Dr Marta Terzić je specijalista dermatovenerologije sa više od 25 godina iskustva u dijagnostici, lečenju i unapređenju zdravlja kože. Diplomirala je na Medicinskom fakultetu Univerziteta u Beogradu, a specijalizaciju iz dermatovenerologije završila je 1999. godine. Godine 2004. osnovala je Ordinaciju Dr Terzić, u kojoj i danas radi sa istom posvećenošću svakom pacijentu. Među prvim je lekarima u regionu koji su uveli primenu lasera u dermatologiji, uz desetine hiljada izvedenih laserskih tretmana.',
+      bio2: 'Poslednjih petnaest godina posebnu pažnju posvećuje estetskoj i regenerativnoj medicini, kontinuirano se usavršavajući kod vodećih svetskih stručnjaka. U svakodnevnoj praksi primenjuje hijaluronske filere, botulinum toksin, biostimulatore kolagena, PRP tretmane, biorevitalizaciju, mezoterapiju i laserske procedure za podmlađivanje i regeneraciju kože. Neguje individualan i holistički pristup — njen cilj nije promena identiteta, već očuvanje zdravlja, prirodne lepote i samopouzdanja pacijenata.',
+      bio3: 'Njena stručnost i posvećenost prirodnim rezultatima prepoznati su i od strane kompanije Allergan, gde je imenovana za nacionalnog trenera za primenu dermalnih filera i botulinum toksina tipa A. Član je International Dermoscopy Society od 2004. godine i redovno predaje na domaćim i međunarodnim stručnim kongresima.',
+      specializations: ['Hijaluronski fileri', 'Botulinum toksin', 'Biostimulatori kolagena', 'PRP tretmani', 'Biorevitalizacija', 'Mezoterapija', 'Laserske procedure podmlađivanja', 'Dermoskopija'],
     },
     biljana: {
       specializationsTitle: 'Specijalizacije:',
@@ -247,6 +250,16 @@ export const sr = {
       bio2: 'Pored opšte i dečije dermatologije, njen fokus su dermoskopija, radiotalasne procedure, laserski tretmani, estetske procedure i anti-age medicina. Član je domaćih i međunarodnih udruženja i znanja kontinuirano unapređuje na kongresima i simpozijumima.',
       specializations: ['Dermoskopija', 'Radiotalasne procedure', 'Laserski tretmani', 'Estetske procedure', 'Anti-age medicina', 'Opšta i dečija dermatologija'],
     },
+    snezana: {
+      name: 'Snežana Stojković',
+      title: 'Menadžer ordinacije i medicinska sestra-tehničar',
+      bio: 'Snežana je od prvog dana neizostavni član našeg tima, čiji profesionalizam, organizacione sposobnosti i posvećenost svakodnevno doprinose vrhunskom funkcionisanju ordinacije. Sa njom pacijenti prvo stupaju u kontakt — svojim ljubaznim pristupom i strpljenjem čini da se svaki pacijent oseća sigurno, informisano i dobrodošlo.',
+    },
+    otherTeam: [
+      { name: 'Milica Dobrić', title: 'Medicinski kozmetolog' },
+      { name: 'Melissa Ćelović', title: 'Medicinski kozmetolog' },
+      { name: 'Sonja Bubulj', title: 'Medicinski kozmetolog' },
+    ],
   },
   oprema: {
     eyebrow: 'Naša tehnologija',
@@ -258,15 +271,15 @@ export const sr = {
     ctaDescription: 'Javite nam se za više informacija o našim uređajima i tretmanima koji su idealni za vas',
     ctaButton: 'Kontaktirajte nas',
     devices: {
-      lightSheer: {
-        subtitle: 'Diode Laser System',
-        description: 'Zlatni standard svetske dermatologije za trajno uklanjanje dlačica. Medicinski diodni laser sa aktivnim sistemom hlađenja za maksimalnu bezbednost i komfor.',
+      avalancheLase: {
+        subtitle: 'Laser System',
+        description: 'Medicinski laserski sistem za trajno uklanjanje dlačica sa aktivnim sistemom hlađenja za maksimalnu bezbednost i komfor.',
         treatments: [
           'Epilacija laserom — trajno uklanjanje dlačica',
           'Laserski tretman problema uraslih dlačica (folliculitis)',
         ],
       },
-      fotona: {
+      spDynamis: {
         subtitle: 'Laser System',
         description: 'Najsavremeniji laserski sistem za širok spektar dermatoloških i estetskih tretmana. Kombinacija Nd:YAG i Er:YAG tehnologije za personalizovane rezultate.',
         treatments: [
@@ -275,40 +288,68 @@ export const sr = {
           'Laserski tretmani strija',
           'Uklanjanje hiperpigmentacija, melasma',
           'Lasersko uklanjanje vaskularnih promena na licu',
-          'Crvenilo lica — rosacea',
-          'Prošireni kapilari — telangiectasiae (sa lica i nogu)',
-          'Spider nevusi, angiomi',
+          'Lečenje rozacee',
+          'Lečenje akni',
           'Lasersko uklanjanje benignih promena (keratoze, papilomi, bradavice...)',
           'Laserski tretman gljivičnih infekcija nokatne regije',
-          'Epilacija laserom — trajno uklanjanje dlačica',
-          'Laserski tretman problema uraslih dlačica (folliculitis)',
+        ],
+      },
+      harmonyXL: {
+        subtitle: 'IPL & Laser Platform',
+        description: 'Multifunkcionalna IPL i laserska platforma za lečenje crvenila, pigmentacija i podmlađivanje kože.',
+        treatments: [
+          'Lečenje rozacee',
+          'Lečenje poikiloderme',
+          'Podmlađivanje kože',
+          'Uklanjanje pigmentacija',
+          'Lečenje akni',
+          'Uklanjanje ožiljaka',
+        ],
+      },
+      morpheus8: {
+        subtitle: 'RF Microneedling',
+        description: 'Radiofrekventni mikronidling koji kombinuje mikroiglice i radiofrekventnu energiju za stimulaciju kolagena i zatezanje kože.',
+        treatments: [
+          'Podmlađivanje kože',
+          'Zatezanje kože',
+          'Tretmani strija',
+          'Ciljano topljenje masnih naslaga',
         ],
       },
       ellman: {
         subtitle: 'Radiosurgery',
         description: 'Precizna radiotalasna hirurgija za bezbolno i efikasno uklanjanje benignih kožnih promena uz minimalno oštećenje okolnog tkiva.',
         treatments: [
-          'Uklanjanje bradavica',
-          'Uklanjanje kondiloma',
+          'Uklanjanje virusnih bradavica, kondiloma i moluski',
           'Uklanjanje papiloma i keratoza',
           'Elektroliza (trajno uklanjanje sedih i plavih dlačica)',
         ],
       },
       cryopen: {
-        subtitle: 'Terapija tečnim azotom',
+        subtitle: 'CryoPro & CryoPen — terapija tečnim azotom',
         description: 'Precizna krioterapija za ciljano uklanjanje kožnih promena kontrolisanim zamrzavanjem. Minimalno invazivan tretman bez anestezije.',
         treatments: [
-          'Uklanjanje bradavica sa šaka i stopala',
+          'Uklanjanje virusnih bradavica sa šaka i stopala',
           'Uklanjanje kondiloma',
           'Uklanjanje keratoza',
         ],
       },
       dermlite: {
         subtitle: 'Dermatoskop',
-        description: 'Profesionalni dermatoskop za detaljnu dijagnostiku kožnih promena i mladeža. Omogućava rani skrining i precizno praćenje promena na koži.',
+        description: 'DermLite DL5 i Canfield D200EVO dermatoskop za detaljnu dijagnostiku kožnih promena i mladeža, uključujući digitalnu AI dijagnostiku i trihoskopiju.',
         treatments: [
           'Dijagnostika mladeža',
           'Mapiranje — pregled i markiranje mladeža celog tela',
+          'Digitalna AI dijagnostika',
+          'Trihoskopija — AI dermoskopska analiza kose',
+        ],
+      },
+      dermapen: {
+        subtitle: 'Microneedling',
+        description: 'Medicinski mikronidling iglicama za stimulaciju regeneracije kože i poboljšanje njenog kvaliteta.',
+        treatments: [
+          'Stimulacija rasta kose',
+          'Kvalitet kože lica — pore, pigmentacije, sitne bore',
         ],
       },
       zimmer: {
