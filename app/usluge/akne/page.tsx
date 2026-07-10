@@ -3,69 +3,72 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Lečenje Akni | Ordinacija Dr. Terzić',
-  description: 'Profesionalno lečenje akni i drugih kožnih oboljenja. Medicinska dermatologija u ordinaciji Dr. Terzić u Beogradu.',
+  description: 'Individualni pristup, laserska terapija i sistemski protokoli za lečenje akni svih formi. Medicinska dermatologija u ordinaciji Dr. Terzić u Beogradu.',
 }
 
 const serviceData = {
-  title: 'Medicinska Dermatologija',
-  subtitle: 'Dijagnostika i lečenje akni, rozacee i drugih kožnih oboljenja',
-  description: 'Stručna medicinska nega za sve probleme sa kožom',
-  whatIsIt: `Medicinska dermatologija bavi se dijagnostikom i lečenjem širokog spektra kožnih oboljenja. U našoj ordinaciji pružamo sveobuhvatnu negu za pacijente sa aknama, rozaceom, ekcemom, psorijazom, gljivičnim infekcijama i drugim dermatološkim problemima.
+  title: 'Lečenje Akni',
+  subtitle: 'Individualni pristup, savremena laserska terapija i sistemski protokoli za sve forme akni',
+  description: 'Stručna medicinska nega prilagođena svakom tipu i uzroku akni',
+  whatIsIt: `Akne predstavljaju najčešće dermatološko oboljenje, vezano najviše za adolescentni period, ali nisu retkost ni kod osoba srednje životne dobi. Postoje razni tipovi akni — od vrlo blagih, preko srednje teških, do teških formi praćenih izraženim upalnim procesima koji mogu ostaviti ožiljke i crvene fleke. Što se ranije krene sa adekvatnom terapijom, veće su šanse za brže izlečenje i manji rizik od trajnih tragova.
 
-Akne su jedno od najčešćih kožnih oboljenja koje pogađa ne samo tinejdžere već i odrasle osobe. Pravilna dijagnoza i individualizovan plan lečenja ključni su za uspešno rešavanje ovog problema i prevenciju trajnih ožiljaka. Kombinujemo savremenu farmakoterapiju sa profesionalnim tretmanima u ordinaciji.`,
+Svaki pacijent se posmatra kao individua — proces lečenja planiramo prema kliničkoj slici, godinama, polu, životnim navikama, metabolizmu i mogućim hormonskim disbalansima. Kod odraslih pacijentkinja sve češći uzrok akni su policistični jajnici i insulinska rezistencija, pa je po potrebi neophodna i podrška ginekologa ili endokrinologa.
+
+Ključne reči u lečenju i izlečenju akni su individualni pristup, poverenje, strpljenje i upornost, uz redovno korišćenje terapije koju preporuči dermatolog.`,
+  methods: [
+    'Lokalna terapija (retinoidi, antiseptici) prilagođena tipu kože',
+    'Sistemska terapija — antibiotici, kontraceptivna pilula ili izotretinoin, po protokolu dermatologa',
+    'Nd:YAG laser — 5 do 6 tretmana nedeljno, potom mesečno održavanje',
+    'Clear Skin laser (odobren od FDA) — 4 do 6 tretmana na svake 2 do 3 nedelje',
+    'Hemijski pilinzi nove generacije — u serijama na 2 do 4 nedelje',
+    'Komedoekspresija (medicinsko higijensko čišćenje) — uklanjanje otvorenih i zatvorenih komedona',
+  ],
   howItWorks: [
-    'Detaljan pregled - analiza tipa kože, težine oboljenja, prethodnih tretmana i medicinske istorije.',
-    'Dijagnoza - precizno određivanje tipa i uzroka kožnog problema.',
-    'Plan lečenja - kreiranje individualnog protokola koji kombinuje preparate za kućnu negu i tretmane u ordinaciji.',
-    'Terapija kod kuće - propisivanje adekvatnih preparata (retinoidi, antibiotici, antiseptici) prilagođenih vašoj koži.',
-    'Tretmani u ordinaciji - hemijski pilinzi, medicinska čišćenja lica, LED terapija, injekcije za teške ciste.',
-    'Praćenje - redovne kontrole radi prilagođavanja terapije i praćenja napretka.'
+    'Detaljan pregled — analiza tipa kože, težine oboljenja, prethodnih terapija i mogućih hormonskih faktora.',
+    'Individualni plan lečenja koji kombinuje lokalnu i, po potrebi, sistemsku terapiju.',
+    'Terapija laserom i/ili hemijskim pilinzima u ordinaciji, prema kliničkoj slici.',
+    'Saveti o ishrani i svakodnevnoj nezi koji podržavaju terapiju.',
+    'Redovne kontrole radi prilagođavanja terapije i praćenja napretka.',
   ],
   idealCandidates: [
-    'Osobe sa blagim, umerenim ili teškim aknama',
-    'Osobe sa rozaceom i crvenilom lica',
-    'Osobe sa hiperpigmentacijom i flaekama',
-    'Osobe sa seborejom i masnom kožom',
-    'Osobe sa ekcemom ili psorijazom',
-    'Osobe sa gljivičnim infekcijama kože ili noktiju',
-    'Osobe sa urastalim dlakama i folkulitisom'
+    'Osobe sa blagim, umerenim ili teškim aknama, u adolescenciji ili odrasloj dobi.',
+    'Pacijenti kod kojih akne ostavljaju ožiljke ili crvene fleke.',
+    'Odrasle pacijentkinje kod kojih se sumnja na hormonski uzrok (policistični jajnici, insulinska rezistencija).',
+    'Osobe koje žele kombinaciju medicinske terapije i laserske podrške.',
   ],
   expectedResults: [
-    'Smanjenje broja i intenziteta akni',
-    'Kontrola masnoće i suženje pora',
-    'Smanjenje crvenila i iritacije',
-    'Ujednačeniji ten bez fleka',
-    'Prevencija nastanka novih akni',
-    'Smanjenje postojećih ožiljaka',
-    'Zdrava, čista koža bez upala'
+    'Smanjenje broja i intenziteta upalnih promena uz redovnu terapiju.',
+    'Manji rizik od ožiljaka i postinflamatornih crvenih fleka uz ranu intervenciju.',
+    'Poboljšan kvalitet kože i regulisano lučenje loja uz lasersku i/ili sistemsku terapiju.',
+    'Pristup usklađen sa svetskim dermatološkim standardima, koji ne remeti svakodnevne aktivnosti.',
   ],
   faqs: [
     {
       question: 'Koliko dugo traje lečenje akni?',
-      answer: 'Vidljivo poboljšanje se obično primećuje nakon 6-8 nedelja. Kompletno lečenje može trajati 3-6 meseci, a kod težih slučajeva i duže. Terapija održavanja je često potrebna za prevenciju recidiva.'
-    },
-    {
-      question: 'Da li lečenje akni ostavlja ožiljke?',
-      answer: 'Naprotiv - pravilno lečenje sprečava nastanak ožiljaka. Ožiljci nastaju kada se akne ne leče ili pogrešno tretiraju (npr. istiskivanje). Što ranije započnete lečenje, manji je rizik od ožiljaka.'
+      answer: 'Zavisi od težine i tipa akni. Laserska terapija Nd:YAG laserom obično podrazumeva 5-6 tretmana jednom nedeljno, a zatim mesečno održavanje; Clear Skin laser 4-6 tretmana na 2-3 nedelje. Kod težih formi sistemska terapija traje više nedelja do meseci.',
     },
     {
       question: 'Da li ishrana utiče na akne?',
-      answer: 'Novija istraživanja pokazuju da hrana sa visokim glikemijskim indeksom i mlečni proizvodi mogu pogoršati akne kod nekih osoba. Preporučujemo uravnoteženu ishranu, ali ishrana sama ne može izlečiti akne.'
+      answer: 'Da — namirnice poput rafinisanog šećera, brze masne hrane i mleka mogu pogoršati akne kod nekih osoba, pa se savetuje redukcija njihovog unosa uz redovnu terapiju.',
     },
     {
-      question: 'Šta je rozacea i može li se izlečiti?',
-      answer: 'Rozacea je hronično stanje koje izaziva crvenilo, vidljive kapilare i ponekad bubuljice na licu. Ne može se potpuno izlečiti, ali se može uspešno kontrolisati kombinacijom preparata i laserskih tretmana.'
+      question: 'Zašto se ponekad uključuje ginekolog ili endokrinolog?',
+      answer: 'Kod adultnih akni čest uzrok su policistični jajnici i insulinska rezistencija, pa je u tim slučajevima saradnja sa ginekologom ili endokrinologom deo uspešnog lečenja.',
     },
     {
-      question: 'Kada treba posetiti dermatologa za akne?',
-      answer: 'Preporučujemo posetu ako kozmetički preparati ne pomažu nakon 2-3 meseca, ako imate ciste ili čvorove, ako akne ostavljaju ožiljke, ili ako akne negativno utiču na vaše samopouzdanje.'
-    }
+      question: 'Da li lečenje akni remeti svakodnevne aktivnosti?',
+      answer: 'Ne — pristup lečenju akni u ordinaciji usklađen je sa svetskim dermatološkim standardima i ne remeti pacijente u obavljanju svakodnevnih aktivnosti.',
+    },
+    {
+      question: 'Šta ako blagi preparati ne pomažu?',
+      answer: 'Kod težih formi akni koriste se dermatološki protokoli sa sistemskom terapijom (antibiotici, kontraceptivna pilula ili izotretinoin), koji dovode do smirivanja upale, smanjenja lučenja loja i boljeg kvaliteta kože.',
+    },
   ],
   relatedServices: [
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
     { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Dermoskopija', href: '/usluge/dermoskopija' }
-  ]
+    { title: 'Dermoskopija', href: '/usluge/dermoskopija' },
+  ],
 }
 
 export default function AknePage() {

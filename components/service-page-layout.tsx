@@ -22,6 +22,7 @@ interface ServicePageLayoutProps {
   subtitle: string
   description: string
   whatIsIt: string
+  methods?: string[]
   howItWorks: string[]
   idealCandidates: string[]
   expectedResults: string[]
@@ -35,6 +36,7 @@ export function ServicePageLayout({
   subtitle,
   description,
   whatIsIt,
+  methods,
   howItWorks,
   idealCandidates,
   expectedResults,
@@ -119,6 +121,30 @@ export function ServicePageLayout({
           </div>
         </div>
       </section>
+
+      {/* Methods / Technologies Section — only rendered when the service has real, distinct modalities */}
+      {methods && methods.length > 0 && (
+        <section className="bg-white py-20 md:py-28">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <FadeUp className="text-center mb-16">
+              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.methodsLabel}</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+                {t.servicePage.methodsTitle}
+              </h2>
+              <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            </FadeUp>
+            <StaggerChildren className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
+              {methods.map((method, index) => (
+                <StaggerItem key={index}>
+                  <div className="h-full rounded-xl border border-[#e5e0da] bg-[#faf9f7] p-6 text-center">
+                    <p className="text-[#3d3832] font-light leading-relaxed">{method}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+          </div>
+        </section>
+      )}
 
       {/* How It Works Section */}
       <section className="bg-[#faf9f7] py-20 md:py-28">

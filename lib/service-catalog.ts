@@ -88,6 +88,7 @@ export const serviceCategories: { title: string; id: string; services: ServiceCa
       { name: 'Lečenje akni – individualna lokalna i opšta terapija, tretmani lica, elektroforeza, hemijski pilinzi, laserska terapija', slug: 'lecenje-akni', category: 'Dermatovenerologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
       { name: 'Pojačano znojenje – hiperhidroza', slug: 'pojacano-znojenje-hiperhidroza', category: 'Dermatovenerologija', imageSrc: '/images/Services/botoks-treatment.jpg' },
       { name: 'Opadanje kose', slug: 'opadanje-kose-dermatovenerologija', category: 'Dermatovenerologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
+      { name: 'Hirurško uklanjanje mladeža sa PH dijagnostikom', slug: 'hirursko-uklanjanje-mladeza', category: 'Dermatovenerologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
     ],
   },
   {
