@@ -68,5 +68,5 @@ U zavisnosti od dubine delovanja, razlikujemo površinske, srednje i duboke pili
 }
 
 export default function HemijskiPilinziPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/piling-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/piling-treatment.jpg" />
 }

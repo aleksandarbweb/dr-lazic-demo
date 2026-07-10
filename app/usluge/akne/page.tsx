@@ -69,5 +69,5 @@ Akne su jedno od najčešćih kožnih oboljenja koje pogađa ne samo tinejdžere
 }
 
 export default function AknePage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/dermatology-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/dermatology-treatment.jpg" />
 }

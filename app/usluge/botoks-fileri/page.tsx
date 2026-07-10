@@ -135,7 +135,7 @@ export default function BotoksFilerPage() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-[#e4ddd4] bg-[#f4eee8] p-1.5 shadow-[0_25px_50px_-30px_rgba(44,31,20,0.45)]">
               <div className="relative h-full w-full overflow-hidden rounded-[calc(1.75rem-0.375rem)]">
                 <Image
-                  src="/images/botoks-treatment.jpg"
+                  src="/images/Services/botoks-treatment.jpg"
                   alt="Tretman botulinskim toksinom i hijaluronskim filerima"
                   fill
                   className="object-cover"

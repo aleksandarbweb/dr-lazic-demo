@@ -71,51 +71,56 @@ are the pillars every milestone serves:
 
 ### Scorecard — re-score after every milestone
 
-| Category | Now (2026-07-03) | Target | Blocking issues today |
+| Category | Now (2026-07-10) | Target | Blocking issues today |
 |---|---|---|---|
-| Integrity (nothing broken/fake) | 1/10 | 10 | Broken images site-wide in preview; gallery broken everywhere; fake testimonials; fake form success |
+| Integrity (nothing broken/fake) | 8/10 | 10 | Gate/image-optimizer conflict, all broken image paths (repo-wide, not just gallery), intro replay, fake testimonials, fake form success, and `ignoreBuildErrors` are all fixed and verified (2026-07-10). Remaining: the "15000+ pacijenata" stat needs Marta's written confirmation (not an engineering fix); `three`/r3f deps still unused in `package.json` (not in this session's task list) |
 | Art direction & identity | 3/10 | 9+ | Template rhythm, overused corner-bracket motif, mixed geometry |
 | Typography & layout | 4/10 | 9+ | Identical centered section pattern everywhere; weak hierarchy below hero |
-| Imagery | 2/10 | 9 | Few assets, shared placeholders, broken paths, no art-directed crops |
-| Motion & interaction | 4/10 | 9 | Three auto-scrollers on home; marquees ignore reduced-motion; abrupt mobile menu |
+| Imagery | 5/10 | 9 | Paths now all resolve correctly (2026-07-10); still few distinct assets, no art-directed crops, no blur placeholders |
+| Motion & interaction | 4/10 | 9 | Services/partners marquees still auto-scroll and still ignore reduced-motion (M2, not touched); intro overlay now sessionStorage-gated + skippable + reduced-motion safe (2026-07-10) |
 | Mobile feel | 3/10 | 9+ | No hero image, cropped marquee, carousel jump glitches, generic stacking |
 | Content architecture | 3/10 | 9 | 60 services share one templated copy block; usluge page is a chip wall |
 | i18n completeness | 5/10 | 10 | `/usluge` page + service catalog + service copy are Serbian-only hardcoded |
 | SEO / metadata / schema | 2/10 | 9 | No per-page metadata (except [slug]), no sitemap/robots/JSON-LD/OG |
-| Performance & a11y | 5/10 | 9+ | Hidden scrollbars, contrast edge cases, `ignoreBuildErrors: true` |
+| Performance & a11y | 5/10 | 9+ | Hidden scrollbars, contrast edge cases. `ignoreBuildErrors` removed (2026-07-10); a pre-existing SSR/reduced-motion hydration mismatch in the shared motion-primitives architecture was found during this session's verification (flagged for M2, not fixed) |
 
-**Overall today: ~3.5/10.** The single biggest lever is Integrity (M0) — no
-amount of polish reads as premium while images are broken and testimonials are
-invented.
+**Overall today: ~4.2/10.** Integrity jumped from 1→8 this session (2026-07-10) —
+the single biggest lever has now mostly been pulled. The remaining M0 items
+(stats confirmation, three.js dep removal) are narrow and don't block starting
+M1. Next biggest lever is still Art direction/Typography/Content architecture
+(M1–M4), unchanged by this integrity-only session.
 
 ---
 
 ## Audit Findings (2026-07-03, full source + live browser review)
 
-### 🔴 Broken right now (found via Playwright on localhost)
+### 🔴 Broken as of 2026-07-03 — ✅ all fixed and verified 2026-07-10 (see Changelog)
 
-1. **The WIP password gate breaks every optimized image in local/dev preview.**
-   `middleware.ts` matcher `/((?!api/unlock|_next).*)` intercepts the Next image
-   optimizer's internal cookieless fetch of `/images/...` and returns the lock
-   screen HTML → optimizer responds 400 → navbar logo, hero portrait, doctor
-   photos, footer logo all render as broken-image glyphs. (Vercel production is
-   mostly unaffected because its image CDN reads build output directly, but
-   local preview — what we audit against — is image-dead.)
-2. **The gallery is broken everywhere, including production.** All 11 entries in
-   `app/galerija/page.tsx` point to `/images/*.jpg`, but files live under
-   `/images/Services/`. Two entries (`doctor-placeholder-1/2.jpg`) don't exist at
-   all. Same class of bug in `app/o-nama/page.tsx` (`/images/ordinacijaonama.png`
-   → actual file is `/images/Services/ordinacijaonama.png`).
-3. **The intro video replays on every hard load.** The "played once" guard in
-   `components/intro-overlay.tsx` is a module-scope variable, which resets on
-   every full page load — every reload/direct link costs the visitor a 4.5s
-   blocking video with no skip control.
-4. **Fake patient testimonials are live** (`sr.ts` `testimonialsList`: "Marija
-   P.", "Ana S."… with quotes) — this violates this project's own Cut List rule
-   and is an ethics problem for a medical practice. The **"1000+ zadovoljnih
-   pacijenata"** stat is likewise unverified.
-5. **The contact form fakes success** — 1s timeout, then a success message; the
-   message goes nowhere.
+1. ~~The WIP password gate breaks every optimized image in local/dev preview.~~
+   **Fixed 2026-07-10** — `middleware.ts` matcher `/((?!api/unlock|_next).*)`
+   intercepted the Next image optimizer's internal cookieless fetch of
+   `/images/...` and returned the lock screen HTML → optimizer responds 400 →
+   navbar logo, hero portrait, doctor photos, footer logo all rendered as
+   broken-image glyphs. Matcher now excludes `images/`, `videos/`, and image
+   file extensions.
+2. ~~The gallery is broken everywhere, including production.~~ **Fixed
+   2026-07-10** — turned out to be a much bigger bug than just the gallery: 9
+   filenames were referenced at the wrong top-level `/images/*` path (should be
+   `/images/Services/*`) across **13 files**, including `lib/service-catalog.ts`
+   (56 occurrences, powering `/usluge` and every generic service page), not
+   just `app/galerija/page.tsx`. All fixed; every `/images/` and `/videos/`
+   reference in the repo now verified against `public/`.
+3. ~~The intro video replays on every hard load.~~ **Fixed 2026-07-10** — the
+   module-scope "played once" guard was replaced with a `sessionStorage` flag
+   plus click/Escape/button skip controls.
+4. ~~Fake patient testimonials are live.~~ **Fixed 2026-07-10** — replaced with
+   honest "Naš Pristup" cards (real philosophy statements attributed to Dr.
+   Marta Terzić, no fake patients). The **"1000+ → 15000+ zadovoljnih
+   pacijenata"** stat is a separate, still-open item — see the M0 checklist
+   and `docs/client-content-map-2026-07-09.md` §2.
+5. ~~The contact form fakes success.~~ **Fixed 2026-07-10** — fake async
+   submit removed; replaced with an honest interim state (disabled form +
+   prominent tel:/mailto:/Instagram direct actions).
 
 ### 🟠 Visual craft diagnosis (why it reads "template", not "€50k")
 
@@ -288,27 +293,54 @@ Each milestone = one working session (roughly), shippable, verified, committed.
 
 *No polish reads as premium while the site lies or 404s.*
 
-- [ ] **Fix the gate/image-optimizer conflict** — `middleware.ts` matcher must
-  exclude static assets, e.g.
-  `matcher: ['/((?!api/unlock|_next|images/|videos/|.*\\.(?:png|jpe?g|svg|ico|mp4|webmanifest)$).*)']`.
-  Verify: dev server with gate cookie cleared → lock page still shows for `/`,
-  but `<img>` sources and `/_next/image` return 200.
-- [ ] **Fix all broken image paths** — `galerija/page.tsx`: point every entry at
-  real files under `/images/Services/…`; remove/replace the two nonexistent
-  doctor-placeholder entries (real headshots exist under `/images/people/`).
-  ~~`o-nama/page.tsx`: `/images/Services/ordinacijaonama.png`~~ **done
-  2026-07-10** (fixed opportunistically during the content pass, verified in
-  Playwright — see Changelog). `galerija/page.tsx` and the repo-wide grep are
-  still outstanding — this bullet stays unchecked until those are done too.
-- [ ] **Intro overlay: once per session + skippable** — sessionStorage guard
-  (survives hard loads), click/Escape/“Preskoči” skips, keep reduced-motion
-  short-circuit, and `document.documentElement`/body overflow cleanup on skip.
-  Consider playing it only on `/` (recommended).
-- [ ] **Remove fake testimonials** — replace the homepage section with one of:
-  (a) "Pristup" cards: three treatment-philosophy statements in the doctors'
-  own voice (no fake patients), or (b) hide section behind a clearly-labeled
-  placeholder flag until real Google reviews arrive. Delete the fake
-  `testimonialsList` from all three translation files or clearly repurpose.
+- [x] **Fix the gate/image-optimizer conflict** — **done 2026-07-10.**
+  `middleware.ts` matcher now excludes `api/unlock`, `_next`, `images/`,
+  `videos/`, and common image/video extensions from the gate. Verified: `curl`
+  without the gate cookie still returns the lock-screen HTML for `/` and
+  `/o-nama`, while `/images/Services/dermatology-treatment.jpg` returns a real
+  200 `image/jpeg` — gate protection and asset delivery both confirmed working
+  independently. With the gate cookie set, Playwright showed 0 console errors
+  from `/_next/image` on every touched page (previously 5–9 per page).
+- [x] **Fix all broken image paths** — **done 2026-07-10, fully this time.**
+  The bug was much bigger than just `galerija/page.tsx`: 9 filenames
+  (`clinic-interior.jpg`, `botoks-treatment.jpg`, `morpheus8-treatment.jpg`,
+  `laser-treatment.jpg`, `profhilo-treatment.jpg`, `prp-treatment.jpg`,
+  `piling-treatment.jpg`, `dermoscopy-treatment.jpg`,
+  `dermatology-treatment.jpg`) were referenced at the wrong top-level
+  `/images/…` path in **13 files** — `lib/service-catalog.ts` (56 occurrences,
+  used by `/usluge` and every generic `[slug]` service page),
+  `app/galerija/page.tsx`, and 10 dedicated flagship service pages. All fixed
+  to `/images/Services/…`. The 2 nonexistent `doctor-placeholder-*.jpg`
+  gallery entries were replaced with the real headshots under
+  `/images/people/`. Verified by extracting every unique `/images/` (20) and
+  `/videos/` (1) reference in `app/`, `components/`, `lib/` and confirming
+  each resolves to a real file under `public/` — 100% resolve now, 0 missing.
+  Also fixed (not explicitly listed here before, found during the sweep): 4
+  phantom favicon/icon files declared in `app/layout.tsx` metadata
+  (`icon-light-32x32.png`, `icon-dark-32x32.png`, `icon.svg`,
+  `apple-icon.png`) that never existed anywhere in the repo, 404-ing on every
+  page load — removed the phantom declaration rather than inventing new icon
+  art mid-M0 (real favicon design is M7).
+- [x] **Intro overlay: once per session + skippable** — **done 2026-07-10.**
+  Replaced the module-scope `introHasCompleted` variable (which reset on
+  every hard reload, since JS module state doesn't survive a full page load)
+  with a `sessionStorage` flag (`dt_intro_seen`), read in a `useLayoutEffect`
+  so it hides before first paint with no flash. Added click-anywhere-to-skip,
+  Escape/Space/Enter-to-skip, and a visible "Preskoči" button. Reduced-motion
+  short-circuit (shorter hold, shorter fade) preserved unchanged. Verified via
+  Playwright: fresh session shows the intro; skipping sets the sessionStorage
+  flag; a hard reload afterward does **not** replay it; `prefers-reduced-motion`
+  still auto-dismisses quickly and remains skippable.
+- [x] **Remove fake testimonials** — **done 2026-07-10.** Took option (a):
+  replaced the fake `testimonialsList`/marquee/auto-scroll carousel with a
+  static "Naš Pristup" (Our Approach) 3-card grid — genuine philosophy
+  statements attributed to Dr. Marta Terzić (sourced from her own DOCX
+  positioning, not invented), no fake patient names. Surgically removed only
+  the testimonials-specific marquee/scroll-jump wiring from `app/page.tsx`,
+  leaving the (still-marquee) services/partners sections untouched — that
+  marquee behavior itself is M2 scope, not touched this session. `sr.ts`/
+  `en.ts`/`ru.ts` all updated (`testimonialsSection`/`testimonialsList` →
+  `approachSection`/`approachList`).
 - [ ] **Stats honesty pass** — keep "25+ godina" (updated from client DOCX,
   2026-07-10), "2 specijaliste", "60+ tretmana"; "1000+ pacijenata" was
   replaced with client-provided "15000+ zadovoljnih pacijenata" during the
@@ -317,17 +349,43 @@ Each milestone = one working session (roughly), shippable, verified, committed.
   `docs/client-content-map-2026-07-09.md` §2 for the full list of numbers
   needing confirmation (including "više stotina hiljada procedura", which was
   intentionally *not* shipped as a hard number — see that doc for why). This
-  bullet stays unchecked until the numbers are confirmed with the client.
-- [ ] **Honest contact section** — remove the fake async submit. Interim: form
-  fields disabled-styled out, replaced by prominent direct actions (tel:,
-  mailto:, Instagram DM, maps) presented as the primary path. (Real form is a
-  Future Door.)
-- [ ] **Drop `ignoreBuildErrors`** — fix whatever TS errors surface, remove the
-  flag from `next.config.mjs`.
+  bullet stays unchecked until the numbers are confirmed with the client. Not
+  in scope for the 2026-07-10 M0 integrity session (that session was content
+  only; this one was integrity only) — still open.
+- [x] **Honest contact section** — **done 2026-07-10.** Removed the fake
+  `setTimeout` + success-message submit entirely (no more `isSubmitting`/
+  `isSubmitted` state). Replaced with an honest interim message ("Online
+  forma trenutno nije aktivna...") plus three prominent, real, working direct
+  actions (`tel:`, `mailto:`, Instagram) as the primary path. The form fields
+  remain visible for context but are inside a genuinely disabled
+  `<fieldset disabled>` (verified via Playwright: the `:disabled` pseudo-class
+  applies and `fill()` correctly times out waiting for an enabled element —
+  not just visually styled). No backend was built (Future Door, unchanged).
+- [x] **Drop `ignoreBuildErrors`** — **done 2026-07-10.** Removed from
+  `next.config.mjs`. `npx tsc --noEmit` was already clean before removal (no
+  errors surfaced), and `npm run build` now genuinely runs
+  `Running TypeScript ... Finished TypeScript` instead of silently skipping
+  validation — confirmed by comparing build output before/after.
 - [ ] **Remove `three`/r3f deps** (craft ceiling = refined-classic, decided) and
   delete unused `styles/globals.css`. Ask user before removing `.agent{,s}/`.
-- [ ] **Zero-console-error sweep** — after the above, browse all routes with
-  Playwright; console must be clean on every page, desktop + mobile.
+  **Not done 2026-07-10** — this session's explicit task list (1–8) did not
+  include dependency removal; confirmed the deps (`three`, `@react-three/drei`,
+  `@react-three/fiber`, `@types/three`) are still present in `package.json`
+  and still unused by any app code. Still outstanding.
+- [x] **Zero-console-error sweep** — **done 2026-07-10** for everything in
+  scope this session. Playwright-checked `/`, `/o-nama`, `/oprema`,
+  `/galerija`, `/usluge`, `/usluge/full-face`, `/kontakt` at 1440×900 and
+  390×844, in SR/EN/RU: **0 console errors** everywhere (down from 5–9 per
+  page before this session), only 2 pre-existing image `sizes`/aspect-ratio
+  performance *warnings* (M7 scope, not errors). One separate finding,
+  **flagged but not fixed**: under Playwright's `prefers-reduced-motion`
+  emulation specifically, a hydration-mismatch console error appears — this
+  is a pre-existing, site-wide characteristic of the `motion-primitives.tsx`
+  SSR/reduced-motion architecture (affects Hero, DoctorCard, StaggerItem —
+  not scoped to the intro overlay, which was this session's only motion-related
+  task), not introduced by this session's changes. Properly fixing it means
+  touching the shared motion system site-wide, which is M2 ("Motion & navigation
+  craft"), not M0 — documented here rather than fixed out of order.
 
 **Done when:** every page renders every image in local preview and production
 build; nothing on the site asserts something untrue; build passes without
@@ -602,3 +660,79 @@ Unchanged policy: raise with the client, don't build unprompted.
     uncommitted `root → docs/` file move from a prior session. Not fixed here
     per "don't commit unless asked" — flagging so it gets staged deliberately
     rather than lost.
+- 2026-07-10 — **M0 integrity session.** All 6 code-fix tasks from this
+  session's scope done and verified; 2 M0 items intentionally left for a
+  future session (see below). Every fix verified with `npx tsc --noEmit`,
+  `npm run build`, and Playwright (desktop 1440×900 + mobile 390×844,
+  SR/EN/RU) — not just written and assumed to work.
+  - **Gate/image-optimizer conflict** — `middleware.ts` matcher now excludes
+    `images/`, `videos/`, and image/video extensions. Verified with `curl`
+    (no cookie): `/` and `/o-nama` still return the lock screen HTML (gate
+    still protects real pages), while `/images/Services/dermatology-treatment.jpg`
+    returns a real 200 `image/jpeg` (assets bypass the gate). With the gate
+    cookie set, Playwright confirmed 0 console errors from `/_next/image`
+    across every touched page.
+  - **Broken image paths — much bigger than previously scoped.** The
+    2026-07-09 session's changelog said "galerija/page.tsx is still broken" —
+    on inspection the bug was repo-wide: 9 filenames referenced at the wrong
+    top-level `/images/*` path (real files are under `/images/Services/*`)
+    across **13 files**, most importantly `lib/service-catalog.ts` (56
+    occurrences — this powers `/usluge` and all ~50 generic `[slug]` service
+    pages, not just the 11 flagship ones). All fixed via targeted `sed`,
+    individually verified per file. The 2 nonexistent gallery
+    `doctor-placeholder-*.jpg` entries were replaced with the real headshots.
+    Extracted and verified every one of the 20 unique `/images/` + 1 `/videos/`
+    reference in `app/`, `components/`, `lib/` against `public/` — 100% resolve.
+    Also found and fixed, while sweeping: 4 phantom favicon/icon files
+    declared in `app/layout.tsx` that never existed anywhere (404 on every
+    page load) — removed the phantom `icons` metadata block rather than
+    inventing new icon art (real favicon design is M7, flagged with a
+    `TODO(M7)` comment in the file).
+  - **Intro overlay replay** — module-scope flag → `sessionStorage`
+    (`dt_intro_seen`) read in a `useLayoutEffect` (fires before paint, no
+    flash for returning visitors). Added click-anywhere-to-skip,
+    Escape/Space/Enter-to-skip, and a visible "Preskoči" button (none of
+    these existed before). Verified end-to-end with Playwright: fresh session
+    → intro shows; skip → `sessionStorage` flag set; hard reload afterward →
+    intro does **not** replay; `prefers-reduced-motion` still auto-dismisses
+    in ~1.2s and remains skippable.
+  - **Fake testimonials removed** — took master-plan option (a): static "Naš
+    Pristup" 3-card grid, honest philosophy statements attributed to Dr.
+    Marta Terzić (sourced from her own DOCX positioning, not invented), no
+    fake patient names/quotes. Surgically removed only the
+    testimonials-specific marquee/scroll-jump/pause-on-hover wiring from
+    `app/page.tsx`, leaving the services/partners marquees (still auto-
+    scrolling, still M2 scope) completely untouched — verified by re-reading
+    the diff line by line rather than a blanket rewrite.
+  - **Fake contact form success removed** — the `setTimeout` + fake success
+    message is gone. Replaced with an honest interim message and three
+    prominent, real, working direct actions (`tel:`, `mailto:`, Instagram).
+    Form fields are shown for context inside a genuinely disabled
+    `<fieldset disabled>` — verified with Playwright that `:disabled` actually
+    applies and `fill()` times out waiting for an enabled element (not just
+    styled to look disabled). No backend was built (still a Future Door).
+  - **`ignoreBuildErrors` removed** — `npx tsc --noEmit` was already clean
+    before removal; `npm run build` now visibly runs
+    `Running TypeScript ... Finished TypeScript` instead of silently skipping
+    validation. No TS errors needed fixing as a result.
+  - **Not done, by design**: `three`/r3f dependency removal (not in this
+    session's explicit task list — confirmed still present and still unused);
+    the "15000+ pacijenata" stat confirmation (needs Marta, not an engineering
+    fix). Both remain open M0 items.
+  - **Found but explicitly not fixed, flagged for M2**: a hydration-mismatch
+    console error that only appears under `prefers-reduced-motion` emulation,
+    caused by the shared `motion-primitives.tsx` SSR architecture rendering
+    "motion hidden" initial states server-side with no way to know the
+    client's reduced-motion preference in advance. This is pre-existing and
+    site-wide (Hero, DoctorCard, StaggerItem all affected), not something this
+    session's changes introduced, and not scoped to the intro overlay (this
+    session's only motion-related task, which was verified separately and is
+    unaffected). Fixing it properly means touching the shared motion system
+    site-wide — that's M2 ("Motion & navigation craft"), not M0.
+  - Scorecard: Integrity 1/10 → 8/10. Imagery 2/10 → 5/10 (paths fixed; still
+    lacking distinct assets/art-directed crops, unchanged scope). Overall
+    ~3.5/10 → ~4.2/10.
+  - Repo state note: the root/docs `IMPROVEMENT-REPORT.md` git situation
+    flagged in the previous entry is still unresolved (not this session's job
+    to fix without being asked) — still needs deliberate `git add`/`git rm`
+    before the next commit.

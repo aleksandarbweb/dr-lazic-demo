@@ -58,5 +58,5 @@ U ordinaciji Dr. Terzić uklanjanje ovih promena vršimo jednom od tri metode �
 }
 
 export default function BradaviceePapilomiKeratozeMoluskePage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/dermatology-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/dermatology-treatment.jpg" />
 }

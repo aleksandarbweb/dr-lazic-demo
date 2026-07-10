@@ -36,18 +36,6 @@ const partners = [
   'Juvederm'
 ]
 
-const testimonialsConfig = [
-  { treatmentHref: '/usluge/botoks-fileri' },
-  { treatmentHref: '/usluge/morpheus8' },
-  { treatmentHref: '/usluge/dermoskopija' },
-  { treatmentHref: '/usluge/laserska-epilacija' },
-  { treatmentHref: '/usluge/prp' },
-  { treatmentHref: '/usluge/hemijski-pilinzi' },
-  { treatmentHref: '/usluge/profhilo' },
-  { treatmentHref: '/usluge/akne' },
-  { treatmentHref: '/kontakt' },
-]
-
 const doctorsConfig = [
   {
     imageSrc: "/images/people/Marta/marta new in labcoat 1.png",
@@ -65,26 +53,17 @@ export default function HomePage() {
   const { t, language } = useTranslation()
   const servicesCarouselRef = useRef<HTMLDivElement>(null)
   const mobileServicesRef = useRef<HTMLDivElement>(null)
-  const testimonialsCarouselRef = useRef<HTMLDivElement>(null)
-  const testimonialsDesktopRef = useRef<HTMLDivElement>(null)
   const partnersCarouselRef = useRef<HTMLDivElement>(null)
   const shouldReduce = useReducedMotion()
-  
+
   const [servicesPaused, setServicesPaused] = useState(false)
-  const [testimonialsPaused, setTestimonialsPaused] = useState(false)
   const [partnersPaused, setPartnersPaused] = useState(false)
-  
+
   const servicesResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const testimonialsResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const services = t.home.servicesList.map((service, index) => ({
     ...service,
     ...servicesConfig[index]
-  }))
-
-  const testimonials = t.home.testimonialsList.map((testimonial, index) => ({
-    ...testimonial,
-    ...testimonialsConfig[index]
   }))
 
   const doctors = t.home.doctorsList.map((doc, index) => ({
@@ -92,12 +71,11 @@ export default function HomePage() {
     ...doctorsConfig[index]
   }))
 
-  // ── Auto-scrolling Marquees (Desktop Services, Partners & Testimonials) ──
+  // ── Auto-scrolling Marquees (Desktop Services & Partners) ──
   useEffect(() => {
     const containers = [
       { ref: servicesCarouselRef, speed: 0.012, paused: servicesPaused },
       { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused },
-      { ref: testimonialsDesktopRef, speed: 0.014, paused: testimonialsPaused },
     ]
 
     const frameIds: number[] = []
@@ -132,7 +110,7 @@ export default function HomePage() {
     })
 
     return () => frameIds.forEach(id => cancelAnimationFrame(id))
-  }, [servicesPaused, partnersPaused, testimonialsPaused])
+  }, [servicesPaused, partnersPaused])
 
   // ── Infinite Scroll Jump Logic (Mobile Interactive Carousels) ──
   useEffect(() => {
@@ -189,18 +167,14 @@ export default function HomePage() {
     }
 
     const cleanupServices = handleInfiniteScroll(mobileServicesRef)
-    const cleanupTestimonials = handleInfiniteScroll(testimonialsCarouselRef)
 
     return () => {
       cleanupServices?.()
-      cleanupTestimonials?.()
     }
   }, [])
 
   const loopingServices = [...services, ...services]
   const tripleServices = [...services, ...services, ...services]
-  const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials]
-  const loopingTestimonials = [...testimonials, ...testimonials]
   const loopingPartners = [...partners, ...partners]
 
   const pauseServices = () => {
@@ -210,14 +184,6 @@ export default function HomePage() {
   const resumeServices = () => {
     if (servicesResumeTimeout.current) clearTimeout(servicesResumeTimeout.current)
     servicesResumeTimeout.current = setTimeout(() => setServicesPaused(false), 900)
-  }
-  const pauseTestimonials = () => {
-    if (testimonialsResumeTimeout.current) clearTimeout(testimonialsResumeTimeout.current)
-    setTestimonialsPaused(true)
-  }
-  const resumeTestimonials = () => {
-    if (testimonialsResumeTimeout.current) clearTimeout(testimonialsResumeTimeout.current)
-    testimonialsResumeTimeout.current = setTimeout(() => setTestimonialsPaused(false), 900)
   }
 
   return (
@@ -518,58 +484,22 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          TESTIMONIALS SECTION
+          APPROACH SECTION — honest philosophy statements, not fake reviews.
+          Static grid (no carousel/marquee needed for 3 items).
           ════════════════════════════════════════════════════════════════════ */}
       <section className="bg-[#f7f4ee] py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <SectionTitle title={t.home.testimonialsSection.title} />
+            <SectionTitle title={t.home.approachSection.title} subtitle={t.home.approachSection.subtitle} />
           </FadeUp>
-          
-          <div className="relative">
-            <div
-              ref={testimonialsCarouselRef}
-              className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-8 md:hidden"
-              onMouseEnter={pauseTestimonials}
-              onMouseLeave={resumeTestimonials}
-              onPointerDown={pauseTestimonials}
-              onPointerUp={resumeTestimonials}
-              onTouchStart={pauseTestimonials}
-              onTouchEnd={resumeTestimonials}
-            >
-              {tripleTestimonials.map((testimonial, index) => (
-                <div
-                  key={`${testimonial.author}-${index}`}
-                  className="min-w-[85vw] snap-center"
-                >
-                  <TestimonialCard {...testimonial} />
-                </div>
-              ))}
-            </div>
 
-            {/* Swipe hint for mobile */}
-            <div className="mt-2 flex justify-center gap-1.5 md:hidden">
-               <div className="h-1 w-8 rounded-full bg-[#b91c1c]/20" />
-               <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
-               <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
-            </div>
-          </div>
-
-          <div
-            ref={testimonialsDesktopRef}
-            className="no-scrollbar hidden md:flex gap-6 overflow-x-auto"
-            onMouseEnter={pauseTestimonials}
-            onMouseLeave={resumeTestimonials}
-          >
-            {loopingTestimonials.map((testimonial, i) => (
-              <div
-                key={`${testimonial.author}-desktop-${i}`}
-                className="flex-shrink-0 w-[calc((100%-3rem)/3)]"
-              >
-                <TestimonialCard {...testimonial} />
-              </div>
+          <StaggerChildren className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3" staggerDelay={0.1}>
+            {t.home.approachList.map((item, index) => (
+              <StaggerItem key={index}>
+                <TestimonialCard quote={item.quote} author={item.author} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 

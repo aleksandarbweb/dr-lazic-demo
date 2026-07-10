@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 const workingHoursData = [
@@ -16,35 +15,6 @@ const workingHoursData = [
 
 export default function KontaktPage() {
   const { t } = useTranslation()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-
-    setTimeout(() => setIsSubmitted(false), 5000)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
-  }
 
   return (
     <>
@@ -77,17 +47,40 @@ export default function KontaktPage() {
               </h2>
               <div className="w-16 h-[2px] bg-[#b91c1c] mb-10" />
 
-              {isSubmitted && (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className="mb-8 p-5 bg-[#b91c1c]/5 border border-[#b91c1c]/30 text-[#b91c1c]"
-                >
-                  {t.kontakt.successMessage}
-                </div>
-              )}
+              <div className="mb-8 p-5 bg-[#faf9f7] border border-[#e5e0da] text-[#6b6b6b] text-sm leading-relaxed">
+                {t.kontakt.formInterimMessage}
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Direct contact actions — the real, working path until the form has a backend. */}
+              <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a
+                  href="tel:+381628412909"
+                  className="flex items-center justify-center gap-2 bg-[#b91c1c] text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#991b1b] transition-colors"
+                >
+                  <Phone size={16} />
+                  {t.kontakt.callCta}
+                </a>
+                <a
+                  href="mailto:mdterzic@gmail.com"
+                  className="flex items-center justify-center gap-2 border border-[#1a1a1a] text-[#1a1a1a] px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                >
+                  <Mail size={16} />
+                  {t.kontakt.emailCta}
+                </a>
+                <a
+                  href="https://www.instagram.com/dr.terzic"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 border border-[#1a1a1a] text-[#1a1a1a] px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                >
+                  <Instagram size={16} />
+                  {t.kontakt.instagramCta}
+                </a>
+              </div>
+
+              {/* Form preview, visually disabled — not wired to a backend yet (Future Door). */}
+              <fieldset disabled aria-disabled="true" className="space-y-6 opacity-50 cursor-not-allowed">
+                <legend className="sr-only">{t.kontakt.formInterimMessage}</legend>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
                     {t.kontakt.nameLabel}
@@ -96,10 +89,7 @@ export default function KontaktPage() {
                     type="text"
                     id="name"
                     name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
+                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
                     placeholder={t.kontakt.namePlaceholder}
                   />
                 </div>
@@ -113,10 +103,7 @@ export default function KontaktPage() {
                       type="email"
                       id="email"
                       name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
+                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
                       placeholder={t.kontakt.emailPlaceholder}
                     />
                   </div>
@@ -128,10 +115,7 @@ export default function KontaktPage() {
                       type="tel"
                       id="phone"
                       name="phone"
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
+                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
                       placeholder={t.kontakt.phonePlaceholder}
                     />
                   </div>
@@ -144,9 +128,7 @@ export default function KontaktPage() {
                   <select
                     id="service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors"
+                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
                   >
                     <option value="">{t.kontakt.servicePlaceholder}</option>
                     {t.kontakt.services.map((service) => (
@@ -162,30 +144,12 @@ export default function KontaktPage() {
                   <textarea
                     id="message"
                     name="message"
-                    required
                     rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 focus:outline-none focus:border-[#b91c1c] transition-colors resize-none"
+                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 resize-none"
                     placeholder={t.kontakt.messagePlaceholder}
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#b91c1c] text-white px-10 py-5 text-sm font-medium tracking-[0.15em] uppercase hover:bg-[#991b1b] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
-                >
-                  {isSubmitting ? (
-                    t.kontakt.submittingButton
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      {t.kontakt.submitButton}
-                    </>
-                  )}
-                </button>
-              </form>
+              </fieldset>
             </div>
 
             {/* Contact Info */}

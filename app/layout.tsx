@@ -25,23 +25,12 @@ export const metadata: Metadata = {
   title: 'Ordinacija Dr. Terzić | Specijalistička Dermatovenerološka Ordinacija',
   description: 'Specijalistička dermatovenerološka ordinacija u Beogradu. Više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Botoks, fileri, laserski tretmani, Morpheus8.',
   keywords: 'dermatolog, dermatovenerolog, Beograd, botoks, fileri, laserska epilacija, Morpheus8, PRP, dermoskopija, akne',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  // TODO(M7): no favicon/icon assets exist yet (icon-light-32x32.png,
+  // icon-dark-32x32.png, icon.svg, apple-icon.png were declared here but never
+  // existed anywhere in the repo, causing a 404 on every page load). Removed
+  // the phantom declaration rather than inventing new icon art mid-M0 —
+  // designing a real favicon is an M7/visual-identity task, not an integrity
+  // fix. Re-add this block once real icon assets exist.
 }
 
 export default function RootLayout({

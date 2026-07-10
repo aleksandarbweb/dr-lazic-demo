@@ -59,5 +59,5 @@ Cilj nije promena identiteta pacijenta, već isticanje njegovih najboljih osobin
 }
 
 export default function FullFacePage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/profhilo-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/profhilo-treatment.jpg" />
 }

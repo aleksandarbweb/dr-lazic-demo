@@ -67,5 +67,5 @@ Dermomapiranje je unapređena verzija dermoskopije koja uključuje fotografisanj
 }
 
 export default function DermoskopiyaPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/dermoscopy-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/dermoscopy-treatment.jpg" />
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
@@ -12,14 +12,40 @@ const INTRO_HOLD_MS = 4500
 const REDUCED_MOTION_HOLD_MS = 1200
 const INTRO_FADE_SECONDS = 1.5
 const REDUCED_MOTION_FADE_SECONDS = 0.28
+// sessionStorage (not a module-level variable) so "already seen" survives a
+// hard reload/direct link within the same tab session, but replays in a new
+// tab/session — a module-level flag resets on every full page load.
+const INTRO_SESSION_KEY = 'dt_intro_seen'
 
-let introHasCompleted = false
+function markIntroSeen() {
+  try {
+    window.sessionStorage.setItem(INTRO_SESSION_KEY, '1')
+  } catch {
+    // sessionStorage unavailable (e.g. private browsing) — nothing to persist.
+  }
+}
 
 export function IntroOverlay() {
   const { t } = useTranslation()
   const reduceMotion = useReducedMotion()
-  const [mounted, setMounted] = useState(() => !introHasCompleted && !DISABLE_SITE_INTRO)
+  const [mounted, setMounted] = useState(!DISABLE_SITE_INTRO)
   const [active, setActive] = useState(true)
+
+  // useLayoutEffect runs synchronously before the browser paints, so a
+  // returning visitor within the same session never sees the intro flash in
+  // before this hides it.
+  useLayoutEffect(() => {
+    if (DISABLE_SITE_INTRO) return
+    try {
+      if (window.sessionStorage.getItem(INTRO_SESSION_KEY) === '1') {
+        setMounted(false)
+      }
+    } catch {
+      // sessionStorage unavailable — fall back to showing the intro once.
+    }
+  }, [])
+
+  const finishIntro = () => setActive(false)
 
   useEffect(() => {
     if (!mounted) return
@@ -31,12 +57,21 @@ export function IntroOverlay() {
     document.body.style.overflow = 'hidden'
 
     const timer = window.setTimeout(
-      () => setActive(false),
+      finishIntro,
       reduceMotion ? REDUCED_MOTION_HOLD_MS : INTRO_HOLD_MS
     )
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault()
+        finishIntro()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+
     return () => {
       window.clearTimeout(timer)
+      window.removeEventListener('keydown', handleKeyDown)
       document.documentElement.style.overflow = previousHtmlOverflow
       document.body.style.overflow = previousBodyOverflow
     }
@@ -47,7 +82,7 @@ export function IntroOverlay() {
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-[#070505] text-white"
+      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-[#070505] text-white cursor-pointer"
       initial={{ opacity: 1 }}
       animate={{ opacity: active ? 1 : 0 }}
       transition={{
@@ -55,9 +90,10 @@ export function IntroOverlay() {
         ease: [0.22, 1, 0.36, 1],
       }}
       style={{ pointerEvents: active ? 'auto' : 'none' }}
+      onClick={finishIntro}
       onAnimationComplete={() => {
         if (!active) {
-          introHasCompleted = true
+          markIntroSeen()
           document.getElementById('main-content')?.focus()
           setMounted(false)
         }
@@ -127,6 +163,18 @@ export function IntroOverlay() {
           </p>
         </motion.div>
       </motion.div>
+
+      <button
+        type="button"
+        tabIndex={-1}
+        onClick={(e) => {
+          e.stopPropagation()
+          finishIntro()
+        }}
+        className="absolute bottom-6 right-6 z-20 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white/60 transition-colors duration-300 hover:text-white sm:bottom-8 sm:right-8"
+      >
+        Preskoči
+      </button>
     </motion.div>
   )
 }

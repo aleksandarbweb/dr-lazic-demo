@@ -103,55 +103,22 @@ export const sr = {
       }
     ],
     partnersTitle: 'Oprema i partneri sa kojima radimo',
-    testimonialsSection: {
-      title: 'Iskustva Pacijenata',
-      swipeMobile: 'Prevucite horizontalno za sledeće iskustvo'
+    approachSection: {
+      title: 'Naš Pristup',
+      subtitle: 'Filozofija koja stoji iza svakog pregleda i tretmana u ordinaciji',
     },
-    testimonialsList: [
+    approachList: [
       {
-        quote: 'Izuzetno profesionalan pristup i vidljivi rezultati već nakon prvog tretmana. Dr Terzić je prava stručnjakinja u svom poslu.',
-        author: 'Marija P.',
-        treatment: 'Botoks tretman',
+        quote: 'Svaki pacijent zaslužuje personalizovan pristup — zbog toga svaku dijagnostiku, tretman i proceduru prilagođavamo njegovim potrebama i očekivanjima.',
+        author: 'Dr. Marta Terzić',
       },
       {
-        quote: 'Konačno sam pronašla ordinaciju gde se osećam sigurno. Morpheus8 tretman je promenio izgled moje kože.',
-        author: 'Ana S.',
-        treatment: 'Morpheus8',
+        quote: 'Svaki tretman sprovodimo sa maksimalnom preciznošću i pažnjom, koristeći najsavremeniju medicinsku opremu i proverene metode.',
+        author: 'Dr. Marta Terzić',
       },
       {
-        quote: 'Dermoskopski pregled je bio temeljit i detaljan. Preporučujem svima da redovno proveravaju mladeže.',
-        author: 'Dejan M.',
-        treatment: 'Dermoskopija',
-      },
-      {
-        quote: 'Laserska epilacija je bila brza i gotovo bezbolna. Već nakon nekoliko tretmana vidim veliku razliku.',
-        author: 'Jelena R.',
-        treatment: 'Laserska epilacija',
-      },
-      {
-        quote: 'PRP tretman mi je osvežio kožu i dao prirodan sjaj. Tim je pažljiv i vrlo profesionalan.',
-        author: 'Ivana T.',
-        treatment: 'PRP tretman',
-      },
-      {
-        quote: 'Hemijski piling je bio odlično prilagođen mojoj koži. Ten je ujednačeniji i koža izgleda zdravije.',
-        author: 'Milica N.',
-        treatment: 'Hemijski pilinzi',
-      },
-      {
-        quote: 'Profhilo mi je dao prirodno osveženje bez prenaglašenog efekta. Upravo ono što sam želela.',
-        author: 'Sanja K.',
-        treatment: 'Profhilo',
-      },
-      {
-        quote: 'Konačno sam rešila problem akni uz stručan plan terapije i redovne kontrole.',
-        author: 'Tamara V.',
-        treatment: 'Medicinska dermatologija',
-      },
-      {
-        quote: 'U ordinaciji se osećam prijatno na svakom pregledu. Strpljenje i posvećenost su na najvišem nivou.',
-        author: 'Nina D.',
-        treatment: 'Dermatološki pregled',
+        quote: 'Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti — uz prirodan rezultat i očuvanu autentičnost svakog pacijenta.',
+        author: 'Dr. Marta Terzić',
       }
     ],
     cta: {
@@ -187,6 +154,10 @@ export const sr = {
     subtitle: 'Javite nam se za više informacija ili zakazivanje pregleda',
     formEyebrow: 'Kontakt forma',
     formTitle: 'Pošaljite Nam Poruku',
+    formInterimMessage: 'Online forma trenutno nije aktivna. Za najbrži odgovor, kontaktirajte nas direktno telefonom, imejlom ili preko Instagrama.',
+    callCta: 'Pozovite nas',
+    emailCta: 'Pošaljite imejl',
+    instagramCta: 'Instagram poruka',
     infoEyebrow: 'Kako do nas',
     infoTitle: 'Informacije',
     nameLabel: 'Ime i prezime *',

@@ -103,55 +103,22 @@ export const en = {
       }
     ],
     partnersTitle: 'Equipment and Partners we work with',
-    testimonialsSection: {
-      title: 'Patient Experiences',
-      swipeMobile: 'Swipe horizontally for the next experience'
+    approachSection: {
+      title: 'Our Approach',
+      subtitle: 'The philosophy behind every consultation and treatment at the clinic',
     },
-    testimonialsList: [
+    approachList: [
       {
-        quote: 'Extremely professional approach and visible results after the first treatment. Dr. Terzic is a true expert in her field.',
-        author: 'Marija P.',
-        treatment: 'Botox treatment',
+        quote: 'Every patient deserves a personalized approach — that is why we tailor every diagnosis, treatment, and procedure to their needs and expectations.',
+        author: 'Dr. Marta Terzic',
       },
       {
-        quote: 'I finally found a clinic where I feel safe. The Morpheus8 treatment changed the appearance of my skin.',
-        author: 'Ana S.',
-        treatment: 'Morpheus8',
+        quote: 'We perform every treatment with maximum precision and care, using the most advanced medical equipment and proven methods.',
+        author: 'Dr. Marta Terzic',
       },
       {
-        quote: 'The dermoscopy examination was thorough and detailed. I highly recommend regular mole checks.',
-        author: 'Dejan M.',
-        treatment: 'Dermoscopy',
-      },
-      {
-        quote: 'Laser hair removal was fast and almost painless. I see a big difference after just a few sessions.',
-        author: 'Jelena R.',
-        treatment: 'Laser Hair Removal',
-      },
-      {
-        quote: 'The PRP treatment refreshed my skin and gave it a natural glow. The team is attentive and highly professional.',
-        author: 'Ivana T.',
-        treatment: 'PRP treatment',
-      },
-      {
-        quote: 'The chemical peel was perfectly tailored to my skin. My complexion is more even and my skin looks healthier.',
-        author: 'Milica N.',
-        treatment: 'Chemical Peels',
-      },
-      {
-        quote: 'Profhilo gave me a natural refreshment without looking overdone. Exactly what I wanted.',
-        author: 'Sanja K.',
-        treatment: 'Profhilo',
-      },
-      {
-        quote: 'I finally solved my acne problem with an expert therapy plan and regular check-ups.',
-        author: 'Tamara V.',
-        treatment: 'Medical Dermatology',
-      },
-      {
-        quote: 'I feel comfortable at the clinic during every visit. Patience and dedication are at the highest level.',
-        author: 'Nina D.',
-        treatment: 'Dermatology exam',
+        quote: 'The goal is not to fight aging, but to age well — with a natural result and each patient\'s authenticity preserved.',
+        author: 'Dr. Marta Terzic',
       }
     ],
     cta: {
@@ -187,6 +154,10 @@ export const en = {
     subtitle: 'Contact us for more information or to book an appointment',
     formEyebrow: 'Contact form',
     formTitle: 'Send Us a Message',
+    formInterimMessage: 'The online form is not active yet. For the fastest response, contact us directly by phone, email, or Instagram.',
+    callCta: 'Call us',
+    emailCta: 'Send an email',
+    instagramCta: 'Instagram message',
     infoEyebrow: 'Find us',
     infoTitle: 'Information',
     nameLabel: 'Full name *',

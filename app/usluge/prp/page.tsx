@@ -68,5 +68,5 @@ Procedura počinje vađenjem male količine krvi koja se zatim centrifugira kako
 }
 
 export default function PRPPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/prp-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/prp-treatment.jpg" />
 }

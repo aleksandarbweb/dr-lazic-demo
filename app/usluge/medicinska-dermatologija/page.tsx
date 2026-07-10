@@ -65,5 +65,5 @@ Poseban fokus stavljamo na akne, rozaceu, dermatitis, infekcije kože, poremeća
 }
 
 export default function MedicinskaDermatologijaPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/dermatology-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/dermatology-treatment.jpg" />
 }

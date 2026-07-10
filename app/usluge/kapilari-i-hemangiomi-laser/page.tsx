@@ -58,5 +58,5 @@ Medicinski laser cilja hemoglobin u proširenim sudovima i postepeno ih zatvara,
 }
 
 export default function KapilariHemangiomiLaserPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/laser-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/laser-treatment.jpg" />
 }

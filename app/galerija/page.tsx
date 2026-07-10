@@ -19,17 +19,17 @@ export default function GalerijaPage() {
   ]
 
   const images = [
-    { src: '/images/clinic-interior.jpg', category: 'Ordinacija', alt: 'Unutrašnjost ordinacije' },
-    { src: '/images/botoks-treatment.jpg', category: 'Tretmani', alt: 'Botoks tretman' },
-    { src: '/images/morpheus8-treatment.jpg', category: 'Tretmani', alt: 'Morpheus8 tretman' },
-    { src: '/images/laser-treatment.jpg', category: 'Tretmani', alt: 'Laserski tretman' },
-    { src: '/images/profhilo-treatment.jpg', category: 'Tretmani', alt: 'Profhilo tretman' },
-    { src: '/images/prp-treatment.jpg', category: 'Tretmani', alt: 'PRP tretman' },
-    { src: '/images/piling-treatment.jpg', category: 'Tretmani', alt: 'Hemijski piling' },
-    { src: '/images/dermoscopy-treatment.jpg', category: 'Tretmani', alt: 'Dermoskopija' },
-    { src: '/images/dermatology-treatment.jpg', category: 'Tretmani', alt: 'Dermatološki pregled' },
-    { src: '/images/doctor-placeholder-1.jpg', category: 'Ordinacija', alt: 'Dr. Marta Terzić' },
-    { src: '/images/doctor-placeholder-2.jpg', category: 'Ordinacija', alt: 'Dr. Biljana Petković' },
+    { src: '/images/Services/clinic-interior.jpg', category: 'Ordinacija', alt: 'Unutrašnjost ordinacije' },
+    { src: '/images/Services/botoks-treatment.jpg', category: 'Tretmani', alt: 'Botoks tretman' },
+    { src: '/images/Services/morpheus8-treatment.jpg', category: 'Tretmani', alt: 'Morpheus8 tretman' },
+    { src: '/images/Services/laser-treatment.jpg', category: 'Tretmani', alt: 'Laserski tretman' },
+    { src: '/images/Services/profhilo-treatment.jpg', category: 'Tretmani', alt: 'Profhilo tretman' },
+    { src: '/images/Services/prp-treatment.jpg', category: 'Tretmani', alt: 'PRP tretman' },
+    { src: '/images/Services/piling-treatment.jpg', category: 'Tretmani', alt: 'Hemijski piling' },
+    { src: '/images/Services/dermoscopy-treatment.jpg', category: 'Tretmani', alt: 'Dermoskopija' },
+    { src: '/images/Services/dermatology-treatment.jpg', category: 'Tretmani', alt: 'Dermatološki pregled' },
+    { src: '/images/people/Marta/drmartaterzicheadshot.png', category: 'Ordinacija', alt: 'Dr. Marta Terzić' },
+    { src: '/images/people/Biljana/drbiljanapetkovicheadshot.png', category: 'Ordinacija', alt: 'Dr. Biljana Petković' },
   ]
 
   const filteredImages = activeFilter === 'all'

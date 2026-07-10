@@ -19,6 +19,10 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Gate everything except the unlock endpoint and Next.js internals.
-  matcher: ['/((?!api/unlock|_next).*)'],
+  // Gate everything except the unlock endpoint, Next.js internals, and static
+  // assets under public/ (images/videos). Without this exclusion, the Next.js
+  // image optimizer's internal fetch of /images/... gets intercepted by the
+  // gate and returns the lock-screen HTML instead of the real file, so every
+  // optimized image 400s in local/dev preview.
+  matcher: ['/((?!api/unlock|_next|images/|videos/|.*\\.(?:png|jpe?g|svg|ico|webp|avif|gif|mp4|webm|webmanifest)$).*)'],
 }

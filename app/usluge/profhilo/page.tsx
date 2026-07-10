@@ -67,5 +67,5 @@ Jedinstvena formula kombinuje visoko i niskomolekularnu hijaluronsku kiselinu be
 }
 
 export default function ProfhiloPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/profhilo-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/profhilo-treatment.jpg" />
 }

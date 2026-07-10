@@ -67,5 +67,5 @@ Uređaj koristi specijalne igle koje prodiru u kožu na kontrolisanu dubinu (do 
 }
 
 export default function Morpheus8Page() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/morpheus8-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/morpheus8-treatment.jpg" />
 }
