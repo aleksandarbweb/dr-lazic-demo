@@ -29,11 +29,11 @@ const faqs = [
 ]
 
 const howItWorks = [
-  'Kombinovana terapija — koristimo sinergiju Nd:YAG i frakcionisanog Er:YAG lasera za maksimalan efekat.',
-  'Dubinska stimulacija — laserski zraci prodiru u dublji sloj kože (dermis) gde su nastali linearni ožiljci.',
-  'Neokolageneza — snažno se podstiče i ubrzava proces sinteze novog kolagena i elastičnih vlakana.',
-  'Regeneracija — novi kolagen počinje da se stvara već nakon 7-10 dana od tretmana.',
-  'Popunjavanje — nivo kolagena se višestruko povećava, čime se strije "pune" i postaju manje uočljive.'
+  'Kombinovana terapija: koristimo sinergiju Nd:YAG i frakcionisanog Er:YAG lasera za maksimalan efekat.',
+  'Dubinska stimulacija: laserski zraci prodiru u dublji sloj kože (dermis) gde su nastali linearni ožiljci.',
+  'Neokolageneza: snažno se podstiče i ubrzava proces sinteze novog kolagena i elastičnih vlakana.',
+  'Regeneracija: novi kolagen počinje da se stvara već nakon 7-10 dana od tretmana.',
+  'Popunjavanje: nivo kolagena se višestruko povećava, čime se strije "pune" i postaju manje uočljive.'
 ]
 
 const phases = [
@@ -82,7 +82,7 @@ export default function LaserskiTretmanStrijaPage() {
             </h1>
             <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
-              Savremena laserska terapija koja stimuliše sintezu novog kolagena, efikasno tretirajući strije u svim fazama — od crvenih do hroničnih belih ožiljaka.
+              Savremena laserska terapija koja stimuliše sintezu novog kolagena, efikasno tretirajući strije u svim fazama, od crvenih do hroničnih belih ožiljaka.
             </p>
             <Link
               href="/kontakt"
@@ -106,7 +106,7 @@ export default function LaserskiTretmanStrijaPage() {
               <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
               <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
                 <p>
-                  Strije (Striae distensae) su zapravo linearni ožiljci u dubljem sloju kože — dermisu. Nastaju usled naglog, prebrzog ili prevelikog rastezanja kože čime se trajno oštećuju kolagena i elastična vlakna vezivnog tkiva.
+                  Strije (Striae distensae) su zapravo linearni ožiljci u dubljem sloju kože, dermisu. Nastaju usled naglog, prebrzog ili prevelikog rastezanja kože čime se trajno oštećuju kolagena i elastična vlakna vezivnog tkiva.
                 </p>
                 <p>
                   Frakcionisani <strong className="text-[#3d3832] font-medium">Er:YAG laser</strong> u kombinaciji sa <strong className="text-[#3d3832] font-medium">Nd:YAG laserom</strong> predstavlja metodu izbora u terapiji strija. Ovom sinergijom se u koži snažno podstiču procesi neokolageneze, čime se nivo kolagena višestruko povećava.
@@ -126,7 +126,7 @@ export default function LaserskiTretmanStrijaPage() {
               <div className="relative h-full w-full overflow-hidden rounded-[calc(1.75rem-0.375rem)]">
                 <Image
                   src="/images/Services/Laserski tretmani/laserski tretmani strija.png"
-                  alt="Laserski tretman strija — rezultati i metoda"
+                  alt="Laserski tretman strija, rezultati i metoda"
                   fill
                   className="object-cover"
                 />
@@ -267,7 +267,7 @@ export default function LaserskiTretmanStrijaPage() {
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Spremni za promenu?</p>
           <h2 className="font-serif text-3xl md:text-4xl text-white">
-            Tretman Strija — Saznajte Više
+            Tretman Strija: Saznajte Više
           </h2>
           <p className="text-white/80 mt-5 font-light max-w-xl mx-auto">
             Dozvolite našim stručnjacima da kreiraju individualan plan tretmana prilagođen vašoj koži.

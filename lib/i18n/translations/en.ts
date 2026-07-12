@@ -85,7 +85,7 @@ export const en = {
     philosophy: {
       title: 'Our Philosophy',
       quote: '"Every patient deserves individual attention and treatment tailored to their unique needs."',
-      author: '— Dr. Marta Terzic'
+      author: 'Dr. Marta Terzic'
     },
     doctorsSection: {
       title: 'Our Specialists'
@@ -109,7 +109,7 @@ export const en = {
     },
     approachList: [
       {
-        quote: 'Every patient deserves a personalized approach — that is why we tailor every diagnosis, treatment, and procedure to their needs and expectations.',
+        quote: 'Every patient deserves a personalized approach: that is why we tailor every diagnosis, treatment, and procedure to their needs and expectations.',
         author: 'Dr. Marta Terzic',
       },
       {
@@ -117,10 +117,49 @@ export const en = {
         author: 'Dr. Marta Terzic',
       },
       {
-        quote: 'The goal is not to fight aging, but to age well — with a natural result and each patient\'s authenticity preserved.',
+        quote: 'The goal is not to fight aging, but to age well, with a natural result and each patient\'s authenticity preserved.',
         author: 'Dr. Marta Terzic',
       }
     ],
+    reviewsSection: {
+      title: 'Patient Experiences',
+      subtitle: 'What our patients say about their consultations and treatments at the clinic',
+    },
+    reviewsList: [
+      {
+        quote: 'At Dr Terzic\'s clinic I found a dermatologist I can fully trust. Dr Marta is extremely skilled and attentive to every detail: she explained everything thoroughly and recommended a therapy that gave excellent results.',
+        author: 'Nataša D.',
+      },
+      {
+        quote: 'Dr Petkovic was friendly and professional. The mole I was concerned about was removed painlessly, within 20 minutes of walking in the door. I would absolutely recommend this clinic.',
+        author: 'Sean S.',
+      },
+      {
+        quote: 'The clinic is impeccably clean and extremely professional from the first impression. The staff made me feel welcome right away, and Dr Terzic and her team speak wonderful English. The procedure went better and with less discomfort than I expected, thanks to Dr Terzic\'s skill and experience.',
+        author: 'Diane',
+      },
+      {
+        quote: 'Many years ago I first came to Dr Terzic\'s clinic. Over time my whole family, including my children and husband, became her patients. The dedication, expertise, and warmth Dr Marta gives us is hard to measure in stars.',
+        author: 'Nevena A.',
+      },
+      {
+        quote: 'Dr Terzic and her team helped me quickly and successfully overcome a facial hair problem that had bothered me for a decade. The laser hair removal treatments were no trouble at all, and the results are more than fantastic.',
+        author: 'Ana I.',
+      },
+      {
+        quote: 'Dr Marta is extremely skilled, thorough, and dedicated to her work. The examination was detailed, with clear explanations and answers to every question, which builds great trust. Beyond her expertise, I would highlight her kindness, patience, and pleasant manner with patients.',
+        author: 'Pedja D.',
+      },
+      {
+        quote: 'The best dermatologist in the city!',
+        author: 'Marina V.',
+      },
+      {
+        quote: 'A wonderful atmosphere, professional service, and expertise above all.',
+        author: 'Natali D.',
+      },
+    ],
+    reviewsSource: 'Excerpts from publicly available patient reviews.',
     cta: {
       subtitle: 'Ready for a change?',
       title: 'Get in Touch',
@@ -135,6 +174,8 @@ export const en = {
     processLabel: 'Process',
     methodsLabel: 'Approach',
     methodsTitle: 'Methods & Technologies',
+    detailsLabel: 'In Detail',
+    detailsTitle: 'Everything You Need to Know',
     howItWorks: 'How It Works',
     candidatesLabel: 'Ideal candidates',
     forWhom: 'Who Is the Treatment For',
@@ -196,7 +237,7 @@ export const en = {
   onama: {
     eyebrow: 'Meet us',
     title: 'About Us',
-    heroIntro: 'For over 25 years we have been dedicated to the health and beauty of your skin. Dr. Terzić Clinic brings together dermatology, laser dermatology, radiowave surgery, dermoscopy, and aesthetic and regenerative medicine — with an individual approach and treatment plan built on trust and natural results.',
+    heroIntro: 'For over 25 years we have been dedicated to the health and beauty of your skin. Dr. Terzić Clinic brings together dermatology, laser dermatology, radiowave surgery, dermoscopy, and aesthetic and regenerative medicine, with an individual approach and treatment plan built on trust and natural results.',
     storyEyebrow: 'Our story',
     storyTitle: 'About Us',
     storyP1: 'Dr. Terzić Clinic was founded in 2004 with a vision of bringing together, in one place, top-tier dermatological diagnostics and skin treatment, modern aesthetic medicine, and an individual approach to every patient.',
@@ -213,7 +254,7 @@ export const en = {
     marta: {
       specializationsTitle: 'Specializations:',
       bio1: 'Dr. Marta Terzić is a dermatovenereology specialist with over 25 years of experience in diagnosing, treating, and improving skin health. She graduated from the Faculty of Medicine at the University of Belgrade and completed her specialization in dermatovenereology in 1999. In 2004 she founded Dr. Terzić Clinic, where she still practices today with the same dedication to every patient. She is among the first physicians in the region to introduce laser use in dermatology, with tens of thousands of laser treatments performed.',
-      bio2: 'Over the past fifteen years she has focused particularly on aesthetic and regenerative medicine, continuously training with leading international experts. In daily practice she works with hyaluronic fillers, botulinum toxin, collagen biostimulators, PRP treatments, biorevitalization, mesotherapy, and laser rejuvenation and regeneration procedures. She practices an individual, holistic approach — her goal is not to change identity, but to preserve health, natural beauty, and patient confidence.',
+      bio2: 'Over the past fifteen years she has focused particularly on aesthetic and regenerative medicine, continuously training with leading international experts. In daily practice she works with hyaluronic fillers, botulinum toxin, collagen biostimulators, PRP treatments, biorevitalization, mesotherapy, and laser rejuvenation and regeneration procedures. She practices an individual, holistic approach: her goal is not to change identity, but to preserve health, natural beauty, and patient confidence.',
       bio3: 'Her expertise and commitment to natural results have also been recognized by Allergan, which appointed her national trainer for dermal fillers and botulinum toxin type A. She has been a member of the International Dermoscopy Society since 2004 and regularly lectures at domestic and international professional congresses.',
       specializations: ['Hyaluronic fillers', 'Botulinum toxin', 'Collagen biostimulators', 'PRP treatments', 'Biorevitalization', 'Mesotherapy', 'Laser rejuvenation procedures', 'Dermoscopy'],
     },
@@ -226,7 +267,7 @@ export const en = {
     snezana: {
       name: 'Snežana Stojković',
       title: 'Clinic Manager and Nurse',
-      bio: 'Snežana has been an indispensable member of our team since day one — her professionalism, organizational skills, and dedication contribute daily to the clinic running smoothly. She is patients\' first point of contact, and her kindness and patience make every patient feel safe, informed, and welcome.',
+      bio: 'Snežana has been an indispensable member of our team since day one: her professionalism, organizational skills, and dedication contribute daily to the clinic running smoothly. She is patients\' first point of contact, and her kindness and patience make every patient feel safe, informed, and welcome.',
     },
     otherTeam: [
       { name: 'Milica Dobrić', title: 'Medical Cosmetologist' },
@@ -246,15 +287,15 @@ export const en = {
     devices: {
       avalancheLase: {
         subtitle: 'Laser System',
-        description: 'Medical laser system for permanent hair removal with an active cooling system for maximum safety and comfort.',
+        description: 'Dual-wavelength laser system (alexandrite and Nd:YAG) for permanent hair removal on all skin types, with an integrated cooling system for maximum safety and comfort during treatment.',
         treatments: [
-          'Laser hair removal — permanent hair elimination',
+          'Laser hair removal: permanent hair elimination',
           'Laser treatment for ingrown hair problems (folliculitis)',
         ],
       },
       spDynamis: {
         subtitle: 'Laser System',
-        description: 'The most advanced laser system for a wide range of dermatological and aesthetic treatments. Combination of Nd:YAG and Er:YAG technology for personalized results.',
+        description: 'A premier laser system combining Nd:YAG and Er:YAG technology, from deep rejuvenation and fractional resurfacing to removing vascular and pigmented lesions.',
         treatments: [
           'Personalized laser rejuvenation (fractional, non-ablative, ablative)',
           'Laser treatments for scars',
@@ -269,7 +310,7 @@ export const en = {
       },
       harmonyXL: {
         subtitle: 'IPL & Laser Platform',
-        description: 'Multifunctional IPL and laser platform for treating redness, pigmentation, and skin rejuvenation.',
+        description: 'A multifunctional platform combining IPL, laser, and ultrasound technology to treat redness, pigmentation, and skin rejuvenation.',
         treatments: [
           'Rosacea treatment',
           'Poikiloderma treatment',
@@ -281,7 +322,7 @@ export const en = {
       },
       morpheus8: {
         subtitle: 'RF Microneedling',
-        description: 'Radiofrequency microneedling that combines microneedles with RF energy to stimulate collagen and tighten the skin.',
+        description: 'Radiofrequency microneedling that combines microneedles with RF energy to stimulate collagen and tighten the skin, with precise control over treatment depth.',
         treatments: [
           'Skin rejuvenation',
           'Skin tightening',
@@ -291,7 +332,7 @@ export const en = {
       },
       ellman: {
         subtitle: 'Radiosurgery',
-        description: 'Precise radiowave surgery for painless and effective removal of benign skin lesions with minimal damage to surrounding tissue.',
+        description: 'Precise radiowave surgery for painless and effective removal of benign skin lesions, with minimal damage to surrounding tissue and a short recovery time.',
         treatments: [
           'Removal of viral warts, condylomas, and molluscum contagiosum',
           'Removal of papillomas and keratoses',
@@ -299,8 +340,8 @@ export const en = {
         ],
       },
       cryopen: {
-        subtitle: 'CryoPro & CryoPen — liquid nitrogen therapy',
-        description: 'Precise cryotherapy for targeted removal of skin lesions using controlled freezing. Minimally invasive treatment without anesthesia.',
+        subtitle: 'CryoPro & CryoPen: liquid nitrogen therapy',
+        description: 'Precise cryotherapy using controlled freezing for targeted removal of skin lesions. A painless, minimally invasive treatment with no anesthesia and no recovery time.',
         treatments: [
           'Removal of viral warts on hands and feet',
           'Condyloma removal',
@@ -309,12 +350,12 @@ export const en = {
       },
       dermlite: {
         subtitle: 'Dermoscope',
-        description: 'DermLite DL5 and Canfield D200EVO dermoscope for detailed diagnosis of skin lesions and moles, including digital AI diagnostics and trichoscopy.',
+        description: 'DermLite DL5 and Canfield D200EVO dermoscope for detailed, polarized diagnosis of skin lesions and moles, including digital AI diagnostics and trichoscopy.',
         treatments: [
           'Mole diagnostics',
-          'Mapping — full-body mole examination and marking',
+          'Mapping: full-body mole examination and marking',
           'Digital AI diagnostics',
-          'Trichoscopy — AI dermoscopic hair and scalp analysis',
+          'Trichoscopy: AI dermoscopic hair and scalp analysis',
         ],
       },
       dermapen: {
@@ -322,14 +363,7 @@ export const en = {
         description: 'Medical needle microneedling to stimulate skin regeneration and improve skin quality.',
         treatments: [
           'Hair growth stimulation',
-          'Facial skin quality — pores, pigmentation, fine lines',
-        ],
-      },
-      zimmer: {
-        subtitle: 'Cryolipolysis',
-        description: 'Non-invasive controlled cooling technology for reduction of localized fat deposits. Painless treatment with no recovery period.',
-        treatments: [
-          'Cryolipolysis (reduction of localized fat deposits and cellulite)',
+          'Facial skin quality: pores, pigmentation, fine lines',
         ],
       },
     },

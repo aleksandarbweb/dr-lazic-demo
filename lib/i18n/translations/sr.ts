@@ -85,7 +85,7 @@ export const sr = {
     philosophy: {
       title: 'Naša filozofija',
       quote: '"Svaki pacijent zaslužuje individualnu pažnju i tretman prilagođen njegovim jedinstvenim potrebama."',
-      author: '— Dr. Marta Terzić'
+      author: 'Dr. Marta Terzić'
     },
     doctorsSection: {
       title: 'Naši Specijalisti'
@@ -109,7 +109,7 @@ export const sr = {
     },
     approachList: [
       {
-        quote: 'Svaki pacijent zaslužuje personalizovan pristup — zbog toga svaku dijagnostiku, tretman i proceduru prilagođavamo njegovim potrebama i očekivanjima.',
+        quote: 'Svaki pacijent zaslužuje personalizovan pristup: zbog toga svaku dijagnostiku, tretman i proceduru prilagođavamo njegovim potrebama i očekivanjima.',
         author: 'Dr. Marta Terzić',
       },
       {
@@ -117,10 +117,49 @@ export const sr = {
         author: 'Dr. Marta Terzić',
       },
       {
-        quote: 'Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti — uz prirodan rezultat i očuvanu autentičnost svakog pacijenta.',
+        quote: 'Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti, uz prirodan rezultat i očuvanu autentičnost svakog pacijenta.',
         author: 'Dr. Marta Terzić',
       }
     ],
+    reviewsSection: {
+      title: 'Iskustva Pacijenata',
+      subtitle: 'Šta naši pacijenti kažu o pregledima i tretmanima u ordinaciji',
+    },
+    reviewsList: [
+      {
+        quote: 'U ordinaciji Dr Terzić pronašla sam dermatologa kome mogu potpuno da verujem. Doktorka Marta je izuzetno stručna i posvećena svakom detalju: sve je detaljno objasnila i predložila terapiju koja je dala odlične rezultate.',
+        author: 'Nataša D.',
+      },
+      {
+        quote: 'Doktorka Petković je bila ljubazna i profesionalna. Mladež zbog kog sam bio zabrinut uklonjen je bezbolno, svega 20 minuta nakon što sam ušao u ordinaciju. Toplo preporučujem ovu ordinaciju.',
+        author: 'Sean S.',
+      },
+      {
+        quote: 'Ordinacija je besprekorno čista i izuzetno profesionalna već na prvi utisak. Osoblje me je odmah učinilo dobrodošlim, a doktorka Terzić i njen tim govore odličan engleski. Zahvat je prošao bolje i sa manje nelagodnosti nego što sam očekivala, zahvaljujući veštini i iskustvu doktorke Terzić.',
+        author: 'Diane',
+      },
+      {
+        quote: 'Pre mnogo godina sam prvi put došla u ordinaciju Dr Terzić. Porodica se širila, pa su i deca i suprug postali njeni pacijenti. Posvećenost, stručnost i toplinu koju nam doktorka Marta pruža teško je meriti zvezdicama.',
+        author: 'Nevena A.',
+      },
+      {
+        quote: 'Dr Terzić i njen tim pomogli su mi da se brzo i uspešno oslobodim problema sa maljama na licu koji me je mučio čitavu deceniju. Tretmani laserske epilacije nisu bili nikakav problem, a rezultati su više nego fantastični.',
+        author: 'Ana I.',
+      },
+      {
+        quote: 'Doktorka Marta je izuzetno stručna, temeljna i posvećena svom poslu. Pregled je obavljen detaljno, sa jasnim objašnjenjima i odgovorima na sva pitanja, što uliva veliko poverenje. Pored stručnosti, izdvojio bih i ljubaznost, strpljenje i prijatan odnos prema pacijentima.',
+        author: 'Pedja D.',
+      },
+      {
+        quote: 'Najbolji dermatolog u gradu!',
+        author: 'Marina V.',
+      },
+      {
+        quote: 'Savršena atmosfera, profesionalna usluga i stručnost pre svega.',
+        author: 'Natali D.',
+      },
+    ],
+    reviewsSource: 'Izvodi iz javno dostupnih recenzija pacijenata.',
     cta: {
       subtitle: 'Spremni za promenu?',
       title: 'Budimo u Kontaktu',
@@ -135,6 +174,8 @@ export const sr = {
     processLabel: 'Proces',
     methodsLabel: 'Pristup',
     methodsTitle: 'Metode i Tehnologije',
+    detailsLabel: 'Detaljno',
+    detailsTitle: 'Sve Što Treba da Znate',
     howItWorks: 'Kako Funkcioniše',
     candidatesLabel: 'Idealni kandidati',
     forWhom: 'Za Koga Je Tretman',
@@ -196,7 +237,7 @@ export const sr = {
   onama: {
     eyebrow: 'Upoznajte nas',
     title: 'O Nama',
-    heroIntro: 'Više od 25 godina posvećeni smo zdravlju i lepoti kože. Ordinacija Dr Terzić objedinjuje dermatologiju, lasersku dermatologiju, radiotalasnu hirurgiju, dermoskopiju, estetsku i regenerativnu medicinu — sa individualnim pristupom i planom terapije zasnovanim na poverenju i prirodnim rezultatima.',
+    heroIntro: 'Više od 25 godina posvećeni smo zdravlju i lepoti kože. Ordinacija Dr Terzić objedinjuje dermatologiju, lasersku dermatologiju, radiotalasnu hirurgiju, dermoskopiju, estetsku i regenerativnu medicinu, sa individualnim pristupom i planom terapije zasnovanim na poverenju i prirodnim rezultatima.',
     storyEyebrow: 'Naša priča',
     storyTitle: 'O nama',
     storyP1: 'Ordinacija Dr Terzić osnovana je 2004. godine sa vizijom da na jednom mestu objedini vrhunsku dermatološku dijagnostiku i lečenje kože, savremenu estetsku medicinu i individualan pristup svakom pacijentu.',
@@ -213,7 +254,7 @@ export const sr = {
     marta: {
       specializationsTitle: 'Specijalizacije:',
       bio1: 'Dr Marta Terzić je specijalista dermatovenerologije sa više od 25 godina iskustva u dijagnostici, lečenju i unapređenju zdravlja kože. Diplomirala je na Medicinskom fakultetu Univerziteta u Beogradu, a specijalizaciju iz dermatovenerologije završila je 1999. godine. Godine 2004. osnovala je Ordinaciju Dr Terzić, u kojoj i danas radi sa istom posvećenošću svakom pacijentu. Među prvim je lekarima u regionu koji su uveli primenu lasera u dermatologiji, uz desetine hiljada izvedenih laserskih tretmana.',
-      bio2: 'Poslednjih petnaest godina posebnu pažnju posvećuje estetskoj i regenerativnoj medicini, kontinuirano se usavršavajući kod vodećih svetskih stručnjaka. U svakodnevnoj praksi primenjuje hijaluronske filere, botulinum toksin, biostimulatore kolagena, PRP tretmane, biorevitalizaciju, mezoterapiju i laserske procedure za podmlađivanje i regeneraciju kože. Neguje individualan i holistički pristup — njen cilj nije promena identiteta, već očuvanje zdravlja, prirodne lepote i samopouzdanja pacijenata.',
+      bio2: 'Poslednjih petnaest godina posebnu pažnju posvećuje estetskoj i regenerativnoj medicini, kontinuirano se usavršavajući kod vodećih svetskih stručnjaka. U svakodnevnoj praksi primenjuje hijaluronske filere, botulinum toksin, biostimulatore kolagena, PRP tretmane, biorevitalizaciju, mezoterapiju i laserske procedure za podmlađivanje i regeneraciju kože. Neguje individualan i holistički pristup: njen cilj nije promena identiteta, već očuvanje zdravlja, prirodne lepote i samopouzdanja pacijenata.',
       bio3: 'Njena stručnost i posvećenost prirodnim rezultatima prepoznati su i od strane kompanije Allergan, gde je imenovana za nacionalnog trenera za primenu dermalnih filera i botulinum toksina tipa A. Član je International Dermoscopy Society od 2004. godine i redovno predaje na domaćim i međunarodnim stručnim kongresima.',
       specializations: ['Hijaluronski fileri', 'Botulinum toksin', 'Biostimulatori kolagena', 'PRP tretmani', 'Biorevitalizacija', 'Mezoterapija', 'Laserske procedure podmlađivanja', 'Dermoskopija'],
     },
@@ -226,7 +267,7 @@ export const sr = {
     snezana: {
       name: 'Snežana Stojković',
       title: 'Menadžer ordinacije i medicinska sestra-tehničar',
-      bio: 'Snežana je od prvog dana neizostavni član našeg tima, čiji profesionalizam, organizacione sposobnosti i posvećenost svakodnevno doprinose vrhunskom funkcionisanju ordinacije. Sa njom pacijenti prvo stupaju u kontakt — svojim ljubaznim pristupom i strpljenjem čini da se svaki pacijent oseća sigurno, informisano i dobrodošlo.',
+      bio: 'Snežana je od prvog dana neizostavni član našeg tima, čiji profesionalizam, organizacione sposobnosti i posvećenost svakodnevno doprinose vrhunskom funkcionisanju ordinacije. Sa njom pacijenti prvo stupaju u kontakt, a svojim ljubaznim pristupom i strpljenjem čini da se svaki pacijent oseća sigurno, informisano i dobrodošlo.',
     },
     otherTeam: [
       { name: 'Milica Dobrić', title: 'Medicinski kozmetolog' },
@@ -246,15 +287,15 @@ export const sr = {
     devices: {
       avalancheLase: {
         subtitle: 'Laser System',
-        description: 'Medicinski laserski sistem za trajno uklanjanje dlačica sa aktivnim sistemom hlađenja za maksimalnu bezbednost i komfor.',
+        description: 'Dvotalasni laserski sistem (aleksandrit i Nd:YAG) za trajno uklanjanje dlačica kod svih tipova kože, sa integrisanim sistemom hlađenja za maksimalnu bezbednost i komfor tokom tretmana.',
         treatments: [
-          'Epilacija laserom — trajno uklanjanje dlačica',
+          'Epilacija laserom: trajno uklanjanje dlačica',
           'Laserski tretman problema uraslih dlačica (folliculitis)',
         ],
       },
       spDynamis: {
         subtitle: 'Laser System',
-        description: 'Najsavremeniji laserski sistem za širok spektar dermatoloških i estetskih tretmana. Kombinacija Nd:YAG i Er:YAG tehnologije za personalizovane rezultate.',
+        description: 'Vrhunski laserski sistem koji kombinuje Nd:YAG i Er:YAG tehnologiju, od dubinskog podmlađivanja i frakcionog rezurfacinga do uklanjanja vaskularnih i pigmentnih promena.',
         treatments: [
           'Personalizovano podmlađivanje laserom (frakcionisano, neablativno, ablativno)',
           'Laserski tretmani ožiljaka',
@@ -269,7 +310,7 @@ export const sr = {
       },
       harmonyXL: {
         subtitle: 'IPL & Laser Platform',
-        description: 'Multifunkcionalna IPL i laserska platforma za lečenje crvenila, pigmentacija i podmlađivanje kože.',
+        description: 'Multifunkcionalna platforma koja kombinuje IPL, lasersku i ultrazvučnu tehnologiju za lečenje crvenila, pigmentacija i podmlađivanje kože.',
         treatments: [
           'Lečenje rozacee',
           'Lečenje poikiloderme',
@@ -281,7 +322,7 @@ export const sr = {
       },
       morpheus8: {
         subtitle: 'RF Microneedling',
-        description: 'Radiofrekventni mikronidling koji kombinuje mikroiglice i radiofrekventnu energiju za stimulaciju kolagena i zatezanje kože.',
+        description: 'Radiofrekventni mikronidling koji kombinuje mikroiglice i radiofrekventnu energiju za stimulaciju kolagena i zatezanje kože, uz preciznu kontrolu dubine tretmana.',
         treatments: [
           'Podmlađivanje kože',
           'Zatezanje kože',
@@ -291,7 +332,7 @@ export const sr = {
       },
       ellman: {
         subtitle: 'Radiosurgery',
-        description: 'Precizna radiotalasna hirurgija za bezbolno i efikasno uklanjanje benignih kožnih promena uz minimalno oštećenje okolnog tkiva.',
+        description: 'Precizna radiotalasna hirurgija za bezbolno i efikasno uklanjanje benignih kožnih promena, uz minimalno oštećenje okolnog tkiva i kratko vreme oporavka.',
         treatments: [
           'Uklanjanje virusnih bradavica, kondiloma i moluski',
           'Uklanjanje papiloma i keratoza',
@@ -299,8 +340,8 @@ export const sr = {
         ],
       },
       cryopen: {
-        subtitle: 'CryoPro & CryoPen — terapija tečnim azotom',
-        description: 'Precizna krioterapija za ciljano uklanjanje kožnih promena kontrolisanim zamrzavanjem. Minimalno invazivan tretman bez anestezije.',
+        subtitle: 'CryoPro & CryoPen: terapija tečnim azotom',
+        description: 'Precizna krioterapija kontrolisanim zamrzavanjem za ciljano uklanjanje kožnih promena. Bezbolan i minimalno invazivan tretman, bez anestezije i bez perioda oporavka.',
         treatments: [
           'Uklanjanje virusnih bradavica sa šaka i stopala',
           'Uklanjanje kondiloma',
@@ -309,12 +350,12 @@ export const sr = {
       },
       dermlite: {
         subtitle: 'Dermatoskop',
-        description: 'DermLite DL5 i Canfield D200EVO dermatoskop za detaljnu dijagnostiku kožnih promena i mladeža, uključujući digitalnu AI dijagnostiku i trihoskopiju.',
+        description: 'DermLite DL5 i Canfield D200EVO dermatoskop za detaljnu, polarizovanu dijagnostiku kožnih promena i mladeža, uključujući digitalnu AI dijagnostiku i trihoskopiju.',
         treatments: [
           'Dijagnostika mladeža',
-          'Mapiranje — pregled i markiranje mladeža celog tela',
+          'Mapiranje: pregled i markiranje mladeža celog tela',
           'Digitalna AI dijagnostika',
-          'Trihoskopija — AI dermoskopska analiza kose',
+          'Trihoskopija: AI dermoskopska analiza kose',
         ],
       },
       dermapen: {
@@ -322,14 +363,7 @@ export const sr = {
         description: 'Medicinski mikronidling iglicama za stimulaciju regeneracije kože i poboljšanje njenog kvaliteta.',
         treatments: [
           'Stimulacija rasta kose',
-          'Kvalitet kože lica — pore, pigmentacije, sitne bore',
-        ],
-      },
-      zimmer: {
-        subtitle: 'Kriolipoliza',
-        description: 'Neinvazivna tehnologija kontrolisanog hlađenja za redukciju lokalizovanih masnih naslaga. Bezbolan tretman bez perioda oporavka.',
-        treatments: [
-          'Kriolipoliza (redukcija lokalizovanih masnih naslaga i celulita)',
+          'Kvalitet kože lica: pore, pigmentacije, sitne bore',
         ],
       },
     },

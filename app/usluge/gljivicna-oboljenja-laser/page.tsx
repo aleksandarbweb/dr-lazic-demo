@@ -44,11 +44,11 @@ const advantages = [
 ]
 
 const processSteps = [
-  'Konsultacija — pregled nokatnih ploča i potvrda gljivične infekcije.',
-  'Priprema — nokat treba da bude očišćen od laka ili bilo kakvih premaza.',
-  'Laserski tretman — aplikacija laserske svetlosti koja prodire kroz nokatnu ploču i uništava gljivice toplotom.',
-  'Nega nakon — saveti o higijeni stopala i obuće kako bi se sprečila reinfekcija.',
-  'Kontrola — detaljan pregled napretka rasta zdravog nokta nakon 2 meseca.'
+  'Konsultacija: pregled nokatnih ploča i potvrda gljivične infekcije.',
+  'Priprema: nokat treba da bude očišćen od laka ili bilo kakvih premaza.',
+  'Laserski tretman: aplikacija laserske svetlosti koja prodire kroz nokatnu ploču i uništava gljivice toplotom.',
+  'Nega nakon: saveti o higijeni stopala i obuće kako bi se sprečila reinfekcija.',
+  'Kontrola: detaljan pregled napretka rasta zdravog nokta nakon 2 meseca.'
 ]
 
 export default function GljivicnaOboljenjaLaserPage() {

@@ -2,6 +2,8 @@
 
 **Date produced:** 2026-07-10 (requested/filed as 2026-07-09 per session instructions)
 **Updated:** 2026-07-10 (service-content implementation pass — see §9)
+**Updated again:** 2026-07-10 (client-content supplement pass: dermatologija-za-celu-porodicu subtitle,
+bradavice page restructure, real patient reviews, em-dash/typo cleanup — see §11)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -34,8 +36,8 @@ companion to `docs/IMPROVEMENT-REPORT.md` (the master plan), not a replacement f
 | O nama (full story + short story + team + values) | `/o-nama` | ✅ Updated |
 | Naš tim (Marta, Biljana, Snežana, Milica, Melissa, Sonja) | `/o-nama` | ✅ Marta + Snežana done; Biljana pending CV; Milica/Melissa/Sonja added as name+role only |
 | Usluge (6 categories, ~40 bullet services) | `/usluge` + `lib/service-catalog.ts` + `app/usluge/*` | 🟡 Partial — see §4 |
-| Full face / personalizovani estetski pristup | `/usluge/full-face` | ✅ New flagship page written this pass |
-| Oprema (9 devices) | `/oprema` | ✅ Updated — see §5 |
+| Full face / personalizovani estetski pristup | `/usluge/full-face` | ✅ Flagship page, fully expanded with Marta's detailed content — see §12 |
+| Oprema (8 devices, final Marta DOCX list) | `/oprema` | ✅ Updated to final DOCX equipment list — see §5 and §12 |
 
 ---
 
@@ -185,13 +187,22 @@ flagging so M4 doesn't get blindsided.
 | SP Dynamis by Fotona (rejuvenation, scars, striae, pigment, vascular, benign lesions, fungal nail, rosacea, acne) | "SP Spectro" by Fotona — **wrong model name**, and its treatment list duplicated hair-removal/folliculitis (already covered by the other Fotona device) | **Corrected model name** to SP Dynamis; **removed the duplicated** hair-removal bullets (now live only under AvalancheLase); added "Lečenje akni" bullet per DOCX. |
 | Harmony XL Pro by Alma | Not present | **Added** (rosacea, poikiloderma, skin rejuvenation, pigmentation, acne, scar removal — all from DOCX). |
 | Morpheus 8 | Existed only as a *service* (`/usluge/morpheus8`), not as equipment | **Added as equipment entry**, cross-linked to the existing service page. |
-| Ellman Radiosurgery | Present, matches closely | Tightened wording to match DOCX phrasing; kept the pre-existing "Elektroliza" bullet (real capability, not contradicted by DOCX, not removed without cause). |
+| Ellman Radiosurgery | Present, matches closely | Tightened wording to match DOCX phrasing; kept the pre-existing "Elektroliza (trajno uklanjanje sedih i plavih dlačica)" bullet as a 3rd treatment alongside the 2 DOCX-listed ones (real capability, not contradicted by DOCX, not removed without cause — see §12). ⚠️ **Still open**: client asked (2026-07-13) why a 3rd item shows when her list only names two; this row's documented reason is the answer, but it's flagged here again in case she'd rather it were removed. |
 | CryoPro / CryoPen | Present as "CryoPen" only | **Relabeled** "CryoPro & CryoPen" per DOCX; treatments already matched. |
 | DermLite DL5 + Canfield D200EVO dermatoscope | "DermLite DL3" only, 2 bullets | **Corrected model** (DL3→DL5), **added Canfield D200EVO** to the same card (DOCX presents them as one combined heading), **added** digital AI diagnostics + trichoscopy (AI hair/scalp analysis) bullets. |
 | Dermapen | Not present | **Added** (hair growth stimulation, facial skin quality — pores/pigmentation/fine lines). |
-| *(not in DOCX at all)* Zimmer Cryo 6 / Cryo Tube (cryolipolysis) | Present | **Left untouched, not deleted** — absence from Marta's new structure could mean the service was dropped, or simply wasn't in scope of this particular document (it's body-contouring, not face/skin). ⚠️ **Needs client confirmation** before removing a live equipment listing. |
+| *(not in DOCX at all)* Zimmer Cryo 6 / Cryo Tube (cryolipolysis) | Present through 2026-07-12 | **Removed 2026-07-13** — confirmed absent from Marta's current DOCX equipment list (9 devices → 8), so the listing and its `oprema.devices.zimmer` translations were deleted from `sr.ts`/`en.ts`/`ru.ts` and `deviceConfig`. See §12. |
 
-All equipment/treatment copy is on `/oprema` (Serbian-only page, not i18n-wired — see note below).
+Manufacturer logos (Fotona, Alma, InMode, Ellman, Cortex, H&O, Canfield, Dermapen PNGs supplied by the
+user into `public/images/Logos/`) were tried on each equipment card in several treatments (bordered
+chip, grayscale badge, bare inline image) but were dropped from the final UI: with 8 differently-shaped
+brand marks in a row, every version read as visually noisy/distracting rather than clean. Final cards
+are plain text (manufacturer name, device name, subtitle, description) — see §12. The logo PNGs remain
+in `public/images/Logos/` unused, in case a future pass wants to revisit this with a different layout.
+
+All equipment/treatment copy is on `/oprema`, which **is** wired to `sr.ts`/`en.ts`/`ru.ts` via
+`t.oprema.devices` (see the i18n-status correction in §6 below — an earlier version of this note
+incorrectly called the page Serbian-only/hardcoded).
 
 Note: Morpheus8's manufacturer is displayed as "InMode" — this is a well-established public fact
 (InMode makes Morpheus8), not sourced from the DOCX, which didn't list a manufacturer for it.
@@ -201,11 +212,20 @@ Flagging only because it's the one attribution in this pass not directly copied 
 
 ## 6. i18n status
 
-- **Dedicated service pages** (`akne`, `full-face`, etc.) and **`/oprema`** are Serbian-only,
-  hardcoded (not wired to `sr.ts`/`en.ts`/`ru.ts`). This was already true before this session
-  (flagged in the master plan's i18n scorecard row) — editing/adding Serbian content here does
-  **not** regress EN/RU, since those routes never had translations to begin with. No TODO needed
-  beyond the master plan's existing M4 item ("i18n the catalog").
+- **Dedicated service pages** (`akne`, `full-face`, etc.) pass their content as a literal Serbian
+  `serviceData` object into `ServicePageLayout` — the page-specific copy (whatIsIt, methods, FAQs...)
+  is Serbian-only, hardcoded, not wired to `sr.ts`/`en.ts`/`ru.ts`. Only the shared UI chrome around
+  it (`t.servicePage.*` labels like "Saznajte više", "Tretmani") is translated. This was already true
+  before this session (flagged in the master plan's i18n scorecard row) — editing/adding Serbian
+  content here does **not** regress EN/RU, since these routes never had content translations to begin
+  with. No TODO needed beyond the master plan's existing M4 item ("i18n the catalog").
+- **Correction (2026-07-13): `/oprema` is not in the same bucket as the bullet above.** Unlike the
+  dedicated service pages, `/oprema` pulls its device copy through `t.oprema.devices[key]`, and
+  `oprema.devices` genuinely exists in all three of `sr.ts`/`en.ts`/`ru.ts` (verified by reading the
+  files directly, not just this doc's prior claim). An earlier version of this note incorrectly
+  lumped `/oprema` in with the hardcoded service pages — that was wrong. `/oprema` is i18n-wired; the
+  8-device content (descriptions, subtitles, treatment lists) is translated and kept in sync across
+  all three locale files as part of this pass.
 - **Homepage + O nama** *are* i18n-wired. Every new/changed key added to `sr.ts` this pass got a
   matching key in `en.ts` and `ru.ts` with a real (not placeholder) translation, so the build's
   structural type check (`Dictionary = typeof sr`) stays satisfied and EN/RU visitors never see a
@@ -224,6 +244,17 @@ Flagging only because it's the one attribution in this pass not directly copied 
 ---
 
 ## 7. Images/assets — missing or flagged for replacement
+
+> **Convention update (2026-07-10):** client-provided/replacement images are now dropped in
+> `public/images/client/` (flat, not `public/images/client/marta-docx/`). Check that folder before
+> writing any image-related code; if a file matching a service already exists there, use it instead
+> of inventing a path or reusing a generic placeholder.
+>
+> `uklanjanje-virusnih-bradavica-kondiloma-i-moluski.png` (1500×832) was supplied there this session
+> and is now the hero image for `/usluge/bradavice-papilomi-keratoze-moluske`, replacing the shared
+> generic `dermatology-treatment.jpg` it used before. The clipart-style "doctor examining a back with
+> a magnifying glass" image Marta flagged as not fitting the brand was **not** used anywhere, per her
+> explicit note.
 
 - No photo exists for **Snežana Stojković** — used a neutral icon-avatar placeholder (no image
   file), not a stock photo, per rule 7 (don't use DOCX screenshots, don't fake a headshot).
@@ -253,7 +284,15 @@ Flagging only because it's the one attribution in this pass not directly copied 
 
 ---
 
-## 9. Testimonials / real patient-experience section — attempted, not implemented (2026-07-10)
+## 9. Testimonials / real patient-experience section — resolved 2026-07-10 (see §11)
+
+Update: the user pasted real, verbatim Google review text directly into the session on 2026-07-10
+(after the attempt below failed to retrieve it programmatically). A curated "Iskustva Pacijenata"
+section was built from that real text — see §11 for the full implementation summary. The attempt
+notes below are kept for the historical record of why WebSearch/WebFetch couldn't get there on their
+own.
+
+### Original attempt (2026-07-10, superseded above)
 
 The 2026-07-10 session's instructions asked for a real "Iskustva pacijenata" section sourced from
 curated, lightly-adapted **real public Google reviews** (not fake, not invented) — explicitly
@@ -297,3 +336,134 @@ section's card component can likely be reused/adapted for this).
 - Attempted, could not implement: real-review testimonials section — see §9.
 - Not touched, out of scope: M1 token/geometry work, catalog i18n (M4), equipment↔service
   clickable cross-links (M5).
+
+---
+
+## 11. Summary of the 2026-07-10 targeted content-supplement pass
+
+Follow-up pass while the user manually cross-checked Marta's DOCX against the live site, finding
+specific gaps the earlier extraction passes had missed. Explicitly **not** M1 design-system work.
+
+- **"Dijagnostika i lečenje kožnih i polnih bolesti" / "Dermatologija za celu porodicu" — now
+  visible.** `/usluge/medicinska-dermatologija` (`app/usluge/medicinska-dermatologija/page.tsx`) hero
+  title changed from the previous "Medicinska Dermatologija" to the catalog's actual display name,
+  **"Dijagnostika i Lečenje Kožnih i Polnih Bolesti"**, and the subtitle now leads with **"Dermatologija
+  za celu porodicu"** as the requested tagline/podnaslov, followed by the descriptive sentence. The
+  `whatIsIt` opening sentence was replaced with the user's exact cleaned wording ("Specijalistički
+  pregled dece i odraslih u ordinaciji Dr Terzić obuhvata sveobuhvatan pregled kože, vidljivih
+  sluzokoža i kožnih tvorevina, uključujući nokte i kosu."), which also removed the one em dash that
+  was in the old copy. Page metadata (`<title>`/description) updated to match. No duplicate page was
+  created; the existing route/catalog entry already matched, only the on-page hero text was stale.
+
+- **Bradavice/papilomi/keratoze/moluske page — restructured, not just a content check.** The page
+  already had real DOCX-sourced content from the prior session but presented it as 3 long paragraphs.
+  Per this session's explicit formatting requirement, added one small, precedented extension to
+  `components/service-page-layout.tsx`: an optional `whatIsItSections?: { heading, body?, items? }[]`
+  prop (same pattern as the earlier session's `methods` addition — optional, backward-compatible,
+  renders nothing on pages that don't pass it). `app/usluge/bradavice-papilomi-keratoze-moluske/page.tsx`
+  now uses it for 6 headed sections: *Šta su bradavice i HPV*, *Kako se prenose*, *Tipovi bradavica*
+  (4 bulleted types: vulgarne, plantarne, ravne mladalačke, filiformne, none of which had all been
+  enumerated before), *Kondilomi (polne bradavice)*, *Papilomi i seboroične keratoze*, and *Važno je
+  znati: mogućnost recidiva*. Also added a new FAQ ("Da li bradavice mogu same da nestanu?") covering
+  the spontaneous-regression point from the DOCX that wasn't previously surfaced. All of the
+  session's requested Serbian Latin typo fixes were applied while rewriting (mlađe, takođe, prođu,
+  najvećeg, šire, muškaraca, žena, citološke — all correct in the new copy).
+
+- **Bradavice page image — client file found and used.** `public/images/client/` was empty at the
+  start of this session; the user added
+  `uklanjanje-virusnih-bradavica-kondiloma-i-moluski.png` (1500×832) mid-session. Confirmed present,
+  wired in as the page's `imageSrc`, replacing the generic shared `dermatology-treatment.jpg`. See
+  the note added to §7.
+
+- **Real patient reviews — implemented.** The user pasted verbatim Google review text directly
+  (resolving the §9 dead end from the prior session). Curated 8 of the reviews for a new "Iskustva
+  Pacijenata" section on the homepage (`app/page.tsx`), placed directly after the existing "Naš
+  Pristup" section (kept, not replaced — both read cleanly on the page). Reused the existing
+  `TestimonialCard` component (no new component needed) in a `sm:grid-cols-2 lg:grid-cols-4` grid.
+  Reviewers are attributed as first name + last initial (Nataša D., Sean S., Diane, Nevena A., Ana
+  I., Pedja D., Marina V., Natali D.) — no names were invented, none were fabricated verbatim-and-
+  unlabeled (English/Serbian originals were lightly shortened for web readability, consistent with
+  the session's "ok to shorten and lightly adapt" rule). Coverage across the requested angles: trust
+  in Dr. Marta + thorough explanation (Nataša D., Pedja D.), professionalism (Sean S., Diane, Pedja
+  D.), international/English-speaking patient confidence (Sean S., Diane), family/long-term trust
+  (Nevena A.), dermatology/service results (Ana I., laser hair removal), clinic atmosphere (Natali
+  D.), plus a short punchy trust quote (Marina V.). Added the required subtle source line: "Izvodi
+  iz javno dostupnih recenzija pacijenata." New i18n keys: `home.reviewsSection`, `home.reviewsList`,
+  `home.reviewsSource` in all three of `sr.ts`/`en.ts`/`ru.ts`. **EN/RU review text is an AI-assisted
+  translation of the same real reviews** (the Serbian originals were translated into English for the
+  originally-English reviews' SR/RU counterparts and vice versa), not independently sourced — flagged
+  here the same way the 2026-07-10 M0 session flagged its other AI-assisted translations, for native
+  proofreading before launch.
+
+- **Em dash cleanup — public copy only.** Swept every `—` in `app/`, `components/`, `lib/` (168
+  occurrences found). ~140 were in rendered copy across 15 files (mostly the recurring "Label — detalj"
+  list-item pattern, replaced with a colon; prose clause breaks replaced with a comma; two
+  double-dash parentheticals replaced with real parentheses; one bare "— Author" quote-attribution
+  prefix removed since the design already has a visual rule above it). Code comments were
+  deliberately left untouched (not rendered to users) — confirmed by a final repo-wide grep that the
+  only remaining `—` characters are inside `{/* ... */}` or `//` comments.
+
+- **One Serbian Latin typo fixed in visible copy**: `podmladjuje` → `podmlađuje` in
+  `app/usluge/botoks-fileri/page.tsx`. The rest of the session's typo checklist
+  (prilagodjen/ledja/izmedju/odžavanje/takodje/mladje/prodju/najveceg/zena/citoloske) was grepped
+  repo-wide and found already clean — no occurrences left to fix. Note: `podmladjivanje-fotona-3d-4d-5d`
+  and `podmladjivanje-estetika` are URL slugs, not copy — intentionally left as-is (changing a slug
+  breaks links).
+
+- **Consistency fix (small, tied to the title change above):** the one other page linking to
+  `/usluge/medicinska-dermatologija` by label (`kapilari-i-hemangiomi-laser`'s related-services list)
+  had it as "Medicinska dermatologija" — updated to the new display name for consistency.
+
+- Verified: `npx tsc --noEmit`, `npm run build`, and `npm run dev -- --port 3123` with Playwright
+  checks across `/`, `/o-nama`, `/usluge`, `/usluge/medicinska-dermatologija`,
+  `/usluge/bradavice-papilomi-keratoze-moluske`, `/usluge/akne`, `/usluge/full-face`, `/oprema`,
+  `/kontakt`, `/galerija` at 1440×900 and 390×844 — see `IMPROVEMENT-REPORT.md` changelog for the
+  full results.
+
+- **Not done, out of scope**: M1 token/geometry work, the final Marta client review report, new
+  client questions document, whole-site redesign, and no medical copy beyond what the DOCX/user
+  supplied was invented.
+
+---
+
+## 12. Summary of the 2026-07-13 Oprema cleanup + Full Face expansion pass
+
+Wrap-up pass only — no redesign, no new content invented beyond what the client supplied.
+
+- **Oprema (`/oprema`) trimmed to Marta's final 9-item DOCX list, minus Zimmer → 8 devices.**
+  Zimmer Cryo 6 / Cryo Tube CL02 was confirmed absent from Marta's current equipment list (it was
+  already flagged in §5 as "not in DOCX at all, needs client confirmation before removing" — that
+  confirmation came in this session), so it was removed from `deviceConfig` in
+  `app/oprema/page.tsx` and from `oprema.devices` in `sr.ts`/`en.ts`/`ru.ts`.
+- **Manufacturer logos tried, then removed.** Several treatments were tested directly on the
+  equipment cards (a bordered logo chip, a grayscale badge, a bare inline image) using the PNGs the
+  user supplied into `public/images/Logos/`. With 8 differently-shaped brand marks side by side, all
+  versions read as visually distracting rather than clean, so the final UI reverted to plain text
+  cards: manufacturer name, device name, italic subtitle, description. No icons, no logos, no boxes.
+  The PNG files themselves were left in place, unused, in case a future pass wants a different layout.
+- **Ellman still shows 3 treatments, not 2 — flagged, not changed.** Marta's list names 2 use
+  cases (viral warts/condylomas/molluscum, papillomas/keratoses); the site also shows a 3rd
+  ("Elektroliza — trajno uklanjanje sedih i plavih dlačica") that was deliberately kept in an earlier
+  pass as a real, DOCX-uncontradicted capability (see §5 row). This wrap-up pass did not remove it,
+  since removing content wasn't part of the requested scope and a documented reason for keeping it
+  already exists — flagging again here in case Marta wants it dropped to match her list exactly.
+- **`/oprema` i18n-status correction.** This doc previously (incorrectly) said `/oprema` was
+  Serbian-only/hardcoded like the dedicated service pages. It isn't — it's wired through
+  `t.oprema.devices` in all three locale files. §6 above has been corrected.
+- **Full Face (`/usluge/full-face`) expanded using Marta's full supplied content**, still built on
+  the shared `ServicePageLayout` component (same as every other fully-furnished service page, not a
+  bespoke layout). Added a 7-entry `whatIsItSections` block covering: *Svako lice ima svoju priču*
+  (facial anatomy/why faces look tired with age), *Podmlađivanje za 5 do 10 godina*, *Principi kojima
+  se vodim* (her 5 stated principles), *MD Codes™ metodologija* (full Dr. Mauricio de Maio
+  attribution), *Nega i kvalitet kože* (now naming Jalupro Super Hydro, Volite, and hemijski pilinzi
+  explicitly, which weren't on the page before), *Zašto su bitni konsultacija i pregled* (including
+  correcting congenital traits — small chin, thin/asymmetric lips, asymmetric brows), and *Kako
+  izabrati pravi estetski tretman* (her 7-point checklist). `methods`, `idealCandidates`,
+  `expectedResults`, and `faqs` were expanded to match (FAQs 5→6, candidates 4→6). The client's raw
+  notes repeated the same checklist and process-steps content twice in different phrasings; these
+  were consolidated once each rather than duplicated on the page.
+- **Verified**: `npx tsc --noEmit`, `npm run build`, and `npm run dev -- --port 3123` with browser
+  checks across `/`, `/usluge`, `/usluge/full-face`, `/oprema` at 1440×900 and 390×844, plus the WIP
+  password gate. See `IMPROVEMENT-REPORT.md` changelog for the full results.
+- **Not done, out of scope**: removing the Ellman 3rd bullet, replacing/re-adding equipment logos,
+  any M1 design-system work, and no medical copy beyond what Marta's DOCX/notes supplied was invented.

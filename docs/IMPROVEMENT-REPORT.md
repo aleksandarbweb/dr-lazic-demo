@@ -792,3 +792,77 @@ Unchanged policy: raise with the client, don't build unprompted.
   - Not done, out of scope: M1 token/geometry work (not touched, per instructions), M4 catalog
     i18n / `buildServiceCopy()` retirement (still not started — see the M4 progress note above),
     M5 equipment↔service clickable cross-links.
+- 2026-07-10 — **Targeted client-content supplement pass** (manual DOCX cross-check against the live
+  site, at explicit user request — content-foundation work, not M1). Full detail in
+  `docs/client-content-map-2026-07-09.md` §11. Summary:
+  - `/usluge/medicinska-dermatologija` hero now shows the catalog's real display name
+    ("Dijagnostika i Lečenje Kožnih i Polnih Bolesti") with "Dermatologija za celu porodicu" as the
+    subtitle tagline, and the cleaned `whatIsIt` opening sentence the user specified verbatim.
+  - `/usluge/bradavice-papilomi-keratoze-moluske` restructured from 3 long paragraphs into 6 headed
+    sections via one new optional `whatIsItSections` prop on `ServicePageLayout` (same precedent as
+    the earlier `methods` addition — optional, backward-compatible). Added a missing FAQ on
+    spontaneous regression. Now uses the client-provided image
+    `public/images/client/uklanjanje-virusnih-bradavica-kondiloma-i-moluski.png` instead of the
+    shared generic dermatology photo.
+  - New "Iskustva Pacijenata" homepage section built from real, user-provided Google review text (8
+    curated reviews, first-name + last-initial attribution, required source line). Sits alongside
+    "Naš Pristup" (kept, not replaced). This resolves the open item from the previous session's §9
+    (WebSearch/WebFetch couldn't retrieve real review text; the user has now supplied it directly).
+  - Em-dash sweep: 168 occurrences found repo-wide; ~140 were in rendered copy across 15 files, all
+    replaced with grammatically appropriate punctuation (colon/comma/parentheses). Code comments
+    intentionally left untouched. One Serbian Latin typo fixed (`podmladjuje` → `podmlađuje`); the
+    rest of the requested typo list was already clean.
+  - Verified: `npx tsc --noEmit` clean (no output); `npm run build` passes (66 routes, same count as
+    before, `Running TypeScript ... Finished TypeScript` genuinely runs). Playwright, gate unlocked
+    with the local `admin` password via the real form flow (not just the cookie bypass): 0 console
+    errors and 0 broken `/images/`/`/_next/image` responses across `/`, `/o-nama`, `/usluge`,
+    `/usluge/medicinska-dermatologija`, `/usluge/bradavice-papilomi-keratoze-moluske`, `/usluge/akne`,
+    `/usluge/full-face`, `/oprema`, `/kontakt`, `/galerija` at both 1440×900 and 390×844. Visually
+    confirmed: the new hero title/subtitle on `/usluge/medicinska-dermatologija`, the 6 headed
+    sections + client wart-removal image on the bradavice page, and the "Iskustva Pacijenata" grid
+    with source line on the homepage, all render correctly at both viewports.
+  - **Not done, out of scope**: M1 token/geometry work untouched; M4 not marked complete (catalog
+    i18n / `buildServiceCopy()` retirement still pending); no final Marta client review report or
+    client questions document generated this session; no medical copy invented beyond the DOCX/
+    user-supplied text.
+- 2026-07-13 — **Oprema cleanup + Full Face expansion wrap-up pass** (verification/cleanup only, no
+  redesign, no new content invented). Full detail in `docs/client-content-map-2026-07-09.md` §12.
+  Summary:
+  - `/oprema` trimmed to Marta's final DOCX equipment list: 9 → 8 devices, Zimmer Cryo 6 / Cryo Tube
+    CL02 removed (`deviceConfig` in `app/oprema/page.tsx`, plus `oprema.devices.zimmer` deleted from
+    `sr.ts`/`en.ts`/`ru.ts`) after client confirmation it's absent from her current list.
+  - Manufacturer logos (Fotona/Alma/InMode/Ellman/Cortex/H&O/Canfield/Dermapen PNGs supplied by the
+    user) were tried directly on the equipment cards across several treatments this session (bordered
+    chip, grayscale badge, bare inline image) but read as visually distracting with 8 different brand
+    marks side by side, so the final cards are plain text: manufacturer, name, subtitle, description.
+    PNGs left in `public/images/Logos/`, unused.
+  - **Flagged, not changed**: Ellman still shows a 3rd treatment ("Elektroliza") beyond the 2 Marta's
+    list names. A documented reason for keeping it already existed from an earlier pass (real,
+    DOCX-uncontradicted capability); this wrap-up didn't remove it since that would be a content
+    decision outside "verify + tidy" scope, but it's flagged again in the content map in case Marta
+    wants it dropped to match her list exactly.
+  - Corrected a stale doc claim: `docs/client-content-map-2026-07-09.md` §6 previously said `/oprema`
+    was Serbian-only/hardcoded like the dedicated service pages. It isn't — it's wired through
+    `t.oprema.devices` and genuinely translated in all three locale files. Doc corrected.
+  - `/usluge/full-face` expanded with Marta's full supplied content, still on the shared
+    `ServicePageLayout` (same component every other fully-furnished service page uses — no bespoke
+    layout). Added a 7-entry `whatIsItSections` block (facial-aging anatomy, the "5 to 10 years
+    younger" framing, her 5 stated principles, full MD Codes™/de Maio attribution, skin-quality
+    treatments now naming Jalupro Super Hydro/Volite/hemijski pilinzi explicitly, why the consultation
+    matters including correcting congenital traits, and her 7-point "how to choose a treatment"
+    checklist). `methods`/`idealCandidates`/`expectedResults`/`faqs` expanded to match. Her raw notes
+    repeated the same checklist and process steps twice in different wording; consolidated once each
+    rather than duplicated on the page.
+  - Verified: `npx tsc --noEmit` clean (no output); `npm run build` passes (66 routes, same as before —
+    no route added or removed by this pass); `npm run dev -- --port 3123` running. Gate unlocked with
+    the real `admin` password via the actual form flow (not just the cookie bypass) after clearing
+    cookies — confirmed lock screen shows the password field pre-unlock, wrong password redirects
+    with `gate_error=1` and sets no cookie, correct password sets the `dt_site_access` cookie and
+    lands on the requested page. Playwright: 0 console errors on `/`, `/usluge`, `/usluge/full-face`,
+    `/oprema` at both 1440×900 and 390×844 (2 pre-existing, unrelated Next.js image-performance
+    *warnings* on the homepage — not errors, not touched by this pass, out of scope).
+  - **Not done, out of scope**: M1 token/geometry work untouched; M4 not marked complete (catalog i18n
+    / `buildServiceCopy()` retirement still pending, unrelated to this pass); M5's "Oprema" checkbox
+    (device image slots, service cross-links) intentionally left unchecked — not attempted this pass;
+    Ellman's 3rd treatment line not removed (flagged, not decided); equipment logos not re-added; no
+    commit made.

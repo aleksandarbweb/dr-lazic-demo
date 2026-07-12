@@ -1,27 +1,24 @@
 "use client"
 
 import Link from 'next/link'
-import { Zap, Radio, Snowflake, ScanFace, Thermometer, Sparkles, Waves, PenTool, type LucideIcon } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 type DeviceKey = keyof ReturnType<typeof useTranslation>['t']['oprema']['devices']
 
 const deviceConfig: Array<{
   key: DeviceKey
-  icon: LucideIcon
   name: string
   manufacturer: string
   id: string
 }> = [
-  { key: 'avalancheLase', icon: Zap, name: 'AvalancheLase', manufacturer: 'Fotona', id: 'avalanchelase' },
-  { key: 'spDynamis', icon: Zap, name: 'SP Dynamis', manufacturer: 'Fotona', id: 'sp-dynamis' },
-  { key: 'harmonyXL', icon: Sparkles, name: 'Harmony XL Pro', manufacturer: 'Alma', id: 'harmony-xl-pro' },
-  { key: 'morpheus8', icon: Waves, name: 'Morpheus 8', manufacturer: 'InMode', id: 'morpheus8' },
-  { key: 'ellman', icon: Radio, name: 'Ellman', manufacturer: 'Ellman', id: 'ellman' },
-  { key: 'cryopen', icon: Snowflake, name: 'CryoPro & CryoPen', manufacturer: 'CryoPen', id: 'cryopen' },
-  { key: 'dermlite', icon: ScanFace, name: 'DermLite DL5 & Canfield D200EVO', manufacturer: 'DermLite / Canfield', id: 'dermlite' },
-  { key: 'dermapen', icon: PenTool, name: 'Dermapen', manufacturer: 'Dermapen', id: 'dermapen' },
-  { key: 'zimmer', icon: Thermometer, name: 'Zimmer Cryo 6 & Cryo Tube CL02', manufacturer: 'Zimmer', id: 'zimmer' },
+  { key: 'avalancheLase', name: 'AvalancheLase', manufacturer: 'Fotona', id: 'avalanchelase' },
+  { key: 'spDynamis', name: 'SP Dynamis', manufacturer: 'Fotona', id: 'sp-dynamis' },
+  { key: 'harmonyXL', name: 'Harmony XL Pro', manufacturer: 'Alma', id: 'harmony-xl-pro' },
+  { key: 'morpheus8', name: 'Morpheus 8', manufacturer: 'InMode', id: 'morpheus8' },
+  { key: 'ellman', name: 'Ellman', manufacturer: 'Ellman', id: 'ellman' },
+  { key: 'cryopen', name: 'CryoPro & CryoPen', manufacturer: 'Cortex / H&O', id: 'cryopen' },
+  { key: 'dermlite', name: 'DermLite DL5 & Canfield D200EVO', manufacturer: 'DermLite / Canfield', id: 'dermlite' },
+  { key: 'dermapen', name: 'Dermapen', manufacturer: 'Dermapen', id: 'dermapen' },
 ]
 
 export default function OpremaPage() {
@@ -47,12 +44,28 @@ export default function OpremaPage() {
         </div>
       </section>
 
+      {/* Quick Navigation */}
+      <section className="bg-white border-b border-[#e5e0da]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-6">
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {deviceConfig.map((device) => (
+              <a
+                key={device.id}
+                href={`#${device.id}`}
+                className="rounded-full border border-[#e5e0da] bg-[#faf9f7] px-4 py-2 text-xs font-medium text-[#3d3832] transition-colors duration-300 hover:border-[#b91c1c]/40 hover:bg-white hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/50"
+              >
+                {device.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Equipment Grid */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="space-y-12 md:space-y-16">
             {deviceConfig.map((device, index) => {
-              const Icon = device.icon
               const deviceT = t.oprema.devices[device.key]
               const isReversed = index % 2 !== 0
 
@@ -67,10 +80,7 @@ export default function OpremaPage() {
                     <div className={`lg:col-span-2 ${isReversed ? 'lg:order-2' : ''}`}>
                       <div className="rounded-[1.75rem] border border-[#e3dad1] bg-[#faf9f7] p-1.5">
                         <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10">
-                          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-[#e5e0da] bg-white">
-                            <Icon size={26} className="text-[#b91c1c]" />
-                          </div>
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-2">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-3">
                             {device.manufacturer}
                           </p>
                           <h2 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-1">

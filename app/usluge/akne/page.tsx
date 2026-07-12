@@ -10,21 +10,21 @@ const serviceData = {
   title: 'Lečenje Akni',
   subtitle: 'Individualni pristup, savremena laserska terapija i sistemski protokoli za sve forme akni',
   description: 'Stručna medicinska nega prilagođena svakom tipu i uzroku akni',
-  whatIsIt: `Akne predstavljaju najčešće dermatološko oboljenje, vezano najviše za adolescentni period, ali nisu retkost ni kod osoba srednje životne dobi. Postoje razni tipovi akni — od vrlo blagih, preko srednje teških, do teških formi praćenih izraženim upalnim procesima koji mogu ostaviti ožiljke i crvene fleke. Što se ranije krene sa adekvatnom terapijom, veće su šanse za brže izlečenje i manji rizik od trajnih tragova.
+  whatIsIt: `Akne predstavljaju najčešće dermatološko oboljenje, vezano najviše za adolescentni period, ali nisu retkost ni kod osoba srednje životne dobi. Postoje razni tipovi akni: od vrlo blagih, preko srednje teških, do teških formi praćenih izraženim upalnim procesima koji mogu ostaviti ožiljke i crvene fleke. Što se ranije krene sa adekvatnom terapijom, veće su šanse za brže izlečenje i manji rizik od trajnih tragova.
 
-Svaki pacijent se posmatra kao individua — proces lečenja planiramo prema kliničkoj slici, godinama, polu, životnim navikama, metabolizmu i mogućim hormonskim disbalansima. Kod odraslih pacijentkinja sve češći uzrok akni su policistični jajnici i insulinska rezistencija, pa je po potrebi neophodna i podrška ginekologa ili endokrinologa.
+Svaki pacijent se posmatra kao individua: proces lečenja planiramo prema kliničkoj slici, godinama, polu, životnim navikama, metabolizmu i mogućim hormonskim disbalansima. Kod odraslih pacijentkinja sve češći uzrok akni su policistični jajnici i insulinska rezistencija, pa je po potrebi neophodna i podrška ginekologa ili endokrinologa.
 
 Ključne reči u lečenju i izlečenju akni su individualni pristup, poverenje, strpljenje i upornost, uz redovno korišćenje terapije koju preporuči dermatolog.`,
   methods: [
     'Lokalna terapija (retinoidi, antiseptici) prilagođena tipu kože',
-    'Sistemska terapija — antibiotici, kontraceptivna pilula ili izotretinoin, po protokolu dermatologa',
-    'Nd:YAG laser — 5 do 6 tretmana nedeljno, potom mesečno održavanje',
-    'Clear Skin laser (odobren od FDA) — 4 do 6 tretmana na svake 2 do 3 nedelje',
-    'Hemijski pilinzi nove generacije — u serijama na 2 do 4 nedelje',
-    'Komedoekspresija (medicinsko higijensko čišćenje) — uklanjanje otvorenih i zatvorenih komedona',
+    'Sistemska terapija: antibiotici, kontraceptivna pilula ili izotretinoin, po protokolu dermatologa',
+    'Nd:YAG laser: 5 do 6 tretmana nedeljno, potom mesečno održavanje',
+    'Clear Skin laser (odobren od FDA): 4 do 6 tretmana na svake 2 do 3 nedelje',
+    'Hemijski pilinzi nove generacije: u serijama na 2 do 4 nedelje',
+    'Komedoekspresija (medicinsko higijensko čišćenje): uklanjanje otvorenih i zatvorenih komedona',
   ],
   howItWorks: [
-    'Detaljan pregled — analiza tipa kože, težine oboljenja, prethodnih terapija i mogućih hormonskih faktora.',
+    'Detaljan pregled: analiza tipa kože, težine oboljenja, prethodnih terapija i mogućih hormonskih faktora.',
     'Individualni plan lečenja koji kombinuje lokalnu i, po potrebi, sistemsku terapiju.',
     'Terapija laserom i/ili hemijskim pilinzima u ordinaciji, prema kliničkoj slici.',
     'Saveti o ishrani i svakodnevnoj nezi koji podržavaju terapiju.',
@@ -49,7 +49,7 @@ Ključne reči u lečenju i izlečenju akni su individualni pristup, poverenje, 
     },
     {
       question: 'Da li ishrana utiče na akne?',
-      answer: 'Da — namirnice poput rafinisanog šećera, brze masne hrane i mleka mogu pogoršati akne kod nekih osoba, pa se savetuje redukcija njihovog unosa uz redovnu terapiju.',
+      answer: 'Da, namirnice poput rafinisanog šećera, brze masne hrane i mleka mogu pogoršati akne kod nekih osoba, pa se savetuje redukcija njihovog unosa uz redovnu terapiju.',
     },
     {
       question: 'Zašto se ponekad uključuje ginekolog ili endokrinolog?',
@@ -57,7 +57,7 @@ Ključne reči u lečenju i izlečenju akni su individualni pristup, poverenje, 
     },
     {
       question: 'Da li lečenje akni remeti svakodnevne aktivnosti?',
-      answer: 'Ne — pristup lečenju akni u ordinaciji usklađen je sa svetskim dermatološkim standardima i ne remeti pacijente u obavljanju svakodnevnih aktivnosti.',
+      answer: 'Ne, pristup lečenju akni u ordinaciji usklađen je sa svetskim dermatološkim standardima i ne remeti pacijente u obavljanju svakodnevnih aktivnosti.',
     },
     {
       question: 'Šta ako blagi preparati ne pomažu?',

@@ -8,7 +8,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react'
 const faqs = [
   {
     question: 'Da li je lasersko podmlađivanje bolno?',
-    answer: 'Neinvazivni Nd:YAG tretman je potpuno bezbolna procedura — tokom tretmana osećate samo prijatno zagrevanje kože. Er:YAG frakcionisani tretman podrazumeva aplikaciju lokalne anestetičke kreme pre procedure, nakon čega je tretman vrlo komforan sa minimalnom nelagodom.'
+    answer: 'Neinvazivni Nd:YAG tretman je potpuno bezbolna procedura: tokom tretmana osećate samo prijatno zagrevanje kože. Er:YAG frakcionisani tretman podrazumeva aplikaciju lokalne anestetičke kreme pre procedure, nakon čega je tretman vrlo komforan sa minimalnom nelagodom.'
   },
   {
     question: 'Koliko tretmana je potrebno za vidljive rezultate?',
@@ -16,15 +16,15 @@ const faqs = [
   },
   {
     question: 'Koliko traje oporavak?',
-    answer: 'Neinvazivni Nd:YAG tretman nema period oporavka — moguće je blago crvenilo koje se povlači za 10–20 minuta. Nakon Er:YAG frakcionisanog tretmana oporavak je minimalan, a šminkanje je dozvoljeno već nakon 24 sata.'
+    answer: 'Neinvazivni Nd:YAG tretman nema period oporavka: moguće je blago crvenilo koje se povlači za 10–20 minuta. Nakon Er:YAG frakcionisanog tretmana oporavak je minimalan, a šminkanje je dozvoljeno već nakon 24 sata.'
   },
   {
     question: 'Da li tretman može pomoći kod akni i rozacee?',
-    answer: 'Da. Zahvaljujući snažnoj protivupalnoj aktivnosti, Nd:YAG laser je izuzetno efikasan kod problematične kože sklone aknama — naročito u donjoj trećini lica. Takođe pokazuje odlične rezultate kod difuznog crvenila kože i rozacee u početnoj fazi, regulišući lučenje sebuma i poboljšavajući lokalni imunitet kože.'
+    answer: 'Da. Zahvaljujući snažnoj protivupalnoj aktivnosti, Nd:YAG laser je izuzetno efikasan kod problematične kože sklone aknama, naročito u donjoj trećini lica. Takođe pokazuje odlične rezultate kod difuznog crvenila kože i rozacee u početnoj fazi, regulišući lučenje sebuma i poboljšavajući lokalni imunitet kože.'
   },
   {
     question: 'Šta je GF (Growth Factor) i zašto se koristi?',
-    answer: 'GF — faktor rasta — je ćelijski protein koji učestvuje u prirodnim mehanizmima regeneracije kože. Procesom starenja njegova koncentracija se smanjuje. Aplikacijom GF-a na kožu prethodno pripremljenu laserom ili hemijskim pilinzima, budi se prirodni regenerativni potencijal kože sa kumulativnim i dugotrajnim efektom.'
+    answer: 'GF (faktor rasta) je ćelijski protein koji učestvuje u prirodnim mehanizmima regeneracije kože. Procesom starenja njegova koncentracija se smanjuje. Aplikacijom GF-a na kožu prethodno pripremljenu laserom ili hemijskim pilinzima, budi se prirodni regenerativni potencijal kože sa kumulativnim i dugotrajnim efektom.'
   },
   {
     question: 'Kada se vide prvi rezultati?',
@@ -37,15 +37,15 @@ const faqs = [
 ]
 
 const howItWorks = [
-  'Konsultacija i dijagnostika — detaljan pregled stanja kože, definisanje indikacije i kreiranje personalizovanog protokola tretmana.',
-  'Neinvazivno podmlađivanje (Nd:YAG) — infracrvena svetlost precizno zagreja dermis, stimulišući fibroblaste na pojačanu produkciju kolagena. Tretman traje oko 20 minuta i oseća se kao blago, opuštajuće zagrevanje.',
-  'Ablativno podmlađivanje (Er:YAG) — kontrolisana ablacija pokreće sintezu novog kolagena. Laserski piling i frakcionisano podmlađivanje se primenjuju pojedinačno ili kombinovano, u zavisnosti od stanja kože.',
-  'Aplikacija Growth Factora (GF) — nakon laserske pripreme kože, aplikuje se faktor rasta koji budi prirodni regenerativni potencijal i pojačava kumulativni efekat tretmana.',
-  'Plan održavanja — nakon inicijalne serije tretmana, definišemo individualni raspored mesečnih tretmana održavanja za dugotrajne rezultate.'
+  'Konsultacija i dijagnostika: detaljan pregled stanja kože, definisanje indikacije i kreiranje personalizovanog protokola tretmana.',
+  'Neinvazivno podmlađivanje (Nd:YAG): infracrvena svetlost precizno zagreja dermis, stimulišući fibroblaste na pojačanu produkciju kolagena. Tretman traje oko 20 minuta i oseća se kao blago, opuštajuće zagrevanje.',
+  'Ablativno podmlađivanje (Er:YAG): kontrolisana ablacija pokreće sintezu novog kolagena. Laserski piling i frakcionisano podmlađivanje se primenjuju pojedinačno ili kombinovano, u zavisnosti od stanja kože.',
+  'Aplikacija Growth Factora (GF): nakon laserske pripreme kože, aplikuje se faktor rasta koji budi prirodni regenerativni potencijal i pojačava kumulativni efekat tretmana.',
+  'Plan održavanja: nakon inicijalne serije tretmana, definišemo individualni raspored mesečnih tretmana održavanja za dugotrajne rezultate.'
 ]
 
 const idealCandidates = [
-  'Osobe sa prvim znacima starenja kože — gubitak elastičnosti, fine bore i neravnomeran ten',
+  'Osobe sa prvim znacima starenja kože: gubitak elastičnosti, fine bore i neravnomeran ten',
   'Osobe sa proširenim porama i difuznim crvenilom kože',
   'Osobe sa problematičnom kožom sklonom aknama, posebno u donjoj trećini lica',
   'Osobe sa rozaceom u početnoj fazi',
@@ -60,7 +60,7 @@ const expectedResults = [
   'Regulisano lučenje sebuma kod problematične kože',
   'Smirivanje kožnih zapaljenja i akni',
   'Popravljanje kvaliteta kože kroz stimulaciju novog kolagena',
-  'Kumulativni efekat — rezultati se postepeno poboljšavaju mesecima nakon tretmana'
+  'Kumulativni efekat: rezultati se postepeno poboljšavaju mesecima nakon tretmana'
 ]
 
 export default function FotonaPage() {
@@ -98,7 +98,7 @@ export default function FotonaPage() {
             </h1>
             <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
-              Personalizovano lasersko podmlađivanje kože sa Nd:YAG i Er:YAG laserima — nehiruška alternativa sa vidljivim, dugoročnim rezultatima.
+              Personalizovano lasersko podmlađivanje kože sa Nd:YAG i Er:YAG laserima, nehiruška alternativa sa vidljivim, dugoročnim rezultatima.
             </p>
             <Link
               href="/kontakt"
@@ -125,10 +125,10 @@ export default function FotonaPage() {
                   Laseri u dermatologiji su moćno oružje u borbi protiv starenja i svih nepravilnosti kože. Za personalizovano podmlađivanje koriste se dva vrhunska Fotona lasera: <strong className="text-[#3d3832] font-medium">Nd:YAG laser</strong> i <strong className="text-[#3d3832] font-medium">Er:YAG laser</strong>.
                 </p>
                 <p>
-                  Osnovni uzrok starenja kože je smanjena aktivnost fibroblasta u vezivnom tkivu, što dovodi do smanjene sinteze kolagenih vlakana. Dejstvo spoljašnjih faktora — prekomerno sunčanje, pušenje, nepravilna ishrana — dodatno ubrzava ovaj proces. Koža postepeno gubi elastičnost i jedrinu, pojavljuju se bore, fleke i proširen vaskularni crtež.
+                  Osnovni uzrok starenja kože je smanjena aktivnost fibroblasta u vezivnom tkivu, što dovodi do smanjene sinteze kolagenih vlakana. Dejstvo spoljašnjih faktora (prekomerno sunčanje, pušenje, nepravilna ishrana) dodatno ubrzava ovaj proces. Koža postepeno gubi elastičnost i jedrinu, pojavljuju se bore, fleke i proširen vaskularni crtež.
                 </p>
                 <p>
-                  Fotona laserski tretmani deluju na same uzroke starenja stimulišući produkciju novog kolagena, obnavljajući strukturu kože iznutra i vraćajući joj mladalački izgled — bez hirurške intervencije i sa minimalnim oporavkom.
+                  Fotona laserski tretmani deluju na same uzroke starenja stimulišući produkciju novog kolagena, obnavljajući strukturu kože iznutra i vraćajući joj mladalački izgled, bez hirurške intervencije i sa minimalnim oporavkom.
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function FotonaPage() {
               <div className="relative h-full w-full overflow-hidden rounded-[calc(1.75rem-0.375rem)]">
                 <Image
                   src="/images/Services/Fotona/fotonainfo.png"
-                  alt="Fotona lasersko podmlađivanje — pregled zona tretmana"
+                  alt="Fotona lasersko podmlađivanje, pregled zona tretmana"
                   fill
                   className="object-cover object-top"
                 />
@@ -175,7 +175,7 @@ export default function FotonaPage() {
                     Postiže se vidljivo osveženje kože lica, poboljšanje čvrstine i elastičnosti, ujednačenje boje kože, poravnanje finih bora, kao i smanjenje proširenih pora i difuznog crvenila.
                   </p>
                   <p>
-                    Tretman traje oko <strong className="text-[#3d3832] font-medium">20 minuta</strong>, bez bola — oseća se samo blago, opuštajuće zagrevanje. Moguće blago crvenilo se povlači za 10–20 minuta. Preporučuje se serija od <strong className="text-[#3d3832] font-medium">5 tretmana jednom nedeljno</strong>.
+                    Tretman traje oko <strong className="text-[#3d3832] font-medium">20 minuta</strong>, bez bola, oseća se samo blago, opuštajuće zagrevanje. Moguće blago crvenilo se povlači za 10–20 minuta. Preporučuje se serija od <strong className="text-[#3d3832] font-medium">5 tretmana jednom nedeljno</strong>.
                   </p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function FotonaPage() {
                 <div className="w-12 h-[2px] bg-[#b91c1c] mb-6" />
                 <div className="text-[#6b6b6b] leading-relaxed font-light space-y-4">
                   <p>
-                    Er:YAG laser predstavlja metodu izbora za podmlađivanje kože. Emituje laserski zrak talasne dužine od 2940nm koji se apsorbuje u vodi, dajući kontrolisanu, bezbolnu hladnu ablaciju kože merenu mikronima — bez oštećenja okolnog tkiva.
+                    Er:YAG laser predstavlja metodu izbora za podmlađivanje kože. Emituje laserski zrak talasne dužine od 2940nm koji se apsorbuje u vodi, dajući kontrolisanu, bezbolnu hladnu ablaciju kože merenu mikronima, bez oštećenja okolnog tkiva.
                   </p>
                   <p>
                     Primenjuju se dva moda: <strong className="text-[#3d3832] font-medium">laserski piling</strong> za istovremeno uklanjanje keratoza, papiloma, pigmentacija i pojedinačno tretiranje bora, i <strong className="text-[#3d3832] font-medium">frakcionisano podmlađivanje</strong> koje pravi mikrokanale u koži pokretanjem sinteze kolagena sa minimalnim oštećenjem površnog sloja.
@@ -211,9 +211,9 @@ export default function FotonaPage() {
                 </div>
               </div>
               <div>
-                <h3 className="font-serif text-xl md:text-2xl text-[#1a1a1a] mb-3">Growth Factor — Faktor Rasta</h3>
+                <h3 className="font-serif text-xl md:text-2xl text-[#1a1a1a] mb-3">Growth Factor: Faktor Rasta</h3>
                 <p className="text-[#6b6b6b] leading-relaxed font-light">
-                  Nakon tretmana laserom može se aplikovati GF — ćelijski protein uključen u prirodne mehanizme regeneracije kože. Procesom starenja njegova koncentracija se smanjuje. Dodavanjem Faktora Rasta na kožu pripremljenu laserom, nanovo se budi prirodni potencijal regeneracije sa kumulativnim i dugotrajnim efektom koji daleko prevazilazi &quot;instant&quot; metode podmlađivanja.
+                  Nakon tretmana laserom može se aplikovati GF, ćelijski protein uključen u prirodne mehanizme regeneracije kože. Procesom starenja njegova koncentracija se smanjuje. Dodavanjem Faktora Rasta na kožu pripremljenu laserom, nanovo se budi prirodni potencijal regeneracije sa kumulativnim i dugotrajnim efektom koji daleko prevazilazi &quot;instant&quot; metode podmlađivanja.
                 </p>
               </div>
             </div>
@@ -372,7 +372,7 @@ export default function FotonaPage() {
           />
           <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Spremni ste?</p>
           <h2 className="font-serif text-3xl md:text-4xl text-white">
-            Fotona Tretman — Saznajte Više
+            Fotona Tretman: Saznajte Više
           </h2>
           <p className="text-white/80 mt-5 font-light max-w-xl mx-auto">
             Kontaktirajte nas danas za konsultaciju i personalizovan plan laserskog podmlađivanja

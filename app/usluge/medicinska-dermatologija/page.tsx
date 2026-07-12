@@ -2,16 +2,16 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Medicinska Dermatologija | Ordinacija Dr. Terzić',
+  title: 'Dijagnostika i Lečenje Kožnih i Polnih Bolesti | Ordinacija Dr. Terzić',
   description:
-    'Dijagnostika i lečenje kožnih i polnih bolesti uz individualni plan terapije, kontrole i savremene dermatološke protokole.',
+    'Dermatologija za celu porodicu: sveobuhvatan pregled kože, vidljivih sluzokoža i kožnih tvorevina za decu i odrasle, uz individualni plan terapije i kontrole.',
 }
 
 const serviceData = {
-  title: 'Medicinska Dermatologija',
-  subtitle: 'Precizna dijagnostika i terapija kožnih i polnih bolesti u ordinacijskom režimu',
+  title: 'Dijagnostika i Lečenje Kožnih i Polnih Bolesti',
+  subtitle: 'Dermatologija za celu porodicu: precizna dijagnostika i terapija kožnih i polnih bolesti, za decu i odrasle.',
   description: 'Sveobuhvatan dermatološki pristup od prvog pregleda do kontrole rezultata',
-  whatIsIt: `Specijalistički pregled u ordinaciji Dr. Terzić namenjen je i deci i odraslima, a obuhvata sveobuhvatan pregled kože, vidljivih sluzokoža i kožnih tvorevina — noktiju i dlake. Medicinska dermatologija tako obuhvata dijagnostiku, lečenje i dugoročno praćenje akutnih i hroničnih stanja kože, kose i noktiju. U našoj ordinaciji tretman započinje detaljnim kliničkim pregledom i analizom istorije bolesti, a nastavlja se planom terapije prilagođenim tipu kože, intenzitetu promena i životnim navikama pacijenta.
+  whatIsIt: `Specijalistički pregled dece i odraslih u ordinaciji Dr Terzić obuhvata sveobuhvatan pregled kože, vidljivih sluzokoža i kožnih tvorevina, uključujući nokte i kosu. Medicinska dermatologija tako obuhvata dijagnostiku, lečenje i dugoročno praćenje akutnih i hroničnih stanja kože, kose i noktiju. Tretman započinje detaljnim kliničkim pregledom i analizom istorije bolesti, a nastavlja se planom terapije prilagođenim tipu kože, intenzitetu promena i životnim navikama pacijenta.
 
 Poseban fokus stavljamo na akne, rozaceu, dermatitis, infekcije kože, poremećaje pigmentacije i stanja sa pojačanim opadanjem kose. Cilj je jasan: stabilizacija stanja kože, smanjenje recidiva i dugoročno očuvanje zdravlja kožne barijere.`,
   howItWorks: [

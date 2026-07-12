@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: 'Da li botoks zamrzava izraz lica?',
-    answer: 'Ne. Radi se o privremenoj parezi mišića, odnosno smanjenoj pokretljivosti — ne paralizi. Kod iskusnog doktora sa dobrom tehnikom rada rezultat je prirodan izgled, a ne zamrznut izraz lica. Vremenom lice izgleda sve bolje jer nema podsticaja za nastanak novih bora.'
+    answer: 'Ne. Radi se o privremenoj parezi mišića, odnosno smanjenoj pokretljivosti, ne paralizi. Kod iskusnog doktora sa dobrom tehnikom rada rezultat je prirodan izgled, a ne zamrznut izraz lica. Vremenom lice izgleda sve bolje jer nema podsticaja za nastanak novih bora.'
   },
   {
     question: 'Kada se vide rezultati filera?',
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: 'Koji preparati se koriste?',
-    answer: 'Koristimo isključivo originalne Allergan preparate. VISTABEL je u našoj zemlji jedini registrovan preparat botulinskog toksina za estetsku primenu. Za filere koristimo Juvederm liniju — najbezbednije i najčešće korišćene dermalne filere na svetu, koji sadrže integrisani anestetik za komfornije iskustvo.'
+    answer: 'Koristimo isključivo originalne Allergan preparate. VISTABEL je u našoj zemlji jedini registrovan preparat botulinskog toksina za estetsku primenu. Za filere koristimo Juvederm liniju, najbezbednije i najčešće korišćene dermalne filere na svetu, koji sadrže integrisani anestetik za komfornije iskustvo.'
   },
   {
     question: 'Kako se pripremiti za tretman filerima?',
@@ -37,17 +37,17 @@ const faqs = [
 ]
 
 const botoksSteps = [
-  'Konsultacija i analiza — detaljan pregled lica, procena stanja kože i mimičnih mišića, definisanje individualnog plana tretmana.',
-  'Priprema — čišćenje i dezinfekcija tretirane zone. Tretman ne zahteva anestetičku kremu.',
-  'Aplikacija — injektovanje malih količina razblaženog botulinskog toksina u mimične mišiće korišćenjem najtanjih igala. Tretman traje oko 15 minuta.',
-  'Procena rezultata — kontrolni pregled nakon 2 nedelje radi provere dejstva i eventualne korekcije.'
+  'Konsultacija i analiza: detaljan pregled lica, procena stanja kože i mimičnih mišića, definisanje individualnog plana tretmana.',
+  'Priprema: čišćenje i dezinfekcija tretirane zone. Tretman ne zahteva anestetičku kremu.',
+  'Aplikacija: injektovanje malih količina razblaženog botulinskog toksina u mimične mišiće korišćenjem najtanjih igala. Tretman traje oko 15 minuta.',
+  'Procena rezultata: kontrolni pregled nakon 2 nedelje radi provere dejstva i eventualne korekcije.'
 ]
 
 const filerSteps = [
-  'Konsultacija i MD kodovi — pažljiva analiza lica i individualni plan rada korišćenjem metodologije MD kodova za Full Face pristup.',
-  'Priprema — čišćenje i dezinfekcija. Nove generacije Juvederm filera sadrže anestetik koji obezbeđuje komforno iskustvo.',
-  'Aplikacija — precizno injektovanje filera u kožu i potkožno tkivo na unapred određena mesta. Tretman traje 15–45 minuta zavisno od zone.',
-  'Praćenje rezultata — efekti su vidljivi odmah, a definitivni rezultati se procenjuju nakon 3–4 nedelje.'
+  'Konsultacija i MD kodovi: pažljiva analiza lica i individualni plan rada korišćenjem metodologije MD kodova za Full Face pristup.',
+  'Priprema: čišćenje i dezinfekcija. Nove generacije Juvederm filera sadrže anestetik koji obezbeđuje komforno iskustvo.',
+  'Aplikacija: precizno injektovanje filera u kožu i potkožno tkivo na unapred određena mesta. Tretman traje 15–45 minuta zavisno od zone.',
+  'Praćenje rezultata: efekti su vidljivi odmah, a definitivni rezultati se procenjuju nakon 3–4 nedelje.'
 ]
 
 const idealCandidates = [
@@ -61,13 +61,13 @@ const idealCandidates = [
 ]
 
 const expectedResults = [
-  'Smanjenje i nestanak mimičnih bora — ljutit i umoran izraz ustupa mesto svežem i mlađem',
+  'Smanjenje i nestanak mimičnih bora: ljutit i umoran izraz ustupa mesto svežem i mlađem',
   'Blago podizanje obrva i otvoren pogled',
   'Sužene pore i smanjeno lučenje sebuma u tretiranoj regiji',
-  'Prirodno popunjen volumen lica — podočnjaci nestaju, konture se definišu',
-  'Full Face efekat — vidljiv rezultat, nevidljiv tretman. Podmlađivanje za 5–10 godina',
+  'Prirodno popunjen volumen lica: podočnjaci nestaju, konture se definišu',
+  'Full Face efekat: vidljiv rezultat, nevidljiv tretman. Podmlađivanje za 5–10 godina',
   'Trajnost rezultata botoksa 4–6 meseci, filera 12–24 meseca',
-  'Kumulativni efekat — vremenom lice izgleda sve bolje jer nema podsticaja za bore'
+  'Kumulativni efekat: vremenom lice izgleda sve bolje jer nema podsticaja za bore'
 ]
 
 export default function BotoksFilerPage() {
@@ -95,7 +95,7 @@ export default function BotoksFilerPage() {
             </h1>
             <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
-              Precizna korekcija bora, vraćanje volumena i konturisanje lica premium Allergan preparatima — najčešće izvođena estetska procedura na svetu.
+              Precizna korekcija bora, vraćanje volumena i konturisanje lica premium Allergan preparatima, najčešće izvođena estetska procedura na svetu.
             </p>
             <Link
               href="/kontakt"
@@ -114,7 +114,7 @@ export default function BotoksFilerPage() {
             <div>
               <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">O tretmanu</p>
               <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
-                Botoks i Fileri — Šta Trebate Znati
+                Botoks i Fileri: Šta Trebate Znati
               </h2>
               <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
               <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
@@ -122,10 +122,10 @@ export default function BotoksFilerPage() {
                   <strong className="text-[#3d3832] font-medium">Botulinski toksin</strong> se koristi za korigovanje bora u gornjoj trećini lica, nastalih kao posledica kontrakcije mimičnih mišića. Bore između obrva daju ljutit izraz, bore oko očiju i horizontalne bore na čelu čine da lice izgleda starije, a spušteni spoljašnji krajevi obrva daju tužan izraz.
                 </p>
                 <p>
-                  Injektovanjem malih količina razblaženog botulinskog toksina u mimične mišiće sprečavaju se kontrakcije — postojeće bore nestaju ili se ublažavaju, moguće je blago podizanje obrva, a u tretiranoj regiji se popravlja kvalitet kože i sužavaju pore.
+                  Injektovanjem malih količina razblaženog botulinskog toksina u mimične mišiće sprečavaju se kontrakcije, postojeće bore nestaju ili se ublažavaju, moguće je blago podizanje obrva, a u tretiranoj regiji se popravlja kvalitet kože i sužavaju pore.
                 </p>
                 <p>
-                  <strong className="text-[#3d3832] font-medium">Hijaluronski fileri</strong> su preparati na bazi hijaluronske kiseline — prirodne supstance koja se nalazi u vezivnom tkivu kože. Koriste se za korekciju bora, prirodno oblikovanje usana, jagodica i brade, i za Full Face pristup kojim se briše umorni izgled i lice podmladjuje za 5–10 godina.
+                  <strong className="text-[#3d3832] font-medium">Hijaluronski fileri</strong> su preparati na bazi hijaluronske kiseline, prirodne supstance koja se nalazi u vezivnom tkivu kože. Koriste se za korekciju bora, prirodno oblikovanje usana, jagodica i brade, i za Full Face pristup kojim se briše umorni izgled i lice podmlađuje za 5–10 godina.
                 </p>
                 <p>
                   Hijaluronski filer se u telu biološki razgrađuje na prirodan način, a zbog pozitivnog uticaja na kvalitet tkiva i kože obezbeđeno je usporenje starenja i očuvanje prirodnosti.
@@ -165,7 +165,7 @@ export default function BotoksFilerPage() {
             <div className="rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
               <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10 h-full">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-3">Botulinski toksin</p>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Botoks — VISTABEL®</h3>
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Botoks: VISTABEL®</h3>
                 <div className="w-12 h-[2px] bg-[#b91c1c] mb-6" />
                 <div className="space-y-6">
                   {botoksSteps.map((step, index) => (
@@ -184,7 +184,7 @@ export default function BotoksFilerPage() {
             <div className="rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
               <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10 h-full">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-3">Dermalni fileri</p>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Fileri — Juvederm®</h3>
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Fileri: Juvederm®</h3>
                 <div className="w-12 h-[2px] bg-[#b91c1c] mb-6" />
                 <div className="space-y-6">
                   {filerSteps.map((step, index) => (
@@ -211,7 +211,7 @@ export default function BotoksFilerPage() {
                   'Šminkanje je dozvoljeno sutradan',
                   '5–7 dana bez fizičke aktivnosti i saune',
                   '3–4 nedelje bez tretmana i masaža lica',
-                  'Za usne — 24h izbegavati tople napitke, pušenje i alkohol'
+                  'Za usne: 24h izbegavati tople napitke, pušenje i alkohol'
                 ].map((rec, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <span className="w-1.5 h-1.5 bg-[#b91c1c] mt-2 flex-shrink-0 rounded-full" />
@@ -343,7 +343,7 @@ export default function BotoksFilerPage() {
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Spremni ste?</p>
           <h2 className="font-serif text-3xl md:text-4xl text-white">
-            Botoks i Fileri — Saznajte Više
+            Botoks i Fileri: Saznajte Više
           </h2>
           <p className="text-white/80 mt-5 font-light max-w-xl mx-auto">
             Kontaktirajte nas za individualan plan tretmana prilagođen vašim potrebama i ciljevima

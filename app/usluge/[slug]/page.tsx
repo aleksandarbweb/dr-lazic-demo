@@ -6,7 +6,7 @@ import { allServices, serviceBySlug } from '@/lib/service-catalog'
 type Params = { slug: string }
 
 const buildServiceCopy = (name: string, category: string) => ({
-  subtitle: `${name} — individualno planiran tretman u okviru oblasti: ${category}`,
+  subtitle: `${name}, individualno planiran tretman u okviru oblasti: ${category}`,
   description: `Personalizovan protokol za ${name.toLowerCase()} sa fokusom na bezbednost, prirodan rezultat i dugoročno održavanje.`,
   whatIsIt: `${name} je procedura iz oblasti "${category}" koja se planira prema tipu kože, indikaciji i ciljevima pacijenta. U ordinaciji Dr. Terzić tretman započinje detaljnom procenom i jasnim planom koraka kako bi rezultat bio ujednačen, predvidiv i estetski prirodan.
 

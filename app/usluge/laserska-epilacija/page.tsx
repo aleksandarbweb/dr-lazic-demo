@@ -8,7 +8,7 @@ import { ChevronDown, ChevronRight, CheckCircle2 } from 'lucide-react'
 const faqs = [
   {
     question: 'Da li laser zrači i da li je zračenje štetno?',
-    answer: 'Ne. Medicinski diodni laser emituje svetlost specifične talasne dužine koja deluje isključivo na melanin u folikulu dlake. Nije reč o jonizujućem zračenju — radi se o svetlosnoj energiji koja je potpuno bezbedna za organizam.'
+    answer: 'Ne. Medicinski diodni laser emituje svetlost specifične talasne dužine koja deluje isključivo na melanin u folikulu dlake. Nije reč o jonizujućem zračenju, radi se o svetlosnoj energiji koja je potpuno bezbedna za organizam.'
   },
   {
     question: 'Koliko tretmana je potrebno za trajne rezultate?',
@@ -33,18 +33,18 @@ const faqs = [
 ]
 
 const howItWorks = [
-  'Direktan kontakt — laserski snop talasne dužine 800 nm usmerava se na kožu.',
-  'Apsorpcija — snop se apsorbuje isključivo u melaninu (pigmentu) folikula dlake.',
-  'Pretvaranje u toplotu — u intervalu od 30 milisekundi svetlost se pretvara u toplotu.',
-  'Uništenje — trajno se uništavaju dlačice koje su u aktivnoj fazi rasta (anagen).',
-  'Faza odmora — dlačice u katagenoj ili telogenoj fazi se uništavaju jednokratno, zato se tretman mora ponavljati.'
+  'Direktan kontakt: laserski snop talasne dužine 800 nm usmerava se na kožu.',
+  'Apsorpcija: snop se apsorbuje isključivo u melaninu (pigmentu) folikula dlake.',
+  'Pretvaranje u toplotu: u intervalu od 30 milisekundi svetlost se pretvara u toplotu.',
+  'Uništenje: trajno se uništavaju dlačice koje su u aktivnoj fazi rasta (anagen).',
+  'Faza odmora: dlačice u katagenoj ili telogenoj fazi se uništavaju jednokratno, zato se tretman mora ponavljati.'
 ]
 
 const preparationSteps = [
-  'Bez čupanja — dlačice se ne smeju uklanjati pincetom ili voskom (min. 4 nedelje za lice, 6 nedelja za telo).',
-  'Skraćivanje — dozvoljeno je korišćenje makazica, brijača ili depil kreme.',
-  'Bez sunčanja — koža ne sme biti sveže osunčana ili tretirana u solarijumu.',
-  'Čista koža — na dan tretmana koža treba da bude čista, bez losiona ili krema.'
+  'Bez čupanja: dlačice se ne smeju uklanjati pincetom ili voskom (min. 4 nedelje za lice, 6 nedelja za telo).',
+  'Skraćivanje: dozvoljeno je korišćenje makazica, brijača ili depil kreme.',
+  'Bez sunčanja: koža ne sme biti sveže osunčana ili tretirana u solarijumu.',
+  'Čista koža: na dan tretmana koža treba da bude čista, bez losiona ili krema.'
 ]
 
 const advantages = [
@@ -90,7 +90,7 @@ export default function LaserskaEpilacijaPage() {
             </h1>
             <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
-              Medicinski najbezbednija i najefikasnija metoda trajnog uklanjanja dlačica diodnim laserom — zlatni standard svetske dermatologije od 2000. godine.
+              Medicinski najbezbednija i najefikasnija metoda trajnog uklanjanja dlačica diodnim laserom, zlatni standard svetske dermatologije od 2000. godine.
             </p>
             <Link
               href="/kontakt"
@@ -310,7 +310,7 @@ export default function LaserskaEpilacijaPage() {
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Spremni ste?</p>
           <h2 className="font-serif text-3xl md:text-4xl text-white">
-            Laserska Epilacija — Saznajte Više
+            Laserska Epilacija: Saznajte Više
           </h2>
           <p className="text-white/80 mt-5 font-light max-w-xl mx-auto">
             Kontaktirajte nas danas i obezbedite sebi glatku kožu uz najefikasniju tehnologiju na tržištu.

@@ -17,11 +17,18 @@ interface RelatedService {
   href: string
 }
 
+interface WhatIsItSection {
+  heading: string
+  body?: string
+  items?: string[]
+}
+
 interface ServicePageLayoutProps {
   title: string
   subtitle: string
   description: string
   whatIsIt: string
+  whatIsItSections?: WhatIsItSection[]
   methods?: string[]
   howItWorks: string[]
   idealCandidates: string[]
@@ -36,6 +43,7 @@ export function ServicePageLayout({
   subtitle,
   description,
   whatIsIt,
+  whatIsItSections,
   methods,
   howItWorks,
   idealCandidates,
@@ -121,6 +129,42 @@ export function ServicePageLayout({
           </div>
         </div>
       </section>
+
+      {/* Detailed Sections — only rendered when a service needs more than one flowing "what is it" paragraph */}
+      {whatIsItSections && whatIsItSections.length > 0 && (
+        <section className="bg-[#faf9f7] py-20 md:py-28">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <FadeUp className="text-center mb-16">
+              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.detailsLabel}</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+                {t.servicePage.detailsTitle}
+              </h2>
+              <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            </FadeUp>
+            <StaggerChildren className="max-w-4xl mx-auto space-y-12" staggerDelay={0.08}>
+              {whatIsItSections.map((section, index) => (
+                <StaggerItem key={index}>
+                  <h3 className="font-serif text-xl md:text-2xl text-[#1a1a1a] mb-4">{section.heading}</h3>
+                  <div className="w-10 h-[2px] bg-[#b91c1c]/60 mb-5" />
+                  {section.body && (
+                    <p className="text-[#6b6b6b] leading-relaxed font-light">{section.body}</p>
+                  )}
+                  {section.items && section.items.length > 0 && (
+                    <ul className="mt-4 space-y-4">
+                      {section.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="flex items-start gap-4">
+                          <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
+                          <span className="text-[#6b6b6b] font-light leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+          </div>
+        </section>
+      )}
 
       {/* Methods / Technologies Section — only rendered when the service has real, distinct modalities */}
       {methods && methods.length > 0 && (
@@ -302,7 +346,7 @@ export function ServicePageLayout({
           <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
             <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.ctaReadyLabel}</p>
             <h2 className="font-serif text-3xl md:text-4xl text-white">
-              {title} — {t.servicePage.ctaTitle}
+              {title}: {t.servicePage.ctaTitle}
             </h2>
             <p className="text-white/80 mt-5 font-light">
               {t.servicePage.ctaDescription}

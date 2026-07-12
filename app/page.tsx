@@ -504,6 +504,31 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
+          PATIENT REVIEWS SECTION — real, curated excerpts from public reviews.
+          ════════════════════════════════════════════════════════════════════ */}
+      <section className="bg-white py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <FadeUp>
+            <SectionTitle title={t.home.reviewsSection.title} subtitle={t.home.reviewsSection.subtitle} />
+          </FadeUp>
+
+          <StaggerChildren className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.08}>
+            {t.home.reviewsList.map((item, index) => (
+              <StaggerItem key={index}>
+                <TestimonialCard quote={item.quote} author={item.author} />
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+
+          <FadeUp delay={0.2}>
+            <p className="mt-10 text-center text-xs uppercase tracking-[0.15em] text-[#9b948c]">
+              {t.home.reviewsSource}
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
           CTA SECTION
           ════════════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#b91c1c] py-20 md:py-32">
