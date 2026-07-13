@@ -866,3 +866,55 @@ Unchanged policy: raise with the client, don't build unprompted.
     (device image slots, service cross-links) intentionally left unchecked — not attempted this pass;
     Ellman's 3rd treatment line not removed (flagged, not decided); equipment logos not re-added; no
     commit made.
+- 2026-07-14 — **Full `/usluge` category/subservice replacement**, per Marta's final 7-category
+  structure relayed directly by the user in chat (transcribed by them from her DOCX, not re-extracted
+  by this session). Replaces the 6-category taxonomy from the 2026-07-10 pass entirely. Full detail,
+  including every slug-reuse judgment call, in `docs/client-content-map-2026-07-09.md` §13. Summary:
+  - `lib/service-catalog.ts` fully rewritten: 6 categories → 7 (**Opšta dermatovenerologija** with
+    subtitle "Dermatologija za celu porodicu", **Estetska dermatologija**, **Laseri u dermatologiji**,
+    **Radiotalasna hirurgija**, **Kriohirurgija**, **Kompjuterizovana dermoskopija**,
+    **Kozmetologija**), ~50 subservice bullets total, matching Marta's list verbatim (typo/case
+    normalization only, no invented content).
+  - `app/usluge/page.tsx` now renders the new category subtitle under the heading. `lib/nav.ts`
+    header dropdown and `app/page.tsx` homepage services grid updated to the same 7 categories/anchors
+    (icons: Stethoscope, Sparkles, Zap, Waves, Snowflake, Microscope, HandHeart).
+  - `nav.categoriesDropdown` and `home.servicesList` updated with real translations in all three of
+    `sr.ts`/`en.ts`/`ru.ts` (EN/RU are AI-assisted, not client-reviewed — same caveat as other
+    machine-translated keys, flag for native proofreading). The `/usluge` catalog content itself stays
+    Serbian-only, unchanged from prior convention (M4 territory, not attempted here).
+  - Repeated/overlapping bullets across categories (Marta's list intentionally cross-lists many
+    treatments by concern *and* by technology) point at shared slugs reusing the existing
+    hand-written dedicated pages (`akne`, `bradavice-papilomi-keratoze-moluske`,
+    `kapilari-i-hemangiomi-laser`, `dermoskopija`, `botoks-fileri`, `profhilo`,
+    `podmladjivanje-fotona-3d-4d-5d`, `laserska-epilacija`, `strije-laser`,
+    `gljivicna-oboljenja-laser`, `medicinska-dermatologija`) instead of creating duplicate thin pages.
+    New bullets with no dedicated-page match fall through to the existing generic `[slug]` template,
+    same mechanism as before (still flagged for M4 retirement).
+  - Most new/recategorized entries reuse existing stock imagery from `/images/Services/`. No real
+    (non-template) copy was written for newly-added generic-template slugs.
+  - **Found and wired in mid-session**: an untracked folder of 5 real in-clinic procedure photos
+    (matching the new Opšta dermatovenerologija bullets 1:1) was already on disk. 4 were wired into
+    `lib/service-catalog.ts` as real `imageSrc` values; also fixed a pre-existing broken hero image on
+    `/usluge/bradavice-papilomi-keratoze-moluske` (pointed at an already-deleted file). Full detail
+    and the one flagged-not-used image in `docs/client-content-map-2026-07-09.md` §13.
+  - Verified: `npx tsc --noEmit` clean; `npm run build` passes, all routes generate with no broken
+    links; `npm run dev -- --port 3123` + Playwright on `/` and `/usluge` (all 7 categories render
+    with correct titles/subtitle/links, homepage grid shows all 7 cards with correct hrefs, 0 console
+    errors beyond a pre-existing unrelated favicon 404); spot-checked reused dedicated pages
+    (`full-face`, `botoks-fileri`) and new generic pages (`pigmentne-promene`, `dermapen`) all return
+    HTTP 200.
+  - **Not done, out of scope**: splitting Hijaluronski fileri / Botox into separate content pages
+    (currently share `botoks-fileri`, flagged for Marta's confirmation); real copy for new
+    generic-template slugs; per-service images for the remaining categories; `/usluge` catalog i18n;
+    no commit made.
+- 2026-07-14 — **Folder-rename cleanup**, requested before commit: the image folder found and wired
+  in above used non-ASCII characters (`opšta_dermatovenerologija`) unsafe for URLs/paths. Renamed to
+  `public/images/Services/opsta-dermatovenerologija/` (filenames unchanged); updated the 4
+  `imageSrc` references in `lib/service-catalog.ts` and the 1 hero-image reference in
+  `app/usluge/bradavice-papilomi-keratoze-moluske/page.tsx`. Full detail in
+  `docs/client-content-map-2026-07-09.md` §14. Verified: grep confirms zero remaining code references
+  to the old path, new path resolves at every usage site, all 5 files physically present in the new
+  folder, `npx tsc --noEmit` clean, `npm run build` passes, and Playwright checks of `/`, `/usluge`,
+  `/usluge/bradavice-papilomi-keratoze-moluske`, and `/usluge/medicinska-dermatologija` all show 0
+  console errors (aside from the pre-existing favicon 404) with the renamed image rendering correctly.
+  No commit, no push, per instruction.

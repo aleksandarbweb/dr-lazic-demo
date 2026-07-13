@@ -40,9 +40,14 @@ export default function UslugePage() {
               className={`scroll-mt-32 ${categoryIndex > 0 ? 'mt-20 pt-20 border-t border-[#e5e0da]' : ''}`}
             >
               <FadeUp delay={0.1}>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#b91c1c] mb-10">
+                <h2 className={`font-serif text-3xl md:text-4xl text-[#b91c1c] ${category.subtitle ? '' : 'mb-10'}`}>
                   {category.title}
                 </h2>
+                {category.subtitle && (
+                  <p className="text-[#6b6b6b] mt-2 mb-8 font-light italic">
+                    {category.subtitle}
+                  </p>
+                )}
               </FadeUp>
               <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" staggerDelay={0.05}>
                 {category.services.map((service) => (

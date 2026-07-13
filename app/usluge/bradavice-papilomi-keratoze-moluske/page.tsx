@@ -100,7 +100,7 @@ export default function BradaviceePapilomiKeratozeMoluskePage() {
   return (
     <ServicePageLayout
       {...serviceData}
-      imageSrc="/images/client/uklanjanje-virusnih-bradavica-kondiloma-i-moluski.png"
+      imageSrc="/images/Services/opsta-dermatovenerologija/uklanjanje-bradavica-kondiloma-papiloma.png"
     />
   )
 }

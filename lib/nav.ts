@@ -1,9 +1,10 @@
 export type CategoryKey =
-  | 'dermatology'
-  | 'aesthetics'
+  | 'generalDermatovenereology'
   | 'aestheticDermatology'
-  | 'laserTreatments'
-  | 'dermatovenereology'
+  | 'lasersInDermatology'
+  | 'radiowaveSurgery'
+  | 'cryosurgery'
+  | 'computerizedDermoscopy'
   | 'cosmetology'
 
 export type NavDropdownItem = {
@@ -24,11 +25,12 @@ export const navItems: NavItem[] = [
     href: '/usluge',
     translationKey: 'services',
     dropdown: [
-      { categoryKey: 'dermatology', href: '/usluge#dermatologija' },
-      { categoryKey: 'aesthetics', href: '/usluge#estetika' },
+      { categoryKey: 'generalDermatovenereology', href: '/usluge#opsta-dermatovenerologija' },
       { categoryKey: 'aestheticDermatology', href: '/usluge#estetska-dermatologija' },
-      { categoryKey: 'laserTreatments', href: '/usluge#laserski-tretmani' },
-      { categoryKey: 'dermatovenereology', href: '/usluge#dermatovenerologija' },
+      { categoryKey: 'lasersInDermatology', href: '/usluge#laseri-u-dermatologiji' },
+      { categoryKey: 'radiowaveSurgery', href: '/usluge#radiotalasna-hirurgija' },
+      { categoryKey: 'cryosurgery', href: '/usluge#kriohirurgija' },
+      { categoryKey: 'computerizedDermoscopy', href: '/usluge#kompjuterizovana-dermoskopija' },
       { categoryKey: 'cosmetology', href: '/usluge#kozmetologija' },
     ],
   },

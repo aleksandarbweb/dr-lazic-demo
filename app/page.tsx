@@ -4,13 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from "motion/react"
-import { 
-  Stethoscope, 
-  Sparkles, 
-  FlaskConical, 
-  Zap, 
-  ShieldCheck, 
-  HandHeart 
+import {
+  Stethoscope,
+  Sparkles,
+  Zap,
+  Waves,
+  Snowflake,
+  Microscope,
+  HandHeart
 } from 'lucide-react'
 import { ServiceCard } from '@/components/service-card'
 import { DoctorCard } from '@/components/doctor-card'
@@ -20,11 +21,12 @@ import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primit
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 const servicesConfig = [
-  { icon: Stethoscope, href: '/usluge#dermatologija' },
-  { icon: Sparkles, href: '/usluge#estetika' },
-  { icon: FlaskConical, href: '/usluge#estetska-dermatologija' },
-  { icon: Zap, href: '/usluge#laserski-tretmani' },
-  { icon: ShieldCheck, href: '/usluge#dermatovenerologija' },
+  { icon: Stethoscope, href: '/usluge#opsta-dermatovenerologija' },
+  { icon: Sparkles, href: '/usluge#estetska-dermatologija' },
+  { icon: Zap, href: '/usluge#laseri-u-dermatologiji' },
+  { icon: Waves, href: '/usluge#radiotalasna-hirurgija' },
+  { icon: Snowflake, href: '/usluge#kriohirurgija' },
+  { icon: Microscope, href: '/usluge#kompjuterizovana-dermoskopija' },
   { icon: HandHeart, href: '/usluge#kozmetologija' },
 ]
 

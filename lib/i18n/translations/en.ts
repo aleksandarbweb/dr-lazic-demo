@@ -9,11 +9,12 @@ export const en = {
     contact: 'Contact',
     bookAppointment: 'Contact',
     categoriesDropdown: {
-      dermatology: 'Dermatology',
-      aesthetics: 'Aesthetics',
+      generalDermatovenereology: 'General Dermatovenereology',
       aestheticDermatology: 'Aesthetic Dermatology',
-      laserTreatments: 'Laser Treatments',
-      dermatovenereology: 'Dermatovenereology',
+      lasersInDermatology: 'Lasers in Dermatology',
+      radiowaveSurgery: 'Radiowave Surgery',
+      cryosurgery: 'Cryosurgery',
+      computerizedDermoscopy: 'Computerized Dermoscopy',
       cosmetology: 'Cosmetology',
     },
   },
@@ -58,28 +59,32 @@ export const en = {
     },
     servicesList: [
       {
-        title: 'Dermatology',
-        description: 'Treatment of acne, blemishes, skin infections, hair loss and other dermatological conditions',
-      },
-      {
-        title: 'Aesthetics',
-        description: 'Wrinkle correction, volume restoration, facial contouring and rejuvenation for a natural, fresh look',
+        title: 'General Dermatovenereology',
+        description: 'Dermatology for the whole family – diagnostics, dermoscopy, treatment of acne, rosacea, hair loss and skin and venereal diseases',
       },
       {
         title: 'Aesthetic Dermatology',
-        description: 'Fillers, botox, PRP, Morpheus8, peels and other advanced aesthetic treatments',
+        description: 'Full Face by Dr. Marta Terzić, fillers, botox, biorevitalization, PRP, Morpheus8 and laser rejuvenation',
       },
       {
-        title: 'Laser Treatments',
-        description: 'Fotona laser, hair removal, capillary removal, scars, stretch marks and keratoses',
+        title: 'Lasers in Dermatology',
+        description: 'Laser hair removal, rejuvenation, rosacea, scars, stretch marks and removal of vascular and pigment lesions',
       },
       {
-        title: 'Dermatovenereology',
-        description: 'Diagnostics, dermoscopy, dermomapping and treatment of skin and venereal diseases',
+        title: 'Radiowave Surgery',
+        description: 'Precise removal of keratoses, papillomas and warts using radiowave surgery',
+      },
+      {
+        title: 'Cryosurgery',
+        description: 'Liquid nitrogen therapy for removing viral warts and keratoses',
+      },
+      {
+        title: 'Computerized Dermoscopy',
+        description: 'Digital mole examination and mapping for early detection of skin changes',
       },
       {
         title: 'Cosmetology',
-        description: 'Medical and biological facial treatments, medical pedicure',
+        description: 'Medical and biological facial treatments, Dermapen and personalized skincare consultations',
       }
     ],
     philosophy: {

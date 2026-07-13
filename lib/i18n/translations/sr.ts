@@ -9,11 +9,12 @@ export const sr = {
     contact: 'Kontakt',
     bookAppointment: 'Kontakt',
     categoriesDropdown: {
-      dermatology: 'Dermatologija',
-      aesthetics: 'Estetika',
+      generalDermatovenereology: 'Opšta dermatovenerologija',
       aestheticDermatology: 'Estetska dermatologija',
-      laserTreatments: 'Laserski tretmani',
-      dermatovenereology: 'Dermatovenerologija',
+      lasersInDermatology: 'Laseri u dermatologiji',
+      radiowaveSurgery: 'Radiotalasna hirurgija',
+      cryosurgery: 'Kriohirurgija',
+      computerizedDermoscopy: 'Kompjuterizovana dermoskopija',
       cosmetology: 'Kozmetologija',
     },
   },
@@ -58,28 +59,32 @@ export const sr = {
     },
     servicesList: [
       {
-        title: 'Dermatologija',
-        description: 'Lečenje akni, fleka, infekcija kože, opadanja kose i drugih dermatoloških stanja',
-      },
-      {
-        title: 'Estetika',
-        description: 'Korekcija bora, volumena, kontura lica i podmlađivanje za prirodan i svež izgled',
+        title: 'Opšta dermatovenerologija',
+        description: 'Dermatologija za celu porodicu – dijagnostika, dermoskopija, lečenje akni, rozacee, opadanja kose i kožnih i polnih bolesti',
       },
       {
         title: 'Estetska dermatologija',
-        description: 'Fileri, botoks, PRP, Morpheus8, pilinzi i drugi napredni estetski tretmani',
+        description: 'Full Face by dr Marta Terzić, fileri, botoks, biorevitalizacije, PRP, Morpheus8 i lasersko podmlađivanje',
       },
       {
-        title: 'Laserski tretmani',
-        description: 'Fotona laser, epilacija, uklanjanje kapilara, ožiljaka, strija i keratoza',
+        title: 'Laseri u dermatologiji',
+        description: 'Laserska epilacija, podmlađivanje, rozacea, ožiljci, strije i uklanjanje vaskularnih i pigmentnih promena',
       },
       {
-        title: 'Dermatovenerologija',
-        description: 'Dijagnostika, dermoskopija, dermomapiranje i lečenje kožnih i polnih bolesti',
+        title: 'Radiotalasna hirurgija',
+        description: 'Precizno uklanjanje keratoza, papiloma i bradavica radiotalasnom hirurgijom',
+      },
+      {
+        title: 'Kriohirurgija',
+        description: 'Terapija tečnim azotom za uklanjanje virusnih bradavica i keratoza',
+      },
+      {
+        title: 'Kompjuterizovana dermoskopija',
+        description: 'Digitalni pregled i mapiranje mladeža radi ranog otkrivanja promena na koži',
       },
       {
         title: 'Kozmetologija',
-        description: 'Medicinski i biološki tretmani lica, medicinski pedikir',
+        description: 'Medicinski i biološki tretmani lica, Dermapen i savetovanje za negu lica',
       }
     ],
     philosophy: {

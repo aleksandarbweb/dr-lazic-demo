@@ -4,6 +4,8 @@
 **Updated:** 2026-07-10 (service-content implementation pass — see §9)
 **Updated again:** 2026-07-10 (client-content supplement pass: dermatologija-za-celu-porodicu subtitle,
 bradavice page restructure, real patient reviews, em-dash/typo cleanup — see §11)
+**Updated again:** 2026-07-14 (full `/usluge` category/subservice replacement per Marta's final
+7-category structure, relayed directly by the user — see §13; supersedes §4's 6-category taxonomy)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -84,6 +86,14 @@ the CV example already handled this way).
 ---
 
 ## 4. Services (§D) — catalog vs. real content (updated 2026-07-10)
+
+> **Superseded 2026-07-14 (see §13):** the 6-category taxonomy described in this section
+> (Dermatologija / Estetika / Estetska dermatologija / Laserski tretmani / Dermatovenerologija /
+> Kozmetologija) has been fully replaced by Marta's final 7-category structure. The category names,
+> `id`s, and much of the subservice list below are historical — kept here for the record of how the
+> catalog evolved and because the underlying rich dedicated-page content described below (bradavice,
+> kapilari, akne, full-face rewrites) is still live and still accurate; only the top-level
+> categorization and the exact subservice bullet list changed. See §13 for the current structure.
 
 ### Reusable structure added this session
 `components/service-page-layout.tsx` gained one new **optional** section — `methods?: string[]`,
@@ -467,3 +477,146 @@ Wrap-up pass only — no redesign, no new content invented beyond what the clien
   password gate. See `IMPROVEMENT-REPORT.md` changelog for the full results.
 - **Not done, out of scope**: removing the Ellman 3rd bullet, replacing/re-adding equipment logos,
   any M1 design-system work, and no medical copy beyond what Marta's DOCX/notes supplied was invented.
+
+---
+
+## 13. Summary of the 2026-07-14 full `/usluge` category restructure
+
+**Source of this pass:** the user pasted Marta's category/subservice list directly in chat, stating
+explicitly it was transcribed by them from the Marta DOCX ("exact instructions based on me going
+through the exact marta docx") — not extracted or interpreted by this session. Treated as
+client-provided text per the standing correction at the top of this file: used verbatim (with only
+spelling/capitalization normalization — e.g. "moluski" → "moluske", "I" → "i" where clearly a typo),
+no softening, no invented depth.
+
+### What changed
+The site's category taxonomy went from **6 categories** (Dermatologija, Estetika, Estetska
+dermatologija, Laserski tretmani, Dermatovenerologija, Kozmetologija — §4 above) to Marta's **7
+categories**, replacing the `/usluge` page and homepage services shortcuts entirely:
+
+1. **Opšta dermatovenerologija** — subtitle "Dermatologija za celu porodicu" (rendered under the
+   category heading on `/usluge`, italic, per Marta's instruction to include it as a subheading).
+2. **Estetska dermatologija** (19 subservices)
+3. **Laseri u dermatologiji** (11 subservices)
+4. **Radiotalasna hirurgija** (1 subservice)
+5. **Kriohirurgija – terapija tečnim azotom** (1 subservice)
+6. **Kompjuterizovana dermoskopija** (1 subservice)
+7. **Kozmetologija** (4 subservices)
+
+Files changed:
+- `lib/service-catalog.ts` — full rewrite of `serviceCategories` (added optional `subtitle?: string`
+  to the category type for the "Dermatologija za celu porodicu" line).
+- `app/usluge/page.tsx` — renders `category.subtitle` under the `<h2>` when present.
+- `lib/nav.ts` — `CategoryKey` type and the header dropdown's 7 `{ categoryKey, href }` pairs,
+  anchors now `#opsta-dermatovenerologija`, `#estetska-dermatologija`, `#laseri-u-dermatologiji`,
+  `#radiotalasna-hirurgija`, `#kriohirurgija`, `#kompjuterizovana-dermoskopija`, `#kozmetologija`.
+- `app/page.tsx` — homepage `servicesConfig` (icon + href per category, 7 entries, order-matched to
+  `home.servicesList`). Icons: Stethoscope, Sparkles, Zap, Waves, Snowflake, Microscope, HandHeart.
+- `lib/i18n/translations/{sr,en,ru}.ts` — `nav.categoriesDropdown` (7 keys) and `home.servicesList`
+  (7 title/description entries) updated in all three locales.
+
+### Slug-reuse decisions (judgment calls, not explicit in Marta's list — flag for her review)
+Marta's list repeats several treatments across categories by design (e.g. "Lečenje rozacee" appears
+under Opšta dermatovenerologija, Estetska dermatologija, *and* Laseri u dermatologiji as "Laserski
+tretmani rozacee" — same treatment, different taxonomy lens). Rather than creating duplicate thin
+pages, repeated/overlapping bullets were pointed at **one shared slug**, reusing the existing
+hand-written dedicated pages wherever the topic matched:
+- "Lečenje akni" / "Laserski tretman akni" (3 bullets) → `/usluge/akne`
+- "Uklanjanje virusnih bradavica, kondiloma i moluske" / "Uklanjanje papiloma i keratoza" /
+  "Lasersko uklanjanje benignih promena" / "Uklanjanje benignih promena" (radiotalasna) /
+  "Uklanjanje virusnih bradavica i keratoza" (kriohirurgija) — **5 bullets across 4 categories** →
+  `/usluge/bradavice-papilomi-keratoze-moluske` (the already-rich HPV/wart/keratosis page from §4).
+- "Uklanjanje vaskularnih promena – kapilari i hemangiomi" / "Lasersko uklanjanje kapilara i
+  hemangioma" / "Lasersko uklanjanje vaskularnih promena" (3 bullets) → `/usluge/kapilari-i-hemangiomi-laser`
+- "Dermoskopski pregled mladeža" / "Pregled mladeža" (kompjuterizovana dermoskopija category) →
+  `/usluge/dermoskopija`
+- "Hijaluronski fileri" **and** "Botulinum toksin – botox" (now listed as 2 separate bullets by
+  Marta) → both point to the existing combined `/usluge/botoks-fileri` page rather than splitting it
+  or sending botox to a thin generic page. **Flag for Marta:** if she wants these as genuinely
+  separate pages with distinct copy, that's new work, not a slug/routing change.
+- "Biorevitalizacije" → `/usluge/profhilo` (Profhilo is the clinic's biorevitalization product)
+- "Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka" (2 bullets) →
+  `/usluge/podmladjivanje-fotona-3d-4d-5d` (existing Fotona flagship page)
+- "Epilacija laserom/medicinskim laserom" (2 bullets) → `/usluge/laserska-epilacija`
+- "Uklanjanje strija" / "Laserski tretmani strija" (2 bullets) → `/usluge/strije-laser`
+- "Lečenje gljivičnih oboljenja noktiju" / "Laserski tretman gljivičnih infekcija nokatne regije"
+  (2 bullets) → `/usluge/gljivicna-oboljenja-laser`
+- "Dijagnostika i lečenje kožnih i polnih bolesti" → `/usluge/medicinska-dermatologija`
+
+All other bullets with no obvious dedicated-page match (e.g. Kolagen stimulatori, Mezoterapija,
+Laserski tretman uraslih dlačica, Uklanjanje ožiljaka, Laserski pilinzi, Pojačano znojenje, all 4
+Kozmetologija items, Pigmentne promene) got a clean new slug and fall through to the existing generic
+`[slug]/page.tsx` template (`buildServiceCopy()`), exactly like the ~40 undocumented services already
+did before this pass (see §4's "Only titles/placeholders" list — that mechanism is unchanged, still
+flagged for retirement under M4). No new medical copy was hand-written for any of these.
+
+### Images
+Most catalog entries reuse existing stock imagery from `/images/Services/` (or the specific PNGs
+already in use for Fotona, epilacija, strije, gljivična) matched by treatment theme — this is a
+placeholder measure, consistent with M4's pending "per-service image slots" item, not a regression
+but also not resolved.
+
+**Found mid-session and wired in:** an untracked folder,
+`public/images/Services/opsta-dermatovenerologija/` (renamed 2026-07-14 from the original
+non-ASCII `opšta_dermatovenerologija/` for URL/path safety — see §14) (5 real in-clinic
+procedure/patient photos —
+acne close-up, laser vascular treatment, radiowave wart/papilloma removal, cryo/keratosis removal),
+was already present on disk before this pass started, clearly prepared for this exact restructure
+(filenames match the new Opšta dermatovenerologija bullets 1:1). Wired 4 of the 5 into
+`lib/service-catalog.ts` as real `imageSrc` values (replacing the generic stock fallback) for:
+"Uklanjanje virusnih bradavica, kondiloma i moluski", "Uklanjanje papiloma i keratoza", "Uklanjanje
+vaskularnih promena", and "Lečenje akni". Also discovered — and fixed — that
+`app/usluge/bradavice-papilomi-keratoze-moluske/page.tsx` was pointing its hero image at
+`/images/client/uklanjanje-virusnih-bradavica-kondiloma-i-moluski.png`, a file that had already been
+deleted from disk (pre-existing uncommitted state, not caused by this pass) — broken image on that
+page until now. Repointed it to the new
+`uklanjanje-bradavica-kondiloma-papiloma.png`, the clear topical replacement.
+**Not wired in, flagged for confirmation:** the 5th image, `lecenje-koznih-i-polnih-bolesti.png` (a
+posed stock-style photo of a doctor examining a patient's back), was left out of
+"Dijagnostika i lečenje kožnih i polnih bolesti" — it reads as a generic stock photo rather than
+real clinic photography like the other 4, and this file previously flagged a similar "clipart-style
+doctor examining a back" image as not fitting the brand (§7). Left on disk, unused; ask Marta before
+using it.
+
+---
+
+## 14. Summary of the 2026-07-14 folder-rename cleanup pass
+
+Small follow-up to §13, requested before commit: the untracked image folder used non-ASCII
+characters (`opšta_dermatovenerologija`, with š and an underscore), unsafe for URLs/paths. Renamed
+to `public/images/Services/opsta-dermatovenerologija/` (ASCII, hyphenated, matching the site's
+existing slug convention). Filenames inside the folder were left unchanged, as instructed.
+
+- Updated the 4 `imageSrc` references in `lib/service-catalog.ts` and the 1 hero-image reference in
+  `app/usluge/bradavice-papilomi-keratoze-moluske/page.tsx` to the new path.
+- Verified zero remaining code references to the old `opšta_dermatovenerologija` path (a grep hit in
+  this doc's §13 is expected — it's prose describing the rename, not a live reference) and confirmed
+  the new `opsta-dermatovenerologija` path resolves at every usage site.
+- Verified all 5 files physically exist in the new folder location.
+- Verified: `npx tsc --noEmit` clean, `npm run build` passes (same route count/output as §13), and a
+  Playwright check of `/`, `/usluge`, `/usluge/bradavice-papilomi-keratoze-moluske`, and
+  `/usluge/medicinska-dermatologija` — all 4 pages render with 0 console errors (only the
+  pre-existing, unrelated favicon 404 on `/`) and the renamed image displays correctly on the
+  bradavice page.
+- No commit made, nothing pushed, per instruction. `/usluge` category/content from §13 is untouched.
+
+### i18n
+`lib/service-catalog.ts` (the `/usluge` page content itself) remains **Serbian-only**, consistent
+with the pre-existing pattern documented in §6 — this was not in scope to fix (that's M4 territory).
+However, the **homepage services shortcuts and header dropdown are i18n-wired**, so `nav.categoriesDropdown`
+and `home.servicesList` were updated with real translations in all three locale files, not just
+Serbian, to avoid leaving EN/RU visitors with dead category links or stale category names. **These
+EN/RU translations are AI-assisted, not client-reviewed** — same caveat as the rest of §6's list;
+flag for native proofreading before launch.
+
+### Verified
+`npx tsc --noEmit` (clean), `npm run build` (success, all routes generated, no broken links), and
+`npm run dev -- --port 3123` with a Playwright check of `/` and `/usluge` (all 7 categories render
+with correct titles/subtitle/links, homepage services grid shows all 7 cards with correct hrefs) plus
+spot-checks that reused dedicated pages (`full-face`, `botoks-fileri`) and new generic-template pages
+(`pigmentne-promene`, `dermapen`) all return 200.
+
+### Not done, out of scope
+Splitting Hijaluronski fileri / Botox into separate content pages, writing real (non-template) copy
+for any of the newly-added generic-template slugs, new per-service images, and any i18n work on the
+`/usluge` catalog itself (category/subservice names, still Serbian-only).
