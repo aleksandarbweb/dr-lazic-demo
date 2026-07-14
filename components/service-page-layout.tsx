@@ -30,12 +30,14 @@ interface ServicePageLayoutProps {
   whatIsIt: string
   whatIsItSections?: WhatIsItSection[]
   methods?: string[]
-  howItWorks: string[]
-  idealCandidates: string[]
-  expectedResults: string[]
-  faqs: FAQ[]
+  howItWorks?: string[]
+  idealCandidates?: string[]
+  expectedResults?: string[]
+  faqs?: FAQ[]
   relatedServices: RelatedService[]
   imageSrc?: string
+  pendingNotice?: string
+  aboutHeading?: string
 }
 
 export function ServicePageLayout({
@@ -50,7 +52,9 @@ export function ServicePageLayout({
   expectedResults,
   faqs,
   relatedServices,
-  imageSrc
+  imageSrc,
+  pendingNotice,
+  aboutHeading
 }: ServicePageLayoutProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const { t } = useTranslation()
@@ -77,6 +81,12 @@ export function ServicePageLayout({
               <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed">
                 {subtitle}
               </p>
+              {pendingNotice && (
+                <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4">
+                  <span className="mt-0.5 flex-shrink-0 text-amber-500" aria-hidden="true">⚠</span>
+                  <p className="text-sm text-amber-900 font-light leading-relaxed">{pendingNotice}</p>
+                </div>
+              )}
               <Link
                 href="/kontakt"
                 className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98] group"
@@ -99,7 +109,7 @@ export function ServicePageLayout({
               <FadeUp delay={0.1}>
                 <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.aboutLabel}</p>
                 <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
-                  {t.servicePage.whatIs} {title}?
+                  {aboutHeading || t.servicePage.aboutFallback}
                 </h2>
                 <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
                 <p className="text-[#6b6b6b] leading-relaxed whitespace-pre-line font-light">
@@ -110,12 +120,24 @@ export function ServicePageLayout({
             <FadeUp delay={0.3} className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-[#e4ddd4] bg-[#f4eee8] p-1.5 shadow-[0_25px_50px_-30px_rgba(44,31,20,0.45)]">
               <div className="relative h-full w-full overflow-hidden rounded-[calc(1.75rem-0.375rem)]">
                 {imageSrc ? (
-                  <Image
-                    src={imageSrc}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                  />
+                  <>
+                    <Image
+                      src={imageSrc}
+                      alt={title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute bottom-4 right-4 w-24 md:w-32 opacity-80">
+                      <Image
+                        src="/images/Logos/dr terzic beli logo.png"
+                        alt=""
+                        aria-hidden="true"
+                        width={128}
+                        height={57}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </>
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center bg-[#f5f3f0]">
                     <span className="text-[#6b6b6b]">Slika tretmana</span>
@@ -191,6 +213,7 @@ export function ServicePageLayout({
       )}
 
       {/* How It Works Section */}
+      {howItWorks && howItWorks.length > 0 && (
       <section className="bg-[#faf9f7] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
@@ -200,10 +223,10 @@ export function ServicePageLayout({
             </h2>
             <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
           </FadeUp>
-          <StaggerChildren className="max-w-3xl mx-auto" staggerDelay={0.1}>
+          <StaggerChildren className="max-w-3xl mx-auto space-y-10" staggerDelay={0.1}>
             {howItWorks.map((step, index) => (
               <StaggerItem key={index}>
-                <div className="flex gap-8 mb-10 last:mb-0">
+                <div className="flex gap-8">
                   <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-[#b91c1c] font-serif text-2xl text-white shadow-lg">
                     {index + 1}
                   </div>
@@ -216,11 +239,14 @@ export function ServicePageLayout({
           </StaggerChildren>
         </div>
       </section>
+      )}
 
       {/* Ideal Candidates & Results Section */}
+      {((idealCandidates && idealCandidates.length > 0) || (expectedResults && expectedResults.length > 0)) && (
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {idealCandidates && idealCandidates.length > 0 && (
             <div>
               <FadeUp>
                 <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.candidatesLabel}</p>
@@ -240,6 +266,8 @@ export function ServicePageLayout({
                 ))}
               </StaggerChildren>
             </div>
+            )}
+            {expectedResults && expectedResults.length > 0 && (
             <div>
               <FadeUp delay={0.2}>
                 <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.resultsLabel}</p>
@@ -259,11 +287,14 @@ export function ServicePageLayout({
                 ))}
               </StaggerChildren>
             </div>
+            )}
           </div>
         </div>
       </section>
+      )}
 
       {/* FAQ Section */}
+      {faqs && faqs.length > 0 && (
       <section className="bg-[#faf9f7] py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
@@ -304,6 +335,7 @@ export function ServicePageLayout({
           </StaggerChildren>
         </div>
       </section>
+      )}
 
       {/* Related Services Section */}
       <section className="bg-white py-20 md:py-28">

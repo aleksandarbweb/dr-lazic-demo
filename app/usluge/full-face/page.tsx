@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'Personalizovani Full Face Tretmani',
+  aboutHeading: 'Šta je Full Face tretman?',
   subtitle: 'Individualni estetski pristup dr Marte Terzić: harmonija celog lica za izbalansiran, prirodan i odmoran izgled',
   description: 'Dostojanstveno starenje uz umetnost prirodnog podmlađivanja',
   whatIsIt: `Lepota lica ne ogleda se u pojedinačnoj regiji, već u harmoniji svih njegovih struktura. Zato svakom pacijentu pristupam individualno, analizirajući celo lice, kvalitet kože, proporcije i znake starenja, kako bih postigla izbalansiran, prirodan, osvežen i autentičan izgled.

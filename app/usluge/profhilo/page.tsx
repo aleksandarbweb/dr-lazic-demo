@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'Profhilo',
+  aboutHeading: 'Šta je Profhilo?',
   subtitle: 'Bioremodeling lica, vrata i tela - nova dimenzija hijaluronske terapije',
   description: 'Revolucionarni tretman za dubinsku hidrataciju i prirodno podmlađivanje',
   whatIsIt: `Profhilo je inovativni injekcioni tretman koji koristi jednu od najčistijih formi hijaluronske kiseline na tržištu. Za razliku od klasičnih filera, Profhilo nije namenjen popunjavanju bora ili volumena, već bioremodeling-u kože - dubinskoj hidrataciji i stimulaciji produkcije kolagena i elastina.

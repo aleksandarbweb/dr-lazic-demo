@@ -176,6 +176,7 @@ export const sr = {
     backToServices: 'Nazad na usluge',
     aboutLabel: 'O tretmanu',
     whatIs: 'Šta je',
+    aboutFallback: 'O ovoj usluzi',
     processLabel: 'Proces',
     methodsLabel: 'Pristup',
     methodsTitle: 'Metode i Tehnologije',

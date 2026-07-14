@@ -176,6 +176,7 @@ export const en = {
     backToServices: 'Back to services',
     aboutLabel: 'About the treatment',
     whatIs: 'What is',
+    aboutFallback: 'About This Service',
     processLabel: 'Process',
     methodsLabel: 'Approach',
     methodsTitle: 'Methods & Technologies',

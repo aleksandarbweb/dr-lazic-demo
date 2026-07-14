@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'Hemijski Pilinzi',
+  aboutHeading: 'Šta su hemijski pilinzi?',
   subtitle: 'Obnavljanje i revitalizacija kože kontrolisanom eksfolijacijom',
   description: 'Profesionalni medicinski pilinzi za dubinsku regeneraciju kože',
   whatIsIt: `Hemijski piling je medicinski tretman koji koristi specijalne kiseline za kontrolisanu eksfolijaciju površinskih slojeva kože. Uklanjanjem oštećenih ćelija stimuliše se regeneracija i stvaranje nove, zdrave kože sa poboljšanom teksturom, tonom i elastičnošću.

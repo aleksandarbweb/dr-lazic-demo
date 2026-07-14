@@ -6,6 +6,8 @@
 bradavice page restructure, real patient reviews, em-dash/typo cleanup — see §11)
 **Updated again:** 2026-07-14 (full `/usluge` category/subservice replacement per Marta's final
 7-category structure, relayed directly by the user — see §13; supersedes §4's 6-category taxonomy)
+**Updated again:** 2026-07-14 (official Opšta dermatovenerologija content pass: 12 pages given final
+Marta-sourced or explicit-pending content, logo overlay + step-spacing fix applied site-wide — see §15)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -620,3 +622,111 @@ spot-checks that reused dedicated pages (`full-face`, `botoks-fileri`) and new g
 Splitting Hijaluronski fileri / Botox into separate content pages, writing real (non-template) copy
 for any of the newly-added generic-template slugs, new per-service images, and any i18n work on the
 `/usluge` catalog itself (category/subservice names, still Serbian-only).
+
+---
+
+## 15. Summary of the 2026-07-14 official Opšta dermatovenerologija content pass
+
+**Source of this pass:** the user stated all 12 Opšta dermatovenerologija subservices are now
+**official** — either Marta's exact given text (verbatim, lightly cleaned for grammar/OCR spacing
+only) or, where she has no text yet, an explicit "pending" state so she can see exactly what's
+missing when shown the live site. This supersedes the placeholder/generic-template state some of
+these pages were in after §13.
+
+### Shared component changes (`components/service-page-layout.tsx`)
+- **Logo overlay, site-wide.** Added a small "dr terzic beli logo.png" watermark to the bottom-right
+  corner of every service page's hero image (`w-24 md:w-32`, `opacity-80`) — this renders for *every*
+  page using `ServicePageLayout`, i.e. all dedicated pages and the ~40 pages still served by the
+  generic `[slug]` template, satisfying "should be added on all the service images" in one change.
+  `gljivicna-oboljenja-laser` already had a hand-coded version of this pattern from an earlier pass
+  (used as the sizing/style reference); the 5 bespoke pages that don't use `ServicePageLayout`
+  (`botoks-fileri`, `laserska-epilacija`, `podmladjivanje-fotona-3d-4d-5d`, `strije-laser`,
+  `gljivicna-oboljenja-laser`) were not touched by this specific change since they render their own
+  hero image markup — `gljivicna-oboljenja-laser` already has it, the other 4 don't yet and are
+  flagged for a follow-up pass if the logo should extend there too.
+- **Fixed a real spacing bug in "Kako Funkcioniše."** The numbered red step boxes were rendering with
+  zero gap between them site-wide. Root cause: each step was wrapped individually in its own
+  `StaggerItem` (one child per wrapper), so the `last:mb-0` Tailwind class matched *every* step (each
+  is `:last-child` of its own single-child wrapper), zeroing the `mb-10` margin on all of them, not
+  just the actual last one. Fixed by moving the gap to `space-y-10` on the `StaggerChildren` container
+  and removing the broken `mb-10 last:mb-0` from the inner step div. This fixes step spacing on every
+  page using `ServicePageLayout`, not just the Opšta dermatovenerologija pages.
+- **`howItWorks` / `idealCandidates` / `expectedResults` / `faqs` are now optional props**, each
+  section conditionally rendered only when a non-empty array is supplied (previously required,
+  forcing every page to show all four sections even when there was nothing real to put in them).
+- **New `pendingNotice?: string` prop** renders a visible amber/warning callout under the hero
+  subtitle — used on every page below where Marta's official text is still outstanding.
+- Separately, a parallel background pass (already in progress when this session started) fixed a
+  pre-existing grammar bug in the "Šta je {title}?" About heading (broke for non-noun titles) by
+  adding an `aboutHeading?: string` override prop and an `aboutFallback` translation key. Not part of
+  this session's requested scope, but its output was consumed as-is per the harness's own note not to
+  revert it; this session added the two `aboutHeading` values it had flagged as still missing
+  (`bradavice-papilomi-keratoze-moluske`, the new `uklanjanje-papiloma-i-keratoza`).
+
+### Per-service outcome (all 12 Opšta dermatovenerologija bullets)
+1. **Dijagnostika i lečenje kožnih i polnih bolesti** (`medicinska-dermatologija`) — stripped down
+   per explicit instruction: `whatIsIt` is now Marta's exact one sentence only, everything else
+   (previously-invented howItWorks/candidates/results/FAQs from the §4/§10 passes) removed and
+   replaced with a `pendingNotice` banner. Image: `lecenje-koznih-i-polnih-bolesti.png` (the file
+   flagged in §13 as "not wired in, needs confirmation" — now explicitly confirmed by the user as the
+   correct image for this exact service).
+2. **Uklanjanje virusnih bradavica, kondiloma i moluski** (`bradavice-papilomi-keratoze-moluske`) —
+   content unchanged (already real, from §4), retitled to drop "Papiloma, Keratoza" now that those
+   have their own page, trimmed the now-redundant papiloma/keratoza subsection and FAQ/candidate/
+   result bullets, cross-linked to the new page.
+3. **Uklanjanje papiloma i keratoza** — **new dedicated page**
+   (`app/usluge/uklanjanje-papiloma-i-keratoza/page.tsx`), split out from the bradavice page because
+   it was a same-category slug duplicate (two different bullets in Opšta dermatovenerologija silently
+   sharing one page — see the new code comment in `lib/service-catalog.ts`). Full content synthesized
+   from Marta's exact given text: 3 methods (radiotalasna hirurgija, ablativni Er:YAG laser,
+   krioterapija), papilomi description, keratoze description, healing/scarring paragraph.
+4. **Uklanjanje vaskularnih promena – kapilari i hemangiomi** (`kapilari-i-hemangiomi-laser`) — fully
+   rewritten to Marta's newly-supplied structured text (already close in substance to the §4 version,
+   but now restructured into her exact labeled breakdown: tipovi, prošireni kapilari, hemangiomi,
+   princip rada, osećaj tokom tretmana, trajanje, broj tretmana, vidljivi rezultati, nakon tretmana).
+5. **Lečenje rozacee** — **new dedicated pending page**, replacing the generic `[slug]` template.
+6. **Dermoskopski pregled mladeža** (`dermoskopija`) — judgment call: kept the existing real content
+   (DermLite/Canfield equipment description, already substantive and not fabricated-sounding) rather
+   than deleting it, but added a `pendingNotice` banner clarifying the *specific clinical description*
+   Marta would supply for this listing is still outstanding. Also fixed a pre-existing mislabeled
+   related-service link ("Medicinska dermatologija" was pointing to `/usluge/akne`).
+7. **Lečenje opadanja kose** — **new dedicated pending page**, replacing the generic `[slug]`
+   template.
+8. **Lečenje gljivičnih oboljenja noktiju** (`gljivicna-oboljenja-laser`) — same judgment call as
+   dermoskopija: this bespoke page already has substantial real content (FDA approval, protocol,
+   liver-safety framing) that isn't fabricated-looking, so it was kept with a hand-coded pending
+   banner added (matches the page's own custom hero styling, not `ServicePageLayout`).
+9. **Lečenje akni** (`akne`) — rewritten to incorporate the additional detail in Marta's newly-supplied
+   text not previously captured: explicit "Roakutan" brand name, the invasive/ablative laser
+   resurfacing option (distinct from the neinvazivni Nd:YAG/Clear Skin protocols), restructured into
+   her 5-part narrative (individualni pristup, terapija laserom, hemijski pilinzi i komedoekspresija,
+   sistemska terapija, ishrana i hormonski faktori) via `whatIsItSections`.
+10. **Uklanjanje pigmentnih promena** — **new dedicated pending page**.
+11. **Lečenje pojačanog znojenja** — **new dedicated pending page**.
+12. **Hirurško uklanjanje mladeža sa PH dijagnostikom** — **new dedicated pending page**.
+
+### Judgment calls made without asking (flagged here for review)
+- Dermoskopija and gljivičnih oboljenja pages kept their existing real content instead of being wiped
+  to bare pending pages like the other 5 — reasoning: their content is factual and non-generic
+  (equipment specs, FDA approval, protocol timing), unlike the fake `buildServiceCopy()` boilerplate
+  the user was reacting against. If Marta's upcoming text should fully replace rather than supplement
+  what's there, say so and these two can be stripped down to match the other 5's pending-only pattern.
+- "Hijaluronski fileri" and "Botulinum toksin – botox" still share `botoks-fileri` (flagged already in
+  §13) — not revisited this pass since no new instruction addressed it.
+
+### Verified
+`npx tsc --noEmit` clean; `npm run build` succeeds (39 top-level routes, up from 38 — the new
+`uklanjanje-papiloma-i-keratoza` page); `npm run dev -- --port 3123` with Playwright checks of all 12
+Opšta dermatovenerologija pages plus `/usluge` — all return HTTP 200, all show 0 console errors
+(aside from the pre-existing unrelated favicon 404), logo overlay confirmed rendering correctly on
+`akne` and `medicinska-dermatologija`, step-spacing fix confirmed visually on `akne`'s "Kako
+Funkcioniše" section, pending banner confirmed rendering correctly on `rozacea` and
+`medicinska-dermatologija`, and the `/usluge` listing confirmed "Uklanjanje papiloma i keratoza" now
+resolves to its own distinct URL instead of the shared bradavice slug.
+
+### Not done, out of scope
+Extending the logo overlay to the 4 bespoke pages that don't use `ServicePageLayout` and don't
+already have it (`botoks-fileri`, `laserska-epilacija`, `podmladjivanje-fotona-3d-4d-5d`,
+`strije-laser`); stripping dermoskopija/gljivicna-oboljenja-laser down to bare pending pages (kept
+their real content, see judgment call above); any work outside Opšta dermatovenerologija; no commit
+made, nothing pushed.

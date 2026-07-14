@@ -6,15 +6,24 @@ export type ServiceCatalogItem = {
   imageSrc: string
 }
 
+// Note on duplicate `slug` values below: the SAME service intentionally appears under multiple
+// categories (e.g. "Lečenje akni" is listed under Opšta dermatovenerologija, Estetska
+// dermatologija, and Laseri u dermatologiji) and those entries correctly share one slug/page —
+// that's the same content viewed through a different category lens, not a bug.
+// Within a SINGLE category, however, every bullet must resolve to its own distinct page. Two
+// different services silently sharing one slug inside the same category is a content bug (it
+// happened once with "Uklanjanje papiloma i keratoza" briefly sharing
+// bradavice-papilomi-keratoze-moluske before it got its own dedicated page) — check for this
+// before reusing a slug across two different-named bullets in the same category array below.
 export const serviceCategories: { title: string; id: string; subtitle?: string; services: ServiceCatalogItem[] }[] = [
   {
     title: 'Opšta dermatovenerologija',
     id: 'opsta-dermatovenerologija',
     subtitle: 'Dermatologija za celu porodicu',
     services: [
-      { name: 'Dijagnostika i lečenje kožnih i polnih bolesti', slug: 'medicinska-dermatologija', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
+      { name: 'Dijagnostika i lečenje kožnih i polnih bolesti', slug: 'medicinska-dermatologija', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/opsta-dermatovenerologija/lecenje-koznih-i-polnih-bolesti.png' },
       { name: 'Uklanjanje virusnih bradavica, kondiloma i moluski', slug: 'bradavice-papilomi-keratoze-moluske', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/opsta-dermatovenerologija/uklanjanje-bradavica-kondiloma-papiloma.png' },
-      { name: 'Uklanjanje papiloma i keratoza', slug: 'bradavice-papilomi-keratoze-moluske', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/opsta-dermatovenerologija/uklanjanje-papiloma-i-keratoza.png' },
+      { name: 'Uklanjanje papiloma i keratoza', slug: 'uklanjanje-papiloma-i-keratoza', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/opsta-dermatovenerologija/uklanjanje-papiloma-i-keratoza.png' },
       { name: 'Uklanjanje vaskularnih promena – kapilari i hemangiomi', slug: 'kapilari-i-hemangiomi-laser', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/opsta-dermatovenerologija/uklanjanje-vaskularnih-promena.png' },
       { name: 'Lečenje rozacee', slug: 'rozacea', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
       { name: 'Dermoskopski pregled mladeža', slug: 'dermoskopija', category: 'Opšta dermatovenerologija', imageSrc: '/images/Services/dermoscopy-treatment.jpg' },

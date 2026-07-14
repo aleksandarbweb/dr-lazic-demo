@@ -176,6 +176,7 @@ export const ru = {
     backToServices: 'Назад к услугам',
     aboutLabel: 'О процедуре',
     whatIs: 'Что такое',
+    aboutFallback: 'Об этой услуге',
     processLabel: 'Процесс',
     methodsLabel: 'Подход',
     methodsTitle: 'Методы и Технологии',

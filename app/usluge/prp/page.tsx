@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'PRP Tretman',
+  aboutHeading: 'Šta je PRP?',
   subtitle: 'Prirodna regeneracija kože sopstvenom plazmom bogatom trombocitima',
   description: 'Iskoristite regenerativnu moć vašeg organizma za podmlađivanje kože',
   whatIsIt: `PRP (Platelet-Rich Plasma) tretman, poznat i kao "vampirski tretman", koristi koncentrat trombocita iz vaše sopstvene krvi za stimulaciju regeneracije i podmlađivanje kože. Trombociti sadrže faktore rasta koji aktiviraju ćelije zadužene za obnovu tkiva, stimulišu produkciju kolagena i ubrzavaju zarastanje.

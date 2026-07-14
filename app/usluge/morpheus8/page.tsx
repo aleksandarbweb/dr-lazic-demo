@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'Morpheus8',
+  aboutHeading: 'Šta je Morpheus8?',
   subtitle: 'Nehiruški lifting lica najnovijom RF microneedling tehnologijom',
   description: 'Revolucionarna procedura za dubinsko zatezanje i remodeling kože',
   whatIsIt: `Morpheus8 je najsavremenija tehnologija koja kombinuje frakcioni microneedling sa radiofrekvencijskom (RF) energijom za dubinsko zatezanje kože i stimulaciju produkcije kolagena. Ovaj tretman deluje na dublje slojeve kože i potkožno masno tkivo, čime se postiže efekat zatezanja i remodelinga koji ranije nije bio moguć bez hirurške intervencije.

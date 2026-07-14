@@ -8,8 +8,10 @@ export const metadata: Metadata = {
 
 const serviceData = {
   title: 'Dermoskopija',
+  aboutHeading: 'Šta je dermoskopija?',
   subtitle: 'Pregled i mapiranje mladeža sa digitalnom fotodokumentacijom',
   description: 'Najsavremenija dijagnostika za rano otkrivanje promena na koži',
+  pendingNotice: 'Tekst ispod opisuje opremu i opšti tok dermoskopskog pregleda. Zvaničan klinički opis ove usluge od dr Terzić je i dalje u pripremi i biće dodat čim ga dostavi.',
   whatIsIt: `Dermoskopija je neinvazivna dijagnostička metoda koja omogućava detaljan pregled kožnih promena, posebno mladeža, pomoću specijalnog uređaja - dermatoskopa. Ovaj uređaj koristi uveličavanje i polarizovano svetlo za vizualizaciju struktura kože koje nisu vidljive golim okom.
 
 Dermomapiranje je unapređena verzija dermoskopije koja uključuje fotografisanje i digitalno mapiranje svih mladeža na telu. Ovo omogućava praćenje promena tokom vremena i rano otkrivanje potencijalno opasnih promena, uključujući melanom - najopasnije kožno oboljenje.
@@ -62,9 +64,9 @@ Koristimo DermLite DL5 i Canfield D200EVO dermatoskop, koji uz digitalnu AI dija
     }
   ],
   relatedServices: [
-    { title: 'Medicinska dermatologija', href: '/usluge/akne' },
-    { title: 'Laserska epilacija', href: '/usluge/laserska-epilacija' },
-    { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' }
+    { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },
+    { title: 'Hirurško uklanjanje mladeža sa PH dijagnostikom', href: '/usluge/hirursko-uklanjanje-mladeza' },
+    { title: 'Uklanjanje virusnih bradavica, kondiloma i moluski', href: '/usluge/bradavice-papilomi-keratoze-moluske' }
   ]
 }
 
