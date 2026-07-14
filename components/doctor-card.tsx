@@ -12,6 +12,7 @@ interface DoctorCardProps {
   imageSrc: string
   reversed?: boolean
   profileHref?: string
+  ctaLabel?: string
 }
 
 export function DoctorCard({
@@ -21,6 +22,7 @@ export function DoctorCard({
   imageSrc,
   reversed,
   profileHref,
+  ctaLabel,
 }: DoctorCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: true, margin: "-80px" })
@@ -77,6 +79,15 @@ export function DoctorCard({
           </h3>
           <p className="mb-6 text-sm font-medium uppercase tracking-[0.15em] text-[#b91c1c]">{title}</p>
           <p className="text-[#5f5a55] leading-relaxed font-light">{bio}</p>
+          {ctaLabel && profileHref && (
+            <Link
+              href={profileHref}
+              className="group mt-8 inline-flex items-center gap-3 rounded-full border border-[#b91c1c]/30 px-6 py-3 text-sm font-medium uppercase tracking-[0.14em] text-[#b91c1c] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:border-[#b91c1c] hover:bg-[#b91c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 focus-visible:ring-offset-2"
+            >
+              {ctaLabel}
+              <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </Link>
+          )}
         </div>
       </motion.div>
     </>

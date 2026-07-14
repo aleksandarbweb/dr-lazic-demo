@@ -1050,3 +1050,76 @@ Unchanged policy: raise with the client, don't build unprompted.
   - **Not done / client-dependent**: Biljana's real CV (still using the pre-existing placeholder bio);
     a newer clinic-interior photo for the "Naša priča" section (user mentioned Marta may send one); the
     3 cosmetologists still have no bios (Marta did not supply any, matches her stated intent).
+- 2026-07-14 — **Homepage cleanup pass** from Marta's latest feedback: nav rename, a real hero layout
+  bug, missing taglines, copy fixes, and a full rebuild of the equipment/testimonials sections.
+  - **Nav rename**: "Početna" → "Naslovna" site-wide (`nav.home` in `sr.ts`, plus the hardcoded
+    "Početna stranica" link text in `app/error.tsx`). EN ("Home") and RU ("Главная") were already
+    correct and needed no change.
+  - **Hero overflow bug (root cause, not cosmetic)**: at large viewports (tested 1920px and 2560px)
+    the word "Personalizovana" was overflowing out of its grid column and visually colliding with the
+    portrait image. Cause: the hero's flex/grid text column had no `min-width: 0`, so CSS Grid's
+    default `min-width: auto` on grid items let the unbreakable heading force the track wider than its
+    50% share instead of wrapping. Fixed by adding `min-w-0` to the column and dropping the tallest
+    responsive step (`lg:text-7xl xl:text-8xl` → `lg:text-6xl xl:text-7xl` for SR/EN; RU's existing,
+    already-conservative `lg:text-5xl xl:text-6xl` was left as is). Verified clean at 1024–2560px.
+  - **Missing taglines added**: "Dermatologija i estetska medicina na jednom mestu" now sits as a
+    small caps eyebrow above the stats bar (`home.trustEyebrow`, new key); "Stručnost, iskustvo i
+    poverenje" now sits as the eyebrow above the "Naše Usluge" section (`home.servicesSection.eyebrow`,
+    new key). Both added to SR/EN/RU.
+  - **Copy fixes**: stats label "Specijalista dermatologa" → "Specijalista dermatologije" (SR) /
+    "Специалиста дерматолога" → "Специалиста дерматовенерологии" (RU; EN's "Dermatology Specialists"
+    was already fine); "60+ tretmana"/"Dermatoloških tretmana" → "60+ procedura"/"Dermatoloških
+    procedura" (SR) and the EN equivalents ("60+ treatments" → "60+ procedures", "Dermatological
+    Treatments" → "Dermatological Procedures") — RU already said "процедур" in both places, left as is.
+  - **Dr. Marta homepage title** changed to "CEO i specijalista dermatovenerologije" (was "Osnivač
+    ordinacije..."), matching the O Nama page title from the 2026-07-14 O Nama pass. Added a quick-fact
+    read-more CTA under her bio ("Pogledajte punu biografiju" → `/o-nama#marta-terzic`) via a new
+    optional `ctaLabel` prop on `components/doctor-card.tsx`; added a "Pogledajte ceo tim" button below
+    the doctors list linking to a new `id="nas-tim"` anchor added to the Doctors Section on
+    `app/o-nama/page.tsx`. Marta's and Biljana's photos/names were already clickable to their O Nama
+    profiles from a prior pass — no change needed there.
+  - **Equipment section rebuilt**: renamed from "Oprema i partneri sa kojima radimo" to "Naša oprema"
+    (`home.partnersTitle` → `home.equipmentTitle`); replaced the old hardcoded 5-name text list
+    (`Lumenis Light Sheer, Morpheus8, Fotona, Bioderma, Juvederm` — stale, didn't match the real
+    equipment roster) with actual manufacturer logos already sitting unused in
+    `public/images/Logos/` (Fotona, Alma, InMode, Ellman, Cortex, H&O, Canfield, Dermapen, sourced from
+    the `deviceConfig` list on `/oprema`) in a single continuous marquee wrapped in one `Link` to
+    `/oprema` (whole section is one click target, matching "no specific button needed").
+  - **"Naš Pristup" 3-quote section removed** entirely (it was a separate, redundant section beyond the
+    one philosophy quote in the dark band, which stays). Removed `home.approachSection`/
+    `home.approachList` from SR/EN/RU since nothing else referenced them.
+  - **"Iskustva Pacijenata" reviews rewritten and reformatted**: the 8 real, previously-curated Google
+    review excerpts were paraphrased down to one tight sentence each (roughly half the length) instead
+    of the multi-sentence originals — content and meaning preserved, nothing invented; author
+    attribution (first name + last initial) was already in that format from the prior pass. Converted
+    from a static 4-up grid to a continuous auto-scrolling marquee that also supports manual
+    drag/swipe/trackpad scrolling (tripled list + the existing edge-jump-to-middle logic already used
+    by the mobile services carousel, so dragging near either end silently recenters instead of hitting
+    a hard stop).
+  - **Real bug found and fixed in the auto-scroll marquee mechanism itself** (pre-existing, not
+    introduced this pass — same code path the "Oprema i partneri" marquee already used): the tick loop
+    incremented position via `container.scrollLeft += delta * speed`, but `scrollLeft` rounds to an
+    integer on *read*, so at the speeds in use (0.008–0.01px/ms) the fractional increment was smaller
+    than 1px and was silently dropped on every frame — the marquee never actually moved, on this page,
+    in production, the whole time. Confirmed via a `scrollLeft` setter proxy (writes were firing every
+    frame, value never changed) before fixing it. Fixed by accumulating position in a local float
+    variable instead of round-tripping through the DOM property, with a resync check so manual
+    drags (or the edge-jump effect) aren't fought by the next auto-scroll frame. Verified with a
+    before/after `scrollLeft`-delta measurement over several seconds on both the equipment and reviews
+    marquees.
+  - **7-card services grid fixed**: switched the desktop "Naše Usluge" grid from CSS Grid
+    (`sm:grid-cols-2 lg:grid-cols-3`, which left the 7th card stranded flush-left under column 1) to
+    `flex flex-wrap justify-center`, so the trailing single card self-centers under the middle column
+    instead of merging any categories — category order was already correct and consistent across
+    `lib/nav.ts`, `lib/service-catalog.ts`, and the homepage config, verified via grep, no change
+    needed there. Mobile was already fine (its own swipe carousel) and untouched.
+  - **Dead code removed** while in this file: an entire unused second marquee wiring
+    (`servicesCarouselRef`, `servicesPaused`, `pauseServices`/`resumeServices`, `loopingServices`) that
+    was declared and fed into the animation effect but never attached to any rendered element.
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes (39 routes, no new errors/warnings);
+    Playwright review on `localhost:3123` at 1024–2560px and 390×844 for SR/EN/RU — 0 console errors
+    (3 pre-existing "missing sizes prop" warnings on images untouched by this pass); confirmed both
+    marquees now genuinely scroll (measured `scrollLeft` delta over multiple seconds) and pause/resume
+    wiring matches the pre-existing, already-approved partners-marquee pattern exactly.
+  - **Not done / client-dependent**: nothing outstanding from this pass — all items in the user's list
+    were addressed.

@@ -42,15 +42,17 @@ export const en = {
       description: 'Over 25 years of experience in medical and aesthetic dermatology. We build our patients\' trust through an individual approach, dedicated diagnostics and treatment, careful treatment selection, natural results, and long-term care for skin health.',
       ctaPrimary: 'Contact Us',
       ctaSecondary: 'Our Services',
-      trustItems: ['25+ years of experience', '60+ treatments', 'Individual approach'],
+      trustItems: ['25+ years of experience', '60+ procedures', 'Individual approach'],
     },
+    trustEyebrow: 'Dermatology and Aesthetic Medicine Under One Roof',
     stats: [
       { value: '25+', label: 'Years of Experience' },
       { value: '2', label: 'Dermatology Specialists' },
-      { value: '60+', label: 'Dermatological Treatments' },
+      { value: '60+', label: 'Dermatological Procedures' },
       { value: '15000+', label: 'Satisfied Patients' }
     ],
     servicesSection: {
+      eyebrow: 'Expertise, Experience & Trust',
       title: 'Our Services',
       subtitle: 'Comprehensive medical and aesthetic dermatology with state-of-the-art equipment and a personalized approach',
       swipeMobile: 'Swipe horizontally to explore services',
@@ -93,12 +95,14 @@ export const en = {
       author: 'Dr. Marta Terzic'
     },
     doctorsSection: {
-      title: 'Our Specialists'
+      title: 'Our Specialists',
+      viewProfileLabel: 'Read Full Biography',
+      viewTeamLabel: 'Meet the Whole Team',
     },
     doctorsList: [
       {
         name: 'Dr. Marta Terzic',
-        title: 'Founder and Dermatovenereology Specialist',
+        title: 'CEO and Dermatovenereology Specialist',
         bio: 'Over 25 years of experience in dermatology, dermoscopy, and aesthetic and regenerative medicine. A regional pioneer of laser dermatology, educator, and national trainer for hyaluronic fillers and botulinum toxin. Committed to natural results, skin health, and an individual approach for every patient.'
       },
       {
@@ -107,52 +111,34 @@ export const en = {
         bio: 'Dermatovenereology specialist with experience in general and pediatric dermatology. Her focus includes dermoscopy, radiowave and laser procedures, aesthetic treatments, and anti-aging medicine.'
       }
     ],
-    partnersTitle: 'Equipment and Partners we work with',
-    approachSection: {
-      title: 'Our Approach',
-      subtitle: 'The philosophy behind every consultation and treatment at the clinic',
-    },
-    approachList: [
-      {
-        quote: 'Every patient deserves a personalized approach: that is why we tailor every diagnosis, treatment, and procedure to their needs and expectations.',
-        author: 'Dr. Marta Terzic',
-      },
-      {
-        quote: 'We perform every treatment with maximum precision and care, using the most advanced medical equipment and proven methods.',
-        author: 'Dr. Marta Terzic',
-      },
-      {
-        quote: 'The goal is not to fight aging, but to age well, with a natural result and each patient\'s authenticity preserved.',
-        author: 'Dr. Marta Terzic',
-      }
-    ],
+    equipmentTitle: 'Our Equipment',
     reviewsSection: {
       title: 'Patient Experiences',
       subtitle: 'What our patients say about their consultations and treatments at the clinic',
     },
     reviewsList: [
       {
-        quote: 'At Dr Terzic\'s clinic I found a dermatologist I can fully trust. Dr Marta is extremely skilled and attentive to every detail: she explained everything thoroughly and recommended a therapy that gave excellent results.',
+        quote: 'I found a dermatologist I can fully trust — skilled, attentive, and the therapy she recommended gave excellent results.',
         author: 'Nataša D.',
       },
       {
-        quote: 'Dr Petkovic was friendly and professional. The mole I was concerned about was removed painlessly, within 20 minutes of walking in the door. I would absolutely recommend this clinic.',
+        quote: 'Dr Petkovic was friendly and professional — the mole I was worried about was removed painlessly in just 20 minutes. I highly recommend this clinic.',
         author: 'Sean S.',
       },
       {
-        quote: 'The clinic is impeccably clean and extremely professional from the first impression. The staff made me feel welcome right away, and Dr Terzic and her team speak wonderful English. The procedure went better and with less discomfort than I expected, thanks to Dr Terzic\'s skill and experience.',
+        quote: 'Impeccably clean, professional clinic — the team speaks wonderful English, and the procedure was easier than I expected.',
         author: 'Diane',
       },
       {
-        quote: 'Many years ago I first came to Dr Terzic\'s clinic. Over time my whole family, including my children and husband, became her patients. The dedication, expertise, and warmth Dr Marta gives us is hard to measure in stars.',
+        quote: 'My whole family are her patients today. Dr Marta\'s dedication and expertise are hard to measure in stars.',
         author: 'Nevena A.',
       },
       {
-        quote: 'Dr Terzic and her team helped me quickly and successfully overcome a facial hair problem that had bothered me for a decade. The laser hair removal treatments were no trouble at all, and the results are more than fantastic.',
+        quote: 'Laser hair removal solved a problem that had bothered me for a decade — the results are fantastic.',
         author: 'Ana I.',
       },
       {
-        quote: 'Dr Marta is extremely skilled, thorough, and dedicated to her work. The examination was detailed, with clear explanations and answers to every question, which builds great trust. Beyond her expertise, I would highlight her kindness, patience, and pleasant manner with patients.',
+        quote: 'A thorough exam, clear explanations, and a lot of patience — Dr Marta inspires real trust.',
         author: 'Pedja D.',
       },
       {

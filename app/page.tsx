@@ -30,12 +30,15 @@ const servicesConfig = [
   { icon: HandHeart, href: '/usluge#kozmetologija' },
 ]
 
-const partners = [
-  'Lumenis Light Sheer',
-  'Morpheus8',
-  'Fotona',
-  'Bioderma',
-  'Juvederm'
+const equipmentBrands = [
+  { name: 'Fotona', logo: '/images/Logos/fotona-logo.png' },
+  { name: 'Alma', logo: '/images/Logos/alma-logo.png' },
+  { name: 'InMode', logo: '/images/Logos/inmode-logo.png' },
+  { name: 'Ellman', logo: '/images/Logos/ellman-logo.png' },
+  { name: 'Cortex', logo: '/images/Logos/cortex-logo.png' },
+  { name: 'H&O', logo: '/images/Logos/ho-logo.png' },
+  { name: 'Canfield', logo: '/images/Logos/canfield-logo.png' },
+  { name: 'Dermapen', logo: '/images/Logos/dermapen-logo.png' },
 ]
 
 const doctorsConfig = [
@@ -53,15 +56,15 @@ const doctorsConfig = [
 
 export default function HomePage() {
   const { t, language } = useTranslation()
-  const servicesCarouselRef = useRef<HTMLDivElement>(null)
   const mobileServicesRef = useRef<HTMLDivElement>(null)
-  const partnersCarouselRef = useRef<HTMLDivElement>(null)
+  const partnersCarouselRef = useRef<HTMLAnchorElement>(null)
+  const reviewsCarouselRef = useRef<HTMLDivElement>(null)
   const shouldReduce = useReducedMotion()
 
-  const [servicesPaused, setServicesPaused] = useState(false)
   const [partnersPaused, setPartnersPaused] = useState(false)
+  const [reviewsPaused, setReviewsPaused] = useState(false)
 
-  const servicesResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const reviewsResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const services = t.home.servicesList.map((service, index) => ({
     ...service,
@@ -70,24 +73,33 @@ export default function HomePage() {
 
   const doctors = t.home.doctorsList.map((doc, index) => ({
     ...doc,
-    ...doctorsConfig[index]
+    ...doctorsConfig[index],
+    ctaLabel: index === 0 ? t.home.doctorsSection.viewProfileLabel : undefined,
   }))
 
-  // ── Auto-scrolling Marquees (Desktop Services & Partners) ──
+  // ── Auto-scrolling Marquees (Equipment & Reviews) ──
   useEffect(() => {
     const containers = [
-      { ref: servicesCarouselRef, speed: 0.012, paused: servicesPaused },
-      { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused },
+      // Doubled list — reset once we've scrolled exactly one copy's width.
+      { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused, resetFraction: 0.5 },
+      // Tripled list — the infinite-scroll-jump effect below already recenters
+      // it near the edges (for manual drags), so no internal reset here.
+      { ref: reviewsCarouselRef, speed: 0.008, paused: reviewsPaused, resetFraction: null as number | null },
     ]
 
     const frameIds: number[] = []
 
-    containers.forEach(({ ref, speed, paused }) => {
+    containers.forEach(({ ref, speed, paused, resetFraction }) => {
       const container = ref.current
       if (!container) return
 
       let frameId = 0
       let lastTs = 0
+      // Track position in a float; container.scrollLeft rounds to an integer on
+      // read, so accumulating via `container.scrollLeft += tinyDelta` silently
+      // drops sub-pixel increments and the marquee never actually moves.
+      let position = container.scrollLeft
+      let lastSetValue = position
 
       const tick = (ts: number) => {
         if (paused) {
@@ -98,21 +110,28 @@ export default function HomePage() {
         if (lastTs === 0) lastTs = ts
         const delta = ts - lastTs
         lastTs = ts
-        
-        container.scrollLeft += (delta * speed)
 
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-          container.scrollLeft = 0
+        // If the user (or the edge-jump effect) moved scrollLeft since our last
+        // write, resync so auto-scroll continues from there instead of fighting it.
+        if (Math.abs(container.scrollLeft - lastSetValue) > 1) {
+          position = container.scrollLeft
         }
+
+        position += delta * speed
+        if (resetFraction !== null && position >= container.scrollWidth * resetFraction) {
+          position = 0
+        }
+        container.scrollLeft = position
+        lastSetValue = container.scrollLeft
         frameId = requestAnimationFrame(tick)
       }
-      
+
       frameId = requestAnimationFrame(tick)
       frameIds.push(frameId)
     })
 
     return () => frameIds.forEach(id => cancelAnimationFrame(id))
-  }, [servicesPaused, partnersPaused])
+  }, [partnersPaused, reviewsPaused])
 
   // ── Infinite Scroll Jump Logic (Mobile Interactive Carousels) ──
   useEffect(() => {
@@ -169,23 +188,25 @@ export default function HomePage() {
     }
 
     const cleanupServices = handleInfiniteScroll(mobileServicesRef)
+    const cleanupReviews = handleInfiniteScroll(reviewsCarouselRef)
 
     return () => {
       cleanupServices?.()
+      cleanupReviews?.()
     }
   }, [])
 
-  const loopingServices = [...services, ...services]
   const tripleServices = [...services, ...services, ...services]
-  const loopingPartners = [...partners, ...partners]
+  const loopingEquipment = [...equipmentBrands, ...equipmentBrands]
+  const tripleReviews = [...t.home.reviewsList, ...t.home.reviewsList, ...t.home.reviewsList]
 
-  const pauseServices = () => {
-    if (servicesResumeTimeout.current) clearTimeout(servicesResumeTimeout.current)
-    setServicesPaused(true)
+  const pauseReviews = () => {
+    if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
+    setReviewsPaused(true)
   }
-  const resumeServices = () => {
-    if (servicesResumeTimeout.current) clearTimeout(servicesResumeTimeout.current)
-    servicesResumeTimeout.current = setTimeout(() => setServicesPaused(false), 900)
+  const resumeReviews = () => {
+    if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
+    reviewsResumeTimeout.current = setTimeout(() => setReviewsPaused(false), 1200)
   }
 
   return (
@@ -205,7 +226,7 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-7xl items-center px-6 pb-16 pt-32 sm:px-8 lg:px-12 lg:pt-36">
           <div className="grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
             {/* Left Content */}
-            <div className="max-w-2xl text-center lg:text-left">
+            <div className="min-w-0 max-w-2xl text-center lg:text-left">
               <motion.p
                 initial={shouldReduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -218,7 +239,7 @@ export default function HomePage() {
                 initial={shouldReduce ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className={`text-5xl font-serif leading-[1.05] text-[#181512] sm:text-6xl md:text-7xl ${language === 'ru' ? 'lg:text-5xl xl:text-6xl' : 'lg:text-7xl xl:text-8xl'}`}
+                className={`text-5xl font-serif leading-[1.05] text-[#181512] sm:text-6xl md:text-7xl ${language === 'ru' ? 'lg:text-5xl xl:text-6xl' : 'lg:text-6xl xl:text-7xl'}`}
               >
                 {t.home.hero.titleLine1}
                 <br />
@@ -317,6 +338,11 @@ export default function HomePage() {
           ════════════════════════════════════════════════════════════════════ */}
       <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <FadeUp>
+            <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#b91c1c] md:mb-12">
+              {t.home.trustEyebrow}
+            </p>
+          </FadeUp>
           <StaggerChildren className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10" staggerDelay={0.1}>
             {t.home.stats.map((stat, index) => (
               <StaggerItem key={stat.label}>
@@ -345,8 +371,11 @@ export default function HomePage() {
       <section className="bg-[#f7f4ee] py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <SectionTitle 
-              title={t.home.servicesSection.title} 
+            <p className="mb-4 text-center text-sm tracking-[0.2em] uppercase text-[#b91c1c]">
+              {t.home.servicesSection.eyebrow}
+            </p>
+            <SectionTitle
+              title={t.home.servicesSection.title}
               subtitle={t.home.servicesSection.subtitle}
             />
           </FadeUp>
@@ -368,9 +397,12 @@ export default function HomePage() {
               ))}
             </div>
 
-            <StaggerChildren className="hidden grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 md:grid" staggerDelay={0.08}>
+            <StaggerChildren className="hidden flex-wrap justify-center gap-5 md:flex" staggerDelay={0.08}>
               {services.map((service) => (
-                <StaggerItem key={service.title}>
+                <StaggerItem
+                  key={service.title}
+                  className="w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
+                >
                   <div
                     className="h-full rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_40px_-24px_rgba(65,45,30,0.35)] motion-reduce:transform-none motion-reduce:transition-none"
                   >
@@ -456,57 +488,56 @@ export default function HomePage() {
                 <DoctorCard key={index} {...doctor} />
               ))}
           </div>
+          <FadeUp delay={0.1}>
+            <div className="mt-16 flex justify-center md:mt-20">
+              <Link
+                href="/o-nama#nas-tim"
+                className="inline-flex items-center justify-center rounded-full border border-[#27221d]/30 px-8 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2"
+              >
+                {t.home.doctorsSection.viewTeamLabel}
+              </Link>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          PARTNERS SECTION (Infinite Marquee)
+          EQUIPMENT SECTION (Infinite Marquee, links to /oprema)
           ════════════════════════════════════════════════════════════════════ */}
       <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-10 text-center text-sm uppercase tracking-[0.2em] text-[#6b6b6b]">{t.home.partnersTitle}</p>
+            <p className="mb-10 text-center text-sm uppercase tracking-[0.2em] text-[#6b6b6b]">{t.home.equipmentTitle}</p>
           </FadeUp>
-          <div 
+          <Link
+            href="/oprema"
             ref={partnersCarouselRef}
-            className="no-scrollbar flex gap-10 overflow-x-hidden md:gap-16"
+            className="no-scrollbar flex items-center gap-14 overflow-x-hidden md:gap-20"
             onMouseEnter={() => setPartnersPaused(true)}
             onMouseLeave={() => setPartnersPaused(false)}
+            aria-label={t.home.equipmentTitle}
           >
-            {loopingPartners.map((partner, index) => (
+            {loopingEquipment.map((brand, index) => (
               <span
-                key={`${partner}-${index}`} 
-                className="flex-shrink-0 cursor-default text-sm font-medium uppercase tracking-[0.1em] text-[#1a1a1a]/40 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] md:hover:text-[#b91c1c] md:text-base"
+                key={`${brand.name}-${index}`}
+                className="relative h-9 w-28 flex-shrink-0 grayscale opacity-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-100 hover:grayscale-0 md:h-10 md:w-32"
               >
-                {partner}
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  fill
+                  sizes="128px"
+                  className="object-contain"
+                />
               </span>
             ))}
-          </div>
+          </Link>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          APPROACH SECTION — honest philosophy statements, not fake reviews.
-          Static grid (no carousel/marquee needed for 3 items).
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#f7f4ee] py-16 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <FadeUp>
-            <SectionTitle title={t.home.approachSection.title} subtitle={t.home.approachSection.subtitle} />
-          </FadeUp>
-
-          <StaggerChildren className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3" staggerDelay={0.1}>
-            {t.home.approachList.map((item, index) => (
-              <StaggerItem key={index}>
-                <TestimonialCard quote={item.quote} author={item.author} />
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          PATIENT REVIEWS SECTION — real, curated excerpts from public reviews.
+          PATIENT REVIEWS SECTION — real, curated excerpts from public reviews,
+          in a self-scrolling marquee that also supports manual drag/swipe.
           ════════════════════════════════════════════════════════════════════ */}
       <section className="bg-white py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -514,13 +545,24 @@ export default function HomePage() {
             <SectionTitle title={t.home.reviewsSection.title} subtitle={t.home.reviewsSection.subtitle} />
           </FadeUp>
 
-          <StaggerChildren className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.08}>
-            {t.home.reviewsList.map((item, index) => (
-              <StaggerItem key={index}>
-                <TestimonialCard quote={item.quote} author={item.author} />
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
+          <FadeUp delay={0.1}>
+            <div
+              ref={reviewsCarouselRef}
+              className="no-scrollbar -mx-6 mt-12 flex gap-6 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
+              onMouseEnter={pauseReviews}
+              onMouseLeave={resumeReviews}
+              onTouchStart={pauseReviews}
+              onTouchEnd={resumeReviews}
+              onPointerDown={pauseReviews}
+              onPointerUp={resumeReviews}
+            >
+              {tripleReviews.map((item, index) => (
+                <div key={index} className="w-[280px] flex-shrink-0 sm:w-[340px]">
+                  <TestimonialCard quote={item.quote} author={item.author} />
+                </div>
+              ))}
+            </div>
+          </FadeUp>
 
           <FadeUp delay={0.2}>
             <p className="mt-10 text-center text-xs uppercase tracking-[0.15em] text-[#9b948c]">

@@ -39,7 +39,7 @@ export default function Error({
             href="/"
             className="inline-flex items-center justify-center rounded-full border border-[#27221d]/30 px-8 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-500 hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2"
           >
-            Početna stranica
+            Naslovna stranica
           </Link>
         </div>
       </div>

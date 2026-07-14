@@ -1,7 +1,7 @@
 export const sr = {
   skipToContent: 'Pređi na sadržaj',
   nav: {
-    home: 'Početna',
+    home: 'Naslovna',
     about: 'O nama',
     services: 'Usluge',
     equipment: 'Oprema',
@@ -42,15 +42,17 @@ export const sr = {
       description: 'Više od 25 godina iskustva u medicinskoj i estetskoj dermatologiji. Poverenje naših pacijenata gradimo individualnim pristupom, posvećenom dijagnostikom i lečenjem, pažljivim biranjem tretmana, prirodnim rezultatima i dugoročnom brigom o zdravlju kože.',
       ctaPrimary: 'Kontaktirajte nas',
       ctaSecondary: 'Naše usluge',
-      trustItems: ['25+ godina iskustva', '60+ tretmana', 'Individualan pristup'],
+      trustItems: ['25+ godina iskustva', '60+ procedura', 'Individualan pristup'],
     },
+    trustEyebrow: 'Dermatologija i estetska medicina na jednom mestu',
     stats: [
       { value: '25+', label: 'Godina iskustva' },
-      { value: '2', label: 'Specijalista dermatologa' },
-      { value: '60+', label: 'Dermatoloških tretmana' },
+      { value: '2', label: 'Specijalista dermatologije' },
+      { value: '60+', label: 'Dermatoloških procedura' },
       { value: '15000+', label: 'Zadovoljnih pacijenata' }
     ],
     servicesSection: {
+      eyebrow: 'Stručnost, iskustvo i poverenje',
       title: 'Naše Usluge',
       subtitle: 'Kompletna medicinska i estetska dermatologija sa najsavremenijom opremom i individualizovanim pristupom svakom pacijentu',
       swipeMobile: 'Prevucite horizontalno da istražite usluge',
@@ -93,12 +95,14 @@ export const sr = {
       author: 'Dr. Marta Terzić'
     },
     doctorsSection: {
-      title: 'Naši Specijalisti'
+      title: 'Naši Specijalisti',
+      viewProfileLabel: 'Pogledajte punu biografiju',
+      viewTeamLabel: 'Pogledajte ceo tim',
     },
     doctorsList: [
       {
         name: 'Dr. Marta Terzić',
-        title: 'Osnivač ordinacije i specijalista dermatovenerologije',
+        title: 'CEO i specijalista dermatovenerologije',
         bio: 'Više od 25 godina iskustva u dermatologiji, dermoskopiji, estetskoj i regenerativnoj medicini. Pionir laserske dermatologije u regionu, edukator i nacionalni trener za primenu hijaluronskih filera i botulinum toksina. Posvećena prirodnim rezultatima, zdravlju kože i individualnom pristupu svakom pacijentu.'
       },
       {
@@ -107,52 +111,34 @@ export const sr = {
         bio: 'Specijalista dermatovenerologije sa iskustvom u opštoj i dečijoj dermatologiji. Posebno je usmerena na dermoskopiju, radiotalasne i laserske procedure, estetske tretmane i anti-age medicinu.'
       }
     ],
-    partnersTitle: 'Oprema i partneri sa kojima radimo',
-    approachSection: {
-      title: 'Naš Pristup',
-      subtitle: 'Filozofija koja stoji iza svakog pregleda i tretmana u ordinaciji',
-    },
-    approachList: [
-      {
-        quote: 'Svaki pacijent zaslužuje personalizovan pristup: zbog toga svaku dijagnostiku, tretman i proceduru prilagođavamo njegovim potrebama i očekivanjima.',
-        author: 'Dr. Marta Terzić',
-      },
-      {
-        quote: 'Svaki tretman sprovodimo sa maksimalnom preciznošću i pažnjom, koristeći najsavremeniju medicinsku opremu i proverene metode.',
-        author: 'Dr. Marta Terzić',
-      },
-      {
-        quote: 'Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti, uz prirodan rezultat i očuvanu autentičnost svakog pacijenta.',
-        author: 'Dr. Marta Terzić',
-      }
-    ],
+    equipmentTitle: 'Naša oprema',
     reviewsSection: {
       title: 'Iskustva Pacijenata',
       subtitle: 'Šta naši pacijenti kažu o pregledima i tretmanima u ordinaciji',
     },
     reviewsList: [
       {
-        quote: 'U ordinaciji Dr Terzić pronašla sam dermatologa kome mogu potpuno da verujem. Doktorka Marta je izuzetno stručna i posvećena svakom detalju: sve je detaljno objasnila i predložila terapiju koja je dala odlične rezultate.',
+        quote: 'Pronašla sam dermatologa kome mogu potpuno da verujem — stručna, pažljiva i sa terapijom koja je dala odlične rezultate.',
         author: 'Nataša D.',
       },
       {
-        quote: 'Doktorka Petković je bila ljubazna i profesionalna. Mladež zbog kog sam bio zabrinut uklonjen je bezbolno, svega 20 minuta nakon što sam ušao u ordinaciju. Toplo preporučujem ovu ordinaciju.',
+        quote: 'Doktorka Petković je bila ljubazna i profesionalna — mladež je uklonjen bezbolno, za svega 20 minuta. Toplo preporučujem.',
         author: 'Sean S.',
       },
       {
-        quote: 'Ordinacija je besprekorno čista i izuzetno profesionalna već na prvi utisak. Osoblje me je odmah učinilo dobrodošlim, a doktorka Terzić i njen tim govore odličan engleski. Zahvat je prošao bolje i sa manje nelagodnosti nego što sam očekivala, zahvaljujući veštini i iskustvu doktorke Terzić.',
+        quote: 'Besprekorno čista i profesionalna ordinacija — tim odlično govori engleski, a zahvat je prošao lakše nego što sam očekivala.',
         author: 'Diane',
       },
       {
-        quote: 'Pre mnogo godina sam prvi put došla u ordinaciju Dr Terzić. Porodica se širila, pa su i deca i suprug postali njeni pacijenti. Posvećenost, stručnost i toplinu koju nam doktorka Marta pruža teško je meriti zvezdicama.',
+        quote: 'Cela porodica su danas njeni pacijenti. Posvećenost i stručnost doktorke Marte teško je meriti zvezdicama.',
         author: 'Nevena A.',
       },
       {
-        quote: 'Dr Terzić i njen tim pomogli su mi da se brzo i uspešno oslobodim problema sa maljama na licu koji me je mučio čitavu deceniju. Tretmani laserske epilacije nisu bili nikakav problem, a rezultati su više nego fantastični.',
+        quote: 'Laserska epilacija je rešila problem koji me je mučio čitavu deceniju — rezultati su fantastični.',
         author: 'Ana I.',
       },
       {
-        quote: 'Doktorka Marta je izuzetno stručna, temeljna i posvećena svom poslu. Pregled je obavljen detaljno, sa jasnim objašnjenjima i odgovorima na sva pitanja, što uliva veliko poverenje. Pored stručnosti, izdvojio bih i ljubaznost, strpljenje i prijatan odnos prema pacijentima.',
+        quote: 'Detaljan pregled, jasna objašnjenja i puno strpljenja — doktorka Marta uliva veliko poverenje.',
         author: 'Pedja D.',
       },
       {

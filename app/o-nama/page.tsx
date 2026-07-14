@@ -153,7 +153,7 @@ export default function ONamaPage() {
       </section>
 
       {/* Doctors Section */}
-      <section className="bg-[#f5f3f0] py-20 md:py-28">
+      <section id="nas-tim" className="bg-[#f5f3f0] py-20 md:py-28 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <SectionTitle title={t.onama.specialistsTitle} />
 
