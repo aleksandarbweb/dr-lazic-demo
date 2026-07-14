@@ -7,7 +7,7 @@ import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 // Set to true if you want to temporarily remove the intro without touching the layout.
 const DISABLE_SITE_INTRO = false
-const INTRO_VIDEO_SRC = '/videos/drterzicintro.mp4'
+const INTRO_VIDEO_SRC = '/videos/new-intro-video.mp4'
 const INTRO_HOLD_MS = 4500
 const REDUCED_MOTION_HOLD_MS = 1200
 const INTRO_FADE_SECONDS = 1.5
@@ -109,7 +109,7 @@ export function IntroOverlay() {
         preload="auto"
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-black/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/65" />
 
       <motion.div
         className="relative z-10 flex w-[min(94vw,1180px)] flex-col items-center px-5 text-center"

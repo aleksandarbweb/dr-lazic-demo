@@ -1170,3 +1170,22 @@ Unchanged policy: raise with the client, don't build unprompted.
   clean 3×2 grid with no stray card; removed the now-unused `Snowflake` icon import.
   - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes; visually confirmed on
     `localhost:3123` at 1440px that the grid renders as two full rows of three with no leftover card.
+- 2026-07-15 — **Intro video swapped for `new-intro-video.mp4`.** User supplied the replacement file
+  directly at `public/videos/new-intro-video.mp4` (1920×1080 h264, ~8s, ~8.5MB, ~8.5Mbps — notably
+  higher bitrate than the old 1626×1080/~3.6Mbps clip) and asked for it to go in as-is, uncompressed.
+  - `components/intro-overlay.tsx`: `INTRO_VIDEO_SRC` repointed from `/videos/drterzicintro.mp4` to
+    `/videos/new-intro-video.mp4`; the old file was deleted from `public/videos/` (grepped the repo
+    afterward for any other reference to the old filename — none). No re-encoding/transcoding was
+    performed on the new file, per instruction.
+  - Darkened the overlay so the white logo/slogan stay crisp regardless of what's happening in the new
+    footage: the old flat `bg-black/10` tint was replaced with a top-to-bottom gradient
+    (`from-black/60 via-black/35 to-black/65`) — darker behind the logo at the top and the "Preskoči"
+    skip button at the bottom, still meaningfully dark through the middle where the slogan text sits.
+  - `INTRO_HOLD_MS` (4500ms, independent of the actual video's length since it loops) was deliberately
+    left unchanged — the on-screen hold time is the same as before, per the user's request.
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes. Visual confirmation of the overlay
+    mid-play was attempted via Playwright but the tool round-trip latency in this environment
+    consistently exceeded the 4.5s hold window before a screenshot could land — confirmed via DOM/
+    sessionStorage inspection that the overlay *does* mount, run its timer, and mark itself seen on
+    each fresh session, and the user separately confirmed visually that it looks correct. Grepped for
+    stale references to the old filename (none found).
