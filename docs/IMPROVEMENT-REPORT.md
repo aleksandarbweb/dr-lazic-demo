@@ -1123,3 +1123,38 @@ Unchanged policy: raise with the client, don't build unprompted.
     wiring matches the pre-existing, already-approved partners-marquee pattern exactly.
   - **Not done / client-dependent**: nothing outstanding from this pass — all items in the user's list
     were addressed.
+- 2026-07-14 — **Real favicon added**, closing out the M7 TODO left in `app/layout.tsx` ("no
+  favicon/icon assets exist yet ... re-add this block once real icon assets exist" — a phantom
+  `metadata.icons` block pointing at nonexistent files was removed in an earlier pass specifically to
+  stop a 404 on every page load).
+  - Source: user-supplied `public/images/Logos/dr-terzic-favicon.png` (1080×1082, transparent
+    background, black magnifying glass over red wavy dermatoscopy-style lines — kept as-is, not
+    redesigned). Used `sharp` (already a project dependency) to trim the transparent edges, then
+    composite the trimmed artwork centered with padding onto an opaque square canvas in the site's own
+    cream tone (`#faf9f7`, matching the hero/section backgrounds elsewhere on the site) at each required
+    size.
+  - Generated `app/icon.png` (512×512, ~16% padding), `app/apple-icon.png` (180×180, ~16% padding), and
+    `app/favicon.ico` (16/32/48 multi-size, ~10% padding for better legibility at the smallest size).
+    These are Next.js App Router convention filenames — dropping them straight into `app/` is enough for
+    Next to auto-generate the `<link rel="icon">`/`<link rel="apple-touch-icon">` tags with no manual
+    `metadata.icons` block needed, so the stale TODO comment in `app/layout.tsx` was simply deleted
+    rather than replaced with a new icons block.
+  - `favicon.ico` was hand-assembled (PNG-compressed ICO entries — no ICO writer was available as a
+    dependency and none needed installing): a minimal 6-byte ICO header + one 16-byte directory entry
+    per size + the raw per-size PNG bytes appended after. Hit one real bug here: the first attempt
+    flattened the per-size PNGs before embedding them (redundant, since the canvas was already fully
+    opaque), which produced RGB-only PNGs — Next's build-time ico decoder rejects that with "The PNG is
+    not in RGBA format!". Fixed by keeping the alpha channel (`.ensureAlpha()` instead of `.flatten()`);
+    confirmed via `file app/favicon.ico` afterward that all embedded entries report `8-bit/color RGBA`.
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes (39 routes, no ico decode error);
+    ran `npm run dev -- --port 3123` and checked `/` and `/o-nama` in a real browser — confirmed via
+    `document.querySelectorAll('link[rel*="icon"]')` that Next injected exactly the three expected tags
+    (`icon` → `/favicon.ico` 48×48, `icon` → `/icon.png` 512×512, `apple-touch-icon` → `/apple-icon.png`
+    180×180), confirmed all three URLs return HTTP 200, confirmed 0 console errors on both pages (down
+    from the pre-existing favicon 404), and visually reviewed the artwork at 512×512, 180×180, and
+    upscaled 16/32/48px previews — the magnifying-glass silhouette stays crisp and readable at every
+    size; the fine red stripe detail inside the glass blurs into a solid tint at 16px, which is an
+    inherent limit of that much fine detail at 16 real pixels, not a defect in the crop/padding. A
+    full-page screenshot of `/` after the change is pixel-identical in page content to before — no
+    unrelated visual changes, confirming this was purely a `<head>`/asset addition. Safe to commit.
+  - **Not done / client-dependent**: none — this closes the task as scoped.
