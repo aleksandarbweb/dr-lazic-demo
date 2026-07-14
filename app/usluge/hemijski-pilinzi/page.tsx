@@ -11,6 +11,7 @@ const serviceData = {
   aboutHeading: 'Šta su hemijski pilinzi?',
   subtitle: 'Obnavljanje i revitalizacija kože kontrolisanom eksfolijacijom',
   description: 'Profesionalni medicinski pilinzi za dubinsku regeneraciju kože',
+  pendingNotice: 'Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.',
   whatIsIt: `Hemijski piling je medicinski tretman koji koristi specijalne kiseline za kontrolisanu eksfolijaciju površinskih slojeva kože. Uklanjanjem oštećenih ćelija stimuliše se regeneracija i stvaranje nove, zdrave kože sa poboljšanom teksturom, tonom i elastičnošću.
 
 U zavisnosti od dubine delovanja, razlikujemo površinske, srednje i duboke pilinge. U našoj ordinaciji koristimo profesionalne medicinske preparate i prilagođavamo tip i koncentraciju pilinga individualnim potrebama svake kože. Najčešće korišćene kiseline su glikolna, salicilna, TCA, mlečna i piruvična kiselina.`,

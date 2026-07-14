@@ -11,6 +11,7 @@ const serviceData = {
   aboutHeading: 'Šta je Profhilo?',
   subtitle: 'Bioremodeling lica, vrata i tela - nova dimenzija hijaluronske terapije',
   description: 'Revolucionarni tretman za dubinsku hidrataciju i prirodno podmlađivanje',
+  pendingNotice: 'Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.',
   whatIsIt: `Profhilo je inovativni injekcioni tretman koji koristi jednu od najčistijih formi hijaluronske kiseline na tržištu. Za razliku od klasičnih filera, Profhilo nije namenjen popunjavanju bora ili volumena, već bioremodeling-u kože - dubinskoj hidrataciji i stimulaciji produkcije kolagena i elastina.
 
 Jedinstvena formula kombinuje visoko i niskomolekularnu hijaluronsku kiselinu bez hemijskih povezivača (crosslinking agenasa), što omogućava ravnomerno širenje preparata kroz kožu i stimulaciju svih slojeva derma. Profhilo je posebno efikasan za tretiranje zone lica, vrata, dekoltea i ruku.`,

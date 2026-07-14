@@ -21,6 +21,7 @@ Vaskularne promene koje tretiramo:`,
         'Prošireni kapilari – teleangiektazije',
         'Spider nevusi',
         'Hemangiomi / cherry angiomi',
+        'Crvenilo lica i rozacea',
       ],
     },
     {
@@ -49,7 +50,7 @@ Vaskularne promene koje tretiramo:`,
     },
     {
       heading: 'Vidljivi rezultati tretmana',
-      body: 'Pojedinačni krvni sudovi, spider angiomi i tzv. cherry angiomi najčešće nestaju sa jednim tretmanom, dok u slučaju većeg broja krvnih sudova i većih kapilarnih mreža rezultat dolazi postepeno, sa svakim sledećim tretmanom.',
+      body: 'Pojedinačni krvni sudovi, spider angiomi i tzv. cherry angiomi najčešće nestaju sa jednim tretmanom, dok u slučaju većeg broja krvnih sudova i većih kapilarnih mreža rezultat dolazi postepeno, sa svakim sledećim tretmanom. Za crvenilo lica i rozaceu postoji poseban protokol rada (pogledajte povezanu uslugu "Lečenje rozacee" ispod).',
     },
     {
       heading: 'Nakon tretmana',
@@ -97,8 +98,8 @@ Vaskularne promene koje tretiramo:`,
     },
   ],
   relatedServices: [
+    { title: 'Lečenje rozacee', href: '/usluge/rozacea' },
     { title: 'Podmlađivanje – Fotona 3D, 4D i 5D laserski lifting', href: '/usluge/podmladjivanje-fotona-3d-4d-5d' },
-    { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },
     { title: 'Dermoskopija – pregled mladeža', href: '/usluge/dermoskopija' },
   ],
 }

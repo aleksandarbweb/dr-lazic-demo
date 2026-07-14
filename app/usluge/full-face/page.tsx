@@ -11,6 +11,7 @@ const serviceData = {
   aboutHeading: 'Šta je Full Face tretman?',
   subtitle: 'Individualni estetski pristup dr Marte Terzić: harmonija celog lica za izbalansiran, prirodan i odmoran izgled',
   description: 'Dostojanstveno starenje uz umetnost prirodnog podmlađivanja',
+  pendingNotice: 'Slika koju je dr Terzić dostavila za ovu uslugu još uvek nedostaje u fajlovima sajta — trenutno je prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
   whatIsIt: `Lepota lica ne ogleda se u pojedinačnoj regiji, već u harmoniji svih njegovih struktura. Zato svakom pacijentu pristupam individualno, analizirajući celo lice, kvalitet kože, proporcije i znake starenja, kako bih postigla izbalansiran, prirodan, osvežen i autentičan izgled.
 
 Najbolji estetski rezultat nije onaj koji se primećuje, već onaj zbog kojeg izgledate odmornije, svežije, negovanije i zadovoljnije sobom. Spojem medicine, iskustva i savremenih tehnologija kreiram tretmane prilagođene upravo vama.

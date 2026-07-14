@@ -84,6 +84,12 @@ export default function LaserskiTretmanStrijaPage() {
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
               Savremena laserska terapija koja stimuliše sintezu novog kolagena, efikasno tretirajući strije u svim fazama, od crvenih do hroničnih belih ožiljaka.
             </p>
+            <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 max-w-[56ch]">
+              <span className="mt-0.5 flex-shrink-0 text-amber-500" aria-hidden="true">⚠</span>
+              <p className="text-sm text-amber-900 font-light leading-relaxed">
+                Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.
+              </p>
+            </div>
             <Link
               href="/kontakt"
               className="mt-10 inline-flex rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98]"

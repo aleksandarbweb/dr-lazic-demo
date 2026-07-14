@@ -952,3 +952,55 @@ Unchanged policy: raise with the client, don't build unprompted.
     `ServicePageLayout` and don't already have it; stripping dermoskopija/gljivicna-oboljenja-laser to
     bare pending pages; splitting Hijaluronski fileri/Botox (still flagged from §13); work outside
     Opšta dermatovenerologija; no commit made.
+- 2026-07-14 — **Estetska dermatologija pending-banner pass**, after the user committed and deployed
+  the §15 work. Went through all 19 category bullets per the user's request; confirmed their
+  recollection that `full-face` is the only page in this category with genuine, Marta-voice content.
+  Full detail in `docs/client-content-map-2026-07-09.md` §16. Summary:
+  - 4 bullets shared with Opšta dermatovenerologija (rozacea, kapilari-i-hemangiomi-laser, akne,
+    pigmentne-promene) left untouched, already correct from the prior pass.
+  - Added a `pendingNotice` banner (kept existing content) to 7 dedicated pages that read as
+    polished-but-generic rather than Marta-sourced: `profhilo`, `morpheus8`, `hemijski-pilinzi` (use
+    `ServicePageLayout`, one-line addition), and `botoks-fileri`, `podmladjivanje-fotona-3d-4d-5d`,
+    `laserska-epilacija`, `strije-laser` (bespoke hand-coded layouts, banner added manually matching
+    the established amber-callout style). While in there, also added the logo overlay to
+    `botoks-fileri` and `podmladjivanje-fotona-3d-4d-5d`, the only 2 of the 4 flagged-as-missing
+    bespoke pages that actually still lacked it (`laserska-epilacija`/`strije-laser` already had it —
+    corrects a stale note from the prior changelog entry).
+  - Created 5 new dedicated pending pages (`kolagen-stimulatori`, `mezoterapija`,
+    `urastanje-dlaka-folikulitis`, `uklanjanje-oziljaka`, `laserski-piling`), replacing the fake
+    generic `[slug]` template content, same minimal honest pattern as §15.
+  - Verified: `npx tsc --noEmit` clean; `npm run build` passes (39 routes, same count); Playwright
+    checks of all 13 non-shared pages — HTTP 200, 0 console errors beyond the pre-existing favicon
+    404; banner + logo overlay visually confirmed on `botoks-fileri`; confirmed `full-face` has zero
+    banner/pending text.
+  - **Not done, out of scope**: no content rewritten or removed, only banners/new minimal pages added;
+    "Laseri u dermatologiji" category not separately audited (shares pages with the now-updated
+    Estetska dermatologija ones where applicable); no commit made.
+- 2026-07-14 — **Final 5 categories pass** (Laseri u dermatologiji, Radiotalasna hirurgija,
+  Kriohirurgija, Kompjuterizovana dermoskopija, Kozmetologija) — completes the full `/usluge` review
+  across all 7 categories started in §13/§15/§16. Full detail in
+  `docs/client-content-map-2026-07-09.md` §17. Summary:
+  - Laseri u dermatologiji: 10 of 11 bullets already pointed at pages handled in earlier passes —
+    verified correct, no changes. The 11th, "Lasersko uklanjanje vaskularnih promena," got a real
+    content merge: the user supplied fresh text for this specific listing that turned out to be the
+    same service as the Opšta dermatovenerologija version already live on
+    `kapilari-i-hemangiomi-laser` (mechanism/sensation/duration/results sections verbatim identical),
+    plus one addition — a 4th vascular-change type ("crvenilo lica i rozacea") and an instruction to
+    link to the rozacea page. Merged both into the single existing page rather than creating a
+    duplicate; added "Lečenje rozacee" as a real related-service link since the shared layout's
+    section bodies are plain text and can't hold an inline link.
+  - Radiotalasna hirurgija, Kriohirurgija, Kompjuterizovana dermoskopija (1 bullet each): all already
+    correctly linked to real/pending pages from earlier passes, verified, no changes.
+  - Kozmetologija (4 bullets, all new): none overlapped anything already handled. Created 4 new
+    dedicated pending pages (`medicinski-higijenski-tretmani-lica`, `bioloski-tretmani-lica`,
+    `dermapen`, `savetovanje-za-negu-lica`), replacing fake generic-template content.
+  - Added a distinct "missing image" pending notice to `full-face` — its text content is fully real
+    and official, but Marta's supplied hero image was never found on disk (confirmed again this pass).
+  - Verified: `npx tsc --noEmit` clean; `npm run build` passes (39 routes); Playwright checks — all
+    touched/new pages HTTP 200, 0 console errors beyond the pre-existing favicon 404; confirmed the
+    4th vascular type and working rozacea link render on `kapilari-i-hemangiomi-laser`; confirmed the
+    missing-image banner on `full-face`; confirmed via JS evaluation every `/usluge` listing link
+    under the affected category headings resolves to the correct href.
+  - **Not done, out of scope**: `ServicePageLayout` not extended to support inline links inside
+    `whatIsItSections` body text (worked around via `relatedServices`); no commit made. This closes
+    out the full 7-category `/usluge` review that began with §13.

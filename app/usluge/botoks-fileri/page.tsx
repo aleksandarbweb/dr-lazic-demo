@@ -97,6 +97,12 @@ export default function BotoksFilerPage() {
             <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
               Precizna korekcija bora, vraćanje volumena i konturisanje lica premium Allergan preparatima, najčešće izvođena estetska procedura na svetu.
             </p>
+            <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 max-w-[56ch]">
+              <span className="mt-0.5 flex-shrink-0 text-amber-500" aria-hidden="true">⚠</span>
+              <p className="text-sm text-amber-900 font-light leading-relaxed">
+                Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.
+              </p>
+            </div>
             <Link
               href="/kontakt"
               className="mt-10 inline-flex rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98]"
@@ -141,6 +147,17 @@ export default function BotoksFilerPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#24160f]/10 via-transparent to-transparent" />
+
+                {/* Logo Overlay */}
+                <div className="absolute bottom-6 right-6 w-24 md:w-32 opacity-80 decoration-transparent">
+                   <Image
+                    src="/images/Logos/dr terzic beli logo.png"
+                    alt="Logo Overlay"
+                    width={128}
+                    height={48}
+                    className="w-full h-auto"
+                   />
+                </div>
               </div>
               <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-[#b91c1c]/60" />
               <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-[#b91c1c]/60" />

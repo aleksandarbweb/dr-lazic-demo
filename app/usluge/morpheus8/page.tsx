@@ -11,6 +11,7 @@ const serviceData = {
   aboutHeading: 'Šta je Morpheus8?',
   subtitle: 'Nehiruški lifting lica najnovijom RF microneedling tehnologijom',
   description: 'Revolucionarna procedura za dubinsko zatezanje i remodeling kože',
+  pendingNotice: 'Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.',
   whatIsIt: `Morpheus8 je najsavremenija tehnologija koja kombinuje frakcioni microneedling sa radiofrekvencijskom (RF) energijom za dubinsko zatezanje kože i stimulaciju produkcije kolagena. Ovaj tretman deluje na dublje slojeve kože i potkožno masno tkivo, čime se postiže efekat zatezanja i remodelinga koji ranije nije bio moguć bez hirurške intervencije.
 
 Uređaj koristi specijalne igle koje prodiru u kožu na kontrolisanu dubinu (do 4mm) i emituju RF energiju direktno u dermis i subdermalnu mast. Ova kombinacija stimuliše prirodne procese obnove kože i produkciju novog kolagena i elastina.`,
