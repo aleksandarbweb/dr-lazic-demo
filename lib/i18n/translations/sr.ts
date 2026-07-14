@@ -73,12 +73,8 @@ export const sr = {
         description: 'Laserska epilacija, podmlađivanje, rozacea, ožiljci, strije i uklanjanje vaskularnih i pigmentnih promena',
       },
       {
-        title: 'Radiotalasna hirurgija',
-        description: 'Precizno uklanjanje keratoza, papiloma i bradavica radiotalasnom hirurgijom',
-      },
-      {
-        title: 'Kriohirurgija',
-        description: 'Terapija tečnim azotom za uklanjanje virusnih bradavica i keratoza',
+        title: 'Radiotalasna hirurgija i kriohirurgija',
+        description: 'Precizno uklanjanje keratoza, papiloma i bradavica radiotalasnom hirurgijom ili terapijom tečnim azotom',
       },
       {
         title: 'Kompjuterizovana dermoskopija',

@@ -1158,3 +1158,15 @@ Unchanged policy: raise with the client, don't build unprompted.
     full-page screenshot of `/` after the change is pixel-identical in page content to before — no
     unrelated visual changes, confirming this was purely a `<head>`/asset addition. Safe to commit.
   - **Not done / client-dependent**: none — this closes the task as scoped.
+- 2026-07-14 — **Homepage services grid: merged to 6 cards.** The flex-wrap centering fix from the
+  earlier pass improved the stray 7th card but the user still didn't like the 7-card layout on desktop;
+  asked to combine two of the least-important categories into one card instead. Merged "Radiotalasna
+  hirurgija" and "Kriohirurgija" — the most natural pair, since both are minor in-office procedures for
+  removing the same kinds of benign skin lesions (keratoses, papillomas, warts) via different techniques
+  (radiowave vs. liquid-nitrogen) — into a single "Radiotalasna hirurgija i kriohirurgija" card linking
+  to the existing `/usluge#radiotalasna-hirurgija` anchor. This only changes the homepage teaser card
+  (`home.servicesList` in `sr.ts`/`en.ts`/`ru.ts` and `servicesConfig` in `app/page.tsx`) — the actual
+  `/usluge` catalog and category pages are untouched and still list both as separate categories. Now a
+  clean 3×2 grid with no stray card; removed the now-unused `Snowflake` icon import.
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes; visually confirmed on
+    `localhost:3123` at 1440px that the grid renders as two full rows of three with no leftover card.

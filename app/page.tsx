@@ -9,7 +9,6 @@ import {
   Sparkles,
   Zap,
   Waves,
-  Snowflake,
   Microscope,
   HandHeart
 } from 'lucide-react'
@@ -25,7 +24,6 @@ const servicesConfig = [
   { icon: Sparkles, href: '/usluge#estetska-dermatologija' },
   { icon: Zap, href: '/usluge#laseri-u-dermatologiji' },
   { icon: Waves, href: '/usluge#radiotalasna-hirurgija' },
-  { icon: Snowflake, href: '/usluge#kriohirurgija' },
   { icon: Microscope, href: '/usluge#kompjuterizovana-dermoskopija' },
   { icon: HandHeart, href: '/usluge#kozmetologija' },
 ]

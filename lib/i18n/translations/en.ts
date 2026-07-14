@@ -73,12 +73,8 @@ export const en = {
         description: 'Laser hair removal, rejuvenation, rosacea, scars, stretch marks and removal of vascular and pigment lesions',
       },
       {
-        title: 'Radiowave Surgery',
-        description: 'Precise removal of keratoses, papillomas and warts using radiowave surgery',
-      },
-      {
-        title: 'Cryosurgery',
-        description: 'Liquid nitrogen therapy for removing viral warts and keratoses',
+        title: 'Radiowave Surgery & Cryosurgery',
+        description: 'Precise removal of keratoses, papillomas and warts using radiowave surgery or liquid nitrogen therapy',
       },
       {
         title: 'Computerized Dermoscopy',
