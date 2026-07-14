@@ -1004,3 +1004,49 @@ Unchanged policy: raise with the client, don't build unprompted.
   - **Not done, out of scope**: `ServicePageLayout` not extended to support inline links inside
     `whatIsItSections` body text (worked around via `relatedServices`); no commit made. This closes
     out the full 7-category `/usluge` review that began with §13.
+- 2026-07-14 — **O Nama page full rewrite** from Marta's latest written instructions (hero copy, full
+  "O nama" body text, tagline, "Bavimo se" list, Marta's complete biography, Snežana's complete bio).
+  Supersedes the "kept to 3 paragraphs, not the full DOCX wall of text" compromise from 2026-07-10 —
+  this pass keeps 100% of Marta's supplied text, restructured across more sections instead of cut down.
+  - **Hero**: title changed from "O Nama" to "Dermatologija i estetska medicina na jednom mestu" per
+    Marta's request; heroIntro replaced with her shorter variant (the longer variant duplicating the
+    service list was dropped as redundant with the new "O nama" body directly below it); "25 godina" →
+    "20 godina" in the hero specifically, since this line describes the clinic's age (founded 2004),
+    not Dr. Terzić's personal 25+ years of experience (kept as 25+ everywhere it refers to her).
+  - **"O nama" body**: replaced with Marta's full provided text verbatim (typos fixed: doubled comma,
+    doubled space, "prilagodjen" → "prilagođen", "lice i i svaku" → "lice i svaku"), split into 4
+    paragraphs across two sections — founding story + credibility (paired with the existing clinic
+    photo, 2-col layout) and a new "Naš pristup" section below (philosophy + modern methods/team
+    mission) — instead of cutting content to fit the old 3-paragraph slot.
+  - **New tagline banner**: full-width dark band between the story and approach sections rendering
+    "Stručnost · Iskustvo · Poverenje · Bezbednost · Savremena oprema i procedure" as a centered,
+    dot-separated motto (`onama.tagline` array, new section in `app/o-nama/page.tsx`).
+  - **New "Bavimo se" section**: 7-item icon grid (Stethoscope/ScanEye/Zap/Radio/Sparkles/Hourglass/
+    Droplets from lucide-react) covering Marta's full service-area list, flex-wrap layout so the
+    trailing 3-item row self-centers under the 4-item row at all breakpoints.
+  - **Dr. Marta Terzić card**: title changed to "CEO i specijalista dermatovenerologije" (was "Osnivač
+    ordinacije..."), added a quick-fact badge row (25+ godina iskustva / Osnivač i CEO / Allergan —
+    nacionalni trener / IDS član od 2004.), and replaced the old 3-paragraph summary with her complete
+    7-paragraph biography via a new reusable `components/expandable-bio.tsx` (shows first 2 paragraphs,
+    "Pročitajte celu biografiju" reveals the rest with a height/opacity transition matching the
+    existing FAQ-accordion pattern in `service-page-layout.tsx`). Specializations list unchanged.
+  - **Dr. Biljana Petković card**: switched to the same `ExpandableBio` component for style parity
+    (currently shows both her paragraphs with no toggle, since paragraph count ≤ preview count) so her
+    real CV drops in later without further layout work; content itself untouched, still TODO-flagged.
+  - **Snežana Stojković**: bio expanded from one paragraph to Marta's full 3-paragraph text; her card
+    was pulled out of the old 2-column "Ostatak tima" grid into its own full-width spotlight card
+    (bordered, larger avatar) given the new length, with Milica/Melissa/Sonja now in a simple centered
+    3-up row below — name + role only, unchanged, no invented content.
+  - Every string above (SR + full EN/RU translations) added to `lib/i18n/translations/{sr,en,ru}.ts`;
+    `bio`/`bio1/2/3` fields unified into `bio: string[]` arrays across `marta`/`biljana`/`snezana` to
+    feed `ExpandableBio` directly.
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` passes (39 routes, no new errors/warnings);
+    Playwright review on `localhost:3123` at 1440×900 and 390×844 for SR, EN, and RU — 0 console errors
+    beyond the pre-existing favicon 404; confirmed the tagline banner and badge row wrap correctly on
+    mobile; confirmed the "Pročitajte celu biografiju" toggle expands/collapses Marta's full bio; the
+    clinic photo appeared blank in the very first screenshot purely because the pre-existing 10.5MB
+    `ordinacijaonama.png` was still decoding — confirmed loaded (`naturalWidth: 1440`) on a later check,
+    not a regression from this pass.
+  - **Not done / client-dependent**: Biljana's real CV (still using the pre-existing placeholder bio);
+    a newer clinic-interior photo for the "Naša priča" section (user mentioned Marta may send one); the
+    3 cosmetologists still have no bios (Marta did not supply any, matches her stated intent).
