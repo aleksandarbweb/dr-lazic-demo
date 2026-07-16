@@ -3,13 +3,13 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Lečenje Opadanja Kose | Ordinacija Dr. Terzić',
-  description: 'Lečenje opadanja kose u ordinaciji Dr. Terzić — detaljan opis usluge uskoro.',
+  description: 'Lečenje opadanja kose u ordinaciji Dr. Terzić: detaljan opis usluge uskoro.',
 }
 
 const serviceData = {
   title: 'Lečenje Opadanja Kose',
   aboutHeading: 'O ovoj usluzi',
-  subtitle: 'Lečenje opadanja kose — sadržaj u pripremi',
+  subtitle: 'Lečenje opadanja kose: sadržaj u pripremi',
   description: 'Detaljan opis usluge biće dostupan uskoro',
   whatIsIt: 'Sadržaj za ovu uslugu je u pripremi. Detaljan opis, tok tretmana i najčešća pitanja biće dodati čim ih dr Terzić dostavi.',
   pendingNotice: 'Čeka se zvanična informacija od dr Terzić za ovu uslugu. Stranica će biti dopunjena čim je dostavi.',

@@ -13,6 +13,9 @@ pending, `full-face` confirmed as the only genuine Marta-sourced page in this ca
 **Updated again:** 2026-07-14 (remaining categories: Laseri/Radiotalasna/Kriohirurgija/Kompjuterizovana
 dermoskopija verified as near-total overlap with earlier passes, vaskularne-promena content merged
 with fresh Laseri-specific text, 4 new Kozmetologija pending pages, full-face missing-image note — see §17)
+**Updated again:** 2026-07-16 (Marta client-preview prep pass: mobile marquee fix, equal service-card
+geometry, fresh em-dash/typo scan, client-facing report + email draft — see §18; this closes out the
+manual Marta DOCX Serbian content-intake phase, see the dated snapshot below)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -34,6 +37,16 @@ companion to `docs/IMPROVEMENT-REPORT.md` (the master plan), not a replacement f
 > ImageMagick/LibreOffice installed). **If a future session needs to re-read this DOCX, unzip it
 > and run `textutil -convert txt` on each file under `word/embeddings/*.docx` too, not just the
 > top-level document — otherwise most of the real clinical detail will be invisible again.**
+>
+> **Standing public-copy rule (added 2026-07-16):** no em dash ("—" / `&mdash;`) in rendered site
+> copy — replace with a comma, colon, parentheses, hyphen, or sentence break, whichever reads best.
+> Legitimate en dashes ("–") in numeric ranges (e.g. "1–3 sessions") or established label/detail
+> pairs (e.g. "Allergan – National Trainer") are not em dashes and stay as-is. Never touch URL
+> slugs. Also keep scanning visible Serbian copy for OCR/diacritic typos (prilagodjen, izmedju,
+> takodje, odrzavanje, hladjenje, ledja, mladje, prodju, etc.) on every content pass — see the
+> mirrored rule in `docs/IMPROVEMENT-REPORT.md`'s "Standing Public-Copy Rules" section for the full
+> list. This is a recurring check, not a one-time cleanup: the 2026-07-10 pass (§11) missed content
+> added in later passes, and the 2026-07-16 pass (§18) found and fixed a fresh batch.
 
 ---
 
@@ -868,3 +881,240 @@ No further content rewrites beyond the vaskularne-promena merge; `ServicePageLay
 to support inline links inside `whatIsItSections` body text (worked around via `relatedServices`
 instead — flag if a future session wants a more structurally faithful inline-link solution); no commit
 made, nothing pushed.
+
+---
+
+## 18. Summary of the 2026-07-16 Marta client-preview prep pass
+
+**Source of this pass:** the user's compiled instructions for a first full client-review preparation
+pass — not a new content-intake session. No new Marta text was introduced; this pass audited the
+current code, fixed two real UX bugs, ran a fresh public-copy scan, and produced the client-facing
+report/email described in `docs/client-preview/`.
+
+### Mobile marquee fix (`app/page.tsx`)
+The equipment-logo and patient-review homepage sections used a `requestAnimationFrame` auto-scroll
+loop on every viewport, and the equipment section was `overflow-x-hidden` (manual scroll was
+literally impossible there, on any device). On mobile this produced the reported "laggy" feel: an
+animation loop fighting a touch-scroll gesture that couldn't even engage for equipment, plus a
+separate tripled-list "jump when near the boundary" effect (also feeding the mobile services
+carousel) that could visibly teleport mid-drag.
+- Added a `(max-width: 767px)` `matchMedia` check (`isMobile` state). The RAF auto-scroll loop now
+  skips entirely on mobile widths **and** when `prefers-reduced-motion` is set (the previous version
+  computed `shouldReduce` but never actually used it to gate the marquee — a real, pre-existing bug).
+- Removed the tripled-list/boundary-jump effect entirely (it was the only source of mid-drag
+  teleporting, shared by the services carousel, reviews, and — implicitly — anything copying the
+  pattern later). Mobile now renders plain, single-copy lists with native `overflow-x-auto` +
+  `snap-x snap-mandatory` scrolling and zero JS position writes, so there is nothing left to fight a
+  drag or jump mid-gesture.
+- Equipment section changed from `overflow-x-hidden` to `overflow-x-auto` (with snap on mobile only,
+  `md:snap-none` on desktop) so manual scrolling is possible on **every** viewport, not just mobile —
+  this was required for the "manual scrolling/dragging must remain possible" desktop rule too, since
+  the old version blocked all manual interaction even with a mouse/trackpad.
+- Desktop RAF autoplay is retained for both sections (still genuinely smooth — same accumulator-based
+  position tracking already fixed in the 2026-07-14 pass), now pauses on hover **and** focus **and**
+  pointer-down for both sections (equipment previously only paused on mouse hover; reviews already had
+  the fuller set).
+- **Real bug found and fixed while verifying pause behavior with Playwright**: the cleanup function was
+  cancelling the marquee's animation loop by `cancelAnimationFrame`-ing a frame id captured once, up
+  front — but the recursive `tick` function reschedules itself every frame via its own
+  `requestAnimationFrame` call, so only the very first, long-since-fired frame id was ever tracked.
+  Cancelling it did nothing: once started, a loop ran forever, immune to future pause-state changes.
+  Confirmed via direct instrumentation that hovering correctly set `partnersPaused` to `true` on the
+  first `mouseenter`, yet `scrollLeft` kept advancing anyway — an earlier, leaked loop (with `false`
+  baked into its closure) was still running in parallel. Fixed with a `let cancelled = false` flag
+  checked at the top of `tick`, set once in the effect's cleanup — the standard correct pattern for a
+  self-rescheduling RAF loop in a React effect. This was pre-existing (not introduced by this pass) but
+  had never been caught before because no earlier pass tested pause behavior directly rather than
+  reading the code. Verified via `scrollLeft` sampling: hovering now freezes both marquees bit-for-bit
+  (identical value across 6 samples over 900ms) and resumes cleanly on unhover.
+- Added a subtle "Prevucite za još" / "Swipe for more" hint (new `home.swipeHint` i18n key, all 3
+  locales) under the equipment and reviews sections on mobile only, and wired in the existing
+  `servicesSection.swipeMobile` key next to the services carousel's dot indicator — that key existed
+  in all 3 locale files already but was never actually rendered anywhere (a real dead-string bug).
+- No visual change to desktop layout; no new dependencies; no redesign.
+
+### Equal service-card geometry (`app/usluge/page.tsx`)
+The `/usluge` category grids already used CSS Grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+xl:grid-cols-4`), so column *widths* were already equal. The reported unevenness was a **height** bug:
+each card's `StaggerItem` wrapper had no explicit height, so a grid item that's naturally taller
+than its row (default `align-items: stretch` in CSS Grid) stretched invisibly, but the visible
+bordered `<Link>` box inside it did not — it only took its own content height. One-line service names
+rendered a short box; two-line wrapped names rendered a taller box; both sat inside a same-height
+invisible wrapper, so rows visibly misaligned.
+- Added `items-stretch` to the grid container (explicit, matches the default but documents intent),
+  `h-full` to each `StaggerItem`, and `h-full w-full` plus `flex-shrink-0` on the chevron icon to the
+  `<Link>` itself, so every card in a row now fills the row's full height and the icon doesn't get
+  compressed when a label wraps to two lines.
+- No hrefs changed, no services merged or split, no slugs touched. Verified visually across all 7
+  categories at 1440×900 and 390×844 (see §Verification below).
+
+### Fresh public-copy scan
+A second em-dash sweep (the first was §11, 2026-07-10) found **34 new occurrences** in rendered copy
+added by later passes — the "Label — detail" pattern had crept back into the 14 generic pending-page
+templates (`description`/`subtitle` fields), the `full-face` `pendingNotice`, and — notably — into
+5 of the 8 homepage patient-review quotes and several `onama`/`marta`/`snezana` strings in `en.ts` and
+`ru.ts` (the AI-assisted translations reintroduced em dashes that the Serbian originals didn't have).
+All fixed with a comma, colon, or sentence break depending on what read best; no meaning was changed,
+no client-provided claim was softened. One RU-only inconsistency was also caught and fixed: the
+`marta.badges` array used an em dash in `ru.ts` ("Allergan — национальный тренер") where `sr.ts`/
+`en.ts` used a legitimate en dash for the same label — normalized to match. A repo-wide grep confirms
+zero `—`/`&mdash;` remain in `app/`, `components/`, or `lib/` outside of code comments (`//` and
+`{/* */}`), which are correctly out of scope. A parallel grep for the known OCR/diacritic typo list
+(prilagodjen, izmedju, takodje, odrzavanje, hladjenje, ledja, mladje, prodju, etc.) found zero
+remaining occurrences in rendered copy — only the intentionally-diacritic-free URL slug
+`podmladjivanje-fotona-3d-4d-5d`, correctly left untouched. The standing no-em-dash rule is now
+documented at the top of this file and in `IMPROVEMENT-REPORT.md`'s new "Standing Public-Copy Rules"
+section, so future passes check it as a matter of course rather than needing a dedicated sweep.
+
+### Client-facing report and email draft
+Created (not published as a public route):
+- `docs/client-preview/MARTA-PREGLED-SAJTA.md` and `.html` — the full clickable client report, all
+  7 categories, all 49 catalog bullets, status derived from the current code (`pendingNotice` presence
+  in `ServicePageLayout` pages, the 5 bespoke hand-coded banners, or absence of either).
+- `docs/client-preview/MARTA-EMAIL-DRAFT.md` — a ready-to-send Serbian email pointing Marta at the
+  report.
+
+### Verification performed
+`npx tsc --noEmit` clean; `npm run build` succeeds; `npm run dev -- --port 3123` with the
+`dt_site_access=granted` gate cookie — all 6 main routes and all 30 distinct `/usluge/[slug]` routes
+(covering all 49 catalog bullets, several of which intentionally share a slug) return HTTP 200. See
+the dated snapshot below for the full per-route status table and the Verification section of this
+session's final report-back for viewport/console/reduced-motion checks.
+
+### Not done, out of scope
+No new Marta content was invented; no service pages were merged or split (the Hijaluronski
+fileri/Botox shared-page question from §13 is still open — flagged again in the client report); no
+EN/RU proofreading pass (still AI-assisted pending native review, per §6); no domain/DNS work (client
+report only asks Marta for the information needed); no commit pushed.
+
+---
+
+## Current client-preview snapshot (2026-07-16)
+
+> **This section is the authoritative status summary for the current client-preview milestone.**
+> Read this first if you only have time for one section.
+
+- The user manually reviewed Marta's complete `NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` document,
+  section by section, across multiple sessions, and relayed all of it into these implementation
+  passes (§13, §15, §16, §17). That manual review is treated as authoritative per the standing
+  correction at the top of this file.
+- **Every structure and content item from Marta's document is now represented on the Serbian site.**
+  All 7 categories and all 49 catalog bullets (`lib/service-catalog.ts`) resolve to a real, working
+  page — verified HTTP 200 for every one this session (§18).
+- **Where Marta supplied full text, it has been incorporated** — verbatim or lightly cleaned for
+  grammar/OCR spacing only, never softened or invented around (§2's standing correction).
+- **Where Marta did not supply final text and/or an image, the page exists and is clearly marked**
+  with a visible amber `pendingNotice` banner (or, for `full-face`, a text-complete/image-missing
+  banner) so she can see exactly what's outstanding when she reviews the live site.
+- **This completes the manual Marta DOCX Serbian content-intake phase.** It does **not** mean: final
+  launch QA is done, the EN/RU translations are client-reviewed (they remain AI-assisted per §6),
+  final imagery is in place, SEO work has started, or the M1 visual-design-system milestone (see
+  `IMPROVEMENT-REPORT.md`) has begun.
+
+### Full route inventory (all 49 catalog bullets, current code, 2026-07-16)
+
+Legend: ✅ Real = Marta-sourced content, no pending banner. ✅ Real (image pending) = text complete,
+hero image outstanding. 🟡 Pending (kept) = existing non-fabricated content kept, banner added noting
+Marta's official text is still outstanding. 🟡 Pending (minimal) = one-line placeholder + banner, no
+invented depth. Routes repeated across categories are intentional (§13) and marked "(shared)".
+
+**1. Opšta dermatovenerologija** — subtitle "Dermatologija za celu porodicu"
+| Bullet | Route | Status |
+|---|---|---|
+| Dijagnostika i lečenje kožnih i polnih bolesti | `/usluge/medicinska-dermatologija` | 🟡 Pending (minimal) |
+| Uklanjanje virusnih bradavica, kondiloma i moluski | `/usluge/bradavice-papilomi-keratoze-moluske` | ✅ Real |
+| Uklanjanje papiloma i keratoza | `/usluge/uklanjanje-papiloma-i-keratoza` | ✅ Real |
+| Uklanjanje vaskularnih promena – kapilari i hemangiomi | `/usluge/kapilari-i-hemangiomi-laser` | ✅ Real |
+| Lečenje rozacee | `/usluge/rozacea` | 🟡 Pending (minimal) |
+| Dermoskopski pregled mladeža | `/usluge/dermoskopija` | 🟡 Pending (kept) |
+| Lečenje opadanja kose | `/usluge/opadanje-kose` | 🟡 Pending (minimal) |
+| Lečenje gljivičnih oboljenja noktiju | `/usluge/gljivicna-oboljenja-laser` | 🟡 Pending (kept) |
+| Lečenje akni | `/usluge/akne` | ✅ Real |
+| Uklanjanje pigmentnih promena | `/usluge/pigmentne-promene` | 🟡 Pending (minimal) |
+| Lečenje pojačanog znojenja | `/usluge/pojacano-znojenje` | 🟡 Pending (minimal) |
+| Hirurško uklanjanje mladeža sa PH dijagnostikom | `/usluge/hirursko-uklanjanje-mladeza` | 🟡 Pending (minimal) |
+
+**2. Estetska dermatologija** (19 bullets)
+| Bullet | Route | Status |
+|---|---|---|
+| Personalizovani Full Face tretmani by dr Marta Terzić | `/usluge/full-face` | ✅ Real (image pending) |
+| Hijaluronski fileri | `/usluge/botoks-fileri` | 🟡 Pending (kept) (shared with Botulinum toksin) |
+| Botulinum toksin – botox | `/usluge/botoks-fileri` | 🟡 Pending (kept) (shared) |
+| Kolagen stimulatori | `/usluge/kolagen-stimulatori` | 🟡 Pending (minimal) |
+| Biorevitalizacije | `/usluge/profhilo` | 🟡 Pending (kept) |
+| Mezoterapija | `/usluge/mezoterapija` | 🟡 Pending (minimal) |
+| PRP | `/usluge/prp` | ✅ Real |
+| Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka | `/usluge/podmladjivanje-fotona-3d-4d-5d` | 🟡 Pending (kept) |
+| Tretmani radiofrekventnim mikronidlingom – Morpheus8 | `/usluge/morpheus8` | 🟡 Pending (kept) |
+| Epilacija laserom – trajno uklanjanje dlačica | `/usluge/laserska-epilacija` | 🟡 Pending (kept) |
+| Laserski tretman problema uraslih dlačica (folikulitis) | `/usluge/urastanje-dlaka-folikulitis` | 🟡 Pending (minimal) |
+| Lečenje rozacee | `/usluge/rozacea` | 🟡 Pending (minimal) (shared with Opšta dermatovenerologija) |
+| Uklanjanje ožiljaka | `/usluge/uklanjanje-oziljaka` | 🟡 Pending (minimal) |
+| Uklanjanje strija | `/usluge/strije-laser` | 🟡 Pending (kept) |
+| Lasersko uklanjanje kapilara i hemangioma | `/usluge/kapilari-i-hemangiomi-laser` | ✅ Real (shared with Opšta dermatovenerologija) |
+| Lečenje akni | `/usluge/akne` | ✅ Real (shared with Opšta dermatovenerologija) |
+| Hemijski pilinzi | `/usluge/hemijski-pilinzi` | 🟡 Pending (kept) |
+| Laserski pilinzi | `/usluge/laserski-piling` | 🟡 Pending (minimal) |
+| Uklanjanje pigmentnih promena: melasma, PIH, lentigo | `/usluge/pigmentne-promene` | 🟡 Pending (minimal) (shared with Opšta dermatovenerologija) |
+
+**3. Laseri u dermatologiji** (11 bullets, all shared with other categories — no new routes)
+| Bullet | Route | Status |
+|---|---|---|
+| Epilacija medicinskim laserom – trajno uklanjanje dlačica | `/usluge/laserska-epilacija` | 🟡 Pending (kept) (shared) |
+| Laserski tretman problema uraslih dlačica (folikulitis) | `/usluge/urastanje-dlaka-folikulitis` | 🟡 Pending (minimal) (shared) |
+| Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka | `/usluge/podmladjivanje-fotona-3d-4d-5d` | 🟡 Pending (kept) (shared) |
+| Laserski tretmani rozacee | `/usluge/rozacea` | 🟡 Pending (minimal) (shared) |
+| Laserski tretmani ožiljaka | `/usluge/uklanjanje-oziljaka` | 🟡 Pending (minimal) (shared) |
+| Laserski tretmani strija | `/usluge/strije-laser` | 🟡 Pending (kept) (shared) |
+| Lasersko uklanjanje vaskularnih promena | `/usluge/kapilari-i-hemangiomi-laser` | ✅ Real (shared) |
+| Lasersko uklanjanje pigmentnih promena: melasma, lentigo | `/usluge/pigmentne-promene` | 🟡 Pending (minimal) (shared) |
+| Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice | `/usluge/bradavice-papilomi-keratoze-moluske` | ✅ Real (shared) |
+| Laserski tretman gljivičnih infekcija nokatne regije | `/usluge/gljivicna-oboljenja-laser` | 🟡 Pending (kept) (shared) |
+| Laserski tretman akni | `/usluge/akne` | ✅ Real (shared) |
+
+**4. Radiotalasna hirurgija** (1 bullet, shared route)
+| Bullet | Route | Status |
+|---|---|---|
+| Uklanjanje benignih promena: keratoze, papilomi, bradavice | `/usluge/bradavice-papilomi-keratoze-moluske` | ✅ Real (shared) |
+
+**5. Kriohirurgija – terapija tečnim azotom** (1 bullet, shared route)
+| Bullet | Route | Status |
+|---|---|---|
+| Uklanjanje virusnih bradavica i keratoza | `/usluge/bradavice-papilomi-keratoze-moluske` | ✅ Real (shared) |
+
+**6. Kompjuterizovana dermoskopija** (1 bullet, shared route)
+| Bullet | Route | Status |
+|---|---|---|
+| Pregled mladeža | `/usluge/dermoskopija` | 🟡 Pending (kept) (shared with Opšta dermatovenerologija) |
+
+**7. Kozmetologija** (4 bullets, all new dedicated pending pages)
+| Bullet | Route | Status |
+|---|---|---|
+| Medicinski higijenski tretmani lica | `/usluge/medicinski-higijenski-tretmani-lica` | 🟡 Pending (minimal) |
+| Biološki tretmani lica | `/usluge/bioloski-tretmani-lica` | 🟡 Pending (minimal) |
+| Dermapen | `/usluge/dermapen` | 🟡 Pending (minimal) |
+| Savetovanje za negu lica | `/usluge/savetovanje-za-negu-lica` | 🟡 Pending (minimal) |
+
+**Totals:** 49 catalog bullets → 30 distinct routes. 5 routes are fully real content (`akne`,
+`bradavice-papilomi-keratoze-moluske`, `uklanjanje-papiloma-i-keratoza`,
+`kapilari-i-hemangiomi-laser`, `prp`), 1 is text-complete/image-pending (`full-face`), 9 kept their
+existing non-fabricated content with a pending-official-text banner added, and 15 are minimal
+one-line placeholders with a pending banner. All 30 catalog slugs now have a dedicated route folder.
+
+**Note found this session:** the generic `[slug]/page.tsx` catch-all's `generateStaticParams` still
+returns all 30 slugs from `allServices` (unchanged, pre-existing), so `npm run build` still generates
+a fabricated-generic-copy page for every single slug even though each one is shadowed by its own
+literal route. Verified via direct HTML inspection of two routes (`medicinska-dermatologija`,
+`dermapen`) that Next.js's router always serves the literal dedicated page, never the generic
+fallback — this is not a live content bug, Marta will never see fabricated copy. It is, however, 30
+pages of wasted/dead build output and a latent risk if a dedicated route is ever deleted without also
+narrowing `generateStaticParams`. Flagging for the existing M4 "retire `buildServiceCopy()`" item
+(§4) rather than fixing here, since narrowing that function's param list is a code change beyond this
+session's scope (mobile scroll, card geometry, copy scan, client report) and not something Marta
+asked for.
+
+### Known open questions for Marta (carried into the client report)
+- Should "Hijaluronski fileri" and "Botulinum toksin – botox" stay on one shared page
+  (`/usluge/botoks-fileri`) or be split into two dedicated pages later? (§13, still open.)
+- Confirm the Full Face hero image, Biljana's CV, and which of the 24 pending-banner pages she wants
+  to prioritize sending text for first.

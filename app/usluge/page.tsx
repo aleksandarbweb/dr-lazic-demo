@@ -49,17 +49,17 @@ export default function UslugePage() {
                   </p>
                 )}
               </FadeUp>
-              <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" staggerDelay={0.05}>
+              <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch" staggerDelay={0.05}>
                 {category.services.map((service) => (
-                  <StaggerItem key={service.name}>
+                  <StaggerItem key={service.name} className="h-full">
                     <Link
                       href={`/usluge/${service.slug}`}
-                      className="group flex items-center justify-between border border-[#e5e0da] bg-[#faf9f7] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#b91c1c] hover:shadow-lg"
+                      className="group flex h-full w-full items-center justify-between gap-3 border border-[#e5e0da] bg-[#faf9f7] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#b91c1c] hover:shadow-lg"
                     >
                       <span className="text-[#1a1a1a] text-sm group-hover:text-[#b91c1c] transition-colors font-light">
                         {service.name}
                       </span>
-                      <ChevronRight size={16} className="text-[#6b6b6b] group-hover:text-[#b91c1c] transition-colors" />
+                      <ChevronRight size={16} className="flex-shrink-0 text-[#6b6b6b] group-hover:text-[#b91c1c] transition-colors" />
                     </Link>
                   </StaggerItem>
                 ))}

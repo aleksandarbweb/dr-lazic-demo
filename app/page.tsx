@@ -61,8 +61,20 @@ export default function HomePage() {
 
   const [partnersPaused, setPartnersPaused] = useState(false)
   const [reviewsPaused, setReviewsPaused] = useState(false)
+  // Mobile gets plain native touch scrolling instead of the JS-driven marquee —
+  // matches Tailwind's `md` breakpoint (768px) used everywhere else on this page.
+  const [isMobile, setIsMobile] = useState(false)
 
   const reviewsResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const partnersResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobile(mql.matches)
+    update()
+    mql.addEventListener('change', update)
+    return () => mql.removeEventListener('change', update)
+  }, [])
 
   const services = t.home.servicesList.map((service, index) => ({
     ...service,
@@ -75,23 +87,31 @@ export default function HomePage() {
     ctaLabel: index === 0 ? t.home.doctorsSection.viewProfileLabel : undefined,
   }))
 
-  // ── Auto-scrolling Marquees (Equipment & Reviews) ──
+  // ── Auto-scrolling Marquees (Equipment & Reviews) — desktop only. Mobile
+  // relies entirely on native touch scrolling; no RAF loop runs there at all.
+  // Also respects prefers-reduced-motion (shouldReduce).
   useEffect(() => {
+    if (isMobile || shouldReduce) return
+
     const containers = [
-      // Doubled list — reset once we've scrolled exactly one copy's width.
+      // Doubled lists — reset once we've scrolled exactly one copy's width.
       { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused, resetFraction: 0.5 },
-      // Tripled list — the infinite-scroll-jump effect below already recenters
-      // it near the edges (for manual drags), so no internal reset here.
-      { ref: reviewsCarouselRef, speed: 0.008, paused: reviewsPaused, resetFraction: null as number | null },
+      { ref: reviewsCarouselRef, speed: 0.008, paused: reviewsPaused, resetFraction: 0.5 },
     ]
 
-    const frameIds: number[] = []
+    // A cancelled flag (not a stored frame id) is what actually stops the loop:
+    // `tick` reschedules itself every frame via a recursive `requestAnimationFrame`
+    // call, so only the very first frame id was ever capturable up front — trying
+    // to cancel by id after the fact silently cancels nothing, and the loop leaks
+    // forever, ignoring all future pause state. This was a pre-existing bug,
+    // confirmed via instrumentation: hovering set `paused` correctly, but a
+    // leaked earlier loop kept writing scrollLeft in parallel regardless.
+    let cancelled = false
 
     containers.forEach(({ ref, speed, paused, resetFraction }) => {
       const container = ref.current
       if (!container) return
 
-      let frameId = 0
       let lastTs = 0
       // Track position in a float; container.scrollLeft rounds to an integer on
       // read, so accumulating via `container.scrollLeft += tinyDelta` silently
@@ -100,9 +120,10 @@ export default function HomePage() {
       let lastSetValue = position
 
       const tick = (ts: number) => {
+        if (cancelled) return
         if (paused) {
           lastTs = ts
-          frameId = requestAnimationFrame(tick)
+          requestAnimationFrame(tick)
           return
         }
         if (lastTs === 0) lastTs = ts
@@ -121,82 +142,23 @@ export default function HomePage() {
         }
         container.scrollLeft = position
         lastSetValue = container.scrollLeft
-        frameId = requestAnimationFrame(tick)
+        requestAnimationFrame(tick)
       }
 
-      frameId = requestAnimationFrame(tick)
-      frameIds.push(frameId)
+      requestAnimationFrame(tick)
     })
 
-    return () => frameIds.forEach(id => cancelAnimationFrame(id))
-  }, [partnersPaused, reviewsPaused])
+    return () => { cancelled = true }
+  }, [partnersPaused, reviewsPaused, isMobile, shouldReduce])
 
-  // ── Infinite Scroll Jump Logic (Mobile Interactive Carousels) ──
-  useEffect(() => {
-    const handleInfiniteScroll = (ref: React.RefObject<HTMLDivElement | null>) => {
-      const container = ref.current
-      if (!container) return
-
-      // Initialize to middle set
-      const init = () => {
-        const third = container.scrollWidth / 3
-        container.style.scrollBehavior = 'auto'
-        container.scrollLeft = third
-      }
-      
-      const timer = setTimeout(init, 150)
-
-      let isJumping = false
-
-      const onScroll = () => {
-        if (isJumping) return
-        
-        const { scrollLeft, scrollWidth } = container
-        if (scrollWidth === 0) return
-        const third = scrollWidth / 3
-
-        // Thresholds: Jump if we are closer than 1/4 of a set to either end
-        const jumpThreshold = third * 0.5 
-
-        if (scrollLeft < jumpThreshold) {
-          isJumping = true
-          container.style.scrollSnapType = 'none'
-          container.style.scrollBehavior = 'auto'
-          container.scrollLeft = scrollLeft + third
-          // Force layout reflow
-          void container.offsetHeight 
-          container.style.scrollSnapType = 'x mandatory'
-          setTimeout(() => { isJumping = false }, 60)
-        } else if (scrollLeft > third * 2 + jumpThreshold) {
-          isJumping = true
-          container.style.scrollSnapType = 'none'
-          container.style.scrollBehavior = 'auto'
-          container.scrollLeft = scrollLeft - third
-          void container.offsetHeight
-          container.style.scrollSnapType = 'x mandatory'
-          setTimeout(() => { isJumping = false }, 60)
-        }
-      }
-
-      container.addEventListener('scroll', onScroll, { passive: true })
-      return () => {
-        clearTimeout(timer)
-        container.removeEventListener('scroll', onScroll)
-      }
-    }
-
-    const cleanupServices = handleInfiniteScroll(mobileServicesRef)
-    const cleanupReviews = handleInfiniteScroll(reviewsCarouselRef)
-
-    return () => {
-      cleanupServices?.()
-      cleanupReviews?.()
-    }
-  }, [])
-
-  const tripleServices = [...services, ...services, ...services]
   const loopingEquipment = [...equipmentBrands, ...equipmentBrands]
-  const tripleReviews = [...t.home.reviewsList, ...t.home.reviewsList, ...t.home.reviewsList]
+  const doubledReviews = [...t.home.reviewsList, ...t.home.reviewsList]
+  // Mobile: plain, single-copy lists with native touch scroll — no JS position
+  // manipulation, so there's nothing to teleport/jump while the user drags.
+  // Desktop: doubled lists feed the RAF marquee above.
+  const mobileServicesList = services
+  const equipmentItems = isMobile ? equipmentBrands : loopingEquipment
+  const reviewsItems = isMobile ? t.home.reviewsList : doubledReviews
 
   const pauseReviews = () => {
     if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
@@ -205,6 +167,14 @@ export default function HomePage() {
   const resumeReviews = () => {
     if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
     reviewsResumeTimeout.current = setTimeout(() => setReviewsPaused(false), 1200)
+  }
+  const pausePartners = () => {
+    if (partnersResumeTimeout.current) clearTimeout(partnersResumeTimeout.current)
+    setPartnersPaused(true)
+  }
+  const resumePartners = () => {
+    if (partnersResumeTimeout.current) clearTimeout(partnersResumeTimeout.current)
+    partnersResumeTimeout.current = setTimeout(() => setPartnersPaused(false), 1200)
   }
 
   return (
@@ -383,7 +353,7 @@ export default function HomePage() {
               ref={mobileServicesRef}
               className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-8 md:hidden"
             >
-              {tripleServices.map((service, index) => (
+              {mobileServicesList.map((service, index) => (
                 <div
                   key={`${service.title}-${index}`}
                   className="min-w-[85vw] snap-center rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5"
@@ -413,10 +383,15 @@ export default function HomePage() {
             </StaggerChildren>
 
             {/* Swipe hint for mobile */}
-            <div className="mt-2 flex justify-center gap-1.5 md:hidden">
-               <div className="h-1 w-8 rounded-full bg-[#b91c1c]/20" />
-               <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
-               <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
+            <div className="mt-3 flex flex-col items-center gap-2 md:hidden">
+              <div className="flex justify-center gap-1.5">
+                <div className="h-1 w-8 rounded-full bg-[#b91c1c]/20" />
+                <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
+                <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
+              </div>
+              <p className="text-[11px] uppercase tracking-[0.15em] text-[#9b948c]">
+                {t.home.servicesSection.swipeMobile}
+              </p>
             </div>
           </div>
           <FadeUp delay={0.2}>
@@ -510,15 +485,21 @@ export default function HomePage() {
           <Link
             href="/oprema"
             ref={partnersCarouselRef}
-            className="no-scrollbar flex items-center gap-14 overflow-x-hidden md:gap-20"
-            onMouseEnter={() => setPartnersPaused(true)}
-            onMouseLeave={() => setPartnersPaused(false)}
+            className="no-scrollbar flex items-center gap-14 overflow-x-auto snap-x snap-mandatory px-6 -mx-6 md:snap-none md:gap-20 md:px-0 md:mx-0"
+            onMouseEnter={pausePartners}
+            onMouseLeave={resumePartners}
+            onFocus={pausePartners}
+            onBlur={resumePartners}
+            onTouchStart={pausePartners}
+            onTouchEnd={resumePartners}
+            onPointerDown={pausePartners}
+            onPointerUp={resumePartners}
             aria-label={t.home.equipmentTitle}
           >
-            {loopingEquipment.map((brand, index) => (
+            {equipmentItems.map((brand, index) => (
               <span
                 key={`${brand.name}-${index}`}
-                className="relative h-9 w-28 flex-shrink-0 grayscale opacity-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-100 hover:grayscale-0 md:h-10 md:w-32"
+                className="relative h-9 w-28 flex-shrink-0 snap-center grayscale opacity-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-100 hover:grayscale-0 md:h-10 md:w-32"
               >
                 <Image
                   src={brand.logo}
@@ -530,6 +511,9 @@ export default function HomePage() {
               </span>
             ))}
           </Link>
+          <p className="mt-4 text-center text-[11px] uppercase tracking-[0.15em] text-[#9b948c] md:hidden">
+            {t.home.swipeHint}
+          </p>
         </div>
       </section>
 
@@ -546,7 +530,7 @@ export default function HomePage() {
           <FadeUp delay={0.1}>
             <div
               ref={reviewsCarouselRef}
-              className="no-scrollbar -mx-6 mt-12 flex gap-6 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12"
+              className="no-scrollbar -mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8 md:snap-none lg:-mx-12 lg:px-12"
               onMouseEnter={pauseReviews}
               onMouseLeave={resumeReviews}
               onTouchStart={pauseReviews}
@@ -554,16 +538,20 @@ export default function HomePage() {
               onPointerDown={pauseReviews}
               onPointerUp={resumeReviews}
             >
-              {tripleReviews.map((item, index) => (
-                <div key={index} className="w-[280px] flex-shrink-0 sm:w-[340px]">
+              {reviewsItems.map((item, index) => (
+                <div key={index} className="w-[280px] flex-shrink-0 snap-center sm:w-[340px]">
                   <TestimonialCard quote={item.quote} author={item.author} />
                 </div>
               ))}
             </div>
           </FadeUp>
 
+          <p className="mt-4 text-center text-[11px] uppercase tracking-[0.15em] text-[#9b948c] md:hidden">
+            {t.home.swipeHint}
+          </p>
+
           <FadeUp delay={0.2}>
-            <p className="mt-10 text-center text-xs uppercase tracking-[0.15em] text-[#9b948c]">
+            <p className="mt-6 text-center text-xs uppercase tracking-[0.15em] text-[#9b948c] md:mt-10">
               {t.home.reviewsSource}
             </p>
           </FadeUp>

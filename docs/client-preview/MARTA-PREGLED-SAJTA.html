@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Pregled radne verzije sajta Ordinacije Dr Terzić</title>
+<style>
+  :root {
+    --red: #b91c1c;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e0da;
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --amber-bg: #fffbeb;
+    --amber-border: #fcd34d;
+    --amber-ink: #92400e;
+    --green-bg: #f0fdf4;
+    --green-border: #86efac;
+    --green-ink: #166534;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header.hero {
+    text-align: center;
+    padding: 8px 0 32px;
+    border-bottom: 3px solid var(--red);
+    margin-bottom: 32px;
+  }
+  header.hero p.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  header.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .intro {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    color: var(--red);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin: 40px 0 16px;
+  }
+  h3 {
+    font-size: 16px;
+    margin: 24px 0 8px;
+    color: var(--ink);
+  }
+  h3 .subtitle {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 13px;
+    display: block;
+    margin-top: 2px;
+  }
+  a {
+    color: var(--red);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+  .access-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 8px;
+  }
+  .access-box .row {
+    margin-bottom: 10px;
+  }
+  .access-box .row:last-child { margin-bottom: 0; }
+  .access-box .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .access-box .value {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .access-box .value.mono {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: #f0ece5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  ul.plain {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.plain li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+  }
+  ul.status {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  ul.status li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 16px;
+    font-size: 14.5px;
+  }
+  ul.status li.ok { border-left-color: #22c55e; }
+  ul.status li.pending { border-left-color: var(--amber-border); }
+  ul.status li a { font-weight: 500; flex: 1 1 320px; }
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge.ok { background: var(--green-bg); color: var(--green-ink); border: 1px solid var(--green-border); }
+  .badge.pending { background: var(--amber-bg); color: var(--amber-ink); border: 1px solid var(--amber-border); }
+  .shared-note {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .legend {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    margin-bottom: 20px;
+  }
+  .legend div { margin-bottom: 4px; }
+  .legend div:last-child { margin-bottom: 0; }
+  .todo-box {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .todo-box h3 { margin-top: 0; color: var(--amber-ink); }
+  .todo-box ul { padding-left: 20px; margin: 8px 0; }
+  .question-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .question-box p.q {
+    font-weight: 600;
+    font-size: 15.5px;
+    margin: 0 0 8px;
+  }
+  .video-box {
+    background: var(--card);
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+  footer {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  @media print {
+    body { background: #fff; }
+    a { color: var(--ink); text-decoration: underline; }
+    .wrap { max-width: 100%; padding: 0 12px; }
+    ul.status li, .intro, .access-box, .todo-box, .question-box, .video-box, ul.plain li {
+      break-inside: avoid;
+      border-color: #ccc !important;
+    }
+    h2 { break-after: avoid; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 32px 16px 64px; }
+    header.hero h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Ordinacija Dr Terzić</p>
+    <h1>Pregled radne verzije sajta Ordinacije Dr Terzić</h1>
+  </header>
+
+  <div class="intro">
+    <p>Kompletna struktura i sav raspoloživ sadržaj iz dokumenta koji ste poslali uneti su u radnu verziju sajta. Tamo gde dokument nije sadržao razrađen tekst ili odgovarajuću fotografiju, stranica je kreirana i jasno označena kako biste mogli jednostavno da vidite šta je još potrebno dopuniti.</p>
+    <p style="margin-bottom:0">Ovaj dokument Vam služi kao vodič kroz sajt: sadrži linkove ka svakoj stranici i uslugama, kratak pregled šta je već gotovo, i spisak onoga što je još potrebno od Vas.</p>
+  </div>
+
+  <h2>Pristup sajtu</h2>
+  <div class="access-box">
+    <div class="row">
+      <span class="label">Radna verzija sajta</span>
+      <a class="value" href="https://dr-terzic-site.vercel.app" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app</a>
+    </div>
+    <div class="row">
+      <span class="label">Lozinka za pristup</span>
+      <span class="value mono">admin</span>
+    </div>
+  </div>
+  <p style="font-size:13.5px;color:var(--muted)">Sajt je trenutno zaštićen lozinkom jer još nije javno objavljen. Kada otvorite link, biće Vam ponuđeno polje za unos lozinke.</p>
+
+  <h2>Glavne stranice</h2>
+  <ul class="plain">
+    <li><strong>Naslovna</strong> — <a href="https://dr-terzic-site.vercel.app/" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/</a></li>
+    <li><strong>O nama</strong> — <a href="https://dr-terzic-site.vercel.app/o-nama" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/o-nama</a></li>
+    <li><strong>Usluge</strong> — <a href="https://dr-terzic-site.vercel.app/usluge" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/usluge</a></li>
+    <li><strong>Oprema</strong> — <a href="https://dr-terzic-site.vercel.app/oprema" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/oprema</a></li>
+    <li><strong>Galerija</strong> — <a href="https://dr-terzic-site.vercel.app/galerija" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/galerija</a></li>
+    <li><strong>Kontakt</strong> — <a href="https://dr-terzic-site.vercel.app/kontakt" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/kontakt</a></li>
+  </ul>
+
+  <h2>Usluge, po kategorijama</h2>
+  <p>Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija, istim redosledom kao na sajtu. Svaka stavka je klikabilan link.</p>
+
+  <div class="legend">
+    <div><span class="badge ok">Sadržaj unet</span> tekst koji ste poslali je već na sajtu</div>
+    <div><span class="badge pending">Potrebna dopuna teksta</span> stranica postoji, čeka Vaš zvaničan tekst (vidljivo obeleženo narandžastim upozorenjem na sajtu)</div>
+    <div><span class="badge pending">Potrebna fotografija</span> tekst je kompletan, nedostaje fotografija</div>
+    <div><em>Zajednička stranica za povezane tretmane</em> — nekoliko srodnih tretmana namerno vodi na istu stranicu</div>
+  </div>
+
+  <h3>1. Opšta dermatovenerologija <span class="subtitle">Dermatologija za celu porodicu</span></h3>
+  <ul class="status">
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/medicinska-dermatologija" target="_blank" rel="noopener">Dijagnostika i lečenje kožnih i polnih bolesti</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske" target="_blank" rel="noopener">Uklanjanje virusnih bradavica, kondiloma i moluski</a><span class="badge ok">Sadržaj unet</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/uklanjanje-papiloma-i-keratoza" target="_blank" rel="noopener">Uklanjanje papiloma i keratoza</a><span class="badge ok">Sadržaj unet</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser" target="_blank" rel="noopener">Uklanjanje vaskularnih promena – kapilari i hemangiomi</a><span class="badge ok">Sadržaj unet</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/rozacea" target="_blank" rel="noopener">Lečenje rozacee</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/dermoskopija" target="_blank" rel="noopener">Dermoskopski pregled mladeža</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/opadanje-kose" target="_blank" rel="noopener">Lečenje opadanja kose</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser" target="_blank" rel="noopener">Lečenje gljivičnih oboljenja noktiju</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/akne" target="_blank" rel="noopener">Lečenje akni</a><span class="badge ok">Sadržaj unet</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/pigmentne-promene" target="_blank" rel="noopener">Uklanjanje pigmentnih promena</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/pojacano-znojenje" target="_blank" rel="noopener">Lečenje pojačanog znojenja</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/hirursko-uklanjanje-mladeza" target="_blank" rel="noopener">Hirurško uklanjanje mladeža sa PH dijagnostikom</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+  </ul>
+
+  <h3>2. Estetska dermatologija</h3>
+  <ul class="status">
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/full-face" target="_blank" rel="noopener">Personalizovani Full Face tretmani by dr Marta Terzić</a><span class="badge pending">Potrebna fotografija</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/botoks-fileri" target="_blank" rel="noopener">Hijaluronski fileri</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/botoks-fileri" target="_blank" rel="noopener">Botulinum toksin – botox</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/kolagen-stimulatori" target="_blank" rel="noopener">Kolagen stimulatori</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/profhilo" target="_blank" rel="noopener">Biorevitalizacije</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/mezoterapija" target="_blank" rel="noopener">Mezoterapija</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/prp" target="_blank" rel="noopener">PRP</a><span class="badge ok">Sadržaj unet</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d" target="_blank" rel="noopener">Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/morpheus8" target="_blank" rel="noopener">Tretmani radiofrekventnim mikronidlingom – Morpheus8</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/laserska-epilacija" target="_blank" rel="noopener">Epilacija laserom – trajno uklanjanje dlačica</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis" target="_blank" rel="noopener">Laserski tretman problema uraslih dlačica (folikulitis)</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/rozacea" target="_blank" rel="noopener">Lečenje rozacee</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka" target="_blank" rel="noopener">Uklanjanje ožiljaka</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/strije-laser" target="_blank" rel="noopener">Uklanjanje strija</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser" target="_blank" rel="noopener">Lasersko uklanjanje kapilara i hemangioma</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/akne" target="_blank" rel="noopener">Lečenje akni</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi" target="_blank" rel="noopener">Hemijski pilinzi</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/laserski-piling" target="_blank" rel="noopener">Laserski pilinzi</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/pigmentne-promene" target="_blank" rel="noopener">Uklanjanje pigmentnih promena: melasma, PIH, lentigo</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+  </ul>
+
+  <h3>3. Laseri u dermatologiji</h3>
+  <ul class="status">
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/laserska-epilacija" target="_blank" rel="noopener">Epilacija medicinskim laserom – trajno uklanjanje dlačica</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis" target="_blank" rel="noopener">Laserski tretman problema uraslih dlačica (folikulitis)</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d" target="_blank" rel="noopener">Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/rozacea" target="_blank" rel="noopener">Laserski tretmani rozacee</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka" target="_blank" rel="noopener">Laserski tretmani ožiljaka</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/strije-laser" target="_blank" rel="noopener">Laserski tretmani strija</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser" target="_blank" rel="noopener">Lasersko uklanjanje vaskularnih promena</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/pigmentne-promene" target="_blank" rel="noopener">Lasersko uklanjanje pigmentnih promena: melasma, lentigo</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske" target="_blank" rel="noopener">Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser" target="_blank" rel="noopener">Laserski tretman gljivičnih infekcija nokatne regije</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/akne" target="_blank" rel="noopener">Laserski tretman akni</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+  </ul>
+
+  <h3>4. Radiotalasna hirurgija</h3>
+  <ul class="status">
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske" target="_blank" rel="noopener">Uklanjanje benignih promena: keratoze, papilomi, bradavice</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+  </ul>
+
+  <h3>5. Kriohirurgija – terapija tečnim azotom</h3>
+  <ul class="status">
+    <li class="ok"><a href="https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske" target="_blank" rel="noopener">Uklanjanje virusnih bradavica i keratoza</a><span class="badge ok">Sadržaj unet</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+  </ul>
+
+  <h3>6. Kompjuterizovana dermoskopija</h3>
+  <ul class="status">
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/dermoskopija" target="_blank" rel="noopener">Pregled mladeža</a><span class="badge pending">Potrebna dopuna teksta</span><span class="shared-note">Zajednička stranica za povezane tretmane</span></li>
+  </ul>
+
+  <h3>7. Kozmetologija</h3>
+  <ul class="status">
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica" target="_blank" rel="noopener">Medicinski higijenski tretmani lica</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica" target="_blank" rel="noopener">Biološki tretmani lica</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/dermapen" target="_blank" rel="noopener">Dermapen</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+    <li class="pending"><a href="https://dr-terzic-site.vercel.app/usluge/savetovanje-za-negu-lica" target="_blank" rel="noopener">Savetovanje za negu lica</a><span class="badge pending">Potrebna dopuna teksta</span></li>
+  </ul>
+
+  <h2>Šta je već gotovo</h2>
+  <ul class="plain">
+    <li><strong>Naslovna</strong> — Vaše pozicioniranje, statistika ordinacije, sedam kategorija usluga, predstavljanje doktora, oprema i utisci pacijenata.</li>
+    <li><strong>O nama</strong> — priča o ordinaciji, Vaša kompletna biografija, biografija Snežane Stojković, struktura tima i oblasti kojima se bavimo.</li>
+    <li><strong>Usluge</strong> — finalna struktura od sedam kategorija, tačno onim redosledom koji ste odredili.</li>
+    <li><strong>Detaljne stranice sa Vašim tekstom</strong>, uključujući: Full Face, akne, vaskularne promene (kapilari i hemangiomi), bradavice/kondilomi/moluske, papilomi i keratoze, i opštu dermatovenerologiju.</li>
+    <li><strong>Oprema</strong> — kompletna, finalna lista opreme koju ste poslali.</li>
+    <li><strong>Kontakt i Galerija</strong> — trenutno u radnoj verziji, spremni za Vaš pregled.</li>
+  </ul>
+
+  <h2>Šta je još potrebno od Vas</h2>
+
+  <div class="todo-box">
+    <h3>1. Biografija dr Biljane Petković</h3>
+    <p>Trenutno je na sajtu privremeni, opšti tekst. Molim Vas da pošaljete kompletnu biografiju/CV kako bismo je zamenili Vašim zvaničnim tekstom.</p>
+    <p style="margin-bottom:0"><a href="https://dr-terzic-site.vercel.app/o-nama#biljana-petkovic" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/o-nama#biljana-petkovic</a></p>
+  </div>
+
+  <div class="todo-box">
+    <h3>2. Tekst za stranice koje čekaju Vašu dopunu</h3>
+    <p>Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da je zvaničan tekst još u pripremi. Kliknite na svaku da vidite tačno kako trenutno izgleda. Najlakše je da nam pošaljete tekst redosledom kojim Vama najviše odgovara, ne morate sve odjednom.</p>
+    <ul>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/medicinska-dermatologija" target="_blank" rel="noopener">Dijagnostika i lečenje kožnih i polnih bolesti</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/rozacea" target="_blank" rel="noopener">Lečenje rozacee</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/dermoskopija" target="_blank" rel="noopener">Dermoskopski pregled mladeža</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/opadanje-kose" target="_blank" rel="noopener">Lečenje opadanja kose</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser" target="_blank" rel="noopener">Lečenje gljivičnih oboljenja noktiju</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/pigmentne-promene" target="_blank" rel="noopener">Uklanjanje pigmentnih promena</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/pojacano-znojenje" target="_blank" rel="noopener">Lečenje pojačanog znojenja</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/hirursko-uklanjanje-mladeza" target="_blank" rel="noopener">Hirurško uklanjanje mladeža sa PH dijagnostikom</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/botoks-fileri" target="_blank" rel="noopener">Hijaluronski fileri / Botulinum toksin</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/kolagen-stimulatori" target="_blank" rel="noopener">Kolagen stimulatori</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/profhilo" target="_blank" rel="noopener">Biorevitalizacije</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/mezoterapija" target="_blank" rel="noopener">Mezoterapija</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d" target="_blank" rel="noopener">Personalizovano podmlađivanje laserom</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/morpheus8" target="_blank" rel="noopener">Morpheus8</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/laserska-epilacija" target="_blank" rel="noopener">Epilacija laserom</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis" target="_blank" rel="noopener">Uraslih dlačica (folikulitis)</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka" target="_blank" rel="noopener">Uklanjanje ožiljaka</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/strije-laser" target="_blank" rel="noopener">Uklanjanje strija</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi" target="_blank" rel="noopener">Hemijski pilinzi</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/laserski-piling" target="_blank" rel="noopener">Laserski pilinzi</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica" target="_blank" rel="noopener">Medicinski higijenski tretmani lica</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica" target="_blank" rel="noopener">Biološki tretmani lica</a></li>
+      <li><a href="https://dr-terzic-site.vercel.app/usluge/dermapen" target="_blank" rel="noopener">Dermapen</a></li>
+      <li style="margin-bottom:0"><a href="https://dr-terzic-site.vercel.app/usluge/savetovanje-za-negu-lica" target="_blank" rel="noopener">Savetovanje za negu lica</a></li>
+    </ul>
+  </div>
+
+  <div class="todo-box">
+    <h3>3. Fotografija za Full Face</h3>
+    <p>Tekst na ovoj stranici je kompletan i zvaničan, nedostaje samo fotografija koju ste najavili za ovu uslugu. Trenutno je prikazana privremena zamenska slika.</p>
+    <p style="margin-bottom:0"><a href="https://dr-terzic-site.vercel.app/usluge/full-face" target="_blank" rel="noopener">https://dr-terzic-site.vercel.app/usluge/full-face</a></p>
+  </div>
+
+  <div class="todo-box">
+    <h3>4. Opcione nove/zamenske fotografije <span style="font-weight:400;font-style:italic;font-size:13px">(nije obavezno)</span></h3>
+    <p style="margin-bottom:0">Ako želite, možemo zameniti: fotografije za članove tima koji trenutno nemaju fotografiju (Snežana Stojković, Milica Dobrić, Melissa Ćelović, Sonja Bubulj) na <a href="https://dr-terzic-site.vercel.app/o-nama" target="_blank" rel="noopener">stranici O nama</a>, eventualno noviju fotografiju ordinacije, ili bilo koju postojeću fotografiju usluge za koju smatrate da ne odgovara sadržaju.</p>
+  </div>
+
+  <h2>Odluka o kontakt formi</h2>
+  <div class="question-box">
+    <p class="q">Da li želite funkcionalnu kontakt formu na sajtu, ili želite da Kontakt stranica ostane usmerena na direktan poziv, email, Instagram i mapu?</p>
+    <p style="margin-bottom:0">Funkcionalna forma zahteva podešavanje pravog sistema za prijem poruka i odgovarajući tekst o zaštiti podataka. Trenutna forma na sajtu ne šalje ništa i ne pretvara se da šalje.</p>
+  </div>
+
+  <h2>Pitanje o strukturi usluga</h2>
+  <div class="question-box">
+    <p class="q" style="margin-bottom:0">Hijaluronski fileri i botulinum toksin trenutno vode na jednu zajedničku stranicu. Da li želite da ostanu zajedno ili da ih kasnije razdvojimo na dve zasebne stranice?</p>
+  </div>
+
+  <h2>Napomena o prevodu</h2>
+  <p>Srpski sadržaj se prvo finalizuje. Engleska i ruska verzija sajta biće dovršene i lektorisane tek nakon što odobrite strukturu i tekst na srpskom. Ovim izbegavamo da prevodimo sadržaj koji se možda još menja.</p>
+
+  <h2>Kako da nam pošaljete povratne informacije</h2>
+  <p>Najlakše nam je ako nam pošaljete izmene u jednom od ovih formata:</p>
+  <ul class="plain">
+    <li>naziv stranice + deo koji menjate</li>
+    <li>kopiran postojeći tekst + tekst kojim ga zamenjujete</li>
+    <li>snimak ekrana sa označenom izmenom</li>
+    <li>jedan objedinjen dokument sa svim izmenama</li>
+  </ul>
+
+  <h2>Povezivanje postojećeg domena</h2>
+  <p>Da bismo novu verziju sajta povezali sa Vašim postojećim domenom, potreban je pristup nalogu na kojem je domen registrovan ili da zajedno promenimo DNS podešavanja. Molim Vas da mi pošaljete naziv provajdera kod kojeg je domen registrovan i potvrdite da li koristite email adrese povezane sa tim domenom. Domen ostaje u Vašem vlasništvu; menja se samo njegovo povezivanje sa novim sajtom.</p>
+
+  <h2>Video obilazak sajta</h2>
+  <div class="video-box">[UBACI LINK KA VIDEO OBILASKU]</div>
+
+  <footer>Ordinacija Dr Terzić — interni dokument za pregled radne verzije sajta.</footer>
+
+</div>
+</body>
+</html>

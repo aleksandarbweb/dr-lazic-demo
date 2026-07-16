@@ -52,6 +52,28 @@
 
 ---
 
+## Standing Public-Copy Rules (apply to every session, added 2026-07-16)
+
+- **No em dash ("—" / `&mdash;`) in rendered site copy.** Replace with a comma,
+  colon, parentheses, ordinary hyphen, or a sentence break, whichever reads best
+  grammatically. This applies to visible text only (JSX strings, `sr.ts`/`en.ts`/
+  `ru.ts` values, page metadata) — code comments are exempt since they aren't
+  rendered. Legitimate en dashes ("–") used for numeric ranges (e.g. "1–3
+  sessions") or as an established label/detail separator (e.g. "Allergan –
+  National Trainer") are **not** em dashes and should be left alone. Never touch
+  URL slugs even if they contain a dash-like pattern. A repo-wide scan for this
+  should be part of any pass that adds or edits public copy, not just a one-time
+  cleanup (the 2026-07-10 cleanup pass missed content added afterward — see the
+  2026-07-16 changelog entry for what a second pass found).
+- **Serbian Latin OCR/diacritic typos** (`prilagodjen` → `prilagođen`,
+  `izmedju` → `između`, `takodje` → `takođe`, `odrzavanje`/`odžavanje` →
+  `održavanje`, `hladjenje` → `hlađenje`, `ledja` → `leđa`, `mladje` → `mlađe`,
+  `prodju` → `prođu`, etc.) should be grepped for and fixed in visible copy on
+  every content pass. Do not change ASCII URL slugs that intentionally omit
+  diacritics (e.g. `podmladjivanje-fotona-3d-4d-5d`).
+
+---
+
 ## The Target — what a "€50k site" actually means
 
 Boutique-agency work at this price differs from templates in five ways. These
@@ -1189,3 +1211,98 @@ Unchanged policy: raise with the client, don't build unprompted.
     sessionStorage inspection that the overlay *does* mount, run its timer, and mark itself seen on
     each fresh session, and the user separately confirmed visually that it looks correct. Grepped for
     stale references to the old filename (none found).
+- 2026-07-16 — **Marta client-preview prep pass.** Mobile marquee fix, equal service-card geometry,
+  fresh public-copy audit, and the first client-facing report/email for Marta's review. Closes out the
+  manual Marta DOCX Serbian content-intake phase — see `docs/client-content-map-2026-07-09.md` §18 and
+  its new "Current client-preview snapshot" section for the full per-route inventory. **Not** M1, M2,
+  M4, translations, or final launch QA.
+  - **Mobile marquee fix (`app/page.tsx`).** The equipment-logo and patient-review homepage sections
+    auto-scrolled via `requestAnimationFrame` on every viewport, and equipment was `overflow-x-hidden`
+    (manual scroll was impossible there on any device). Added an `isMobile` `matchMedia` check
+    (`max-width: 767px`) that skips the RAF loop entirely on mobile and whenever `prefers-reduced-motion`
+    is set — `shouldReduce` was already computed via `useReducedMotion()` but never actually used to gate
+    the marquee before this pass, a real pre-existing bug. Removed the tripled-list "jump near the
+    boundary" effect (shared by the services carousel, reviews, and equipment) that could visibly
+    teleport mid-drag; mobile now renders plain, single-copy lists with native `overflow-x-auto` +
+    `snap-x snap-mandatory` and zero JS position writes. Equipment changed from `overflow-x-hidden` to
+    `overflow-x-auto` on every viewport so manual scroll/drag works on desktop too, per the "manual
+    scrolling must remain possible" rule. Added a subtle "Prevucite za još" / "Swipe for more" hint
+    (new `home.swipeHint` i18n key, all 3 locales) under equipment/reviews on mobile, and wired in the
+    pre-existing `servicesSection.swipeMobile` key next to the services carousel's dot indicator — that
+    key existed in all 3 locale files already but was never rendered anywhere, a dead-string bug.
+  - **Real bug found and fixed in the RAF pause/cancel mechanism itself** (pre-existing, not introduced
+    this pass, but only surfaced because this pass tested pause behavior directly with Playwright rather
+    than reading the code). The cleanup function tried to cancel the marquee's animation loop by
+    `cancelAnimationFrame`-ing a frame id captured once, up front — but the recursive `tick` function
+    reschedules itself every frame via its own `requestAnimationFrame` call, so only the very first,
+    long-since-fired frame id was ever tracked. Cancelling it did nothing: once started, a marquee's RAF
+    loop ran forever, immune to all future pause-state changes. Every time `partnersPaused`/
+    `reviewsPaused` toggled, a *fresh* loop started respecting the new value, but the *old* leaked loop
+    kept running in parallel with its original (stale) `paused` value baked in — so hovering set state
+    correctly (confirmed via instrumentation: `partnersPaused` flipped to `true` on the first
+    `mouseenter`) but the marquee kept drifting anyway, because an earlier leaked loop was still writing
+    `scrollLeft`. Fixed by switching to a `let cancelled = false` flag checked at the top of every `tick`
+    invocation, set once in the effect's cleanup — the standard, correct pattern for a self-rescheduling
+    RAF loop inside a React effect. Verified via direct `scrollLeft` sampling that hovering now freezes
+    the marquee bit-for-bit (identical value across 6 samples over 900ms) and resumes cleanly on
+    unhover, for both the equipment and reviews sections.
+  - **Equal service-card geometry (`app/usluge/page.tsx`).** The `/usluge` grids already used CSS Grid,
+    so column widths were already equal; the reported unevenness was a height bug — each card's
+    `StaggerItem` wrapper had no explicit height, so it stretched invisibly (CSS Grid's default
+    `align-items: stretch`) while the visible bordered `<Link>` inside it only took its own content
+    height, so a two-line-wrapped label produced a visibly taller box than a one-line label in the same
+    row. Fixed with `items-stretch` on the grid, `h-full` on `StaggerItem`, and `h-full w-full` plus
+    `flex-shrink-0` on the chevron icon on the `<Link>`. Verified via `getBoundingClientRect()` across
+    all cards in the Estetska dermatologija category (the widest label-length mix): every card in every
+    row now reports identical width (284px) and identical height within its row (82px or 102px for the
+    row with a wrapped label). No hrefs, slugs, or service groupings changed.
+  - **Fresh public-copy scan.** Found and fixed 34 new em-dash occurrences added since the 2026-07-10
+    cleanup (§11 of the content map): the "Label — detail" pattern had crept back into the 14 generic
+    pending-page templates, the `full-face` `pendingNotice`, 5 of the 8 homepage review quotes, and
+    several `onama`/`marta`/`snezana` strings in the AI-assisted `en.ts`/`ru.ts` translations (the
+    Serbian originals didn't have the em dashes; the translations reintroduced them). Also normalized
+    one RU-only inconsistency in `marta.badges` (em dash where `sr.ts`/`en.ts` used a legitimate en
+    dash for the same label). A repo-wide grep confirms zero `—`/`&mdash;` remain in `app/`,
+    `components/`, `lib/` outside code comments. A parallel OCR/diacritic-typo grep
+    (prilagodjen/izmedju/takodje/etc.) found zero remaining occurrences in rendered copy. The no-em-dash
+    rule is now a standing rule in both this file (see "Standing Public-Copy Rules" above) and the
+    content map, so future passes check it by default.
+  - **Client-facing deliverables created** (not published as public routes):
+    `docs/client-preview/MARTA-PREGLED-SAJTA.md` + `.html` (full clickable report, all 7 categories, all
+    49 catalog bullets, status derived from current `pendingNotice` code) and
+    `docs/client-preview/MARTA-EMAIL-DRAFT.md` (ready-to-send Serbian email).
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` succeeds (same 42-route output, no new
+    errors); `npm run dev -- --port 3123` with the real WIP gate — confirmed the password prompt blocks
+    unauthenticated requests (curl without the gate cookie receives the lock-screen HTML, not the real
+    page) and that the production password `admin` unlocks the site end-to-end via the actual form
+    submission (Playwright), not just the `dt_site_access` cookie bypass. All 6 main routes and all 30
+    distinct `/usluge/[slug]` routes (covering all 49 catalog bullets) return HTTP 200. Playwright
+    checks at 1440×900 (desktop) and 390×844 (mobile): 0 console errors on `/`, `/o-nama`, `/usluge`,
+    `/oprema`, `/galerija`, `/kontakt`, and `/usluge/full-face`; confirmed 0 broken images on both
+    `/kontakt` and `/usluge/full-face`; confirmed `/favicon.ico` returns 200. Confirmed via
+    `matchMedia('(max-width: 767px)')` and direct `scrollLeft` sampling that neither marquee moves on
+    mobile (frozen across a 1.5s sample window, both before and after the RAF-cleanup fix); confirmed
+    `prefers-reduced-motion: reduce` (via `page.emulateMedia`) freezes the desktop marquee too. One
+    **pre-existing, out-of-scope** finding: with `prefers-reduced-motion: reduce` active *at page load*,
+    `components/intro-overlay.tsx` throws a React hydration-mismatch console error (server-rendered
+    motion state doesn't match the client's immediately-reduced state) — confirmed this does **not**
+    happen under normal conditions (0 console errors without the emulated OS setting), confirmed it is
+    unrelated to any file touched this session, and left unfixed as out of scope for this pass (flagging
+    for a future session, not part of A–H). Also inspected the HTML client report directly in a browser
+    (served locally, not via `file://` which Playwright blocks): confirmed all 83 links are absolute
+    `https://dr-terzic-site.vercel.app/...` URLs opening in a new tab, confirmed no horizontal overflow
+    at 375px width, and confirmed the `@media print` layout renders cleanly at A4 dimensions with no
+    broken sections. **Also found and documented** (not fixed, pre-existing, M4 territory): the generic
+    `[slug]/page.tsx` catch-all's `generateStaticParams` still returns all 30 catalog slugs even though
+    every one now has its own dedicated literal route — confirmed via direct HTML inspection of two
+    routes that Next.js's router always serves the literal page, never the generic `buildServiceCopy()`
+    fallback, so this is dead build output and a latent risk, not a live content bug. See content-map
+    §17's "Note found this session" for detail.
+  - **Client dependencies carried forward** (see the client report for clickable links): Dr. Biljana
+    Petković's CV/bio, official text for 24 pending-banner service pages, the Full Face hero image,
+    Marta's decision on the contact form, and domain/DNS registrar information for connecting the final
+    domain. Optional/non-blocking: replacement team photos and a possible newer clinic photo.
+  - **Not done, out of scope**: no new Marta content invented; no service pages merged or split; no
+    EN/RU proofreading (still AI-assisted); no domain/DNS work performed (client report only asks Marta
+    for the information); the `[slug]` catch-all's dead `generateStaticParams` entries were not trimmed
+    (flagged for M4); no commit pushed.

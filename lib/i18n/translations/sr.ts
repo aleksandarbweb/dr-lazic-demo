@@ -108,21 +108,22 @@ export const sr = {
       }
     ],
     equipmentTitle: 'Naša oprema',
+    swipeHint: 'Prevucite za još',
     reviewsSection: {
       title: 'Iskustva Pacijenata',
       subtitle: 'Šta naši pacijenti kažu o pregledima i tretmanima u ordinaciji',
     },
     reviewsList: [
       {
-        quote: 'Pronašla sam dermatologa kome mogu potpuno da verujem — stručna, pažljiva i sa terapijom koja je dala odlične rezultate.',
+        quote: 'Pronašla sam dermatologa kome mogu potpuno da verujem: stručna, pažljiva i sa terapijom koja je dala odlične rezultate.',
         author: 'Nataša D.',
       },
       {
-        quote: 'Doktorka Petković je bila ljubazna i profesionalna — mladež je uklonjen bezbolno, za svega 20 minuta. Toplo preporučujem.',
+        quote: 'Doktorka Petković je bila ljubazna i profesionalna, mladež je uklonjen bezbolno, za svega 20 minuta. Toplo preporučujem.',
         author: 'Sean S.',
       },
       {
-        quote: 'Besprekorno čista i profesionalna ordinacija — tim odlično govori engleski, a zahvat je prošao lakše nego što sam očekivala.',
+        quote: 'Besprekorno čista i profesionalna ordinacija, tim odlično govori engleski, a zahvat je prošao lakše nego što sam očekivala.',
         author: 'Diane',
       },
       {
@@ -130,11 +131,11 @@ export const sr = {
         author: 'Nevena A.',
       },
       {
-        quote: 'Laserska epilacija je rešila problem koji me je mučio čitavu deceniju — rezultati su fantastični.',
+        quote: 'Laserska epilacija je rešila problem koji me je mučio čitavu deceniju, rezultati su fantastični.',
         author: 'Ana I.',
       },
       {
-        quote: 'Detaljan pregled, jasna objašnjenja i puno strpljenja — doktorka Marta uliva veliko poverenje.',
+        quote: 'Detaljan pregled, jasna objašnjenja i puno strpljenja: doktorka Marta uliva veliko poverenje.',
         author: 'Pedja D.',
       },
       {

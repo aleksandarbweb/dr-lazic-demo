@@ -108,21 +108,22 @@ export const en = {
       }
     ],
     equipmentTitle: 'Our Equipment',
+    swipeHint: 'Swipe for more',
     reviewsSection: {
       title: 'Patient Experiences',
       subtitle: 'What our patients say about their consultations and treatments at the clinic',
     },
     reviewsList: [
       {
-        quote: 'I found a dermatologist I can fully trust — skilled, attentive, and the therapy she recommended gave excellent results.',
+        quote: 'I found a dermatologist I can fully trust: skilled, attentive, and the therapy she recommended gave excellent results.',
         author: 'Nataša D.',
       },
       {
-        quote: 'Dr Petkovic was friendly and professional — the mole I was worried about was removed painlessly in just 20 minutes. I highly recommend this clinic.',
+        quote: 'Dr Petkovic was friendly and professional, the mole I was worried about was removed painlessly in just 20 minutes. I highly recommend this clinic.',
         author: 'Sean S.',
       },
       {
-        quote: 'Impeccably clean, professional clinic — the team speaks wonderful English, and the procedure was easier than I expected.',
+        quote: 'Impeccably clean, professional clinic, the team speaks wonderful English, and the procedure was easier than I expected.',
         author: 'Diane',
       },
       {
@@ -130,11 +131,11 @@ export const en = {
         author: 'Nevena A.',
       },
       {
-        quote: 'Laser hair removal solved a problem that had bothered me for a decade — the results are fantastic.',
+        quote: 'Laser hair removal solved a problem that had bothered me for a decade, the results are fantastic.',
         author: 'Ana I.',
       },
       {
-        quote: 'A thorough exam, clear explanations, and a lot of patience — Dr Marta inspires real trust.',
+        quote: 'A thorough exam, clear explanations, and a lot of patience: Dr Marta inspires real trust.',
         author: 'Pedja D.',
       },
       {
@@ -225,7 +226,7 @@ export const en = {
   onama: {
     eyebrow: 'Meet us',
     title: 'Dermatology and Aesthetic Medicine Under One Roof',
-    heroIntro: 'For over 20 years we have been dedicated to the health and beauty of your skin. By combining medical expertise, top-tier skill, years of experience, and modern treatments, we give every patient an individual approach and a treatment plan tailored to their needs — built on trust and natural results.',
+    heroIntro: 'For over 20 years we have been dedicated to the health and beauty of your skin. By combining medical expertise, top-tier skill, years of experience, and modern treatments, we give every patient an individual approach and a treatment plan tailored to their needs, built on trust and natural results.',
     storyEyebrow: 'Our story',
     storyTitle: 'About Us',
     storyP1: 'Dr. Terzić Clinic was founded in 2004 with a vision of bringing together, in one place, top-tier dermatological diagnostics and skin treatment, modern aesthetic medicine, and an individual approach to every patient. For over two decades we have provided services in general dermatology, dermoscopy, radiowave surgery, laser dermatology, and aesthetic and regenerative medicine. Our goal is to preserve skin health and improve our patients\' quality of life through expertise, experience, and the application of the latest medical advances.',
@@ -233,7 +234,7 @@ export const en = {
     approachEyebrow: 'Our philosophy',
     approachTitle: 'Our Approach',
     storyP3: 'We pay special attention to safety, natural results, and individually planned therapy. We believe every patient deserves a personalized approach, which is why we tailor every diagnosis, treatment, and procedure to their needs and expectations.',
-    storyP4: 'We follow the latest global trends and apply modern diagnostic and therapeutic methods, including laser procedures, dermoscopy, computerized dermoscopy, radiosurgery, cryosurgery, as well as the most advanced treatments in aesthetic and regenerative medicine. Our team is made up of experienced physicians and skilled associates who share a common mission — to give every patient outstanding medical care, expert guidance, and a sense of security throughout the entire treatment and care process.',
+    storyP4: 'We follow the latest global trends and apply modern diagnostic and therapeutic methods, including laser procedures, dermoscopy, computerized dermoscopy, radiosurgery, cryosurgery, as well as the most advanced treatments in aesthetic and regenerative medicine. Our team is made up of experienced physicians and skilled associates who share a common mission: to give every patient outstanding medical care, expert guidance, and a sense of security throughout the entire treatment and care process.',
     tagline: ['Expertise', 'Experience', 'Trust', 'Safety', 'Modern Equipment & Procedures'],
     bavimoSeEyebrow: 'Our expertise',
     bavimoSeTitle: 'What We Do',
@@ -283,7 +284,7 @@ export const en = {
       name: 'Snežana Stojković',
       title: 'Clinic Manager and Nurse',
       bio: [
-        'Snežana has been an indispensable member of our team since day one — her professionalism, organizational skills, and dedication contribute daily to the clinic\'s outstanding performance.',
+        'Snežana has been an indispensable member of our team since day one: her professionalism, organizational skills, and dedication contribute daily to the clinic\'s outstanding performance.',
         'She is patients\' first point of contact. With her kind approach, patience, and willingness to help, she makes every patient feel safe, informed, and welcome. She is known for finding the best solution and scheduling appointments with maximum consideration for patients\' needs.',
         'Her responsibility, efficiency, and exceptional attention to detail keep every process at the clinic running flawlessly. Thanks to her work, our patients receive timely support, and the entire team is free to focus on providing the highest-quality care.',
       ],

@@ -3,13 +3,13 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Uklanjanje Pigmentnih Promena | Ordinacija Dr. Terzić',
-  description: 'Uklanjanje pigmentnih promena u ordinaciji Dr. Terzić — detaljan opis usluge uskoro.',
+  description: 'Uklanjanje pigmentnih promena u ordinaciji Dr. Terzić: detaljan opis usluge uskoro.',
 }
 
 const serviceData = {
   title: 'Uklanjanje Pigmentnih Promena',
   aboutHeading: 'O ovoj usluzi',
-  subtitle: 'Uklanjanje pigmentnih promena — sadržaj u pripremi',
+  subtitle: 'Uklanjanje pigmentnih promena: sadržaj u pripremi',
   description: 'Detaljan opis usluge biće dostupan uskoro',
   whatIsIt: 'Sadržaj za ovu uslugu je u pripremi. Detaljan opis, tok tretmana i najčešća pitanja biće dodati čim ih dr Terzić dostavi.',
   pendingNotice: 'Čeka se zvanična informacija od dr Terzić za ovu uslugu. Stranica će biti dopunjena čim je dostavi.',
