@@ -1306,3 +1306,94 @@ Unchanged policy: raise with the client, don't build unprompted.
     EN/RU proofreading (still AI-assisted); no domain/DNS work performed (client report only asks Marta
     for the information); the `[slug]` catch-all's dead `generateStaticParams` entries were not trimmed
     (flagged for M4); no commit pushed.
+
+- **2026-07-20 — Marta's first-round site feedback, implemented verbatim.** After viewing the
+  preview, Marta sent design and content feedback directly (bypassing the structured client report
+  from 2026-07-16), plus a large batch of final service-page copy. All of it is now implemented on
+  Serbian; EN/RU remain deferred per the standing practice. Full detail lives in content-map §19 (this
+  session's dated pass); this entry summarizes what changed and flags what a future session/Marta
+  still needs to resolve.
+  - **Design changes (verbatim requests)**: removed the italic slant from the homepage hero's
+    "o vašoj koži"; shrank and tightened the "Kontaktirajte nas"/"Naše usluge" hero CTA buttons (she
+    felt they "dominated"); removed italic from the homepage philosophy quote, narrowed its container,
+    and lightened the section background from near-black (`#151311`) to a softer warm brown
+    (`#2a2420`) — she'd flagged "too much black"; renamed "Naša filozofija" → "Moja filozofija" since
+    it's signed with her name; replaced the solid bright-red "Budimo u kontaktu" CTA band with a cream
+    background using red only as accent (subtitle, button) — she called the red+black combination
+    there "too aggressive."
+  - **Professional pushback, for the record (implemented anyway per client instruction)**: the
+    original solid-red CTA band and the bold hero buttons were deliberate, tested design choices — a
+    strong, unambiguous call-to-action is generally good conversion practice for a medical-practice
+    site, and the red/near-black pairing was the site's consistent brand language throughout, not an
+    isolated accident. We implemented her requested softening as asked; if the softer version tests as
+    lower-converting after launch, it's worth revisiting together rather than assuming the original was
+    wrong.
+  - **Serbian orthography fix (sitewide)**: "Dr." (capitalized, with period) before a personal name is
+    incorrect per Serbian convention; changed to "dr" (lowercase, no period) everywhere it precedes
+    dr Marta Terzić's or dr Biljana Petković's name as a title (homepage doctor list, philosophy quote
+    author, O nama headings/alt text, gallery alt text). Left "Ordinacija Dr Terzić" alone: that's the
+    clinic's brand name (capitalized, no period), not a personal title, and is used consistently as such
+    throughout — this is an intentional exception, not an oversight.
+  - **Title-case sweep**: removed Capitalize-Every-Word styling from all shared service-page UI chrome
+    (`servicePage.*` i18n keys: "Metode i tehnologije", "Kako funkcioniše", "Povezane usluge", etc.),
+    the homepage CTA title, and the contact form title, per her explicit request. Individual
+    `<title>` metadata strings on older, previously-built `/usluge/*` pages were **not** swept in this
+    pass (out of scope, dozens of files); flagging as a follow-up if she wants full consistency.
+  - **O nama content**: added `"bolesti"` (in quotes, as she specified) to the founder paragraph and
+    the "Bavimo se" list; removed Marta's four stat-pill badges (25+ godina iskustva / Osnivač i CEO /
+    Allergan – nacionalni trener / International Dermoscopy Society od 2004.) since her new bio text
+    already states all four facts in prose; replaced Marta's bio with her final approved 7-paragraph
+    text and her specialization list with the 6 items she specified, with the "Specijalizacije:"
+    heading removed per her instruction ("MOŽE BEZ NASLOVA"); replaced Biljana's placeholder bio with
+    her real CV.
+  - **Judgment calls flagged for review**: (1) Marta's bio had one grammar slip in the source
+    ("samopouzdanja svakog pacijenata") corrected to the grammatically correct "svakog pacijenta" —
+    meaning unchanged. (2) Biljana's CV arrived as disjointed CV-style fragments/bullet lines rather
+    than flowing prose; lightly rewritten into full sentences/paragraphs to match the site's existing
+    bio format (Marta's and Snežana's bios are both prose), without altering any fact, employer,
+    institution, or date. Her specialization list was also rebuilt from the actual interests stated in
+    her CV text (opšta i pedijatrijska dermatologija, dermoskopija/trihoskopija, alopecije, radiotalasne
+    procedure, estetska medicina, prevencija/rano otkrivanje malignih promena) rather than reusing the
+    old placeholder list, which had named laser treatments and anti-age medicine that her CV text
+    doesn't mention — worth a quick confirm from her that this framing is accurate. (3) We did **not**
+    fabricate a "nice aesthetic-medicine testimonial" for the homepage reviews as she requested — those
+    quotes are explicitly sourced from real public patient reviews (`reviewsSource` copy says so
+    directly), and inventing one would misrepresent it as genuine. This needs a real quote supplied by
+    her, or the review source framing needs to change.
+  - **Naša oprema**: removed the Dermapen device listing (client confirmed they don't own one); added
+    a "Preparati i brendovi koje koristimo" strip listing Allergan (Juvederm, Vistabel, Botox), Jalupro,
+    Juvelook, Cellenis, Neoderma, Cyspera, Elevai, Viviscal, as plain text pills (no logo assets exist
+    for most of these brands, unlike the equipment section above it). **Flagged, not acted on**: the
+    site still has a standalone `/usluge/dermapen` service page describing a Dermapen microneedling
+    treatment — if the clinic doesn't own the device, offering that exact service is inconsistent with
+    removing it from the equipment page. Left in place since deleting/rebranding a whole service page
+    (and its nav entry) wasn't explicitly requested; needs Marta's call. Also unresolved: she said she'd
+    send the exact name of the cryotherapy device separately ("javljam ime") — the equipment page
+    currently still shows the pre-existing "CryoPro & CryoPen" listing, which may already be correct or
+    may need updating once she sends the name. Canfield D200EVO and DermLite DL5 were already present
+    (merged into one device card) before this pass, contrary to what her note implied — no action
+    needed there.
+  - **New/replaced service pages, Marta's final text implemented verbatim** (light cleanup only: no
+    em dashes per the standing rule, correct diacritics, sentence-case headings): two brand-new
+    dedicated pages — `/usluge/radiotalasna-hirurgija` and `/usluge/krioterapija` — split out of the
+    shared `bradavice-papilomi-keratoze-moluske` page they used to point to (catalog updated
+    accordingly); `/usluge/dermoskopija` and `/usluge/rozacea` replaced with her final comprehensive
+    text, `pendingNotice` removed from both; `/usluge/pojacano-znojenje` (aksilarna hiperhidroza) and
+    `/usluge/kapilari-i-hemangiomi-laser` (vaskularne promene) replaced with her final text; the hair-loss
+    cluster rebuilt as a linked group — `/usluge/opadanje-kose` as the diagnostic/overview hub,
+    `/usluge/mezoterapija` rewritten specifically for hair-cocktail mesotherapy, a brand-new
+    `/usluge/fotona-hairestart` page, and a new "PRP tretman za kosu" section added to the existing
+    `/usluge/prp` page (its existing face/skin content was kept, not replaced) — all four cross-linked
+    via `relatedServices`. Also added her one-sentence tagline to `/usluge/medicinska-dermatologija`.
+    Per her request, `/usluge/uklanjanje-papiloma-i-keratoza` now cross-links to the new radiotalasna
+    hirurgija page since the two overlap (radiowave surgery is a removal method for papillomas).
+  - **Verified**: `npx tsc --noEmit` clean; `npm run build` succeeds, all 45 routes generate including
+    the 3 new ones (`radiotalasna-hirurgija`, `krioterapija`, `fotona-hairestart`); repo-wide grep
+    confirms zero em dashes and zero OCR-diacritic typos in any new/changed rendered copy (code
+    comments remain exempt per the standing rule); `en.ts`/`ru.ts` were only touched where required to
+    keep the shared `Dictionary` TypeScript type satisfied (removed the now-dead `dermapen` device
+    entry, added matching `oprema.brandsTitle`/`brands` keys in English/Russian) — no other EN/RU
+    content was translated or altered, per the standing deferral policy.
+  - **Not done, out of scope**: no fabricated testimonial (see above); Dermapen service page not
+    deleted (see above, flagged for Marta); full sitewide Title Case sweep of individual service page
+    `<title>` metadata not performed (only shared UI chrome); no commit pushed.

@@ -211,7 +211,7 @@ export default function HomePage() {
               >
                 {t.home.hero.titleLine1}
                 <br />
-                <span className="italic text-[#342f2a]">{t.home.hero.titleLine2}</span>
+                <span className="text-[#342f2a]">{t.home.hero.titleLine2}</span>
               </motion.h1>
               <motion.p
                 initial={shouldReduce ? false : { opacity: 0, y: 18 }}
@@ -225,22 +225,22 @@ export default function HomePage() {
                 initial={shouldReduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
+                className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
               >
                 <Link
                   href="/kontakt"
-                  className="group inline-flex w-full items-center justify-center gap-4 pl-6 pr-3 py-3 rounded-full bg-[#b91c1c] text-sm font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:w-auto sm:gap-5 sm:pl-7 sm:pr-3"
+                  className="group inline-flex items-center justify-center gap-3 pl-5 pr-2.5 py-2.5 rounded-full bg-[#b91c1c] text-xs font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   <span>{t.home.hero.ctaPrimary}</span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
-                    <span aria-hidden="true" className="text-base leading-none">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
+                    <span aria-hidden="true" className="text-sm leading-none">
                       →
                     </span>
                   </span>
                 </Link>
                 <Link
                   href="/usluge"
-                  className="inline-flex w-full items-center justify-center rounded-full border border-[#27221d]/30 px-7 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:w-auto"
+                  className="inline-flex items-center justify-center rounded-full border border-[#27221d]/20 px-6 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   {t.home.hero.ctaSecondary}
                 </Link>
@@ -276,7 +276,7 @@ export default function HomePage() {
               <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] border-[12px] border-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)]">
                 <Image
                   src="/images/people/Marta/marta new 1.png"
-                  alt="Dr. Marta Terzić"
+                  alt="dr Marta Terzić"
                   fill
                   priority
                   className="object-cover object-[42%_35%] transition-transform duration-1000 ease-out hover:scale-105"
@@ -410,30 +410,30 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           PHILOSOPHY / DR. QUOTE SECTION
           ════════════════════════════════════════════════════════════════════ */}
-      <section className="noise-overlay relative overflow-hidden bg-[#151311] py-20 md:py-32 lg:py-48">
+      <section className="noise-overlay relative overflow-hidden bg-[#2a2420] py-16 md:py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/4 top-0 h-full w-px bg-white/[0.03]" />
           <div className="absolute right-1/4 top-0 h-full w-px bg-white/[0.03]" />
           {/* Soft radial glow behind quote */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-[#b91c1c]/[0.03] blur-[100px]" />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <FadeUp delay={0}>
               <div className="mb-10 flex justify-center">
                 <div className="h-12 w-[1px] bg-[#b91c1c]" />
               </div>
             </FadeUp>
-            
+
             <FadeUp delay={0.15}>
               <p className="mb-8 text-xs font-semibold uppercase tracking-[0.4em] text-white/30">
                 {t.home.philosophy.title}
               </p>
             </FadeUp>
-            
+
             <FadeUp delay={0.3}>
-              <h2 className="font-serif text-3xl italic leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="font-serif text-2xl leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
                 &ldquo;{t.home.philosophy.quote.replace(/^["“]|["”]$/g, '')}&rdquo;
               </h2>
             </FadeUp>
@@ -561,31 +561,25 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           CTA SECTION
           ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#b91c1c] py-20 md:py-32">
-        {/* Layered Decorative Elements */}
+      <section className="relative overflow-hidden bg-[#faf6f1] py-20 md:py-32 border-y border-[#e5ddd3]">
+        {/* Layered Decorative Elements — soft, not solid red */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5" />
-          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-white/5" />
-          {/* Additional depth layers */}
-          <div className="absolute left-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-white/[0.03]" />
-          <div className="absolute right-1/3 top-1/4 h-32 w-32 rounded-full bg-white/[0.04]" />
-          {/* Subtle horizontal line */}
-          <div className="absolute left-0 right-0 top-1/2 h-px bg-white/[0.06]" />
-          {/* Diamond/lozenge accent */}
-          <div className="absolute right-[15%] top-[20%] h-16 w-16 rotate-45 border border-white/[0.08]" />
+          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b91c1c]/[0.04]" />
+          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-[#b91c1c]/[0.04]" />
+          <div className="absolute left-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#b91c1c]/[0.02]" />
         </div>
-        
+
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <FadeUp>
-            <p className="text-white/60 text-sm tracking-[0.3em] uppercase mb-6">{t.home.cta.subtitle}</p>
+            <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6">{t.home.cta.subtitle}</p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-wide">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#181512] tracking-wide">
               {t.home.cta.title}
             </h2>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <p className="text-white/80 text-lg mt-6 max-w-2xl mx-auto font-light">
+            <p className="text-[#5e5953] text-lg mt-6 max-w-2xl mx-auto font-light">
               {t.home.cta.description}
             </p>
           </FadeUp>
@@ -598,10 +592,10 @@ export default function HomePage() {
             >
               <Link
                 href="/kontakt"
-                className="group mx-auto inline-flex items-center justify-between rounded-full bg-white px-3 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-[#b91c1c] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#faf9f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#b91c1c] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:gap-5 sm:pl-8 sm:pr-3"
+                className="group mx-auto inline-flex items-center justify-between rounded-full bg-[#b91c1c] px-3 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf6f1] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:gap-5 sm:pl-8 sm:pr-3"
               >
                 <span>{t.home.cta.button}</span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#b91c1c]/10 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
                   <span aria-hidden="true" className="text-base leading-none">
                     →
                   </span>

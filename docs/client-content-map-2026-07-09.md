@@ -16,6 +16,15 @@ with fresh Laseri-specific text, 4 new Kozmetologija pending pages, full-face mi
 **Updated again:** 2026-07-16 (Marta client-preview prep pass: mobile marquee fix, equal service-card
 geometry, fresh em-dash/typo scan, client-facing report + email draft — see §18; this closes out the
 manual Marta DOCX Serbian content-intake phase, see the dated snapshot below)
+**Updated again:** 2026-07-20 (Marta's first-round feedback on the live preview: hero/philosophy/CTA
+design changes, "dr" orthography fix, title-case sweep, O nama bio/badge overhaul, oprema brand list,
+and final text for 9 service pages incl. 3 brand-new ones — see §19; full detail also logged in
+`IMPROVEMENT-REPORT.md`'s 2026-07-20 changelog entry. **Note:** the route-status table in the
+"Current client-preview snapshot (2026-07-16)" section below is now stale for the rows this pass
+touched — `dermoskopija`, `rozacea`, `pojacano-znojenje`, `opadanje-kose`, `mezoterapija`,
+`kapilari-i-hemangiomi-laser`, and the new `radiotalasna-hirurgija`/`krioterapija`/`fotona-hairestart`
+rows are now ✅ Real, not the 🟡 Pending status shown there; the table itself was not rewritten this
+pass, flagged for the next session that touches this file)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -989,6 +998,50 @@ report only asks Marta for the information needed); no commit pushed.
 
 ---
 
+## 19. Summary of the 2026-07-20 Marta feedback implementation pass
+
+Marta viewed the live preview and sent feedback directly to the user (not through the structured
+client report), covering both design reactions and a large batch of final service-page copy. The
+user relayed the exact text verbatim for implementation. Full narrative detail is in
+`IMPROVEMENT-REPORT.md`'s 2026-07-20 changelog entry; this section is the content-map-specific record.
+
+**What changed:** homepage hero de-italicized and CTA buttons shrunk; philosophy section de-italicized,
+narrowed, lightened, and retitled "Moja filozofija"; CTA band recolored from solid red to cream+accent;
+sitewide "Dr." → "dr" fix for personal names (not the clinic brand name); Title Case → sentence case
+for shared service-page UI strings; O nama founder paragraph and "Bavimo se" list gained the
+`"bolesti"` qualifier; Marta's stat badges removed and her bio/specializations replaced with her final
+text; Biljana's bio replaced with her real CV (lightly reflowed from CV-fragment style into prose, see
+IMPROVEMENT-REPORT.md for the judgment-call note); Dermapen removed from `/oprema`, brand/preparation
+list added; 9 service pages given final text (`radiotalasna-hirurgija` and `krioterapija` split into
+their own dedicated pages, `fotona-hairestart` created new, `dermoskopija`/`rozacea`/
+`pojacano-znojenje`/`kapilari-i-hemangiomi-laser`/`opadanje-kose`/`mezoterapija` replaced, `prp` and
+`uklanjanje-papiloma-i-keratoza` got additive edits/cross-links); `medicinska-dermatologija` gained
+her one-sentence tagline.
+
+**Judgment calls made without asking (flagged here for review):** Marta's bio grammar slip corrected
+("svakog pacijenata" → "svakog pacijenta"); Biljana's CV rewritten from disjointed bullet-style
+fragments into flowing paragraphs to match the site's existing bio format, and her specialization list
+rebuilt from what her CV text actually states rather than reusing the old placeholder list (which
+mentioned laser treatments and anti-age medicine her CV text doesn't name); the CTA band and hero
+button redesigns are aesthetic interpretations of her verbal complaints ("too aggressive", "dominira"),
+not pixel-exact instructions, since she didn't specify an alternative.
+
+**Explicitly refused, not a judgment call:** did not fabricate a patient testimonial about aesthetic
+medicine. The reviews section is explicitly labeled as sourced from real public reviews; inventing one
+would misrepresent it as genuine. Needs a real quote from Marta, or a change to how that section is
+framed.
+
+**Verified:** `npx tsc --noEmit` clean; `npm run build` succeeds, all 45 routes generate; repo-wide
+em-dash/diacritic grep clean on all new/changed rendered copy; `en.ts`/`ru.ts` untouched except the
+minimal structural change needed to keep them satisfying the shared `Dictionary` type (dead `dermapen`
+entry removed, `oprema.brandsTitle`/`brands` keys added) — no translation work done, per the standing
+EN/RU deferral.
+
+**Not done, out of scope:** Dermapen service page (`/usluge/dermapen`) not deleted despite the
+equipment listing being removed, since the two are logically inconsistent (flagged for Marta, see
+IMPROVEMENT-REPORT.md); no fabricated testimonial (see above); no full sitewide sweep of individual
+service page `<title>` metadata casing (only shared UI chrome this pass); no commit pushed.
+
 ## Current client-preview snapshot (2026-07-16)
 
 > **This section is the authoritative status summary for the current client-preview milestone.**
@@ -1118,3 +1171,15 @@ asked for.
   (`/usluge/botoks-fileri`) or be split into two dedicated pages later? (§13, still open.)
 - Confirm the Full Face hero image, Biljana's CV, and which of the 24 pending-banner pages she wants
   to prioritize sending text for first.
+- **(added 2026-07-20, §19)** Since the Dermapen device was removed from `/oprema`, should the
+  standalone `/usluge/dermapen` service page (which describes a Dermapen-specific treatment) also be
+  removed or rebranded around whichever microneedling device the clinic actually owns?
+- **(added 2026-07-20, §19)** The exact model/brand name of the cryotherapy device ("javljam ime" per
+  her note) — the equipment page currently still shows "CryoPro & CryoPen," unconfirmed whether that's
+  correct or needs updating.
+- **(added 2026-07-20, §19)** A real patient quote about aesthetic medicine for the homepage reviews
+  carousel (we declined to invent one since that section is labeled as sourced from genuine public
+  reviews).
+- **(added 2026-07-20, §19)** The homepage philosophy quote itself ("Svaki pacijent zaslužuje
+  individualnu pažnju...") — she said she still needs to decide on a replacement sentence
+  ("Moram da razmislim koju ćemo rečenicu da ubacimo"); current quote left unchanged pending that.

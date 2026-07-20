@@ -2,100 +2,70 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Uklanjanje Vaskularnih Promena: Kapilari, Spider Nevusi i Hemangiomi | Ordinacija Dr. Terzić',
-  description: 'Lasersko uklanjanje proširenih kapilara, spider nevusa i hemangioma Nd:YAG laserom u ordinaciji Dr. Terzić u Beogradu.',
+  title: 'Uklanjanje vaskularnih promena | Ordinacija Dr. Terzić',
+  description: 'Nd:YAG laser za bezbedno i efikasno uklanjanje proširenih kapilara, spider nevusa i hemangioma na licu i telu, u ordinaciji Dr. Terzić.',
 }
 
 const serviceData = {
-  title: 'Uklanjanje Vaskularnih Promena: Kapilari i Hemangiomi',
-  aboutHeading: 'Šta su kapilari i hemangiomi?',
-  subtitle: 'Nd:YAG laser, najefikasnija metoda za uklanjanje proširenih kapilara, spider nevusa i hemangioma',
+  title: 'Uklanjanje vaskularnih promena',
+  aboutHeading: 'Šta su vaskularne promene kože?',
+  subtitle: 'Nd:YAG laser, savremena i bezbedna metoda za uklanjanje proširenih kapilara, spider nevusa i hemangioma',
   description: 'Laserski tretman vaskularnih promena na licu i telu',
-  whatIsIt: `Kapilari su sitni, najbrojniji krvni sudovi koji se nalaze u površnom sloju kože. Usled dejstva nepovoljnih faktora kao što su izlaganje suncu, vetru, hormonski disbalans i genetika, kapilari se proširuju i postaju uočljivi, najčešće u predelu nosa, obraza i brade.
+  whatIsIt: `Kapilari su sitni, najbrojniji krvni sudovi koji se nalaze u površnom sloju kože. Usled dejstva nepovoljnih faktora kao što su izlaganje suncu, vetru, hormonski disbalans i genetika, kapilari se proširuju i postaju uočljivi u predelu nosa, obraza i na bradi u vidu crvene, ljubičaste ili plave promene na koži, i mogu izgledati kao grane drveta ili imati oblik paukove mreže. Predstavljaju estetski problem, a poželjno ih je ukloniti kako bi se sprečilo njihovo dalje širenje.
 
-Vaskularne promene koje tretiramo:`,
+Hemangiomi kože su benigni tumori koji su posledica hiperplazije krvnih sudova. Na samom početku izgledaju kao mala crvena tačka u ravni kože prečnika 1 mm i predstavljaju površne hemangiome. Tokom vremena mogu da porastu iznad površine kože i da izgledaju kao deo zrna graška. Pri povređivanju jako krvare. Hemangiomi mogu biti i duboki, kada imaju tamno ljubičastu boju.`,
   whatIsItSections: [
     {
-      heading: 'Tipovi vaskularnih promena',
+      heading: 'Vrste vaskularnih promena koje tretiramo',
       items: [
-        'Prošireni kapilari – teleangiektazije',
+        'Prošireni kapilari (teleangiektazije)',
         'Spider nevusi',
         'Hemangiomi / cherry angiomi',
-        'Crvenilo lica i rozacea',
       ],
     },
     {
-      heading: 'Prošireni kapilari',
-      body: 'Prošireni kapilari se ispoljavaju kao crvena, ljubičasta ili plava promena na koži i mogu izgledati kao grane drveta ili imati oblik paukove mreže. Predstavljaju estetski problem, a poželjno ih je ukloniti kako bi se sprečilo njihovo dalje širenje.',
+      heading: 'Nd:YAG laser: tretman vaskularnih promena',
+      body: 'Nd:YAG laser predstavlja savremenu i efikasnu metodu za lečenje površinskih i dubljih vaskularnih promena na licu i telu. Zahvaljujući talasnoj dužini od 1064 nm, energija lasera selektivno deluje na krvni sud, koji se zagreva i zatvara, dok okolno tkivo ostaje maksimalno pošteđeno. Ova tehnologija omogućava bezbedan tretman različitih vaskularnih promena uz minimalan period oporavka i odlične estetske rezultate.',
     },
     {
-      heading: 'Hemangiomi',
-      body: 'Hemangiomi kože su benigni tumori koji su posledica hiperplazije krvnih sudova. Na samom početku izgledaju kao mala crvena tačka u ravni kože prečnika 1 mm i predstavljaju površne hemangiome. Tokom vremena mogu da porastu iznad površine kože i da izgledaju kao deo zrna graška; pri povređivanju jako krvare. Hemangiomi mogu biti i duboki, kada imaju tamnoljubičastu boju.',
+      heading: 'Kada se preporučuje?',
+      items: [
+        'Telangiektazija (proširenih kapilara) na licu i telu',
+        'Proširenih kapilara oko nosa i na obrazima',
+        'Cherry angioma (rubin hemangioma)',
+        'Pojedinih hemangioma',
+        'Venous lake na usnama',
+        'Drugih benignih vaskularnih promena, prema proceni dermatologa',
+      ],
     },
     {
-      heading: 'Princip rada Nd:YAG lasera',
-      body: 'Nd:YAG laser je najefikasnija metoda za uklanjanje vaskularnih promena. Laser talasne dužine 1064 nm emituje svetlosne impulse čiju energiju upija hemoglobin u krvi. Ta svetlosna energija se pretvara u toplotu koja dovodi do koagulisanja krvi i specifičnog „zavarivanja" zidova neželjenih krvnih sudova.',
+      heading: 'Kako deluje Nd:YAG laser?',
+      body: 'Laserska energija se selektivno apsorbuje u hemoglobinu unutar krvnog suda. Toplotna energija dovodi do njegovog zatvaranja, nakon čega organizam prirodnim putem postepeno resorbuje tretirani krvni sud. Koža ostaje očuvana, bez rezova i oštećenja okolnog tkiva.',
     },
     {
-      heading: 'Osećaj tokom tretmana',
-      body: 'Najčešće pacijenti karakterišu ovaj osećaj kao kratkotrajno peckanje. Poseban sistem za hlađenje sprečava zagrevanje kože i tretman čini prijatnijim.',
+      heading: 'Oporavak nakon tretmana',
+      body: 'Nakon procedure može se javiti prolazno crvenilo, blagi otok ili osećaj toplote, koji uglavnom nestaju u roku od nekoliko sati do nekoliko dana. Kod tretmana hemangioma i većih telangiektazija moguće je prolazno potamnjenje tretirane promene pre njenog postepenog povlačenja. Neposredno nakon tretmana preporučuje se izbegavanje intenzivnog izlaganja suncu, saune, toplih kupki i intenzivne fizičke aktivnosti tokom nekoliko dana, kao i svakodnevna primena preparata sa visokim zaštitnim faktorom (SPF 50+).',
     },
     {
-      heading: 'Trajanje tretmana',
-      body: 'Trajanje tretmana zavisi od broja i gustine tretiranih krvnih sudova. Primera radi, u slučaju zvezdastog hemangioma tretman traje svega nekoliko sekundi. Za tretman većeg broja kapilara potrebno je srazmerno više vremena.',
-    },
-    {
-      heading: 'Broj tretmana',
-      body: 'Broj tretmana zavisi od tipa, boje, konfiguracije i broja krvnih sudova. Najčešće je dovoljno uraditi 1 do 3 tretmana na 4 do 6 nedelja. U slučajevima gde krvni sudovi formiraju kapilarnu mrežu, ponekad je potrebno uraditi više tretmana. Vidljivo smanjenje kapilara primetno je posle svakog pojedinačnog tretmana.',
-    },
-    {
-      heading: 'Vidljivi rezultati tretmana',
-      body: 'Pojedinačni krvni sudovi, spider angiomi i tzv. cherry angiomi najčešće nestaju sa jednim tretmanom, dok u slučaju većeg broja krvnih sudova i većih kapilarnih mreža rezultat dolazi postepeno, sa svakim sledećim tretmanom. Za crvenilo lica i rozaceu postoji poseban protokol rada (pogledajte povezanu uslugu "Lečenje rozacee" ispod).',
-    },
-    {
-      heading: 'Nakon tretmana',
-      body: 'Odmah nakon tretmana se primećuje crvenilo, sa ili bez neznatnog otoka, koje se najčešće povlači za jedan dan. Sami krvni sudovi potamne, a za nekoliko dana se resorbuju i nestaju. Koža nakon ove intervencije ostaje intaktna, bez ožiljaka.',
+      heading: 'Individualni pristup lečenju',
+      body: 'Svaka vaskularna promena se pre tretmana pažljivo procenjuje dermatološkim pregledom kako bi se odabrala najefikasnija terapija. Plan lečenja je individualan i prilagođen vrsti promene, njenoj lokalizaciji, tipu kože i očekivanim rezultatima. Naš cilj je bezbedno i efikasno uklanjanje vaskularnih promena uz postizanje prirodnog izgleda kože i dugotrajnih estetskih rezultata.',
     },
   ],
   methods: [
     'Nd:YAG laser, talasna dužina 1064 nm',
   ],
   howItWorks: [
-    'Dermatološki pregled i procena tipa, boje, konfiguracije i broja krvnih sudova.',
-    'Određivanje parametara lasera prema tipu kože i vrsti promene.',
-    'Sprovođenje laserskog tretmana uz sistem hlađenja koji sprečava zagrevanje kože i tretman čini prijatnijim.',
-    'Neposredno nakon tretmana javlja se crvenilo, sa ili bez blagog otoka, koje se najčešće povlači za jedan dan.',
-    'Kontrolni pregled i, po potrebi, planiranje dodatne seanse (1 do 3 tretmana na 4 do 6 nedelja).',
-  ],
-  idealCandidates: [
-    'Osobe sa proširenim kapilarima – teleangiektazijama na licu (nos, obrazi, brada).',
-    'Pacijenti sa spider nevusima ili hemangiomima (cherry angiomima).',
-    'Osobe sa hroničnim crvenilom lica povezanim sa rozaceom, za koje postoji poseban protokol rada.',
-    'Pacijenti koji žele neinvazivan tretman bez perioda oporavka.',
+    'Nakon pregleda i procene promene, laserski impulsi se usmeravaju direktno na krvni sud. Tokom tretmana može se osetiti kratkotrajan osećaj peckanja ili toplote, koji većina pacijenata dobro podnosi. U zavisnosti od veličine i broja promena, procedura traje od nekoliko minuta do oko 30 minuta.',
+    'Broj potrebnih tretmana zavisi od vrste, veličine i lokalizacije vaskularne promene. Manji hemangiomi često se uklanjaju jednim tretmanom, dok je za izraženije telangiektazije ili promene na nogama obično potrebno više sesija, na 4 do 6 nedelja.',
   ],
   expectedResults: [
-    'Pojedinačni krvni sudovi, spider angiomi i cherry angiomi najčešće nestaju već posle jednog tretmana.',
-    'Kod većeg broja krvnih sudova i gušćih kapilarnih mreža rezultat dolazi postepeno, sa svakim sledećim tretmanom.',
-    'Tretirani krvni sudovi potamne, a zatim se za nekoliko dana resorbuju i nestaju.',
-    'Koža nakon intervencije ostaje intaktna, bez ožiljaka.',
-  ],
-  faqs: [
-    {
-      question: 'Koliko traje sam tretman?',
-      answer: 'Zavisi od broja i gustine tretiranih krvnih sudova. Na primer, tretman zvezdastog hemangioma traje svega nekoliko sekundi, dok je za veći broj kapilara potrebno srazmerno više vremena.',
-    },
-    {
-      question: 'Koliko je tretmana potrebno?',
-      answer: 'Zavisi od tipa, boje, konfiguracije i broja krvnih sudova. Najčešće je dovoljno 1 do 3 tretmana na svake 4 do 6 nedelja; kod kapilarnih mreža ponekad je potrebno više seansi.',
-    },
-    {
-      question: 'Da li je tretman bolan?',
-      answer: 'Većina pacijenata opisuje osećaj kao kratkotrajno peckanje. Poseban sistem za hlađenje sprečava zagrevanje kože i tretman čini prijatnijim.',
-    },
-    {
-      question: 'Da li se vaskularne promene mogu vratiti?',
-      answer: 'Tretirani sudovi se trajno zatvaraju, ali s vremenom se mogu formirati novi, posebno kod hronične rozacee ili genetske predispozicije, zato je dugoročna zaštita kože i kontrola važna.',
-    },
+    'Precizno i selektivno delovanje na krvne sudove',
+    'Efikasan tretman površinskih i dubljih vaskularnih promena',
+    'Bez rezova i šavova',
+    'Minimalan period oporavka',
+    'Odlični estetski rezultati',
+    'Bezbedna procedura uz očuvanje okolnog tkiva',
+    'Mogućnost tretmana lica i tela',
   ],
   relatedServices: [
     { title: 'Lečenje rozacee', href: '/usluge/rozacea' },

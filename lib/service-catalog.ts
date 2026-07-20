@@ -75,20 +75,21 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
       { name: 'Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice', slug: 'bradavice-papilomi-keratoze-moluske', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Laserski tretman gljivičnih infekcija nokatne regije', slug: 'gljivicna-oboljenja-laser', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/Laserski tretmani/Gljivična oboljenja nokatnih ploča.png', featured: true },
       { name: 'Laserski tretman akni', slug: 'akne', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/laser-treatment.jpg' },
+      { name: 'Fotona HAIRestart – laserska stimulacija rasta kose', slug: 'fotona-hairestart', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/dermatology-treatment.jpg' },
     ],
   },
   {
     title: 'Radiotalasna hirurgija',
     id: 'radiotalasna-hirurgija',
     services: [
-      { name: 'Uklanjanje benignih promena: keratoze, papilomi, bradavice', slug: 'bradavice-papilomi-keratoze-moluske', category: 'Radiotalasna hirurgija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
+      { name: 'Radiotalasna hirurgija', slug: 'radiotalasna-hirurgija', category: 'Radiotalasna hirurgija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
     ],
   },
   {
     title: 'Kriohirurgija – terapija tečnim azotom',
     id: 'kriohirurgija',
     services: [
-      { name: 'Uklanjanje virusnih bradavica i keratoza', slug: 'bradavice-papilomi-keratoze-moluske', category: 'Kriohirurgija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
+      { name: 'Krioterapija (terapija tečnim azotom)', slug: 'krioterapija', category: 'Kriohirurgija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
     ],
   },
   {

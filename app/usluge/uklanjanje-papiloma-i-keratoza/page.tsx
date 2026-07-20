@@ -68,6 +68,7 @@ const serviceData = {
     },
   ],
   relatedServices: [
+    { title: 'Radiotalasna hirurgija', href: '/usluge/radiotalasna-hirurgija' },
     { title: 'Uklanjanje virusnih bradavica, kondiloma i moluski', href: '/usluge/bradavice-papilomi-keratoze-moluske' },
     { title: 'Uklanjanje vaskularnih promena – kapilari i hemangiomi', href: '/usluge/kapilari-i-hemangiomi-laser' },
     { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },

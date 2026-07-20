@@ -157,14 +157,14 @@ export default function ONamaPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <SectionTitle title={t.onama.specialistsTitle} />
 
-          {/* Dr. Marta Terzić */}
+          {/* dr Marta Terzić */}
           <div id="marta-terzic" className="mb-24 scroll-mt-28">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
               <div className="lg:col-span-1">
                 <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
                   <Image
                     src="/images/people/Marta/marta new in labcoat 1.png"
-                    alt="Dr. Marta Terzić"
+                    alt="dr Marta Terzić"
                     fill
                     className="object-cover"
                   />
@@ -174,31 +174,17 @@ export default function ONamaPage() {
               </div>
               <div className="lg:col-span-2 border-l-2 border-[#b91c1c] pl-8">
                 <h3 className="font-serif text-4xl md:text-5xl text-[#1a1a1a] mb-3">
-                  Dr. Marta Terzić
+                  dr Marta Terzić
                 </h3>
                 <p className="text-[#b91c1c] font-medium text-sm tracking-[0.15em] uppercase mb-6">
                   {t.onama.marta.title}
                 </p>
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {t.onama.marta.badges.map((badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center gap-2 border border-[#e5e0da] bg-white px-4 py-2 text-xs font-medium tracking-wide text-[#1a1a1a]"
-                    >
-                      <span className="w-1.5 h-1.5 bg-[#b91c1c]" />
-                      {badge}
-                    </span>
-                  ))}
-                </div>
                 <ExpandableBio
                   paragraphs={t.onama.marta.bio}
                   readMoreLabel={t.onama.readMoreLabel}
                   readLessLabel={t.onama.readLessLabel}
                 />
                 <div className="mt-8">
-                  <h4 className="text-[#1a1a1a] font-medium mb-4 text-sm tracking-wide uppercase">
-                    {t.onama.marta.specializationsTitle}
-                  </h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {t.onama.marta.specializations.map((spec) => (
                       <li key={spec} className="text-[#6b6b6b] text-sm flex items-center gap-3 font-light">
@@ -212,15 +198,14 @@ export default function ONamaPage() {
             </div>
           </div>
 
-          {/* Dr. Biljana Petković */}
-          {/* TODO: replace with real CV content from Marta — bio below is provisional pending client-supplied CV (see docs/client-content-map-2026-07-09.md §7) */}
+          {/* dr Biljana Petković */}
           <div id="biljana-petkovic" className="scroll-mt-28 mb-24">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
               <div className="lg:col-span-1 lg:order-2">
                 <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
                   <Image
                     src="/images/people/Biljana/drbiljanapetkovicheadshot.png"
-                    alt="Dr. Biljana Petković"
+                    alt="dr Biljana Petković"
                     fill
                     className="object-cover"
                   />
@@ -230,7 +215,7 @@ export default function ONamaPage() {
               </div>
               <div className="lg:col-span-2 lg:order-1 border-r-2 border-[#b91c1c] pr-8 lg:text-right">
                 <h3 className="font-serif text-4xl md:text-5xl text-[#1a1a1a] mb-3">
-                  Dr. Biljana Petković
+                  dr Biljana Petković
                 </h3>
                 <p className="text-[#b91c1c] font-medium text-sm tracking-[0.15em] uppercase mb-8">
                   {t.home.doctorsList[1].title}
@@ -241,9 +226,6 @@ export default function ONamaPage() {
                   readLessLabel={t.onama.readLessLabel}
                 />
                 <div className="mt-8">
-                  <h4 className="text-[#1a1a1a] font-medium mb-4 text-sm tracking-wide uppercase">
-                    {t.onama.biljana.specializationsTitle}
-                  </h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {t.onama.biljana.specializations.map((spec) => (
                       <li key={spec} className="text-[#6b6b6b] text-sm flex items-center lg:flex-row-reverse gap-3 font-light">

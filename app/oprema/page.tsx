@@ -18,7 +18,6 @@ const deviceConfig: Array<{
   { key: 'ellman', name: 'Ellman', manufacturer: 'Ellman', id: 'ellman' },
   { key: 'cryopen', name: 'CryoPro & CryoPen', manufacturer: 'Cortex / H&O', id: 'cryopen' },
   { key: 'dermlite', name: 'DermLite DL5 & Canfield D200EVO', manufacturer: 'DermLite / Canfield', id: 'dermlite' },
-  { key: 'dermapen', name: 'Dermapen', manufacturer: 'Dermapen', id: 'dermapen' },
 ]
 
 export default function OpremaPage() {
@@ -118,6 +117,25 @@ export default function OpremaPage() {
                 </div>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands / Preparations Section */}
+      <section className="bg-[#faf9f7] py-16 md:py-20 border-t border-[#e5e0da]">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-8 font-medium">
+            {t.oprema.brandsTitle}
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {t.oprema.brands.map((brand) => (
+              <span
+                key={brand}
+                className="rounded-full border border-[#e5e0da] bg-white px-5 py-2.5 text-sm font-light text-[#3d3832]"
+              >
+                {brand}
+              </span>
+            ))}
           </div>
         </div>
       </section>

@@ -378,15 +378,9 @@ export const ru = {
           'Трихоскопия: AI дерматоскопический анализ волос',
         ],
       },
-      dermapen: {
-        subtitle: 'Микронидлинг',
-        description: 'Медицинский игольчатый микронидлинг для стимуляции регенерации кожи и улучшения её качества.',
-        treatments: [
-          'Стимуляция роста волос',
-          'Качество кожи лица: поры, пигментация, мелкие морщины',
-        ],
-      },
     },
+    brandsTitle: 'Препараты и бренды, которые мы используем',
+    brands: ['Allergan (Juvederm, Vistabel, Botox)', 'Jalupro', 'Juvelook', 'Cellenis', 'Neoderma', 'Cyspera', 'Elevai', 'Viviscal'],
   },
   galerija: {
     eyebrow: 'Визуальная галерея',

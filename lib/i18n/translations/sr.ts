@@ -86,9 +86,9 @@ export const sr = {
       }
     ],
     philosophy: {
-      title: 'Naša filozofija',
+      title: 'Moja filozofija',
       quote: '"Svaki pacijent zaslužuje individualnu pažnju i tretman prilagođen njegovim jedinstvenim potrebama."',
-      author: 'Dr. Marta Terzić'
+      author: 'dr Marta Terzić'
     },
     doctorsSection: {
       title: 'Naši Specijalisti',
@@ -97,12 +97,12 @@ export const sr = {
     },
     doctorsList: [
       {
-        name: 'Dr. Marta Terzić',
+        name: 'dr Marta Terzić',
         title: 'CEO i specijalista dermatovenerologije',
         bio: 'Više od 25 godina iskustva u dermatologiji, dermoskopiji, estetskoj i regenerativnoj medicini. Pionir laserske dermatologije u regionu, edukator i nacionalni trener za primenu hijaluronskih filera i botulinum toksina. Posvećena prirodnim rezultatima, zdravlju kože i individualnom pristupu svakom pacijentu.'
       },
       {
-        name: 'Dr. Biljana Petković',
+        name: 'dr Biljana Petković',
         title: 'Specijalista dermatovenerologije',
         bio: 'Specijalista dermatovenerologije sa iskustvom u opštoj i dečijoj dermatologiji. Posebno je usmerena na dermoskopiju, radiotalasne i laserske procedure, estetske tretmane i anti-age medicinu.'
       }
@@ -150,7 +150,7 @@ export const sr = {
     reviewsSource: 'Izvodi iz javno dostupnih recenzija pacijenata.',
     cta: {
       subtitle: 'Spremni za promenu?',
-      title: 'Budimo u Kontaktu',
+      title: 'Budimo u kontaktu',
       description: 'Javite nam se danas i prepustite brigu o vašoj koži stručnjacima sa dugogodišnjim iskustvom',
       button: 'Kontaktirajte nas'
     }
@@ -162,22 +162,22 @@ export const sr = {
     aboutFallback: 'O ovoj usluzi',
     processLabel: 'Proces',
     methodsLabel: 'Pristup',
-    methodsTitle: 'Metode i Tehnologije',
+    methodsTitle: 'Metode i tehnologije',
     detailsLabel: 'Detaljno',
-    detailsTitle: 'Sve Što Treba da Znate',
-    howItWorks: 'Kako Funkcioniše',
+    detailsTitle: 'Sve što treba da znate',
+    howItWorks: 'Kako funkcioniše',
     candidatesLabel: 'Idealni kandidati',
-    forWhom: 'Za Koga Je Tretman',
+    forWhom: 'Za koga je tretman',
     resultsLabel: 'Rezultati',
-    expectedResults: 'Očekivani Rezultati',
+    expectedResults: 'Očekivani rezultati',
     faqLabel: 'FAQ',
-    faqTitle: 'Često Postavljana Pitanja',
+    faqTitle: 'Često postavljana pitanja',
     exploreLabel: 'Istražite',
-    relatedTitle: 'Povezane Usluge',
+    relatedTitle: 'Povezane usluge',
     learnMore: 'Saznajte više',
     contactUs: 'Kontaktirajte nas',
     ctaReadyLabel: 'Spremni ste?',
-    ctaTitle: 'Saznajte Više',
+    ctaTitle: 'Saznajte više',
     ctaDescription: 'Kontaktirajte nas danas i otkrijte kako vam možemo pomoći',
   },
   kontakt: {
@@ -185,7 +185,7 @@ export const sr = {
     title: 'Kontakt',
     subtitle: 'Javite nam se za više informacija ili zakazivanje pregleda',
     formEyebrow: 'Kontakt forma',
-    formTitle: 'Pošaljite Nam Poruku',
+    formTitle: 'Pošaljite nam poruku',
     formInterimMessage: 'Online forma trenutno nije aktivna. Za najbrži odgovor, kontaktirajte nas direktno telefonom, imejlom ili preko Instagrama.',
     callCta: 'Pozovite nas',
     emailCta: 'Pošaljite imejl',
@@ -229,7 +229,7 @@ export const sr = {
     heroIntro: 'Više od 20 godina posvećeni smo zdravlju i lepoti kože. Kombinovanjem medicinskog znanja, vrhunske stručnosti, dugogodišnjeg iskustva i savremenih tretmana pacijentu pružamo individualni pristup i plan terapije prilagođen njegovim potrebama, zasnovan na poverenju i prirodnim rezultatima.',
     storyEyebrow: 'Naša priča',
     storyTitle: 'O nama',
-    storyP1: 'Ordinacija Dr Terzić osnovana je 2004. godine sa vizijom da na jednom mestu objedini vrhunsku dermatološku dijagnostiku i lečenje kože, savremenu estetsku medicinu i individualan pristup svakom pacijentu. Već više od dve decenije pružamo usluge iz oblasti opšte dermatologije, dermoskopije, radiotalasne hirurgije, laserske dermatologije, estetske i regenerativne medicine. Naš cilj je da kroz stručnost, iskustvo i primenu najsavremenijih medicinskih dostignuća očuvamo zdravlje kože i unapredimo kvalitet života naših pacijenata.',
+    storyP1: 'Ordinacija Dr Terzić osnovana je 2004. godine sa vizijom da na jednom mestu objedini vrhunsku dermatološku dijagnostiku i lečenje "bolesti" kože, savremenu estetsku medicinu i individualan pristup svakom pacijentu. Već više od dve decenije pružamo usluge iz oblasti opšte dermatologije, dermoskopije, radiotalasne hirurgije, laserske dermatologije, estetske i regenerativne medicine. Naš cilj je da kroz stručnost, iskustvo i primenu najsavremenijih medicinskih dostignuća očuvamo zdravlje kože i unapredimo kvalitet života naših pacijenata.',
     storyP2: 'Osnivač ordinacije, dr Marta Terzić, specijalista dermatovenerologije sa više od 25 godina iskustva, među pionirima je primene medicinskih lasera u dermatologiji na prostoru regiona. Dugogodišnji rad, kontinuirano usavršavanje u zemlji i inostranstvu, kao i više stotina hiljada uspešno izvedenih procedura, učinili su Ordinaciju Dr Terzić prepoznatljivim centrom za dermatologiju i estetsku medicinu.',
     approachEyebrow: 'Filozofija rada',
     approachTitle: 'Naš pristup',
@@ -239,7 +239,7 @@ export const sr = {
     bavimoSeEyebrow: 'Naša ekspertiza',
     bavimoSeTitle: 'Bavimo se',
     bavimoSeItems: [
-      'Dijagnostikom i lečenjem kože',
+      'Dijagnostikom i lečenjem "bolesti" kože',
       'Dermoskopijom i digitalnom dermoskopijom',
       'Laserskom dermatologijom',
       'Radiotalasnom hirurgijom',
@@ -259,26 +259,26 @@ export const sr = {
     ],
     marta: {
       title: 'CEO i specijalista dermatovenerologije',
-      badges: ['25+ godina iskustva', 'Osnivač i CEO', 'Allergan – nacionalni trener', 'International Dermoscopy Society od 2004.'],
-      specializationsTitle: 'Specijalizacije:',
       bio: [
-        'Dr Marta Terzić je specijalista dermatovenerologije sa više od 25 godina iskustva u dijagnostici, lečenju i unapređenju zdravlja kože. Osnivač je i vlasnik Ordinacije Dr Terzić, koja već više od dve decenije uspešno objedinjuje dermatologiju, estetsku i regenerativnu medicinu.',
+        'Dr Marta Terzić je specijalista dermatovenerologije sa više od 25 godina iskustva u dijagnostici, lečenju kožnih oboljenja i unapređenju zdravlja kože. Osnivač je i vlasnik Ordinacije Dr Terzić, koja već više od dve decenije uspešno objedinjuje dermatologiju, estetsku i regenerativnu medicinu.',
         'Diplomirala je na Medicinskom fakultetu Univerziteta u Beogradu, a specijalizaciju iz dermatovenerologije završila je 1999. godine. Nakon sticanja značajnog iskustva u kliničkoj praksi, 2004. godine osniva svoju privatnu ordinaciju, u kojoj i danas radi sa istom posvećenošću svakom pacijentu.',
-        'Među prvim je lekarima na prostoru bivše Jugoslavije koji su uveli primenu lasera u dermatologiji. Dugogodišnje iskustvo u laserskim procedurama, uz desetine hiljada izvedenih tretmana, svrstava je među najiskusnije stručnjake u ovoj oblasti. Pored laserskih tehnologija, u svakodnevnoj praksi primenjuje i metode radiohirurgije i kriohirurgije.',
-        'Posebnu oblast njenog profesionalnog interesovanja poslednjih petnaest godina predstavljaju estetska i regenerativna medicina. Kontinuirano se usavršava kod vodećih svetskih stručnjaka i primenjuje savremene minimalno invazivne procedure, uključujući hijaluronske filere, botulinum toksin, biostimulatore kolagena, PRP tretmane, biorevitalizaciju, mezoterapiju i laserske procedure za podmlađivanje i regeneraciju kože.',
-        'U svom radu neguje individualan i holistički pristup, posmatrajući svako lice i svaku kožu kao jedinstvenu celinu. Njen cilj nije promena identiteta, već očuvanje zdravlja, prirodne lepote i samopouzdanja pacijenata.',
-        'Njena stručnost, preciznost i posvećenost prirodnim rezultatima prepoznati su i od strane kompanije Allergan, globalnog lidera u estetskoj medicini, gde je imenovana za nacionalnog trenera za primenu dermalnih filera i botulinum toksina tipa A.',
+        'Među prvim je lekarima na prostoru bivše Jugoslavije koji su uveli primenu lasera u dermatologiji. Sa više od 25 godina iskustva u laserskim procedurama i desetinama hiljada izvedenih tretmana, danas se ubraja među vodeće stručnjake u ovoj oblasti. Pored laserskih tehnologija, u svakodnevnoj praksi primenjuje i metode radiohirurgije i kriohirurgije.',
+        'Poslednjih petnaest godina posebno je posvećena estetskoj i regenerativnoj medicini. Kontinuirano se usavršava kod vodećih svetskih stručnjaka i primenjuje savremene minimalno invazivne procedure, uključujući hijaluronske filere, botulinum toksin, biostimulatore kolagena, PRP tretmane, biorevitalizacije, mezoterapije i laserske procedure za podmlađivanje i regeneraciju kože.',
+        'U svom radu neguje individualan i holistički pristup, posmatrajući svako lice i svaku kožu kao jedinstvenu celinu. Cilj njenog rada nije promena identiteta, već očuvanje zdravlja kože, prirodne lepote i samopouzdanja svakog pacijenta.',
+        'Profesionalni integritet, stručnost i posvećenost prirodnim rezultatima prepoznati su i od strane kompanije Allergan, globalnog lidera u estetskoj medicini, koja ju je imenovala za nacionalnog trenera za primenu dermalnih filera i botulinum toksina.',
         'Član je International Dermoscopy Society od 2004. godine i aktivno se bavi dermoskopijom, prevencijom i ranom dijagnostikom tumora kože. Redovan je učesnik i predavač na domaćim i međunarodnim stručnim kongresima.',
       ],
-      specializations: ['Hijaluronski fileri', 'Botulinum toksin', 'Biostimulatori kolagena', 'PRP tretmani', 'Biorevitalizacija', 'Mezoterapija', 'Laserske procedure podmlađivanja', 'Dermoskopija'],
+      specializations: ['Estetske procedure', 'Regenerativne procedure', 'Laserski tretmani', 'Dermoskopija', 'Radiotalasne procedure', 'Opšta i dečija dermatologija'],
     },
     biljana: {
-      specializationsTitle: 'Specijalizacije:',
       bio: [
-        'Dr. Biljana Petković je specijalista dermatovenerologije. Diplomirala je u Beogradu, a specijalizaciju završila na Klinici za dermatovenerologiju Kliničkog centra Srbije.',
-        'Pored opšte i dečije dermatologije, njen fokus su dermoskopija, radiotalasne procedure, laserski tretmani, estetske procedure i anti-age medicina. Član je domaćih i međunarodnih udruženja i znanja kontinuirano unapređuje na kongresima i simpozijumima.',
+        'Zvanje doktora medicine stekla je na Univerzitetu u Beogradu 2012. godine. Radila je kao lekar opšte prakse, volonter Hitne pomoći i lekar u Centru za azilante, gde je stekla dragoceno znanje i iskustvo iz opšte medicine.',
+        'Specijalistički staž obavila je i specijalistički ispit položila na Klinici za dermatovenerologiju Kliničkog centra Srbije u Beogradu 2023. godine. Dermatologijom se bavi već 9 godina.',
+        'Polje njenog interesovanja obuhvata opštu dermatovenerologiju, pedijatrijsku dermatologiju, dermoskopiju, prevenciju i rano otkrivanje malignih promena kože i trihoskopiju, kao i otkrivanje uzroka i lečenje alopecija i pojačanog opadanja kose. Bavi se i radiotalasnim procedurama u lečenju i uklanjanju benignih kožnih lezija.',
+        'Pored dermatologije, bavi se i estetskom medicinom, sa ciljem prevencije starenja kože, lečenja i tretiranja posledica određenih kožnih stanja.',
+        'Član je Srpske lekarske komore, Udruženja dermatovenerologa Srbije i Evropskog akademskog udruženja dermatovenerologa. Redovno pohađa domaća i svetska stručna usavršavanja, prati nove protokole lečenja i primenjuje nova saznanja i iskustva kako bi svojim pacijentima pružila najbolju moguću negu. U radu sa pacijentima odlikuju je strpljenje, posvećenost i pažnja.',
       ],
-      specializations: ['Dermoskopija', 'Radiotalasne procedure', 'Laserski tretmani', 'Estetske procedure', 'Anti-age medicina', 'Opšta i dečija dermatologija'],
+      specializations: ['Opšta i pedijatrijska dermatologija', 'Dermoskopija i trihoskopija', 'Alopecije i opadanje kose', 'Radiotalasne procedure', 'Estetska medicina', 'Prevencija i rano otkrivanje malignih promena kože'],
     },
     snezana: {
       name: 'Snežana Stojković',
@@ -378,15 +378,9 @@ export const sr = {
           'Trihoskopija: AI dermoskopska analiza kose',
         ],
       },
-      dermapen: {
-        subtitle: 'Microneedling',
-        description: 'Medicinski mikronidling iglicama za stimulaciju regeneracije kože i poboljšanje njenog kvaliteta.',
-        treatments: [
-          'Stimulacija rasta kose',
-          'Kvalitet kože lica: pore, pigmentacije, sitne bore',
-        ],
-      },
     },
+    brandsTitle: 'Preparati i brendovi koje koristimo',
+    brands: ['Allergan (Juvederm, Vistabel, Botox)', 'Jalupro', 'Juvelook', 'Cellenis', 'Neoderma', 'Cyspera', 'Elevai', 'Viviscal'],
   },
   galerija: {
     eyebrow: 'Vizuelni prikaz',

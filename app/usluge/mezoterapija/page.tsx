@@ -2,21 +2,26 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mezoterapija | Ordinacija Dr. Terzić',
-  description: 'Mezoterapija u ordinaciji Dr. Terzić: detaljan opis usluge uskoro.',
+  title: 'Mezoterapija koktelima za kosu | Ordinacija Dr. Terzić',
+  description: 'Mezoterapija koktelima za kosu: unos sterilnih koktela vitamina, minerala i aminokiselina direktno oko folikula dlake, u seriji od 5 tretmana, u ordinaciji Dr. Terzić.',
 }
 
 const serviceData = {
-  title: 'Mezoterapija',
-  aboutHeading: 'O ovoj usluzi',
-  subtitle: 'Mezoterapija: sadržaj u pripremi',
-  description: 'Detaljan opis usluge biće dostupan uskoro',
-  whatIsIt: 'Sadržaj za ovu uslugu je u pripremi. Detaljan opis, tok tretmana i najčešća pitanja biće dodati čim ih dr Terzić dostavi.',
-  pendingNotice: 'Čeka se zvanična informacija od dr Terzić za ovu uslugu. Stranica će biti dopunjena čim je dostavi.',
+  title: 'Mezoterapija koktelima za kosu',
+  aboutHeading: 'Šta je mezoterapija za kosu?',
+  subtitle: 'Unos sterilnih koktela vitamina, minerala i aminokiselina direktno oko folikula dlake',
+  description: 'Brz, komforan tretman koji hrani koren dlake i podstiče zdrav rast kose',
+  whatIsIt: 'Mezoterapija koktelima za kosu je tretman kojim dermatolog, pomoću mikro-iglica, unosi sterilne koktele vitamina, minerala i aminokiselina u srednji sloj kože, direktno oko folikula dlake. Tretman je komforan, traje oko 20 do 30 minuta, a ubodi su brzi i površinski.',
+  whatIsItSections: [
+    {
+      heading: 'Protokol i oporavak',
+      body: 'Tretman se radi u seriji od 5 tretmana, u razmaku od 7 do 14 dana. Ne ostavlja nikakve vidljive tragove na koži glave, tako da odmah nakon izlaska iz ordinacije možete nastaviti sa svojim obavezama. Preporučuje se da kosu ne perete narednih 24 sata kako bi aktivne supstance iz koktela u potpunosti delovale.',
+    },
+  ],
   relatedServices: [
+    { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
     { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Biorevitalizacije (Profhilo)', href: '/usluge/profhilo' },
-    { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
+    { title: 'Fotona HAIRestart®: laserska stimulacija rasta kose', href: '/usluge/fotona-hairestart' },
   ],
 }
 

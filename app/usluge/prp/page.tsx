@@ -14,6 +14,16 @@ const serviceData = {
   whatIsIt: `PRP (Platelet-Rich Plasma) tretman, poznat i kao "vampirski tretman", koristi koncentrat trombocita iz vaše sopstvene krvi za stimulaciju regeneracije i podmlađivanje kože. Trombociti sadrže faktore rasta koji aktiviraju ćelije zadužene za obnovu tkiva, stimulišu produkciju kolagena i ubrzavaju zarastanje.
 
 Procedura počinje vađenjem male količine krvi koja se zatim centrifugira kako bi se izolovala plazma bogata trombocitima. Ovaj koncentrat se zatim aplikuje na kožu microneedling-om ili injekcijama, zavisno od tretirane zone i željenih rezultata.`,
+  whatIsItSections: [
+    {
+      heading: 'PRP tretman za kosu',
+      body: 'Prvi korak je uzimanje male količine vaše krvi. Krv se zatim stavlja u specijalnu centrifugu kako bi se izdvojila plazma bogata faktorima rasta. Dermatolog tankim iglicama ubrizgava plazmu direktno u regije gde se kosa proređuje. Tretman traje oko 30 do 45 minuta.',
+      items: [
+        'Protokol: radi se jednom mesečno (ukupno 3 tretmana), a zatim održavanje na 6 meseci.',
+        'Period oporavka: oporavka nema. Možete osetiti blago crvenilo ili zategnutost kože glave koji prolaze u roku od nekoliko sati. Istog dana se vraćate poslu. Jedino ograničenje je da ne perete kosu i izbegavate teži fizički trening 24 sata nakon procedure.',
+      ],
+    },
+  ],
   howItWorks: [
     'Vađenje krvi - uzima se 10-20ml krvi iz vene, isto kao pri standardnoj analizi krvi.',
     'Centrifugiranje - krv se obrađuje u centrifugi kako bi se izolovala plazma bogata trombocitima.',
@@ -62,6 +72,7 @@ Procedura počinje vađenjem male količine krvi koja se zatim centrifugira kako
     }
   ],
   relatedServices: [
+    { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
     { title: 'Profhilo', href: '/usluge/profhilo' },
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
     { title: 'Morpheus8 RF Microneedling', href: '/usluge/morpheus8' }

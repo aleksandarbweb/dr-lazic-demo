@@ -2,66 +2,57 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Dermoskopija | Ordinacija Dr. Terzić',
-  description: 'Profesionalni dermoskopski pregled i mapiranje mladeža sa fotodokumentacijom. Rano otkrivanje melanoma u ordinaciji Dr. Terzić u Beogradu.',
+  title: 'Dermoskopski pregled mladeža | Ordinacija Dr. Terzić',
+  description: 'Dermoskopski pregled mladeža uz DermLite DL5 i Canfield DermoSight® Evo 200 sa AI podrškom: precizna dijagnostika i rano otkrivanje melanoma u ordinaciji Dr. Terzić.',
 }
 
 const serviceData = {
-  title: 'Dermoskopija',
+  title: 'Dermoskopski pregled mladeža',
   aboutHeading: 'Šta je dermoskopija?',
-  subtitle: 'Pregled i mapiranje mladeža sa digitalnom fotodokumentacijom',
+  subtitle: 'Pregled i mapiranje mladeža sa digitalnom fotodokumentacijom i AI podrškom',
   description: 'Najsavremenija dijagnostika za rano otkrivanje promena na koži',
-  pendingNotice: 'Tekst ispod opisuje opremu i opšti tok dermoskopskog pregleda. Zvaničan klinički opis ove usluge od dr Terzić je i dalje u pripremi i biće dodat čim ga dostavi.',
-  whatIsIt: `Dermoskopija je neinvazivna dijagnostička metoda koja omogućava detaljan pregled kožnih promena, posebno mladeža, pomoću specijalnog uređaja - dermatoskopa. Ovaj uređaj koristi uveličavanje i polarizovano svetlo za vizualizaciju struktura kože koje nisu vidljive golim okom.
+  whatIsIt: `Dermoskopija je savremena, neinvazivna i bezbolna dijagnostička metoda koja omogućava detaljan pregled mladeža i drugih promena na koži uz višestruko uvećanje. Zahvaljujući dermoskopiji, dermatolog može da uoči strukture koje nisu vidljive golim okom i sa znatno većom preciznošću razlikuje benigne od sumnjivih promena.
 
-Dermomapiranje je unapređena verzija dermoskopije koja uključuje fotografisanje i digitalno mapiranje svih mladeža na telu. Ovo omogućava praćenje promena tokom vremena i rano otkrivanje potencijalno opasnih promena, uključujući melanom - najopasnije kožno oboljenje.
+U našoj ordinaciji dermoskopske preglede obavljamo korišćenjem dve vrhunske tehnologije: DermLite DL5 ručnog dermoskopa i Canfield DermoSight® Evo 200 sistema za kompjuterizovanu digitalnu dermoskopiju sa podrškom veštačke inteligencije (AI).
 
-Koristimo DermLite DL5 i Canfield D200EVO dermatoskop, koji uz digitalnu AI dijagnostiku dodatno podržavaju analizu i praćenje promena. Istim uređajima radimo i trihoskopiju, AI dermoskopsku analizu kose i vlasišta, korisnu kod opadanja kose i drugih promena na vlasištu.`,
-  howItWorks: [
-    'Pregled kože - specijalista sistematski pregleda celo telo tražeći atipične mladeže i kožne promene.',
-    'Dermoskopija - svaki sumnjivi mladež se detaljno pregleda dermatoskopom koji pruža 10-20x uveličanje.',
-    'Fotodokumentacija - digitalno fotografisanje svih mladeža i kreiranje mape tela za buduće poređenje.',
-    'Analiza - specijalista analizira strukturu, boju, ivice i druge karakteristike svake promene.',
-    'Preporuke - na osnovu pregleda daju se preporuke za praćenje, biopsiju ili uklanjanje sumnjivih promena.',
-    'Kontrola - preporučuje se godišnji kontrolni pregled za poređenje sa prethodnim snimcima.'
-  ],
-  idealCandidates: [
-    'Osobe sa velikim brojem mladeža (više od 50)',
-    'Osobe sa atipičnim mladežima ili porodičnom istorijom melanoma',
-    'Osobe svetle puti koje su se često izlagale suncu',
-    'Osobe koje primete promenu na postojećem mladežu',
-    'Osobe sa novonastalim mladežom nakon 30. godine života',
-    'Sve odrasle osobe kao preventivni pregled jednom godišnje'
-  ],
-  expectedResults: [
-    'Detaljan uvid u stanje svih mladeža na telu',
-    'Rano otkrivanje potencijalno opasnih promena',
-    'Digitalna dokumentacija za praćenje promena tokom vremena',
-    'Mirna savest - ili pravovremena dijagnoza',
-    'Preporuke za dalje postupanje kod sumnjivih promena',
-    'Personalizovan plan praćenja'
-  ],
-  faqs: [
+DermLite DL5 omogućava izuzetno precizan pregled pigmentnih i nepigmentnih promena na koži u realnom vremenu, uz vrhunsku optiku i mogućnost polarizovanog i nepolarizovanog osvetljenja, što doprinosi tačnijoj dijagnostici.
+
+Canfield DermoSight® Evo 200 omogućava visokorezolutno digitalno snimanje, kompjuterizovanu analizu i trajno arhiviranje dermoskopskih nalaza. Sistem sa AI podrškom pomaže u proceni karakteristika pigmentnih promena i omogućava precizno poređenje sa prethodnim pregledima, što je od posebnog značaja za praćenje atipičnih mladeža i rano otkrivanje melanoma.
+
+Kombinacijom kliničkog pregleda, dermoskopije i savremene digitalne tehnologije pružamo najviši nivo dijagnostičke preciznosti i omogućavamo individualni plan praćenja za svakog pacijenta.
+
+Svaki dermoskopski pregled u našoj ordinaciji podrazumeva detaljnu procenu svih pigmentnih i drugih promena na koži, uz digitalnu dokumentaciju kada je to potrebno. Na osnovu kliničkog i dermoskopskog nalaza određujemo da li je promena potpuno benigna, zahteva redovno praćenje ili je potrebno njeno hirurško uklanjanje i patohistološka analiza. Naš cilj je rano otkrivanje melanoma i drugih tumora kože, uz pravovremenu dijagnozu i individualni plan praćenja za svakog pacijenta.`,
+  whatIsItSections: [
     {
-      question: 'Zašto je dermoskopija važna?',
-      answer: 'Melanom je najopasnije kožno oboljenje, ali je izlečivo u 95%+ slučajeva ako se otkrije rano. Dermoskopija omogućava otkrivanje sumnjivih promena pre nego što postanu opasne.'
+      heading: 'Kada se preporučuje dermoskopski pregled?',
+      items: [
+        'svim osobama radi preventivnog pregleda mladeža',
+        'osobama sa velikim brojem mladeža',
+        'osobama sa atipičnim (displastičnim) mladežima',
+        'osobama svetle puti koje lako izgore na suncu',
+        'osobama koje imaju ličnu ili porodičnu istoriju melanoma',
+        'nakon intenzivnog ili dugotrajnog izlaganja UV zračenju',
+        'kada pacijent primeti novu promenu ili promenu postojećeg mladeža',
+      ],
     },
     {
-      question: 'Koliko često treba raditi dermoskopski pregled?',
-      answer: 'Za većinu ljudi preporučuje se godišnji pregled. Osobe sa faktorima rizika (mnogo mladeža, porodična istorija melanoma, svetla put) trebalo bi da se pregledaju svakih 6 meseci.'
+      heading: 'ABCDE pravilo: kako prepoznati sumnjiv mladež?',
+      body: 'Redovan samopregled kože predstavlja važan deo prevencije melanoma. Posebnu pažnju treba obratiti na promene koje ispunjavaju jedno ili više kriterijuma ABCDE pravila: A, Asymmetry (Asimetrija) - jedna polovina mladeža nije ista kao druga. B, Border (Ivice) - nepravilne, nazubljene ili nejasno ograničene ivice. C, Color (Boja) - više nijansi braon, crne, crvene, plave ili bele boje u istoj promeni. D, Diameter (Prečnik) - promena veća od približno 6 mm, naročito ako raste. E, Evolution (Evolucija) - svaka promena veličine, oblika, boje ili površine, kao i pojava svraba, krvarenja ili ranice. Pored ABCDE pravila, važno je obratiti pažnju i na takozvani "ružni pačić" (Ugly Duckling sign): mladež koji se izgledom razlikuje od svih ostalih na telu i zahteva dermatološku procenu.',
     },
     {
-      question: 'Da li je pregled bolan?',
-      answer: 'Ne, dermoskopija je potpuno bezbolna i neinvazivna procedura. Dermatoskop se samo prislanja na kožu, nema uboda niti bilo kakve nelagodnosti.'
+      heading: 'Koliko često treba pregledati mladeže?',
+      body: 'Preporučuje se da svaka odrasla osoba jednom mesečno obavi samopregled kože ispred ogledala, uz pomoć drugog ogledala ili člana porodice za pregled teško dostupnih regija. Preventivni dermoskopski pregled kod dermatologa savetuje se najmanje jednom godišnje, dok osobe sa povećanim rizikom mogu zahtevati češće kontrole, u skladu sa preporukom dermatologa.',
     },
     {
-      question: 'Koliko traje pregled?',
-      answer: 'Kompletan pregled celog tela sa fotodokumentacijom traje 30-45 minuta. Kontrolni pregled sa poređenjem snimaka traje oko 20-30 minuta.'
+      heading: 'UV zračenje i rizik od melanoma',
+      body: 'Najznačajniji faktor rizika za nastanak melanoma i drugih karcinoma kože jeste prekomerno izlaganje ultraljubičastom (UV) zračenju, bilo prirodnom (sunce) ili veštačkom (solarijumi). Posebno je štetno povremeno intenzivno izlaganje suncu koje dovodi do opekotina, naročito u detinjstvu i adolescenciji. Zaštita kože podrazumeva:',
+      items: [
+        'izbegavanje sunca u periodu od 10 do 16 časova',
+        'svakodnevnu primenu krema sa širokim spektrom zaštite (SPF 50+)',
+        'nošenje zaštitne odeće, šešira i naočara za sunce',
+        'izbegavanje korišćenja solarijuma',
+      ],
     },
-    {
-      question: 'Šta ako se otkrije sumnjiva promena?',
-      answer: 'Ako se otkrije sumnjiva promena, preporučuje se biopsija ili hirurško uklanjanje radi patohistološke analize. Većina sumnjivih promena ispostavi se kao benigna, ali je bolje proveriti.'
-    }
   ],
   relatedServices: [
     { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },

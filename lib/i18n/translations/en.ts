@@ -378,15 +378,9 @@ export const en = {
           'Trichoscopy: AI dermoscopic hair and scalp analysis',
         ],
       },
-      dermapen: {
-        subtitle: 'Microneedling',
-        description: 'Medical needle microneedling to stimulate skin regeneration and improve skin quality.',
-        treatments: [
-          'Hair growth stimulation',
-          'Facial skin quality: pores, pigmentation, fine lines',
-        ],
-      },
     },
+    brandsTitle: 'Products and brands we use',
+    brands: ['Allergan (Juvederm, Vistabel, Botox)', 'Jalupro', 'Juvelook', 'Cellenis', 'Neoderma', 'Cyspera', 'Elevai', 'Viviscal'],
   },
   galerija: {
     eyebrow: 'Visual gallery',
