@@ -137,7 +137,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 ## Šta je još potrebno od Vas
 
 ### 1. Biografija dr Biljane Petković
-Trenutno je na sajtu privremeni, opšti tekst. Molim Vas da pošaljete kompletnu biografiju/CV kako bismo je zamenili Vašim zvaničnim tekstom.
+Trenutno je na sajtu privremeni, opšti tekst. Molim Vas da pošaljete kompletnu biografiju/CV kako bih je zamenio Vašim zvaničnim tekstom.
 
 Link: https://dr-terzic-site.vercel.app/o-nama#biljana-petkovic
 
@@ -169,7 +169,7 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 - https://dr-terzic-site.vercel.app/usluge/dermapen
 - https://dr-terzic-site.vercel.app/usluge/savetovanje-za-negu-lica
 
-Najlakše je da nam pošaljete tekst redosledom kojim Vama najviše odgovara, ne morate sve odjednom.
+Najlakše je da mi pošaljete tekst redosledom kojim Vama najviše odgovara, ne morate sve odjednom.
 
 ### 3. Fotografija za Full Face
 Tekst na ovoj stranici je kompletan i zvaničan, nedostaje samo fotografija koju ste najavili za ovu uslugu. Trenutno je prikazana privremena zamenska slika.
@@ -204,9 +204,9 @@ Srpski sadržaj se prvo finalizuje. Engleska i ruska verzija sajta biće dovrše
 
 ---
 
-## Kako da nam pošaljete povratne informacije
+## Kako da mi pošaljete povratne informacije
 
-Najlakše nam je ako nam pošaljete izmene u jednom od ovih formata:
+Najlakše mi je ako mi pošaljete izmene u jednom od ovih formata:
 
 - naziv stranice + deo koji menjate;
 - kopiran postojeći tekst + tekst kojim ga zamenjujete;
@@ -217,7 +217,7 @@ Najlakše nam je ako nam pošaljete izmene u jednom od ovih formata:
 
 ## Povezivanje postojećeg domena
 
-Da bismo novu verziju sajta povezali sa Vašim postojećim domenom, potreban je pristup nalogu na kojem je domen registrovan ili da zajedno promenimo DNS podešavanja. Molim Vas da mi pošaljete naziv provajdera kod kojeg je domen registrovan i potvrdite da li koristite email adrese povezane sa tim domenom. Domen ostaje u Vašem vlasništvu; menja se samo njegovo povezivanje sa novim sajtom.
+Da bih novu verziju sajta povezao sa Vašim postojećim domenom, potreban je pristup nalogu na kojem je domen registrovan ili da zajedno promenimo DNS podešavanja. Molim Vas da mi pošaljete naziv provajdera kod kojeg je domen registrovan i potvrdite da li koristite email adrese povezane sa tim domenom. Domen ostaje u Vašem vlasništvu; menja se samo njegovo povezivanje sa novim sajtom.
 
 ---
 

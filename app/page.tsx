@@ -84,7 +84,7 @@ export default function HomePage() {
   const doctors = t.home.doctorsList.map((doc, index) => ({
     ...doc,
     ...doctorsConfig[index],
-    ctaLabel: index === 0 ? t.home.doctorsSection.viewProfileLabel : undefined,
+    ctaLabel: t.home.doctorsSection.viewProfileLabel,
   }))
 
   // ── Auto-scrolling Marquees (Equipment & Reviews) — desktop only. Mobile

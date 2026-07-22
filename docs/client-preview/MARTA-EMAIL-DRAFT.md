@@ -6,7 +6,7 @@
 
 Poštovana Marta,
 
-Kompletna struktura i sav sadržaj iz dokumenta koji ste nam poslali sada su uneti u radnu verziju sajta. Na mestima gde nam nije poslat konačan tekst ili fotografija, stranica je napravljena i jasno označena, tako da lako možete videti šta je još potrebno dopuniti.
+Kompletna struktura i sav sadržaj iz dokumenta koji ste mi poslali sada su uneti u radnu verziju sajta. Na mestima gde mi nije poslat konačan tekst ili fotografija, stranica je napravljena i jasno označena, tako da lako možete videti šta je još potrebno dopuniti.
 
 Radnu verziju možete pogledati ovde:
 https://dr-terzic-site.vercel.app
@@ -17,17 +17,17 @@ U prilogu Vam šaljem i detaljan pregled sa klikabilnim linkovima ka svakoj stra
 
 Takođe pripremamo kratak video obilazak sajta, koji ćete uskoro dobiti ovde: [UBACI LINK KA VIDEO OBILASKU]
 
-Molimo Vas da sajt pregledate kada Vam bude odgovaralo, bez žurbe. Ono što nam je trenutno najpotrebnije od Vas:
+Molim Vas da sajt pregledate kada Vam bude odgovaralo, bez žurbe. Ono što mi je trenutno najpotrebnije od Vas:
 
 - Kompletna biografija/CV dr Biljane Petković
 - Tekst za stranice usluga koje su označene kao "u pripremi" (spisak se nalazi u prilogu)
 - Fotografija za Full Face stranicu
 - Vaša odluka da li želite funkcionalnu kontakt formu na sajtu, ili da Kontakt stranica ostane usmerena na poziv, email, Instagram i mapu
-- Podatak o tome kod kog provajdera je registrovan Vaš postojeći domen, kako bismo mogli da ga povežemo sa novim sajtom kada budete spremni
+- Podatak o tome kod kog provajdera je registrovan Vaš postojeći domen, kako bih mogao da ga povežem sa novim sajtom kada budete spremni
 
-Sve ostale sitnije izmene i korekcije teksta možete jednostavno da nam pošaljete tokom pregleda, u formatu koji Vama najviše odgovara.
+Sve ostale sitnije izmene i korekcije teksta možete jednostavno da mi pošaljete tokom pregleda, u formatu koji Vama najviše odgovara.
 
-Stojimo na raspolaganju za sva pitanja.
+Stojim na raspolaganju za sva pitanja.
 
 Srdačan pozdrav,
 Aleksandar

@@ -7,7 +7,7 @@ import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 // Set to true if you want to temporarily remove the intro without touching the layout.
 const DISABLE_SITE_INTRO = false
-const INTRO_VIDEO_SRC = '/videos/new-intro-video.mp4'
+const INTRO_VIDEO_SRC = '/videos/dr-teric-video-intro-sofija.mp4'
 const INTRO_HOLD_MS = 4500
 const REDUCED_MOTION_HOLD_MS = 1200
 const INTRO_FADE_SECONDS = 1.5

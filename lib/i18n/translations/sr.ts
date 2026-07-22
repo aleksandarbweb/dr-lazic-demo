@@ -104,7 +104,7 @@ export const sr = {
       {
         name: 'dr Biljana Petković',
         title: 'Specijalista dermatovenerologije',
-        bio: 'Specijalista dermatovenerologije sa iskustvom u opštoj i dečijoj dermatologiji. Posebno je usmerena na dermoskopiju, radiotalasne i laserske procedure, estetske tretmane i anti-age medicinu.'
+        bio: 'Specijalista dermatovenerologije sa 9 godina iskustva u opštoj i pedijatrijskoj dermatologiji, dermoskopiji i trihoskopiji. Posebno posvećena otkrivanju uzroka i lečenju alopecija, radiotalasnim procedurama i estetskoj medicini. Strpljiva, posvećena i pažljiva u radu sa svakim pacijentom.'
       }
     ],
     equipmentTitle: 'Naša oprema',
