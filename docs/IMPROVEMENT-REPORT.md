@@ -140,11 +140,13 @@ handling) and were dropped from this list. Ordered by impact-to-effort, highest 
    route folder exporting `metadata`, plus the two Next.js file-convention routes for sitemap/robots,
    plus one JSON-LD `<script>` in the root layout. High function value, low code cost, this is the
    single best ROI item on this list.
-2. ~~Mobile hero has no image at all.~~ **Fixed 2026-07-26** — added a framed portrait
-   (`app/page.tsx`, same `marta new 1.png` asset the desktop hero already uses, no new photography
-   needed) that shows below the headline on mobile/tablet (`lg:hidden`, smaller `aspect-[4/5]`
-   frame, `max-w-[220px] sm:max-w-[260px]`) while the desktop side-by-side layout is untouched.
-   Verified visually at 390px, 834px, and 1440px viewports.
+2. **Mobile hero has no image at all.** Tried a framed portrait below the headline on 2026-07-26
+   (same asset the desktop hero uses), shipped and deployed, then reverted the same day —
+   Aleksandar reviewed it live and felt it read as disorganized/ugly on mobile, not a fix. Still an
+   open problem, but the "just reuse the existing crop in a small frame" approach is a rejected
+   direction — needs a different layout idea (e.g. full-bleed background treatment, image behind/
+   beside a shorter headline, or a differently art-directed crop), not just resized in place. Get
+   explicit sign-off on the direction before implementing again.
 3. **The gallery's "Pre i posle" (before/after) filter returns zero results.** Verified 2026-07-23,
    the filter button exists in `app/galerija/page.tsx` but no image in the `images` array is tagged
    with that category. Before/after results are typically the single highest-converting content
@@ -1517,12 +1519,16 @@ Unchanged policy: raise with the client, don't build unprompted.
     clinic photography, `/usluge` card-grid redesign, spreading the editorial dark-section
     treatment, design tokens) — all either need Marta's content/photo decisions or are larger
     visual-craft passes better done as their own session.
-- 2026-07-26 (later same day) — **Shipped #2, the mobile hero image**, the next workable item since
-  it reuses an existing asset rather than needing Marta's input. Added a framed portrait to
-  `app/page.tsx` (`marta new 1.png`, same file the desktop hero already uses) that renders below the
-  headline only on mobile/tablet (`lg:hidden`, `aspect-[4/5]`, `max-w-[220px] sm:max-w-[260px]`,
-  white border + soft shadow matching the desktop frame's style, no corner-bracket accents added —
-  those are already overused per item #6). The existing desktop side-by-side layout (`hidden ...
-  lg:block`) is untouched. Verified with `npx tsc --noEmit` and a fresh `npm run build`, then visually
-  in a live browser at 390×844 (mobile), 834×1100 (tablet), and 1440×900 (desktop) — all three look
-  correct, no regression.
+- 2026-07-26 (later same day) — **Shipped #2, the mobile hero image, then reverted it minutes later
+  at Aleksandar's request.** Added a framed portrait to `app/page.tsx` (`marta new 1.png`, same file
+  the desktop hero already uses) rendering below the headline on mobile/tablet (`lg:hidden`,
+  `aspect-[4/5]`, `max-w-[220px] sm:max-w-[260px]`), deployed to production, verified with
+  `npx tsc --noEmit`, `npm run build`, and live screenshots at 390×844/834×1100/1440×900 — all
+  looked correct with no layout regression. Aleksandar then reviewed it live and said it felt
+  disorganized/ugly on mobile, so it was reverted the same session. **Lesson**: technically-correct
+  and regression-free isn't the same as a good design call — subjective visual changes need his
+  sign-off on the direction *before* implementation, not just a post-hoc screenshot review. Going
+  forward, describe the concrete before/after of any visual change and get a go-ahead first,
+  especially for anything in the "distinctive art direction" / visual-craft category (items #2, #5,
+  #6, #7 on this list) as opposed to purely mechanical/technical fixes (like #1's metadata, which
+  has no subjective judgment call).
