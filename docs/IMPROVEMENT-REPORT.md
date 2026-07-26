@@ -180,9 +180,9 @@ handling) and were dropped from this list. Ordered by impact-to-effort, highest 
    "Marta wants a different red" conversation a 40-file grep-and-pray instead of a one-line change,
    worth doing specifically because client color/style feedback has already happened twice this
    project and will keep happening.
-8. **Footer logo is still oversized.** Verified 2026-07-23, `components/footer.tsx` renders it at
-   `h-28` up to `h-40` responsive, on every single page. Small, cheap, high-visibility since it's
-   site-wide.
+8. ~~Footer logo is still oversized.~~ **Closed 2026-07-26, won't fix** — shrunk it, Aleksandar
+   reviewed on production and preferred the original large size, reverted back to `h-28`–`h-40`.
+   The large logo is a deliberate client preference, not a bug. Don't re-flag this.
 9. **Scrollbars are hidden globally.** Verified 2026-07-23, `scrollbar-width: none` plus
    `::-webkit-scrollbar { display: none }` on `html`/`body` in `app/globals.css`, removing all
    scroll-position affordance sitewide for no visible benefit, arguably a usability regression, not
@@ -1498,9 +1498,12 @@ Unchanged policy: raise with the client, don't build unprompted.
     `npm run build` (49 routes) and `npx tsc --noEmit` both clean; curled every route's `<title>`
     post-unlock and confirmed each is unique; confirmed `/robots.txt` and `/sitemap.xml` serve
     correctly unauthenticated while `/` still gates.
-  - **#8 oversized footer logo**: `components/footer.tsx` logo was `h-28` up to `h-40` (2–3x the
-    navbar's `h-12`/`h-14`); resized to `h-14 md:h-16 lg:h-20` and scaled the compensating negative
-    margin down to match. Verified visually via Playwright screenshot.
+  - **#8 oversized footer logo — shipped, then reverted same day**: resized `components/footer.tsx`
+    logo from `h-28`–`h-40` down to `h-14`–`h-20`, deployed to production, then Aleksandar reviewed
+    the live site and said he preferred the original larger size. Reverted back to `h-28 md:h-32
+    lg:h-36 xl:h-40` with the original `-ml-4 md:-ml-6 lg:-ml-8` negative margin. **This item is
+    closed as "won't fix" — the large logo is the client's preferred look, not a bug.** Don't
+    re-propose shrinking it.
   - **#9 globally hidden scrollbars**: removed `scrollbar-width: none` / hidden
     `::-webkit-scrollbar` on `html`/`body` in `app/globals.css`; replaced with a thin styled
     scrollbar (`#d6cfc4` track, red `#b91c1c` hover) matching the site palette. Left the

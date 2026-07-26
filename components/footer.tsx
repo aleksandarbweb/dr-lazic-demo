@@ -27,13 +27,13 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:gap-16 md:grid-cols-3">
           {/* Logo & Tagline */}
           <div className="flex flex-col items-start">
-            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 -ml-2 md:-ml-3">
+            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 -ml-4 md:-ml-6 lg:-ml-8">
               <Image
                 src="/images/Logos/dr terzic beli logo.png"
                 alt="Dr Terzić"
                 width={500}
                 height={200}
-                className="mb-4 h-14 w-auto object-contain object-left md:h-16 lg:h-20"
+                className="mb-4 h-28 w-auto object-contain object-left md:h-32 lg:h-36 xl:h-40"
               />
             </Link>
             <p className="mb-6 max-w-xs text-sm font-light leading-relaxed text-white/60">
