@@ -213,6 +213,26 @@ export default function HomePage() {
                 <br />
                 <span className="text-[#342f2a]">{t.home.hero.titleLine2}</span>
               </motion.h1>
+
+              {/* Mobile/Tablet Portrait — desktop shows the larger version at right */}
+              <motion.div
+                initial={shouldReduce ? false : { opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="relative mx-auto mt-8 aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] lg:hidden"
+              >
+                <div className="relative h-full w-full overflow-hidden rounded-[2rem] border-[8px] border-white shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)]">
+                  <Image
+                    src="/images/people/Marta/marta new 1.png"
+                    alt="dr Marta Terzić"
+                    fill
+                    priority
+                    className="object-cover object-[42%_35%]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                </div>
+              </motion.div>
+
               <motion.p
                 initial={shouldReduce ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}

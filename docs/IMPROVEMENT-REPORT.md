@@ -140,11 +140,11 @@ handling) and were dropped from this list. Ordered by impact-to-effort, highest 
    route folder exporting `metadata`, plus the two Next.js file-convention routes for sitemap/robots,
    plus one JSON-LD `<script>` in the root layout. High function value, low code cost, this is the
    single best ROI item on this list.
-2. **Mobile hero has no image at all.** Verified 2026-07-23, `app/page.tsx`'s hero portrait is still
-   `hidden ... lg:block`, unchanged since the original audit. Most visitors to a medical practice
-   site are on mobile, and the single most important screen of the entire site is plain text on
-   cream for all of them. This is the loudest "template, not boutique" tell on the device that
-   matters most.
+2. ~~Mobile hero has no image at all.~~ **Fixed 2026-07-26** — added a framed portrait
+   (`app/page.tsx`, same `marta new 1.png` asset the desktop hero already uses, no new photography
+   needed) that shows below the headline on mobile/tablet (`lg:hidden`, smaller `aspect-[4/5]`
+   frame, `max-w-[220px] sm:max-w-[260px]`) while the desktop side-by-side layout is untouched.
+   Verified visually at 390px, 834px, and 1440px viewports.
 3. **The gallery's "Pre i posle" (before/after) filter returns zero results.** Verified 2026-07-23,
    the filter button exists in `app/galerija/page.tsx` but no image in the `images` array is tagged
    with that category. Before/after results are typically the single highest-converting content
@@ -1516,4 +1516,13 @@ Unchanged policy: raise with the client, don't build unprompted.
   - **Not done, deferred**: items #2–7 (mobile hero image, gallery before/after tagging, real
     clinic photography, `/usluge` card-grid redesign, spreading the editorial dark-section
     treatment, design tokens) — all either need Marta's content/photo decisions or are larger
-    visual-craft passes better done as their own session. No commit pushed yet.
+    visual-craft passes better done as their own session.
+- 2026-07-26 (later same day) — **Shipped #2, the mobile hero image**, the next workable item since
+  it reuses an existing asset rather than needing Marta's input. Added a framed portrait to
+  `app/page.tsx` (`marta new 1.png`, same file the desktop hero already uses) that renders below the
+  headline only on mobile/tablet (`lg:hidden`, `aspect-[4/5]`, `max-w-[220px] sm:max-w-[260px]`,
+  white border + soft shadow matching the desktop frame's style, no corner-bracket accents added —
+  those are already overused per item #6). The existing desktop side-by-side layout (`hidden ...
+  lg:block`) is untouched. Verified with `npx tsc --noEmit` and a fresh `npm run build`, then visually
+  in a live browser at 390×844 (mobile), 834×1100 (tablet), and 1440×900 (desktop) — all three look
+  correct, no regression.
