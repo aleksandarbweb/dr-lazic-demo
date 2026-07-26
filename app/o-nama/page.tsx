@@ -28,18 +28,18 @@ export default function ONamaPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-20">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-20">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <FadeUp>
           <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-            <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+            <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               {t.onama.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1a1a1a] leading-tight">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
               {t.onama.title}
             </h1>
-            <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
-            <p className="text-[#6b6b6b] mt-8 max-w-2xl mx-auto font-light leading-relaxed">
+            <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
+            <p className="text-muted-foreground mt-8 max-w-2xl mx-auto font-light leading-relaxed">
               {t.onama.heroIntro}
             </p>
           </div>
@@ -52,17 +52,17 @@ export default function ONamaPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeUp delay={0.1}>
-                <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.onama.storyEyebrow}</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.onama.storyEyebrow}</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                   {t.onama.storyTitle}
                 </h2>
-                <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
+                <div className="w-16 h-[2px] bg-primary mb-8" />
               </FadeUp>
               <FadeUp delay={0.2}>
-                <p className="text-[#6b6b6b] leading-relaxed mb-5 font-light">
+                <p className="text-muted-foreground leading-relaxed mb-5 font-light">
                   {t.onama.storyP1}
                 </p>
-                <p className="text-[#6b6b6b] leading-relaxed font-light">
+                <p className="text-muted-foreground leading-relaxed font-light">
                   {t.onama.storyP2}
                 </p>
               </FadeUp>
@@ -74,15 +74,15 @@ export default function ONamaPage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-[#b91c1c]" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-[#b91c1c]" />
+              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary" />
+              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary" />
             </FadeUp>
           </div>
         </div>
       </section>
 
       {/* Tagline Banner */}
-      <section className="bg-[#1a1a1a] py-12 md:py-14">
+      <section className="bg-foreground py-12 md:py-14">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7">
@@ -92,7 +92,7 @@ export default function ONamaPage() {
                     {word}
                   </span>
                   {index < t.onama.tagline.length - 1 && (
-                    <span className="w-1.5 h-1.5 bg-[#b91c1c]" />
+                    <span className="w-1.5 h-1.5 bg-primary" />
                   )}
                 </span>
               ))}
@@ -102,20 +102,20 @@ export default function ONamaPage() {
       </section>
 
       {/* Approach Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <FadeUp>
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.onama.approachEyebrow}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.onama.approachEyebrow}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
               {t.onama.approachTitle}
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mb-8" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mb-8" />
           </FadeUp>
           <FadeUp delay={0.1}>
-            <p className="text-[#6b6b6b] leading-relaxed mb-5 font-light">
+            <p className="text-muted-foreground leading-relaxed mb-5 font-light">
               {t.onama.storyP3}
             </p>
-            <p className="text-[#6b6b6b] leading-relaxed font-light">
+            <p className="text-muted-foreground leading-relaxed font-light">
               {t.onama.storyP4}
             </p>
           </FadeUp>
@@ -126,7 +126,7 @@ export default function ONamaPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4 text-center">{t.onama.bavimoSeEyebrow}</p>
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 text-center">{t.onama.bavimoSeEyebrow}</p>
           </FadeUp>
           <FadeUp delay={0.05}>
             <SectionTitle title={t.onama.bavimoSeTitle} />
@@ -139,11 +139,11 @@ export default function ONamaPage() {
                   key={item}
                   className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
                 >
-                  <div className="group h-full flex flex-col items-center text-center gap-4 border border-[#e5e0da] bg-[#faf9f7] px-6 py-10 transition-all duration-500 hover:border-[#b91c1c]/40 hover:-translate-y-1 hover:shadow-lg">
-                    <div className="w-14 h-14 flex items-center justify-center border border-[#b91c1c]/30 text-[#b91c1c] transition-all duration-500 group-hover:bg-[#b91c1c]/5 group-hover:scale-110">
+                  <div className="group h-full flex flex-col items-center text-center gap-4 border border-border bg-background px-6 py-10 transition-all duration-500 hover:border-primary/40 hover:-translate-y-1 hover:shadow-lg">
+                    <div className="w-14 h-14 flex items-center justify-center border border-primary/30 text-primary transition-all duration-500 group-hover:bg-primary/5 group-hover:scale-110">
                       <Icon size={26} strokeWidth={1.75} />
                     </div>
-                    <p className="text-[#1a1a1a] font-light leading-snug">{item}</p>
+                    <p className="text-foreground font-light leading-snug">{item}</p>
                   </div>
                 </StaggerItem>
               )
@@ -168,15 +168,15 @@ export default function ONamaPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-[#b91c1c]" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-[#b91c1c]" />
+                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary" />
                 </div>
               </div>
-              <div className="lg:col-span-2 border-l-2 border-[#b91c1c] pl-8">
-                <h3 className="font-serif text-4xl md:text-5xl text-[#1a1a1a] mb-3">
+              <div className="lg:col-span-2 border-l-2 border-primary pl-8">
+                <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
                   dr Marta Terzić
                 </h3>
-                <p className="text-[#b91c1c] font-medium text-sm tracking-[0.15em] uppercase mb-6">
+                <p className="text-primary font-medium text-sm tracking-[0.15em] uppercase mb-6">
                   {t.onama.marta.title}
                 </p>
                 <ExpandableBio
@@ -187,8 +187,8 @@ export default function ONamaPage() {
                 <div className="mt-8">
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {t.onama.marta.specializations.map((spec) => (
-                      <li key={spec} className="text-[#6b6b6b] text-sm flex items-center gap-3 font-light">
-                        <span className="w-2 h-2 bg-[#b91c1c]" />
+                      <li key={spec} className="text-muted-foreground text-sm flex items-center gap-3 font-light">
+                        <span className="w-2 h-2 bg-primary" />
                         {spec}
                       </li>
                     ))}
@@ -209,15 +209,15 @@ export default function ONamaPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-[#b91c1c]" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-[#b91c1c]" />
+                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary" />
                 </div>
               </div>
-              <div className="lg:col-span-2 lg:order-1 border-r-2 border-[#b91c1c] pr-8 lg:text-right">
-                <h3 className="font-serif text-4xl md:text-5xl text-[#1a1a1a] mb-3">
+              <div className="lg:col-span-2 lg:order-1 border-r-2 border-primary pr-8 lg:text-right">
+                <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
                   dr Biljana Petković
                 </h3>
-                <p className="text-[#b91c1c] font-medium text-sm tracking-[0.15em] uppercase mb-8">
+                <p className="text-primary font-medium text-sm tracking-[0.15em] uppercase mb-8">
                   {t.home.doctorsList[1].title}
                 </p>
                 <ExpandableBio
@@ -228,8 +228,8 @@ export default function ONamaPage() {
                 <div className="mt-8">
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {t.onama.biljana.specializations.map((spec) => (
-                      <li key={spec} className="text-[#6b6b6b] text-sm flex items-center lg:flex-row-reverse gap-3 font-light">
-                        <span className="w-2 h-2 bg-[#b91c1c]" />
+                      <li key={spec} className="text-muted-foreground text-sm flex items-center lg:flex-row-reverse gap-3 font-light">
+                        <span className="w-2 h-2 bg-primary" />
                         {spec}
                       </li>
                     ))}
@@ -240,22 +240,22 @@ export default function ONamaPage() {
           </div>
 
           {/* Rest of the team */}
-          <div className="pt-16 border-t border-[#e5e0da]">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-10 text-center">
+          <div className="pt-16 border-t border-border">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-10 text-center">
               {t.onama.otherTeamTitle}
             </p>
 
             {/* Snežana — spotlight card */}
-            <div className="max-w-4xl mx-auto mb-12 border border-[#e5e0da] bg-white p-8 md:p-10">
+            <div className="max-w-4xl mx-auto mb-12 border border-border bg-white p-8 md:p-10">
               <div className="flex flex-col sm:flex-row gap-6">
-                <div className="flex-shrink-0 flex h-16 w-16 items-center justify-center rounded-full border border-[#e5e0da] bg-[#faf9f7]">
-                  <CircleUserRound size={30} className="text-[#b91c1c]" />
+                <div className="flex-shrink-0 flex h-16 w-16 items-center justify-center rounded-full border border-border bg-background">
+                  <CircleUserRound size={30} className="text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl text-[#1a1a1a] mb-1">{t.onama.snezana.name}</h4>
-                  <p className="text-[#b91c1c] text-xs font-medium tracking-[0.1em] uppercase mb-4">{t.onama.snezana.title}</p>
+                  <h4 className="font-serif text-2xl text-foreground mb-1">{t.onama.snezana.name}</h4>
+                  <p className="text-primary text-xs font-medium tracking-[0.1em] uppercase mb-4">{t.onama.snezana.title}</p>
                   {t.onama.snezana.bio.map((p, i) => (
-                    <p key={i} className="text-[#6b6b6b] text-sm leading-relaxed font-light mb-3 last:mb-0">
+                    <p key={i} className="text-muted-foreground text-sm leading-relaxed font-light mb-3 last:mb-0">
                       {p}
                     </p>
                   ))}
@@ -267,12 +267,12 @@ export default function ONamaPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {t.onama.otherTeam.map((member) => (
                 <div key={member.name} className="flex flex-col items-center text-center gap-3">
-                  <div className="flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-full border border-[#e5e0da] bg-white">
-                    <CircleUserRound size={22} className="text-[#b91c1c]" />
+                  <div className="flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-white">
+                    <CircleUserRound size={22} className="text-primary" />
                   </div>
                   <div>
-                    <p className="text-[#1a1a1a] font-medium">{member.name}</p>
-                    <p className="text-[#6b6b6b] text-xs uppercase tracking-[0.1em]">{member.title}</p>
+                    <p className="text-foreground font-medium">{member.name}</p>
+                    <p className="text-muted-foreground text-xs uppercase tracking-[0.1em]">{member.title}</p>
                   </div>
                 </div>
               ))}
@@ -293,13 +293,13 @@ export default function ONamaPage() {
               return (
                 <StaggerItem key={value.title}>
                   <div className="text-center group">
-                    <div className="w-20 h-20 mx-auto mb-8 flex items-center justify-center border border-[#e5e0da] transition-all duration-500 group-hover:border-[#b91c1c]/40 group-hover:bg-[#b91c1c]/5 group-hover:-translate-y-1">
-                      <Icon size={36} className="text-[#b91c1c] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-[-3deg]" />
+                    <div className="w-20 h-20 mx-auto mb-8 flex items-center justify-center border border-border transition-all duration-500 group-hover:border-primary/40 group-hover:bg-primary/5 group-hover:-translate-y-1">
+                      <Icon size={36} className="text-primary transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-[-3deg]" />
                     </div>
-                    <h3 className="font-serif text-2xl text-[#1a1a1a] mb-4 transition-colors duration-300 group-hover:text-[#b91c1c]">
+                    <h3 className="font-serif text-2xl text-foreground mb-4 transition-colors duration-300 group-hover:text-primary">
                       {value.title}
                     </h3>
-                    <p className="text-[#6b6b6b] leading-relaxed font-light">
+                    <p className="text-muted-foreground leading-relaxed font-light">
                       {value.description}
                     </p>
                   </div>

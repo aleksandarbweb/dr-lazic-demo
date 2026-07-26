@@ -11,19 +11,19 @@ export default function UslugePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-20">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
-        <div className="hidden md:block absolute right-8 top-1/4 w-[1px] h-48 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-20">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
+        <div className="hidden md:block absolute right-8 top-1/4 w-[1px] h-48 bg-primary/30" />
         <FadeUp>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-            <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+            <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               Naša ponuda
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#1a1a1a]">
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
               Usluge
             </h1>
-            <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
-            <p className="text-[#6b6b6b] mt-8 max-w-2xl mx-auto font-light">
+            <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
+            <p className="text-muted-foreground mt-8 max-w-2xl mx-auto font-light">
               Kompletna medicinska i estetska dermatologija sa najsavremenijom opremom
             </p>
           </div>
@@ -37,14 +37,14 @@ export default function UslugePage() {
             <div 
               key={category.title} 
               id={category.id}
-              className={`scroll-mt-32 ${categoryIndex > 0 ? 'mt-20 pt-20 border-t border-[#e5e0da]' : ''}`}
+              className={`scroll-mt-32 ${categoryIndex > 0 ? 'mt-20 pt-20 border-t border-border' : ''}`}
             >
               <FadeUp delay={0.1}>
-                <h2 className={`font-serif text-3xl md:text-4xl text-[#b91c1c] ${category.subtitle ? '' : 'mb-10'}`}>
+                <h2 className={`font-serif text-3xl md:text-4xl text-primary ${category.subtitle ? '' : 'mb-10'}`}>
                   {category.title}
                 </h2>
                 {category.subtitle && (
-                  <p className="text-[#6b6b6b] mt-2 mb-8 font-light italic">
+                  <p className="text-muted-foreground mt-2 mb-8 font-light italic">
                     {category.subtitle}
                   </p>
                 )}
@@ -54,12 +54,12 @@ export default function UslugePage() {
                   <StaggerItem key={service.name} className="h-full">
                     <Link
                       href={`/usluge/${service.slug}`}
-                      className="group flex h-full w-full items-center justify-between gap-3 border border-[#e5e0da] bg-[#faf9f7] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#b91c1c] hover:shadow-lg"
+                      className="group flex h-full w-full items-center justify-between gap-3 border border-border bg-background p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
                     >
-                      <span className="text-[#1a1a1a] text-sm group-hover:text-[#b91c1c] transition-colors font-light">
+                      <span className="text-foreground text-sm group-hover:text-primary transition-colors font-light">
                         {service.name}
                       </span>
-                      <ChevronRight size={16} className="flex-shrink-0 text-[#6b6b6b] group-hover:text-[#b91c1c] transition-colors" />
+                      <ChevronRight size={16} className="flex-shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
                     </Link>
                   </StaggerItem>
                 ))}
@@ -70,7 +70,7 @@ export default function UslugePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#b91c1c] py-20 relative overflow-hidden">
+      <section className="bg-primary py-20 relative overflow-hidden">
         <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
         
@@ -85,7 +85,7 @@ export default function UslugePage() {
             </p>
             <Link
               href="/kontakt"
-              className="inline-flex items-center justify-center gap-3 bg-white text-[#b91c1c] px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-[#faf9f7] hover:shadow-xl hover:-translate-y-1 active:scale-95 group"
+              className="inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-background hover:shadow-xl hover:-translate-y-1 active:scale-95 group"
             >
               Kontaktirajte nas
               <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>

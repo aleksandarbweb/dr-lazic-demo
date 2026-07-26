@@ -99,7 +99,7 @@ export function Navbar() {
               href="https://www.instagram.com/dr.terzic"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 ml-[6px] text-[#5f5a55] hover:text-[#b91c1c] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/50 rounded-sm"
+              className="flex items-center gap-1.5 ml-[6px] text-[#5f5a55] hover:text-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
               title="Pratite nas na Instagramu"
             >
               <Instagram size={11} strokeWidth={2.5} />
@@ -120,10 +120,10 @@ export function Navbar() {
                   href={link.href}
                   aria-expanded={link.dropdown ? servicesOpen : undefined}
                   aria-haspopup={link.dropdown ? 'true' : undefined}
-                  className={`relative flex items-center gap-1.5 text-[12px] xl:text-[13px] font-medium tracking-[0.15em] uppercase transition-colors duration-300 hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 focus-visible:ring-offset-2 py-4 ${
+                  className={`relative flex items-center gap-1.5 text-[12px] xl:text-[13px] font-medium tracking-[0.15em] uppercase transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 py-4 ${
                     pathname === link.href
-                      ? 'text-[#b91c1c]'
-                      : 'text-[#1a1a1a]'
+                      ? 'text-primary'
+                      : 'text-foreground'
                   }`}
                 >
                   {t.nav[link.translationKey]}
@@ -131,18 +131,18 @@ export function Navbar() {
                     <ChevronDown size={14} className="transition-transform duration-300 group-hover:rotate-180" />
                   )}
                   {pathname === link.href && (
-                    <span className="absolute bottom-2 left-0 w-full h-[1px] bg-[#b91c1c]" />
+                    <span className="absolute bottom-2 left-0 w-full h-[1px] bg-primary" />
                   )}
                 </Link>
 
                 {link.dropdown && (
                   <div className="absolute top-[calc(100%-0.5rem)] left-0 pt-2 opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 min-w-[300px] z-50">
-                    <div className="bg-white border border-[#e5e0da] rounded-xl shadow-xl overflow-hidden py-2 flex flex-col">
+                    <div className="bg-white border border-border rounded-xl shadow-xl overflow-hidden py-2 flex flex-col">
                       {link.dropdown.map((subLink) => (
                         <Link
                           key={subLink.href}
                           href={subLink.href}
-                          className="px-6 py-3.5 text-[#1a1a1a] hover:text-[#b91c1c] hover:bg-[#faf9f7] transition-colors font-medium tracking-wide uppercase text-[11px]"
+                          className="px-6 py-3.5 text-foreground hover:text-primary hover:bg-background transition-colors font-medium tracking-wide uppercase text-[11px]"
                         >
                           {t.nav.categoriesDropdown[subLink.categoryKey]}
                         </Link>
@@ -159,7 +159,7 @@ export function Navbar() {
             <LanguageSwitcher />
             <Link
               href="/kontakt"
-              className="inline-block rounded-full bg-[#b91c1c] px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/80 focus-visible:ring-offset-2"
+              className="inline-block rounded-full bg-primary px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2"
             >
               {t.nav.bookAppointment}
             </Link>
@@ -169,7 +169,7 @@ export function Navbar() {
           <div className="flex lg:hidden items-center gap-3 ml-auto">
             <LanguageSwitcher />
             <button
-              className="p-2 text-[#1a1a1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/80"
+              className="p-2 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
               aria-expanded={isMobileMenuOpen}
@@ -189,15 +189,15 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigacioni meni"
-          className="lg:hidden bg-white/98 backdrop-blur-md border-t border-[#e5e0da] max-h-[80vh] overflow-y-auto"
+          className="lg:hidden bg-white/98 backdrop-blur-md border-t border-border max-h-[80vh] overflow-y-auto"
         >
           <div className="px-6 py-8 space-y-5">
             {navLinksData.map((link) => (
               <div key={link.href}>
                 {link.dropdown ? (
                   <button
-                    className={`w-full flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 ${
-                      pathname === link.href ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'
+                    className={`w-full flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
+                      pathname === link.href ? 'text-primary' : 'text-foreground'
                     }`}
                     aria-expanded={openMobileDropdown === link.href}
                     onClick={() =>
@@ -209,7 +209,7 @@ export function Navbar() {
                     <span>{t.nav[link.translationKey]}</span>
                     <ChevronDown
                       size={18}
-                      className={`text-[#6b6b6b] transition-transform duration-300 ${
+                      className={`text-muted-foreground transition-transform duration-300 ${
                         openMobileDropdown === link.href ? 'rotate-180' : ''
                       }`}
                     />
@@ -217,8 +217,8 @@ export function Navbar() {
                 ) : (
                   <Link
                     href={link.href}
-                    className={`flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 ${
-                      pathname === link.href ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'
+                    className={`flex justify-between items-center py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
+                      pathname === link.href ? 'text-primary' : 'text-foreground'
                     }`}
                     onClick={closeMobileMenu}
                   >
@@ -227,10 +227,10 @@ export function Navbar() {
                 )}
 
                 {link.dropdown && openMobileDropdown === link.href && (
-                  <div className="mt-2 pl-4 space-y-4 border-l-2 border-[#e5e0da]/50 py-2">
+                  <div className="mt-2 pl-4 space-y-4 border-l-2 border-border/50 py-2">
                     <Link
                       href={link.href}
-                      className="block text-[#b91c1c] text-xs font-semibold tracking-wider uppercase transition-colors"
+                      className="block text-primary text-xs font-semibold tracking-wider uppercase transition-colors"
                       onClick={closeMobileMenu}
                     >
                       {t.nav[link.translationKey]} →
@@ -239,7 +239,7 @@ export function Navbar() {
                       <Link
                         key={subLink.href}
                         href={subLink.href}
-                        className="block text-[#6b6b6b] hover:text-[#b91c1c] text-xs font-semibold tracking-wider uppercase transition-colors"
+                        className="block text-muted-foreground hover:text-primary text-xs font-semibold tracking-wider uppercase transition-colors"
                         onClick={closeMobileMenu}
                       >
                         {t.nav.categoriesDropdown[subLink.categoryKey]}
@@ -251,7 +251,7 @@ export function Navbar() {
             ))}
             <Link
               href="/kontakt"
-              className="mt-6 block rounded-full bg-[#b91c1c] px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white"
+              className="mt-6 block rounded-full bg-primary px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white"
               onClick={closeMobileMenu}
             >
               {t.nav.bookAppointment}

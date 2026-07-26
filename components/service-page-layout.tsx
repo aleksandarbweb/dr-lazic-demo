@@ -62,23 +62,23 @@ export function ServicePageLayout({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-24">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-24">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <FadeUp>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-3xl">
               <Link
                 href="/usluge"
-                className="inline-flex items-center text-[#6b6b6b] text-sm hover:text-[#b91c1c] transition-colors mb-8 tracking-wide group"
+                className="inline-flex items-center text-muted-foreground text-sm hover:text-primary transition-colors mb-8 tracking-wide group"
               >
                 <ChevronRight size={16} className="rotate-180 mr-2 transition-transform group-hover:-translate-x-1" />
                 {t.servicePage.backToServices}
               </Link>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1a1a1a]">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
                 {title}
               </h1>
-              <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
-              <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed">
+              <div className="w-24 h-[2px] bg-primary mt-8" />
+              <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed">
                 {subtitle}
               </p>
               {pendingNotice && (
@@ -89,7 +89,7 @@ export function ServicePageLayout({
               )}
               <Link
                 href="/kontakt"
-                className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98] group"
+                className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] group"
               >
                 {t.servicePage.learnMore}
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-500 group-hover:-translate-y-[1px] group-hover:translate-x-1">
@@ -107,12 +107,12 @@ export function ServicePageLayout({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeUp delay={0.1}>
-                <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.aboutLabel}</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.aboutLabel}</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                   {aboutHeading || t.servicePage.aboutFallback}
                 </h2>
-                <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-                <p className="text-[#6b6b6b] leading-relaxed whitespace-pre-line font-light">
+                <div className="w-16 h-[2px] bg-primary mb-8" />
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line font-light">
                   {whatIsIt}
                 </p>
               </FadeUp>
@@ -140,13 +140,13 @@ export function ServicePageLayout({
                   </>
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center bg-[#f5f3f0]">
-                    <span className="text-[#6b6b6b]">Slika tretmana</span>
+                    <span className="text-muted-foreground">Slika tretmana</span>
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#24160f]/15 via-transparent to-transparent" />
               </div>
-              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-[#b91c1c]/60" />
-              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-[#b91c1c]/60" />
+              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-primary/60" />
+              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-primary/60" />
             </FadeUp>
           </div>
         </div>
@@ -154,29 +154,29 @@ export function ServicePageLayout({
 
       {/* Detailed Sections — only rendered when a service needs more than one flowing "what is it" paragraph */}
       {whatIsItSections && whatIsItSections.length > 0 && (
-        <section className="bg-[#faf9f7] py-20 md:py-28">
+        <section className="bg-background py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <FadeUp className="text-center mb-16">
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.detailsLabel}</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.detailsLabel}</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground">
                 {t.servicePage.detailsTitle}
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+              <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
             </FadeUp>
             <StaggerChildren className="max-w-4xl mx-auto space-y-12" staggerDelay={0.08}>
               {whatIsItSections.map((section, index) => (
                 <StaggerItem key={index}>
-                  <h3 className="font-serif text-xl md:text-2xl text-[#1a1a1a] mb-4">{section.heading}</h3>
-                  <div className="w-10 h-[2px] bg-[#b91c1c]/60 mb-5" />
+                  <h3 className="font-serif text-xl md:text-2xl text-foreground mb-4">{section.heading}</h3>
+                  <div className="w-10 h-[2px] bg-primary/60 mb-5" />
                   {section.body && (
-                    <p className="text-[#6b6b6b] leading-relaxed font-light">{section.body}</p>
+                    <p className="text-muted-foreground leading-relaxed font-light">{section.body}</p>
                   )}
                   {section.items && section.items.length > 0 && (
                     <ul className="mt-4 space-y-4">
                       {section.items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start gap-4">
-                          <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
-                          <span className="text-[#6b6b6b] font-light leading-relaxed">{item}</span>
+                          <span className="w-2 h-2 bg-primary mt-2 flex-shrink-0" />
+                          <span className="text-muted-foreground font-light leading-relaxed">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -193,16 +193,16 @@ export function ServicePageLayout({
         <section className="bg-white py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <FadeUp className="text-center mb-16">
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.methodsLabel}</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.methodsLabel}</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground">
                 {t.servicePage.methodsTitle}
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+              <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
             </FadeUp>
             <StaggerChildren className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
               {methods.map((method, index) => (
                 <StaggerItem key={index}>
-                  <div className="h-full rounded-xl border border-[#e5e0da] bg-[#faf9f7] p-6 text-center">
+                  <div className="h-full rounded-xl border border-border bg-background p-6 text-center">
                     <p className="text-[#3d3832] font-light leading-relaxed">{method}</p>
                   </div>
                 </StaggerItem>
@@ -214,24 +214,24 @@ export function ServicePageLayout({
 
       {/* How It Works Section */}
       {howItWorks && howItWorks.length > 0 && (
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.processLabel}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.processLabel}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               {t.servicePage.howItWorks}
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </FadeUp>
           <StaggerChildren className="max-w-3xl mx-auto space-y-10" staggerDelay={0.1}>
             {howItWorks.map((step, index) => (
               <StaggerItem key={index}>
                 <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-[#b91c1c] font-serif text-2xl text-white shadow-lg">
+                  <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-primary font-serif text-2xl text-white shadow-lg">
                     {index + 1}
                   </div>
                   <div className="pt-3">
-                    <p className="text-[#6b6b6b] leading-relaxed font-light">{step}</p>
+                    <p className="text-muted-foreground leading-relaxed font-light">{step}</p>
                   </div>
                 </div>
               </StaggerItem>
@@ -249,18 +249,18 @@ export function ServicePageLayout({
             {idealCandidates && idealCandidates.length > 0 && (
             <div>
               <FadeUp>
-                <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.candidatesLabel}</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.candidatesLabel}</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                   {t.servicePage.forWhom}
                 </h2>
-                <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
+                <div className="w-16 h-[2px] bg-primary mb-8" />
               </FadeUp>
               <StaggerChildren className="space-y-5" staggerDelay={0.1}>
                 {idealCandidates.map((candidate, index) => (
                   <StaggerItem key={index}>
                     <div className="flex items-start gap-4">
-                      <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
-                      <span className="text-[#6b6b6b] font-light">{candidate}</span>
+                      <span className="w-2 h-2 bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground font-light">{candidate}</span>
                     </div>
                   </StaggerItem>
                 ))}
@@ -270,18 +270,18 @@ export function ServicePageLayout({
             {expectedResults && expectedResults.length > 0 && (
             <div>
               <FadeUp delay={0.2}>
-                <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.resultsLabel}</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.resultsLabel}</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                   {t.servicePage.expectedResults}
                 </h2>
-                <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
+                <div className="w-16 h-[2px] bg-primary mb-8" />
               </FadeUp>
               <StaggerChildren className="space-y-5" staggerDelay={0.1}>
                 {expectedResults.map((result, index) => (
                   <StaggerItem key={index}>
                     <div className="flex items-start gap-4">
-                      <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
-                      <span className="text-[#6b6b6b] font-light">{result}</span>
+                      <span className="w-2 h-2 bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground font-light">{result}</span>
                     </div>
                   </StaggerItem>
                 ))}
@@ -295,28 +295,28 @@ export function ServicePageLayout({
 
       {/* FAQ Section */}
       {faqs && faqs.length > 0 && (
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.faqLabel}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.faqLabel}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               {t.servicePage.faqTitle}
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </FadeUp>
           <StaggerChildren className="space-y-4" staggerDelay={0.08}>
             {faqs.map((faq, index) => (
               <StaggerItem key={index}>
-                <div className="border border-[#e5e0da] bg-white shadow-sm transition-shadow hover:shadow-md">
+                <div className="border border-border bg-white shadow-sm transition-shadow hover:shadow-md">
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     aria-expanded={openFaq === index}
-                    className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                    className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                   >
-                    <span className="text-[#1a1a1a] font-medium pr-4">{faq.question}</span>
+                    <span className="text-foreground font-medium pr-4">{faq.question}</span>
                     <ChevronDown
                       size={20}
-                      className={`text-[#b91c1c] transition-transform duration-300 flex-shrink-0 ${
+                      className={`text-primary transition-transform duration-300 flex-shrink-0 ${
                         openFaq === index ? 'rotate-180' : ''
                       }`}
                     />
@@ -325,8 +325,8 @@ export function ServicePageLayout({
                     className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
                     style={{ maxHeight: openFaq === index ? '500px' : '0', opacity: openFaq === index ? 1 : 0 }}
                   >
-                    <div className="px-6 pb-6 pt-2 border-t border-[#e5e0da] mx-6">
-                      <p className="text-[#6b6b6b] leading-relaxed font-light">{faq.answer}</p>
+                    <div className="px-6 pb-6 pt-2 border-t border-border mx-6">
+                      <p className="text-muted-foreground leading-relaxed font-light">{faq.answer}</p>
                     </div>
                   </div>
                 </div>
@@ -341,24 +341,24 @@ export function ServicePageLayout({
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.exploreLabel}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.exploreLabel}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               {t.servicePage.relatedTitle}
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </FadeUp>
           <StaggerChildren className="grid grid-cols-1 gap-6 md:grid-cols-3" staggerDelay={0.1}>
             {relatedServices.map((service) => (
               <StaggerItem key={service.href}>
                 <Link
                   href={service.href}
-                  className="group block rounded-[1.5rem] border border-[#e5e0da] bg-[#faf9f7] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[#b91c1c]/50 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 relative overflow-hidden"
+                  className="group block rounded-[1.5rem] border border-border bg-background p-8 transition-all duration-500 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 relative overflow-hidden"
                 >
-                  <div className="absolute left-0 top-0 h-[3px] w-0 bg-[#b91c1c] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:w-full" />
-                  <h3 className="text-[#1a1a1a] font-medium mb-3 group-hover:text-[#b91c1c] transition-colors">
+                  <div className="absolute left-0 top-0 h-[3px] w-0 bg-primary transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:w-full" />
+                  <h3 className="text-foreground font-medium mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <span className="text-[#b91c1c] text-sm inline-flex items-center gap-2 font-medium">
+                  <span className="text-primary text-sm inline-flex items-center gap-2 font-medium">
                     {t.servicePage.learnMore}
                     <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </span>
@@ -370,7 +370,7 @@ export function ServicePageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-[#b91c1c] py-20">
+      <section className="relative overflow-hidden bg-primary py-20">
         <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
 
@@ -385,7 +385,7 @@ export function ServicePageLayout({
             </p>
             <Link
               href="/kontakt"
-              className="group inline-flex items-center justify-center gap-3 bg-white text-[#b91c1c] px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-[#faf9f7] hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
+              className="group inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-background hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
             >
               {t.servicePage.contactUs}
               <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>

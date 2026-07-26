@@ -185,10 +185,10 @@ export default function HomePage() {
       <section className="relative min-h-[100dvh] overflow-hidden bg-[#faf9f6]">
         {/* Abstract Background Elements */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[5%] top-[15%] h-64 w-px bg-gradient-to-b from-transparent via-[#b91c1c]/20 to-transparent" />
-          <div className="absolute right-[10%] top-[20%] h-96 w-px bg-gradient-to-b from-transparent via-[#b91c1c]/15 to-transparent" />
+          <div className="absolute left-[5%] top-[15%] h-64 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
+          <div className="absolute right-[10%] top-[20%] h-96 w-px bg-gradient-to-b from-transparent via-primary/15 to-transparent" />
           <div className="absolute left-[20%] top-[10%] h-[1px] w-48 bg-gradient-to-r from-transparent via-[#d6cec4] to-transparent" />
-          <div className="absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-[#b91c1c]/[0.02] blur-3xl" />
+          <div className="absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/[0.02] blur-3xl" />
         </div>
 
         <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-7xl items-center px-6 pb-16 pt-32 sm:px-8 lg:px-12 lg:pt-36">
@@ -199,7 +199,7 @@ export default function HomePage() {
                 initial={shouldReduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mb-6 inline-flex rounded-full border border-[#b91c1c]/20 bg-white/80 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-[#b91c1c]"
+                className="mb-6 inline-flex rounded-full border border-primary/20 bg-white/80 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-primary"
               >
                 {t.home.hero.badge}
               </motion.p>
@@ -229,7 +229,7 @@ export default function HomePage() {
               >
                 <Link
                   href="/kontakt"
-                  className="group inline-flex items-center justify-center gap-3 pl-5 pr-2.5 py-2.5 rounded-full bg-[#b91c1c] text-xs font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
+                  className="group inline-flex items-center justify-center gap-3 pl-5 pr-2.5 py-2.5 rounded-full bg-primary text-xs font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   <span>{t.home.hero.ctaPrimary}</span>
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
@@ -259,7 +259,7 @@ export default function HomePage() {
                     className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#7a756f]"
                   >
                     {i > 0 && <span className="text-[#d6cec4]" aria-hidden="true">·</span>}
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#b91c1c]/40" />
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/40" />
                     {item}
                   </span>
                 ))}
@@ -288,13 +288,13 @@ export default function HomePage() {
                 initial={shouldReduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute -left-6 -top-6 h-24 w-24 border-l-2 border-t-2 border-[#b91c1c]/30"
+                className="absolute -left-6 -top-6 h-24 w-24 border-l-2 border-t-2 border-primary/30"
               />
               <motion.div
                 initial={shouldReduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
-                className="absolute -bottom-6 -right-6 h-24 w-24 border-b-2 border-r-2 border-[#b91c1c]/30"
+                className="absolute -bottom-6 -right-6 h-24 w-24 border-b-2 border-r-2 border-primary/30"
               />
             </motion.div>
           </div>
@@ -307,7 +307,7 @@ export default function HomePage() {
       <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#b91c1c] md:mb-12">
+            <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary md:mb-12">
               {t.home.trustEyebrow}
             </p>
           </FadeUp>
@@ -316,14 +316,14 @@ export default function HomePage() {
               <StaggerItem key={stat.label}>
                 <div
                   className={`relative text-center ${
-                    index < t.home.stats.length - 1 ? 'md:border-r md:border-[#e5e0da]' : ''
+                    index < t.home.stats.length - 1 ? 'md:border-r md:border-border' : ''
                   }`}
                 >
-                  <div className="mx-auto mb-4 h-[2px] w-6 bg-[#b91c1c]/30" />
-                  <p className="font-serif text-5xl tabular-nums text-[#b91c1c] md:text-6xl">
+                  <div className="mx-auto mb-4 h-[2px] w-6 bg-primary/30" />
+                  <p className="font-serif text-5xl tabular-nums text-primary md:text-6xl">
                     {stat.value}
                   </p>
-                  <p className="mt-3 text-sm font-light leading-relaxed tracking-wide text-[#6b6b6b]">
+                  <p className="mt-3 text-sm font-light leading-relaxed tracking-wide text-muted-foreground">
                     {stat.label}
                   </p>
                 </div>
@@ -339,7 +339,7 @@ export default function HomePage() {
       <section className="bg-[#f7f4ee] py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-4 text-center text-sm tracking-[0.2em] uppercase text-[#b91c1c]">
+            <p className="mb-4 text-center text-sm tracking-[0.2em] uppercase text-primary">
               {t.home.servicesSection.eyebrow}
             </p>
             <SectionTitle
@@ -385,9 +385,9 @@ export default function HomePage() {
             {/* Swipe hint for mobile */}
             <div className="mt-3 flex flex-col items-center gap-2 md:hidden">
               <div className="flex justify-center gap-1.5">
-                <div className="h-1 w-8 rounded-full bg-[#b91c1c]/20" />
-                <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
-                <div className="h-1 w-1.5 rounded-full bg-[#b91c1c]/10" />
+                <div className="h-1 w-8 rounded-full bg-primary/20" />
+                <div className="h-1 w-1.5 rounded-full bg-primary/10" />
+                <div className="h-1 w-1.5 rounded-full bg-primary/10" />
               </div>
               <p className="text-[11px] uppercase tracking-[0.15em] text-[#9b948c]">
                 {t.home.servicesSection.swipeMobile}
@@ -415,14 +415,14 @@ export default function HomePage() {
           <div className="absolute left-1/4 top-0 h-full w-px bg-white/[0.03]" />
           <div className="absolute right-1/4 top-0 h-full w-px bg-white/[0.03]" />
           {/* Soft radial glow behind quote */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-[#b91c1c]/[0.03] blur-[100px]" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-primary/[0.03] blur-[100px]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl text-center">
             <FadeUp delay={0}>
               <div className="mb-10 flex justify-center">
-                <div className="h-12 w-[1px] bg-[#b91c1c]" />
+                <div className="h-12 w-[1px] bg-primary" />
               </div>
             </FadeUp>
 
@@ -480,7 +480,7 @@ export default function HomePage() {
       <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-10 text-center text-sm uppercase tracking-[0.2em] text-[#6b6b6b]">{t.home.equipmentTitle}</p>
+            <p className="mb-10 text-center text-sm uppercase tracking-[0.2em] text-muted-foreground">{t.home.equipmentTitle}</p>
           </FadeUp>
           <Link
             href="/oprema"
@@ -564,14 +564,14 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#faf6f1] py-20 md:py-32 border-y border-[#e5ddd3]">
         {/* Layered Decorative Elements — soft, not solid red */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b91c1c]/[0.04]" />
-          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-[#b91c1c]/[0.04]" />
-          <div className="absolute left-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#b91c1c]/[0.02]" />
+          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.04]" />
+          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-primary/[0.04]" />
+          <div className="absolute left-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/[0.02]" />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <FadeUp>
-            <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6">{t.home.cta.subtitle}</p>
+            <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6">{t.home.cta.subtitle}</p>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#181512] tracking-wide">
@@ -592,7 +592,7 @@ export default function HomePage() {
             >
               <Link
                 href="/kontakt"
-                className="group mx-auto inline-flex items-center justify-between rounded-full bg-[#b91c1c] px-3 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf6f1] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:gap-5 sm:pl-8 sm:pr-3"
+                className="group mx-auto inline-flex items-center justify-between rounded-full bg-primary px-3 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf6f1] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:gap-5 sm:pl-8 sm:pr-3"
               >
                 <span>{t.home.cta.button}</span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">

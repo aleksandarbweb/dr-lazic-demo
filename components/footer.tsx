@@ -19,15 +19,15 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#1a1a1a]">
+    <footer className="bg-foreground">
       {/* Top Decorative Line */}
-      <div className="h-1 bg-[#b91c1c]" />
+      <div className="h-1 bg-primary" />
 
       <div className="max-w-7xl mx-auto px-6 py-16 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:gap-16 md:grid-cols-3">
           {/* Logo & Tagline */}
           <div className="flex flex-col items-start">
-            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 -ml-4 md:-ml-6 lg:-ml-8">
+            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 -ml-4 md:-ml-6 lg:-ml-8">
               <Image
                 src="/images/Logos/dr terzic beli logo.png"
                 alt="Dr Terzić"
@@ -44,10 +44,10 @@ export function Footer() {
               href="https://www.instagram.com/dr.terzic" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="group flex items-center gap-3 text-white/60 hover:text-[#b91c1c] transition-colors duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70 rounded-sm"
+              className="group flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-sm"
               title="Pratite nas na Instagramu"
             >
-              <div className="flex items-center justify-center p-2 rounded-full border border-white/20 group-hover:border-[#b91c1c] transition-colors duration-400">
+              <div className="flex items-center justify-center p-2 rounded-full border border-white/20 group-hover:border-primary transition-colors duration-400">
                 <Instagram size={14} strokeWidth={2} />
               </div>
               <span className="text-[11px] font-medium tracking-[0.2em] uppercase">@dr.terzic</span>
@@ -64,7 +64,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-light text-white/60 transition-colors duration-300 hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                    className="text-sm font-light text-white/60 transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                   >
                     {t.nav[link.translationKey]}
                   </Link>
@@ -80,7 +80,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-5">
               <li className="flex items-start gap-4">
-                <MapPin size={18} className="text-[#b91c1c] flex-shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-white/60 text-sm font-light">
                   <p>Kosovska 51, Beograd, 11000</p>
                   <div className="flex items-center gap-2 mt-1.5">
@@ -88,7 +88,7 @@ export function Footer() {
                       href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                     >
                       Google Maps
                     </a>
@@ -97,7 +97,7 @@ export function Footer() {
                       href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                     >
                       Apple Maps
                     </a>
@@ -105,25 +105,25 @@ export function Footer() {
                 </div>
               </li>
               <li className="flex items-center gap-4">
-                <Phone size={18} className="text-[#b91c1c] flex-shrink-0" />
+                <Phone size={18} className="text-primary flex-shrink-0" />
                 <a
                   href="tel:+381628412909"
-                  className="text-sm font-light text-white/60 transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                  className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
                   +381 62 841 29 09
                 </a>
               </li>
               <li className="flex items-center gap-4">
-                <Mail size={18} className="text-[#b91c1c] flex-shrink-0" />
+                <Mail size={18} className="text-primary flex-shrink-0" />
                 <a
                   href="mailto:mdterzic@gmail.com"
-                  className="text-sm font-light text-white/60 transition-colors hover:text-[#b91c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                  className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
                   mdterzic@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-4">
-                <Clock size={18} className="text-[#b91c1c] flex-shrink-0 mt-0.5" />
+                <Clock size={18} className="text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-white/60 text-sm font-light">
                   <p>{t.footer.monFri} 10:00 - 18:00</p>
                   <p>{t.footer.satSun}</p>

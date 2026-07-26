@@ -60,28 +60,28 @@ export default function LaserskiTretmanStrijaPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-24">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-24">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <Link 
               href="/usluge" 
-              className="inline-flex items-center text-[#6b6b6b] text-sm hover:text-[#b91c1c] transition-colors mb-8 tracking-wide"
+              className="inline-flex items-center text-muted-foreground text-sm hover:text-primary transition-colors mb-8 tracking-wide"
             >
               <ChevronRight size={16} className="rotate-180 mr-2" />
               Nazad na usluge
             </Link>
             <div className="flex items-center gap-5 mb-6">
               <div className="h-6 w-px bg-[#d6cec4]" />
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#b91c1c]">Laserski tretmani</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">Laserski tretmani</p>
             </div>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1a1a1a]">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
               Tretman Strija
               <br />
               <span className="italic text-[#342f2a]">Nd:YAG & Er:YAG</span>
             </h1>
-            <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
-            <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
+            <div className="w-24 h-[2px] bg-primary mt-8" />
+            <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
               Savremena laserska terapija koja stimuliše sintezu novog kolagena, efikasno tretirajući strije u svim fazama, od crvenih do hroničnih belih ožiljaka.
             </p>
             <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 max-w-[56ch]">
@@ -92,7 +92,7 @@ export default function LaserskiTretmanStrijaPage() {
             </div>
             <Link
               href="/kontakt"
-              className="mt-10 inline-flex rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98]"
+              className="mt-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
             >
               Saznajte više
             </Link>
@@ -105,12 +105,12 @@ export default function LaserskiTretmanStrijaPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">O indikaciji</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">O indikaciji</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Razumevanje Strija
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-              <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
+              <div className="w-16 h-[2px] bg-primary mb-8" />
+              <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                 <p>
                   Strije (Striae distensae) su zapravo linearni ožiljci u dubljem sloju kože, dermisu. Nastaju usled naglog, prebrzog ili prevelikog rastezanja kože čime se trajno oštećuju kolagena i elastična vlakna vezivnog tkiva.
                 </p>
@@ -119,10 +119,10 @@ export default function LaserskiTretmanStrijaPage() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
                   {phases.map((phase) => (
-                    <div key={phase.name} className="p-4 bg-[#faf9f7] border border-[#e5e0da] rounded-xl text-center">
-                       <p className="text-[10px] uppercase tracking-widest text-[#b91c1c] mb-1">{phase.name}</p>
-                       <p className="text-xs font-medium text-[#1a1a1a]">{phase.color}</p>
-                       <p className="text-[10px] italic text-[#6b6b6b] mt-1">{phase.scientific}</p>
+                    <div key={phase.name} className="p-4 bg-background border border-border rounded-xl text-center">
+                       <p className="text-[10px] uppercase tracking-widest text-primary mb-1">{phase.name}</p>
+                       <p className="text-xs font-medium text-foreground">{phase.color}</p>
+                       <p className="text-[10px] italic text-muted-foreground mt-1">{phase.scientific}</p>
                     </div>
                   ))}
                 </div>
@@ -149,31 +149,31 @@ export default function LaserskiTretmanStrijaPage() {
                    />
                 </div>
               </div>
-              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-[#b91c1c]/60" />
-              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-[#b91c1c]/60" />
+              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-primary/60" />
+              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-primary/60" />
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Proces</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Proces</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Kako Funkcioniše Terapija
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="max-w-3xl mx-auto">
             {howItWorks.map((step, index) => (
               <div key={index} className="flex gap-8 mb-10 last:mb-0">
-                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-[#b91c1c] font-serif text-2xl text-white shadow-lg">
+                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-primary font-serif text-2xl text-white shadow-lg">
                   {index + 1}
                 </div>
                 <div className="pt-3">
-                  <p className="text-[#6b6b6b] leading-relaxed font-light">{step}</p>
+                  <p className="text-muted-foreground leading-relaxed font-light">{step}</p>
                 </div>
               </div>
             ))}
@@ -185,12 +185,12 @@ export default function LaserskiTretmanStrijaPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="bg-[#faf9f7] p-8 md:p-12 rounded-[2.5rem] border border-[#e5e0da]">
+            <div className="bg-background p-8 md:p-12 rounded-[2.5rem] border border-border">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-full bg-[#b91c1c]/10 flex items-center justify-center">
-                  <Sparkles size={24} className="text-[#b91c1c]" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Sparkles size={24} className="text-primary" />
                 </div>
-                <h3 className="font-serif text-2xl text-[#1a1a1a]">Očekivani Rezultati</h3>
+                <h3 className="font-serif text-2xl text-foreground">Očekivani Rezultati</h3>
               </div>
               <ul className="space-y-4">
                 {[
@@ -201,19 +201,19 @@ export default function LaserskiTretmanStrijaPage() {
                   'Postepen i prirodan napredak mesecima nakon sesija'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 bg-[#b91c1c] rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-[#6b6b6b] font-light text-sm leading-relaxed">{item}</span>
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                    <span className="text-muted-foreground font-light text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Oporavak</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Oporavak</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Bezbolno i Kratko
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-              <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
+              <div className="w-16 h-[2px] bg-primary mb-8" />
+              <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                 <p>
                   Tretmani laserom se odlično podnose. Reakcija kože je crvenilo, praćeno osećajem blagog peckanja koji podseća na blagu sunčanicu.
                 </p>
@@ -227,36 +227,36 @@ export default function LaserskiTretmanStrijaPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Često Postavljana Pitanja
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className="border border-[#e5e0da] bg-white shadow-sm"
+                className="border border-border bg-white shadow-sm"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
-                  <span className="text-[#1a1a1a] font-medium pr-4">{faq.question}</span>
+                  <span className="text-foreground font-medium pr-4">{faq.question}</span>
                   <ChevronDown 
                     size={20} 
-                    className={`text-[#b91c1c] transition-transform flex-shrink-0 ${
+                    className={`text-primary transition-transform flex-shrink-0 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`} 
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-6 border-t border-[#e5e0da]">
-                    <p className="text-[#6b6b6b] leading-relaxed pt-5 font-light">{faq.answer}</p>
+                  <div className="px-6 pb-6 border-t border-border">
+                    <p className="text-muted-foreground leading-relaxed pt-5 font-light">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -266,7 +266,7 @@ export default function LaserskiTretmanStrijaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-[#b91c1c] py-20">
+      <section className="relative overflow-hidden bg-primary py-20">
         <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
         
@@ -280,7 +280,7 @@ export default function LaserskiTretmanStrijaPage() {
           </p>
           <Link
             href="/kontakt"
-            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#b91c1c] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#faf9f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#b91c1c] active:scale-[0.98]"
+            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-primary transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:scale-[0.98]"
           >
             Kontaktirajte nas
           </Link>

@@ -174,14 +174,25 @@ handling) and were dropped from this list. Ordered by impact-to-effort, highest 
    single visual-craft lever in the whole plan. Don't redesign everything, pick 2-3 more sections
    (candidates: the doctors section, the equipment page hero, the O nama story section) and give
    them the same editorial treatment.
-7. **No design-token system, hardcoded hex everywhere.** Verified 2026-07-23, `#b91c1c`/`#faf9f7`/
-   `#6b6b6b`/`#e5e0da` etc. are still hardcoded per-file (hundreds of occurrences), `--radius: 0px`
-   sits unused in tokens while components hardcode radii, producing the two competing geometry
-   languages (pill buttons + rounded card frames on home/oprema vs. sharp chips/square fields on
-   usluge/galerija/kontakt) noted in the original audit. This is what makes every future
-   "Marta wants a different red" conversation a 40-file grep-and-pray instead of a one-line change,
-   worth doing specifically because client color/style feedback has already happened twice this
-   project and will keep happening.
+7. ~~No design-token system, hardcoded hex everywhere.~~ **Partially fixed 2026-07-26** — the 5
+   dominant, sitewide-repeated colors (`#b91c1c` red/397 occurrences, `#1a1a1a` dark text/128,
+   `#6b6b6b` gray text/99, `#faf9f7` cream bg/71, `#e5e0da` border/60 — ~755 of roughly 1,000 total
+   hardcoded hex occurrences) now route through the `primary`/`foreground`/`muted-foreground`/
+   `background`/`border` Tailwind tokens that were already defined in `app/globals.css` `:root` but
+   sitting unused. A future "Marta wants a different red" is now a one-line `:root` edit for the
+   overwhelming majority of the site. **Deliberately left alone** (not folded into this pass, since
+   the ask was zero visible change and these need actual judgment calls): ~30 one-off decorative
+   hex values (hero background glows/gradients, the separate warmer palette introduced in the
+   redesigned homepage hero e.g. `#27221d`/`#2a2420`/`#f7f4ee`) — each used in only 1-20 places, not
+   really "the palette"; and a **latent inconsistency worth flagging**: there are two different
+   hover-red shades in use, `#991b1b` (9 files: navbar, footer's scroll-to-top, kontakt, several
+   service pages) and `#9f1818` (4 files: homepage hero/CTA, error/not-found pages) — unifying these
+   would be a real (if subtle) visual change, not a zero-risk token swap, so left as-is pending a
+   decision on which one is correct. The `--radius: 0px` vs. hardcoded-radii geometry-language split
+   also remains untouched — that's a design decision (item #6/#5 territory), not a token-plumbing
+   fix. Verified zero visual regression: `npx tsc --noEmit` and `npm run build` clean; confirmed via
+   live `getComputedStyle` that `bg-primary`/`border-border` resolve to the exact original
+   `rgb(185,28,28)`/`rgb(229,224,218)`; screenshotted `/usluge` before/after, pixel-identical.
 8. ~~Footer logo is still oversized.~~ **Closed 2026-07-26, won't fix** — shrunk it, Aleksandar
    reviewed on production and preferred the original large size, reverted back to `h-28`–`h-40`.
    The large logo is a deliberate client preference, not a bug. Don't re-flag this.
@@ -1532,3 +1543,16 @@ Unchanged policy: raise with the client, don't build unprompted.
   especially for anything in the "distinctive art direction" / visual-craft category (items #2, #5,
   #6, #7 on this list) as opposed to purely mechanical/technical fixes (like #1's metadata, which
   has no subjective judgment call).
+- 2026-07-26 (later still) — **Shipped #7, design tokens, after explaining #5/#6/#7's concrete
+  before/after and letting Aleksandar pick** (he chose only #7, explicitly because it's the one
+  with zero visible-change risk, per the lesson above). Inventoried every hardcoded hex value
+  sitewide first (`grep -rhoE '#[0-9a-fA-F]{3,6}'`, ~40 distinct values). Routed the top 5 — which
+  already had exact-matching unused tokens in `app/globals.css` `:root` — through Tailwind's
+  `bg-primary`/`text-foreground`/`text-muted-foreground`/`bg-background`/`border-border` utilities
+  across 26 files (600 lines changed, all 1:1 swaps of `-[#hex]` arbitrary values to the token
+  name, done with a scripted `perl -pi -e` pass, not by hand). Left `lib/site-gate.ts` alone — it's
+  a standalone inline-HTML string for the password lock screen that doesn't load the app's
+  stylesheet, so CSS custom properties aren't in scope there. Full detail on what was deliberately
+  left out of scope (one-off decorative hex, the two-hover-red-shades inconsistency, the
+  radius/geometry-language split) is in item #7 above. Verified with `tsc`/`build` plus a live
+  `getComputedStyle` check and a visual screenshot comparison — confirmed pixel-identical.

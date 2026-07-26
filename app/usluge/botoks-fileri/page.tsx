@@ -76,25 +76,25 @@ export default function BotoksFilerPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-24">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-24">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <Link 
               href="/usluge" 
-              className="inline-flex items-center text-[#6b6b6b] text-sm hover:text-[#b91c1c] transition-colors mb-8 tracking-wide"
+              className="inline-flex items-center text-muted-foreground text-sm hover:text-primary transition-colors mb-8 tracking-wide"
             >
               <ChevronRight size={16} className="rotate-180 mr-2" />
               Nazad na usluge
             </Link>
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#b91c1c] mb-4">Estetska dermatologija</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1a1a1a]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary mb-4">Estetska dermatologija</p>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
               Botoks
               <br />
               <span className="italic text-[#342f2a]">i Hijaluronski Fileri</span>
             </h1>
-            <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
-            <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
+            <div className="w-24 h-[2px] bg-primary mt-8" />
+            <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
               Precizna korekcija bora, vraćanje volumena i konturisanje lica premium Allergan preparatima, najčešće izvođena estetska procedura na svetu.
             </p>
             <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 max-w-[56ch]">
@@ -105,7 +105,7 @@ export default function BotoksFilerPage() {
             </div>
             <Link
               href="/kontakt"
-              className="mt-10 inline-flex rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98]"
+              className="mt-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
             >
               Saznajte više
             </Link>
@@ -118,12 +118,12 @@ export default function BotoksFilerPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">O tretmanu</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">O tretmanu</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Botoks i Fileri: Šta Trebate Znati
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-              <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
+              <div className="w-16 h-[2px] bg-primary mb-8" />
+              <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                 <p>
                   <strong className="text-[#3d3832] font-medium">Botulinski toksin</strong> se koristi za korigovanje bora u gornjoj trećini lica, nastalih kao posledica kontrakcije mimičnih mišića. Bore između obrva daju ljutit izraz, bore oko očiju i horizontalne bore na čelu čine da lice izgleda starije, a spušteni spoljašnji krajevi obrva daju tužan izraz.
                 </p>
@@ -159,38 +159,38 @@ export default function BotoksFilerPage() {
                    />
                 </div>
               </div>
-              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-[#b91c1c]/60" />
-              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-[#b91c1c]/60" />
+              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-primary/60" />
+              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-primary/60" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Two Methods Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Proces</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Proces</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Kako Funkcioniše
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Botoks Card */}
             <div className="rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
               <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10 h-full">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-3">Botulinski toksin</p>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Botoks: VISTABEL®</h3>
-                <div className="w-12 h-[2px] bg-[#b91c1c] mb-6" />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-3">Botulinski toksin</p>
+                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-6">Botoks: VISTABEL®</h3>
+                <div className="w-12 h-[2px] bg-primary mb-6" />
                 <div className="space-y-6">
                   {botoksSteps.map((step, index) => (
                     <div key={index} className="flex gap-5">
-                      <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#b91c1c] font-serif text-lg text-white shadow-sm">
+                      <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary font-serif text-lg text-white shadow-sm">
                         {index + 1}
                       </div>
-                      <p className="text-[#6b6b6b] leading-relaxed font-light pt-2">{step}</p>
+                      <p className="text-muted-foreground leading-relaxed font-light pt-2">{step}</p>
                     </div>
                   ))}
                 </div>
@@ -200,16 +200,16 @@ export default function BotoksFilerPage() {
             {/* Fileri Card */}
             <div className="rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
               <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10 h-full">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b91c1c] mb-3">Dermalni fileri</p>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#1a1a1a] mb-6">Fileri: Juvederm®</h3>
-                <div className="w-12 h-[2px] bg-[#b91c1c] mb-6" />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-3">Dermalni fileri</p>
+                <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-6">Fileri: Juvederm®</h3>
+                <div className="w-12 h-[2px] bg-primary mb-6" />
                 <div className="space-y-6">
                   {filerSteps.map((step, index) => (
                     <div key={index} className="flex gap-5">
-                      <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#b91c1c] font-serif text-lg text-white shadow-sm">
+                      <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary font-serif text-lg text-white shadow-sm">
                         {index + 1}
                       </div>
-                      <p className="text-[#6b6b6b] leading-relaxed font-light pt-2">{step}</p>
+                      <p className="text-muted-foreground leading-relaxed font-light pt-2">{step}</p>
                     </div>
                   ))}
                 </div>
@@ -220,7 +220,7 @@ export default function BotoksFilerPage() {
           {/* Post-treatment Recommendations */}
           <div className="mt-10 rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
             <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10">
-              <h3 className="font-serif text-xl md:text-2xl text-[#1a1a1a] mb-6">Preporuke Nakon Tretmana</h3>
+              <h3 className="font-serif text-xl md:text-2xl text-foreground mb-6">Preporuke Nakon Tretmana</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
                 {[
                   '6 sati nakon tretmana biti u uspravnom položaju',
@@ -231,8 +231,8 @@ export default function BotoksFilerPage() {
                   'Za usne: 24h izbegavati tople napitke, pušenje i alkohol'
                 ].map((rec, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 bg-[#b91c1c] mt-2 flex-shrink-0 rounded-full" />
-                    <span className="text-[#6b6b6b] font-light text-sm">{rec}</span>
+                    <span className="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0 rounded-full" />
+                    <span className="text-muted-foreground font-light text-sm">{rec}</span>
                   </div>
                 ))}
               </div>
@@ -246,31 +246,31 @@ export default function BotoksFilerPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Idealni kandidati</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Idealni kandidati</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Za Koga Je Tretman
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
+              <div className="w-16 h-[2px] bg-primary mb-8" />
               <ul className="space-y-5">
                 {idealCandidates.map((candidate, index) => (
                   <li key={index} className="flex items-start gap-4">
-                    <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
-                    <span className="text-[#6b6b6b] font-light">{candidate}</span>
+                    <span className="w-2 h-2 bg-primary mt-2 flex-shrink-0" />
+                    <span className="text-muted-foreground font-light">{candidate}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Rezultati</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Rezultati</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Očekivani Rezultati
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
+              <div className="w-16 h-[2px] bg-primary mb-8" />
               <ul className="space-y-5">
                 {expectedResults.map((result, index) => (
                   <li key={index} className="flex items-start gap-4">
-                    <span className="w-2 h-2 bg-[#b91c1c] mt-2 flex-shrink-0" />
-                    <span className="text-[#6b6b6b] font-light">{result}</span>
+                    <span className="w-2 h-2 bg-primary mt-2 flex-shrink-0" />
+                    <span className="text-muted-foreground font-light">{result}</span>
                   </li>
                 ))}
               </ul>
@@ -280,36 +280,36 @@ export default function BotoksFilerPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Često Postavljana Pitanja
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className="border border-[#e5e0da] bg-white shadow-sm"
+                className="border border-border bg-white shadow-sm"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
-                  <span className="text-[#1a1a1a] font-medium pr-4">{faq.question}</span>
+                  <span className="text-foreground font-medium pr-4">{faq.question}</span>
                   <ChevronDown 
                     size={20} 
-                    className={`text-[#b91c1c] transition-transform flex-shrink-0 ${
+                    className={`text-primary transition-transform flex-shrink-0 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`} 
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-6 border-t border-[#e5e0da]">
-                    <p className="text-[#6b6b6b] leading-relaxed pt-5 font-light">{faq.answer}</p>
+                  <div className="px-6 pb-6 border-t border-border">
+                    <p className="text-muted-foreground leading-relaxed pt-5 font-light">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -322,11 +322,11 @@ export default function BotoksFilerPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Istražite</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Istražite</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Povezane Usluge
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
@@ -337,12 +337,12 @@ export default function BotoksFilerPage() {
               <Link
                 key={service.href}
                 href={service.href}
-                className="group block rounded-[1.5rem] border border-[#e5e0da] bg-[#faf9f7] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[#b91c1c] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                className="group block rounded-[1.5rem] border border-border bg-background p-8 transition-all duration-500 hover:-translate-y-1 hover:border-primary hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
               >
-                <h3 className="text-[#1a1a1a] font-medium mb-3 group-hover:text-[#b91c1c] transition-colors">
+                <h3 className="text-foreground font-medium mb-3 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <span className="text-[#b91c1c] text-sm inline-flex items-center gap-2">
+                <span className="text-primary text-sm inline-flex items-center gap-2">
                   Saznajte više
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </span>
@@ -353,7 +353,7 @@ export default function BotoksFilerPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-[#b91c1c] py-20">
+      <section className="relative overflow-hidden bg-primary py-20">
         <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
         
@@ -367,7 +367,7 @@ export default function BotoksFilerPage() {
           </p>
           <Link
             href="/kontakt"
-            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#b91c1c] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#faf9f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#b91c1c] active:scale-[0.98]"
+            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-primary transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:scale-[0.98]"
           >
             Kontaktirajte nas
           </Link>

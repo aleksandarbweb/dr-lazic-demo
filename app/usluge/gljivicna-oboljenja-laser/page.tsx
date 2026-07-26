@@ -57,28 +57,28 @@ export default function GljivicnaOboljenjaLaserPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-24">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-24">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <Link 
               href="/usluge" 
-              className="inline-flex items-center text-[#6b6b6b] text-sm hover:text-[#b91c1c] transition-colors mb-8 tracking-wide"
+              className="inline-flex items-center text-muted-foreground text-sm hover:text-primary transition-colors mb-8 tracking-wide"
             >
               <ChevronRight size={16} className="rotate-180 mr-2" />
               Nazad na usluge
             </Link>
             <div className="flex items-center gap-5 mb-6">
               <div className="h-6 w-px bg-[#d6cec4]" />
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#b91c1c]">Laserski tretmani</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">Laserski tretmani</p>
             </div>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1a1a1a]">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
               Infekcije Noktiju
               <br />
               <span className="italic text-[#342f2a]">Laserska Terapija</span>
             </h1>
-            <div className="w-24 h-[2px] bg-[#b91c1c] mt-8" />
-            <p className="text-[#6b6b6b] text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
+            <div className="w-24 h-[2px] bg-primary mt-8" />
+            <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
               Savremena, neinvazivna i FDA odobrena metoda rešavanja gljivičnih infekcija nokatne ploče bez rizika po zdravlje jetre.
             </p>
             <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 max-w-[56ch]">
@@ -89,7 +89,7 @@ export default function GljivicnaOboljenjaLaserPage() {
             </div>
             <Link
               href="/kontakt"
-              className="mt-10 inline-flex rounded-full bg-[#b91c1c] px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c] focus-visible:ring-offset-2 active:scale-[0.98]"
+              className="mt-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
             >
               Saznajte više
             </Link>
@@ -102,12 +102,12 @@ export default function GljivicnaOboljenjaLaserPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Savremena metoda</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Savremena metoda</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                 Rešenje za Gljivice
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-              <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
+              <div className="w-16 h-[2px] bg-primary mb-8" />
+              <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                 <p>
                   Gljivična oboljenja nokatnih ploča ruku i nogu su vrlo čest i veliki problem zbog svoje upornosti, mogućnosti širenja i dugotrajne primene lekova koji mogu dovesti do oštećenja jetre.
                 </p>
@@ -140,33 +140,33 @@ export default function GljivicnaOboljenjaLaserPage() {
                    />
                 </div>
               </div>
-              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-[#b91c1c]/60" />
-              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-[#b91c1c]/60" />
+              <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-primary/60" />
+              <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-primary/60" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Advantages Banner */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Prednosti</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Prednosti</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Zašto Odabrati Laser
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {advantages.map((item, index) => (
               <div key={index} className="rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5">
                 <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 h-full">
-                  <div className="w-10 h-10 flex items-center justify-center bg-[#b91c1c] font-serif text-lg text-white shadow-sm mb-5">
+                  <div className="w-10 h-10 flex items-center justify-center bg-primary font-serif text-lg text-white shadow-sm mb-5">
                     {index + 1}
                   </div>
-                  <h3 className="font-serif text-xl text-[#1a1a1a] mb-3">{item.title}</h3>
-                  <p className="text-[#6b6b6b] font-light leading-relaxed text-sm">{item.desc}</p>
+                  <h3 className="font-serif text-xl text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground font-light leading-relaxed text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -178,20 +178,20 @@ export default function GljivicnaOboljenjaLaserPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Proces lečenja</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Proces lečenja</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Tok Terapije
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="max-w-3xl mx-auto">
             {processSteps.map((step, index) => (
               <div key={index} className="flex gap-8 mb-10 last:mb-0">
-                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-[#b91c1c] font-serif text-2xl text-white shadow-lg">
+                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-primary font-serif text-2xl text-white shadow-lg">
                   {index + 1}
                 </div>
                 <div className="pt-3">
-                  <p className="text-[#6b6b6b] leading-relaxed font-light">{step}</p>
+                  <p className="text-muted-foreground leading-relaxed font-light">{step}</p>
                 </div>
               </div>
             ))}
@@ -200,33 +200,33 @@ export default function GljivicnaOboljenjaLaserPage() {
       </section>
 
       {/* Results Section */}
-      <section className="bg-[#faf9f7] py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <div>
-                <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">Očekivanja</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a] mb-8">
+                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Očekivanja</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
                   Put do Zdravog Nokta
                 </h2>
-                <div className="w-16 h-[2px] bg-[#b91c1c] mb-8" />
-                <div className="text-[#6b6b6b] leading-relaxed font-light space-y-5">
+                <div className="w-16 h-[2px] bg-primary mb-8" />
+                <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                   <p>
                     Nakon završene serije od 4 tretmana, nokat nastavlja da raste svojom uobičajenom brzinom. Kako novi, zdravi nokat izrasta, oboleli i promenjeni deo se postepeno pomera ka periferiji dok se potpuno ne ukloni sečenjem.
                   </p>
                   <div className="bg-white p-6 border border-[#e3dad1] rounded-2xl flex items-start gap-4">
-                     <CheckCircle2 className="text-[#b91c1c] flex-shrink-0" />
+                     <CheckCircle2 className="text-primary flex-shrink-0" />
                      <p className="text-sm italic">Kontrola se zakazuje za 2 meseca kako bi se medicinski procenio napredak i rast nove nokatne ploče.</p>
                   </div>
                 </div>
              </div>
              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#e5e0da] text-center">
-                   <p className="text-3xl font-serif text-[#b91c1c] mb-2">4</p>
-                   <p className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">Tretmana</p>
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-border text-center">
+                   <p className="text-3xl font-serif text-primary mb-2">4</p>
+                   <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Tretmana</p>
                 </div>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#e5e0da] text-center">
-                   <p className="text-3xl font-serif text-[#b91c1c] mb-2">1x</p>
-                   <p className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">Nedeljno</p>
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-border text-center">
+                   <p className="text-3xl font-serif text-primary mb-2">1x</p>
+                   <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Nedeljno</p>
                 </div>
              </div>
           </div>
@@ -237,33 +237,33 @@ export default function GljivicnaOboljenjaLaserPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#1a1a1a]">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">
               Često Postavljana Pitanja
             </h2>
-            <div className="w-16 h-[2px] bg-[#b91c1c] mx-auto mt-6" />
+            <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className="border border-[#e5e0da] bg-[#faf9f7] shadow-sm"
+                className="border border-border bg-background shadow-sm"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+                  className="w-full flex items-center justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
-                  <span className="text-[#1a1a1a] font-medium pr-4">{faq.question}</span>
+                  <span className="text-foreground font-medium pr-4">{faq.question}</span>
                   <ChevronDown 
                     size={20} 
-                    className={`text-[#b91c1c] transition-transform flex-shrink-0 ${
+                    className={`text-primary transition-transform flex-shrink-0 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`} 
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-6 border-t border-[#e5e0da]">
-                    <p className="text-[#6b6b6b] leading-relaxed pt-5 font-light">{faq.answer}</p>
+                  <div className="px-6 pb-6 border-t border-border">
+                    <p className="text-muted-foreground leading-relaxed pt-5 font-light">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -273,7 +273,7 @@ export default function GljivicnaOboljenjaLaserPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-[#b91c1c] py-20">
+      <section className="relative overflow-hidden bg-primary py-20">
         <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
         
@@ -287,7 +287,7 @@ export default function GljivicnaOboljenjaLaserPage() {
           </p>
           <Link
             href="/kontakt"
-            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#b91c1c] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#faf9f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#b91c1c] active:scale-[0.98]"
+            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-primary transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:scale-[0.98]"
           >
             Kontaktirajte nas
           </Link>

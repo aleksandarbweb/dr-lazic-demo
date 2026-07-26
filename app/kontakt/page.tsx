@@ -19,17 +19,17 @@ export default function KontaktPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-20">
-        <div className="hidden md:block absolute right-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-20">
+        <div className="hidden md:block absolute right-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
             {t.kontakt.eyebrow}
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#1a1a1a]">
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
             {t.kontakt.title}
           </h1>
-          <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
-          <p className="text-[#6b6b6b] mt-8 max-w-xl mx-auto font-light">
+          <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
+          <p className="text-muted-foreground mt-8 max-w-xl mx-auto font-light">
             {t.kontakt.subtitle}
           </p>
         </div>
@@ -41,13 +41,13 @@ export default function KontaktPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.formEyebrow}</p>
-              <h2 className="font-serif text-3xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.formEyebrow}</p>
+              <h2 className="font-serif text-3xl text-foreground mb-8">
                 {t.kontakt.formTitle}
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-10" />
+              <div className="w-16 h-[2px] bg-primary mb-10" />
 
-              <div className="mb-8 p-5 bg-[#faf9f7] border border-[#e5e0da] text-[#6b6b6b] text-sm leading-relaxed">
+              <div className="mb-8 p-5 bg-background border border-border text-muted-foreground text-sm leading-relaxed">
                 {t.kontakt.formInterimMessage}
               </div>
 
@@ -55,14 +55,14 @@ export default function KontaktPage() {
               <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href="tel:+381628412909"
-                  className="flex items-center justify-center gap-2 bg-[#b91c1c] text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#991b1b] transition-colors"
+                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#991b1b] transition-colors"
                 >
                   <Phone size={16} />
                   {t.kontakt.callCta}
                 </a>
                 <a
                   href="mailto:mdterzic@gmail.com"
-                  className="flex items-center justify-center gap-2 border border-[#1a1a1a] text-[#1a1a1a] px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                  className="flex items-center justify-center gap-2 border border-foreground text-foreground px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-foreground hover:text-white transition-colors"
                 >
                   <Mail size={16} />
                   {t.kontakt.emailCta}
@@ -71,7 +71,7 @@ export default function KontaktPage() {
                   href="https://www.instagram.com/dr.terzic"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 border border-[#1a1a1a] text-[#1a1a1a] px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                  className="flex items-center justify-center gap-2 border border-foreground text-foreground px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-foreground hover:text-white transition-colors"
                 >
                   <Instagram size={16} />
                   {t.kontakt.instagramCta}
@@ -82,53 +82,53 @@ export default function KontaktPage() {
               <fieldset disabled aria-disabled="true" className="space-y-6 opacity-50 cursor-not-allowed">
                 <legend className="sr-only">{t.kontakt.formInterimMessage}</legend>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 tracking-wide">
                     {t.kontakt.nameLabel}
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
+                    className="w-full bg-background border border-border text-foreground px-5 py-4"
                     placeholder={t.kontakt.namePlaceholder}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 tracking-wide">
                       {t.kontakt.emailLabel}
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
+                      className="w-full bg-background border border-border text-foreground px-5 py-4"
                       placeholder={t.kontakt.emailPlaceholder}
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
+                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2 tracking-wide">
                       {t.kontakt.phoneLabel}
                     </label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
+                      className="w-full bg-background border border-border text-foreground px-5 py-4"
                       placeholder={t.kontakt.phonePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
+                  <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2 tracking-wide">
                     {t.kontakt.serviceLabel}
                   </label>
                   <select
                     id="service"
                     name="service"
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4"
+                    className="w-full bg-background border border-border text-foreground px-5 py-4"
                   >
                     <option value="">{t.kontakt.servicePlaceholder}</option>
                     {t.kontakt.services.map((service) => (
@@ -138,14 +138,14 @@ export default function KontaktPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-[#1a1a1a] mb-2 tracking-wide">
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 tracking-wide">
                     {t.kontakt.messageLabel}
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
-                    className="w-full bg-[#faf9f7] border border-[#e5e0da] text-[#1a1a1a] px-5 py-4 resize-none"
+                    className="w-full bg-background border border-border text-foreground px-5 py-4 resize-none"
                     placeholder={t.kontakt.messagePlaceholder}
                   />
                 </div>
@@ -154,27 +154,27 @@ export default function KontaktPage() {
 
             {/* Contact Info */}
             <div>
-              <p className="text-[#b91c1c] text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.infoEyebrow}</p>
-              <h2 className="font-serif text-3xl text-[#1a1a1a] mb-8">
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.kontakt.infoEyebrow}</p>
+              <h2 className="font-serif text-3xl text-foreground mb-8">
                 {t.kontakt.infoTitle}
               </h2>
-              <div className="w-16 h-[2px] bg-[#b91c1c] mb-10" />
+              <div className="w-16 h-[2px] bg-primary mb-10" />
 
               <div className="space-y-10">
                 {/* Address */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 flex items-center justify-center border border-[#e5e0da] flex-shrink-0">
-                    <MapPin size={24} className="text-[#b91c1c]" />
+                  <div className="w-14 h-14 flex items-center justify-center border border-border flex-shrink-0">
+                    <MapPin size={24} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.addressLabel}</h3>
-                    <p className="text-[#6b6b6b] font-light">Kosovska 51, Beograd, 11000</p>
+                    <h3 className="text-foreground font-medium mb-2">{t.kontakt.addressLabel}</h3>
+                    <p className="text-muted-foreground font-light">Kosovska 51, Beograd, 11000</p>
                     <div className="flex gap-3 mt-2 text-sm">
                       <a
                         href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors"
+                        className="text-muted-foreground font-light hover:text-primary transition-colors"
                       >
                         Google Maps
                       </a>
@@ -182,7 +182,7 @@ export default function KontaktPage() {
                         href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors"
+                        className="text-muted-foreground font-light hover:text-primary transition-colors"
                       >
                         Apple Maps
                       </a>
@@ -192,12 +192,12 @@ export default function KontaktPage() {
 
                 {/* Phone */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 flex items-center justify-center border border-[#e5e0da] flex-shrink-0">
-                    <Phone size={24} className="text-[#b91c1c]" />
+                  <div className="w-14 h-14 flex items-center justify-center border border-border flex-shrink-0">
+                    <Phone size={24} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.phoneContactLabel}</h3>
-                    <a href="tel:+381628412909" className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors">
+                    <h3 className="text-foreground font-medium mb-2">{t.kontakt.phoneContactLabel}</h3>
+                    <a href="tel:+381628412909" className="text-muted-foreground font-light hover:text-primary transition-colors">
                       +381 62 841 29 09
                     </a>
                   </div>
@@ -205,12 +205,12 @@ export default function KontaktPage() {
 
                 {/* Email */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 flex items-center justify-center border border-[#e5e0da] flex-shrink-0">
-                    <Mail size={24} className="text-[#b91c1c]" />
+                  <div className="w-14 h-14 flex items-center justify-center border border-border flex-shrink-0">
+                    <Mail size={24} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-[#1a1a1a] font-medium mb-2">{t.kontakt.emailContactLabel}</h3>
-                    <a href="mailto:mdterzic@gmail.com" className="text-[#6b6b6b] font-light hover:text-[#b91c1c] transition-colors">
+                    <h3 className="text-foreground font-medium mb-2">{t.kontakt.emailContactLabel}</h3>
+                    <a href="mailto:mdterzic@gmail.com" className="text-muted-foreground font-light hover:text-primary transition-colors">
                       mdterzic@gmail.com
                     </a>
                   </div>
@@ -218,16 +218,16 @@ export default function KontaktPage() {
 
                 {/* Working Hours */}
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 flex items-center justify-center border border-[#e5e0da] flex-shrink-0">
-                    <Clock size={24} className="text-[#b91c1c]" />
+                  <div className="w-14 h-14 flex items-center justify-center border border-border flex-shrink-0">
+                    <Clock size={24} className="text-primary" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-[#1a1a1a] font-medium mb-4">{t.kontakt.hoursLabel}</h3>
+                    <h3 className="text-foreground font-medium mb-4">{t.kontakt.hoursLabel}</h3>
                     <div className="space-y-2">
                       {t.kontakt.workingDays.map((day, i) => (
                         <div key={day} className="flex justify-between text-sm">
-                          <span className="text-[#6b6b6b] font-light">{day}</span>
-                          <span className={workingHoursData[i] === null ? 'text-[#b91c1c]' : 'text-[#1a1a1a]'}>
+                          <span className="text-muted-foreground font-light">{day}</span>
+                          <span className={workingHoursData[i] === null ? 'text-primary' : 'text-foreground'}>
                             {workingHoursData[i] ?? t.kontakt.closed}
                           </span>
                         </div>

@@ -52,24 +52,24 @@ export default function GalerijaPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#faf9f7] pt-36 pb-20">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-[#b91c1c]/30" />
+      <section className="relative bg-background pt-36 pb-20">
+        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <p className="text-[#b91c1c] text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
             {t.galerija.eyebrow}
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#1a1a1a]">
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
             {t.galerija.title}
           </h1>
-          <div className="w-24 h-[2px] bg-[#b91c1c] mx-auto mt-8" />
-          <p className="text-[#6b6b6b] mt-8 max-w-xl mx-auto font-light">
+          <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
+          <p className="text-muted-foreground mt-8 max-w-xl mx-auto font-light">
             {t.galerija.subtitle}
           </p>
         </div>
       </section>
 
       {/* Filter Tabs */}
-      <section className="bg-white border-b border-[#e5e0da]">
+      <section className="bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap justify-center gap-3 py-8" role="group" aria-label="Filteri galerije">
             {filters.map((filter) => (
@@ -79,8 +79,8 @@ export default function GalerijaPage() {
                 aria-pressed={activeFilter === filter.key}
                 className={`px-8 py-3 text-sm font-medium tracking-[0.15em] uppercase transition-all duration-300 ${
                   activeFilter === filter.key
-                    ? 'bg-[#b91c1c] text-white shadow-lg'
-                    : 'bg-transparent text-[#6b6b6b] hover:text-[#1a1a1a] border border-[#e5e0da] hover:border-[#b91c1c]'
+                    ? 'bg-primary text-white shadow-lg'
+                    : 'bg-transparent text-muted-foreground hover:text-foreground border border-border hover:border-primary'
                 }`}
               >
                 {filter.label}
@@ -91,7 +91,7 @@ export default function GalerijaPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="bg-[#faf9f7] py-20">
+      <section className="bg-background py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {filteredImages.map((image, index) => (
@@ -100,7 +100,7 @@ export default function GalerijaPage() {
                 className="break-inside-avoid group cursor-pointer"
                 onClick={() => setLightboxImage(image.src)}
               >
-                <div className="relative overflow-hidden border border-[#e5e0da] hover:border-[#b91c1c] transition-all duration-500 shadow-sm hover:shadow-xl">
+                <div className="relative overflow-hidden border border-border hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl">
                   <Image
                     src={image.src}
                     alt={image.alt}
@@ -113,8 +113,8 @@ export default function GalerijaPage() {
                       {image.alt}
                     </span>
                   </div>
-                  <div className="absolute top-0 left-0 w-12 h-12 border-l-2 border-t-2 border-[#b91c1c] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 right-0 w-12 h-12 border-r-2 border-b-2 border-[#b91c1c] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 left-0 w-12 h-12 border-l-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-12 h-12 border-r-2 border-b-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </div>
             ))}
@@ -122,7 +122,7 @@ export default function GalerijaPage() {
 
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-[#6b6b6b] font-light">{t.galerija.emptyState}</p>
+              <p className="text-muted-foreground font-light">{t.galerija.emptyState}</p>
             </div>
           )}
         </div>
@@ -134,14 +134,14 @@ export default function GalerijaPage() {
           role="dialog"
           aria-modal="true"
           aria-label="Pregled slike"
-          className="fixed inset-0 bg-[#1a1a1a]/95 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-foreground/95 z-50 flex items-center justify-center p-4"
           onClick={() => setLightboxImage(null)}
         >
           <button
             ref={closeButtonRef}
             onClick={() => setLightboxImage(null)}
             aria-label="Zatvori pregled"
-            className="absolute top-6 right-6 text-white hover:text-[#b91c1c] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
+            className="absolute top-6 right-6 text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
           >
             <X size={32} />
           </button>

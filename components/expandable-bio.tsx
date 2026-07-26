@@ -16,7 +16,7 @@ export function ExpandableBio({
   previewCount = 2,
   readMoreLabel,
   readLessLabel,
-  paragraphClassName = 'text-[#6b6b6b] leading-relaxed mb-5 font-light',
+  paragraphClassName = 'text-muted-foreground leading-relaxed mb-5 font-light',
 }: ExpandableBioProps) {
   const [expanded, setExpanded] = useState(false)
   const preview = paragraphs.slice(0, previewCount)
@@ -45,7 +45,7 @@ export function ExpandableBio({
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="inline-flex items-center gap-2 text-[#b91c1c] text-sm font-medium tracking-[0.1em] uppercase group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b91c1c]/70"
+            className="inline-flex items-center gap-2 text-primary text-sm font-medium tracking-[0.1em] uppercase group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
           >
             {expanded ? readLessLabel : readMoreLabel}
             <ChevronDown
