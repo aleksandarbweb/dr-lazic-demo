@@ -2,13 +2,15 @@
 
 import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
+import { businessData } from '@/lib/business-data'
 
+const workDayHours = `${businessData.openingHours.opens} - ${businessData.openingHours.closes}`
 const workingHoursData = [
-  '10:00 - 18:00',
-  '10:00 - 18:00',
-  '10:00 - 18:00',
-  '10:00 - 18:00',
-  '10:00 - 18:00',
+  workDayHours,
+  workDayHours,
+  workDayHours,
+  workDayHours,
+  workDayHours,
   null,
   null,
 ]
@@ -54,21 +56,21 @@ export default function KontaktPage() {
               {/* Direct contact actions — the real, working path until the form has a backend. */}
               <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
-                  href="tel:+381628412909"
+                  href={`tel:${businessData.telephone}`}
                   className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#991b1b] transition-colors"
                 >
                   <Phone size={16} />
                   {t.kontakt.callCta}
                 </a>
                 <a
-                  href="mailto:mdterzic@gmail.com"
+                  href={`mailto:${businessData.email}`}
                   className="flex items-center justify-center gap-2 border border-foreground text-foreground px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-foreground hover:text-white transition-colors"
                 >
                   <Mail size={16} />
                   {t.kontakt.emailCta}
                 </a>
                 <a
-                  href="https://www.instagram.com/dr.terzic"
+                  href={businessData.instagram}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 border border-foreground text-foreground px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-foreground hover:text-white transition-colors"
@@ -168,10 +170,10 @@ export default function KontaktPage() {
                   </div>
                   <div>
                     <h3 className="text-foreground font-medium mb-2">{t.kontakt.addressLabel}</h3>
-                    <p className="text-muted-foreground font-light">Kosovska 51, Beograd, 11000</p>
+                    <p className="text-muted-foreground font-light">{businessData.addressDisplay}</p>
                     <div className="flex gap-3 mt-2 text-sm">
                       <a
-                        href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
+                        href={businessData.googleMapsUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="text-muted-foreground font-light hover:text-primary transition-colors"
@@ -179,7 +181,7 @@ export default function KontaktPage() {
                         Google Maps
                       </a>
                       <a
-                        href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
+                        href={businessData.appleMapsUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="text-muted-foreground font-light hover:text-primary transition-colors"
@@ -197,8 +199,8 @@ export default function KontaktPage() {
                   </div>
                   <div>
                     <h3 className="text-foreground font-medium mb-2">{t.kontakt.phoneContactLabel}</h3>
-                    <a href="tel:+381628412909" className="text-muted-foreground font-light hover:text-primary transition-colors">
-                      +381 62 841 29 09
+                    <a href={`tel:${businessData.telephone}`} className="text-muted-foreground font-light hover:text-primary transition-colors">
+                      {businessData.phoneDisplay}
                     </a>
                   </div>
                 </div>
@@ -210,8 +212,8 @@ export default function KontaktPage() {
                   </div>
                   <div>
                     <h3 className="text-foreground font-medium mb-2">{t.kontakt.emailContactLabel}</h3>
-                    <a href="mailto:mdterzic@gmail.com" className="text-muted-foreground font-light hover:text-primary transition-colors">
-                      mdterzic@gmail.com
+                    <a href={`mailto:${businessData.email}`} className="text-muted-foreground font-light hover:text-primary transition-colors">
+                      {businessData.email}
                     </a>
                   </div>
                 </div>

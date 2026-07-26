@@ -493,7 +493,10 @@ Each milestone = one working session (roughly), shippable, verified, committed.
   390×844, in SR/EN/RU: **0 console errors** everywhere (down from 5–9 per
   page before this session), only 2 pre-existing image `sizes`/aspect-ratio
   performance *warnings* (M7 scope, not errors). One separate finding,
-  **flagged but not fixed**: under Playwright's `prefers-reduced-motion`
+  **flagged but not fixed** (see 2026-07-26 changelog entry for the full investigation —
+  root-caused as cosmetic/upstream, a "safe" fix was built, tested, and reverted after it was
+  found to silently break actual reduced-motion behavior; don't re-attempt the naive fix):
+  under Playwright's `prefers-reduced-motion`
   emulation specifically, a hydration-mismatch console error appears — this
   is a pre-existing, site-wide characteristic of the `motion-primitives.tsx`
   SSR/reduced-motion architecture (affects Hero, DoctorCard, StaggerItem —
@@ -1556,3 +1559,37 @@ Unchanged policy: raise with the client, don't build unprompted.
   left out of scope (one-off decorative hex, the two-hover-red-shades inconsistency, the
   radius/geometry-language split) is in item #7 above. Verified with `tsc`/`build` plus a live
   `getComputedStyle` check and a visual screenshot comparison — confirmed pixel-identical.
+- 2026-07-26 (later still) — **Two more "do now, no blockers" items, chosen by Aleksandar from a
+  categorized list** (business-data wiring shipped; investigated the flagged hydration-mismatch
+  bug and determined it's not actually fixable-without-regression, see below; Oprema cross-links
+  still pending). **Business data dedup (M6)**: `footer.tsx` and `kontakt/page.tsx` were still
+  separately hardcoding the address/phone/email/maps URLs alongside the `lib/business-data.ts`
+  created earlier today (which only fed the JSON-LD). Both now import and use `businessData`
+  (added `phoneDisplay`, `addressDisplay`, `googleMapsUrl`, `appleMapsUrl` fields to the shared
+  object). Zero visual change, verified via Playwright snapshot showing identical rendered text/
+  hrefs before and after. **Hydration-mismatch investigation — root-caused, no fix shipped,
+  important finding**: the flagged 2026-07-10 issue is `framer-motion`'s `useReducedMotion()`
+  reading `window.matchMedia` synchronously via a `useState` lazy initializer during render
+  (confirmed in `node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion.mjs`)
+  rather than deferring to an effect — SSR has no `window` so it always renders non-reduced, and
+  the client's first render synchronously reads the real OS preference, so anyone with actual
+  `prefers-reduced-motion: reduce` enabled hits a genuine hydration mismatch, not just a Playwright
+  emulation artifact. Built a wrapper hook that renders the SSR-safe default on mount and swaps in
+  a `useLayoutEffect`, confirmed via a Playwright reduced-motion emulation test that it eliminated
+  both hydration errors (verified against a `git stash`-reverted baseline that reliably reproduced
+  both). **Then caught a serious problem before shipping**: polling `getComputedStyle().opacity`
+  over time showed the "fixed" version made reduced-motion users see the full slow fade-in
+  animation (the hero `<h1>`'s 0.6s animation completed ~1.1s after mount) instead of the correct
+  instant appearance — because `initial`/`transition` values are captured once at mount, and by
+  the time the layout effect flips the state, the animation has already locked in the wrong
+  (non-reduced) timeline. Re-tested the *original* code the same way and found reduced-motion users
+  already got the CORRECT instant appearance despite the console error — Motion applies these
+  styles imperatively via refs, bypassing React's declarative reconciliation the hydration warning
+  is complaining about, so the actual rendered behavior was already right; only the console was
+  noisy. **Reverted the wrapper entirely** (kept only the business-data changes). Conclusion for
+  future sessions: this console error is cosmetic-only and upstream (a `framer-motion` library
+  limitation, not a bug in this codebase); the "safe" fix pattern that works for most
+  hydration-mismatch cases (defer-and-swap-post-mount) actively breaks correct behavior here
+  specifically because Motion's `initial` prop is a mount-time-only snapshot — don't attempt this
+  fix again without a fundamentally different approach (e.g. `next/dynamic` with `ssr: false` for
+  the intro overlay specifically, untested).

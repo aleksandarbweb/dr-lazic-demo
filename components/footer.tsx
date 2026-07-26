@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 import { navItems } from '@/lib/nav'
+import { businessData } from '@/lib/business-data'
 
 const navLinksData = navItems
 
@@ -40,9 +41,9 @@ export function Footer() {
               {t.footer.description}
             </p>
             
-            <a 
-              href="https://www.instagram.com/dr.terzic" 
-              target="_blank" 
+            <a
+              href={businessData.instagram}
+              target="_blank"
               rel="noopener noreferrer" 
               className="group flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-sm"
               title="Pratite nas na Instagramu"
@@ -82,10 +83,10 @@ export function Footer() {
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-white/60 text-sm font-light">
-                  <p>Kosovska 51, Beograd, 11000</p>
+                  <p>{businessData.addressDisplay}</p>
                   <div className="flex items-center gap-2 mt-1.5">
                     <a
-                      href="https://maps.app.goo.gl/hoMU2UJoE6c6fBgLA"
+                      href={businessData.googleMapsUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
@@ -94,7 +95,7 @@ export function Footer() {
                     </a>
                     <span className="text-white/25">·</span>
                     <a
-                      href="https://maps.apple.com/place?place-id=I36AE0A52C98F6D67&address=Kosovska+51%2C+11103+Belgrade%2C+Serbia&coordinate=44.811573%2C20.467820&name=Dr+Terzic&_provider=9902"
+                      href={businessData.appleMapsUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
@@ -107,25 +108,25 @@ export function Footer() {
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-primary flex-shrink-0" />
                 <a
-                  href="tel:+381628412909"
+                  href={`tel:${businessData.telephone}`}
                   className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
-                  +381 62 841 29 09
+                  {businessData.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-center gap-4">
                 <Mail size={18} className="text-primary flex-shrink-0" />
                 <a
-                  href="mailto:mdterzic@gmail.com"
+                  href={`mailto:${businessData.email}`}
                   className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
-                  mdterzic@gmail.com
+                  {businessData.email}
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <Clock size={18} className="text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-white/60 text-sm font-light">
-                  <p>{t.footer.monFri} 10:00 - 18:00</p>
+                  <p>{t.footer.monFri} {businessData.openingHours.opens} - {businessData.openingHours.closes}</p>
                   <p>{t.footer.satSun}</p>
                 </div>
               </li>
