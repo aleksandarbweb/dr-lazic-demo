@@ -8,6 +8,7 @@ import { LanguageProvider } from '@/lib/i18n/LanguageContext'
 import { IntroOverlay } from '@/components/intro-overlay'
 import { SkipLink } from '@/components/skip-link'
 import { ScrollToTop } from '@/components/scroll-to-top'
+import { businessData } from '@/lib/business-data'
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -28,6 +29,49 @@ export const metadata: Metadata = {
   keywords: 'dermatolog, dermatovenerolog, Beograd, botoks, fileri, laserska epilacija, Morpheus8, PRP, dermoskopija, akne',
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: businessData.name,
+  legalName: businessData.legalName,
+  url: businessData.url,
+  telephone: businessData.telephone,
+  email: businessData.email,
+  image: `${businessData.url}/images/Logos/dr%20terzic%20crni%20logo.png`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: businessData.address.streetAddress,
+    addressLocality: businessData.address.addressLocality,
+    postalCode: businessData.address.postalCode,
+    addressCountry: businessData.address.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: businessData.geo.latitude,
+    longitude: businessData.geo.longitude,
+  },
+  sameAs: [businessData.instagram],
+  medicalSpecialty: 'Dermatologic',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: businessData.openingHours.days,
+    opens: businessData.openingHours.opens,
+    closes: businessData.openingHours.closes,
+  },
+  employee: [
+    {
+      '@type': 'Physician',
+      name: 'dr Marta Terzić',
+      medicalSpecialty: 'Dermatology',
+    },
+    {
+      '@type': 'Physician',
+      name: 'dr Biljana Petković',
+      medicalSpecialty: 'Dermatology',
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +80,10 @@ export default function RootLayout({
   return (
     <html lang="sr" data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#faf9f7] text-[#1a1a1a]`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <LanguageProvider>
           <SkipLink />
           <IntroOverlay />

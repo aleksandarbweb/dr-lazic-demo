@@ -25,6 +25,10 @@ touched — `dermoskopija`, `rozacea`, `pojacano-znojenje`, `opadanje-kose`, `me
 `kapilari-i-hemangiomi-laser`, and the new `radiotalasna-hirurgija`/`krioterapija`/`fotona-hairestart`
 rows are now ✅ Real, not the 🟡 Pending status shown there; the table itself was not rewritten this
 pass, flagged for the next session that touches this file)
+**Updated again:** 2026-07-23 (first real client handoff: email + shared Google Doc actually sent to
+Marta, tracking now includes per-page photo-completeness as its own axis, not just text — see §20.
+**Now genuinely awaiting Marta's response**, check the linked Google Doc before starting new content
+work)
 **Source:** `docs/client-input/NOVA-STRUKTURA-SAJTA-DR-TERZIC.docx` (Marta's raw structure notes)
 **Purpose:** map the DOCX to site routes, separate ready vs. pending content, and flag every
 numerical/factual claim that needs client confirmation before it's treated as final. This is a
@@ -1041,6 +1045,130 @@ EN/RU deferral.
 equipment listing being removed, since the two are logically inconsistent (flagged for Marta, see
 IMPROVEMENT-REPORT.md); no fabricated testimonial (see above); no full sitewide sweep of individual
 service page `<title>` metadata casing (only shared UI chrome this pass); no commit pushed.
+
+## 20. First real client handoff: email + Google Doc sent to Marta (2026-07-23)
+
+**Context:** the 2026-07-16 email/report (§18) and the first version of the 2026-07-23 email/doc
+drafted earlier in this session (Claude-authored) were **never actually sent** to Marta. She had
+already viewed the working site directly (outside any formal report) and sent feedback, which was
+implemented per §19. The email and Google Doc below are the **first formal client communication**
+actually sent, on 2026-07-23. The user rewrote both before sending, catching real gaps in the
+Claude-authored drafts (see "What the user's edits caught" below). This section is the authoritative
+record of what Marta actually received, superseding the deleted draft files
+(`docs/client-preview/MARTA-EMAIL-2026-07-23.md` and `MARTA-SHARED-DOC-STRUCTURE-2026-07-23.md`,
+removed from the repo since they no longer reflect reality).
+
+**Live Google Doc shared with Marta (Editor access):**
+https://docs.google.com/document/d/1Pfg3_K1wp9wnH0s7UCpKOVTD54B8ViaKCXsDbdNqYxA/edit?usp=sharing
+
+### What the user's edits caught (real gaps in the Claude-authored draft)
+
+1. **Framing bug**: the draft implied a prior formal review round ("od poslednjeg pregleda") that
+   never happened. Caught by the user before the first send attempt, corrected earlier in this
+   session, and the user's final sent version reflects the correct first-contact framing.
+2. **Missing-photo tracking was systematically understated.** The draft's ✅/🟡 status was based only
+   on `pendingNotice` presence (text completeness). The user went through every single service page
+   himself and found **most already-real-content pages are still missing a hero photo** even though
+   their text is final, e.g. `rozacea`, `dermoskopija`, `opadanje-kose`, `prp`,
+   `podmladjivanje-fotona-3d-4d-5d`, `strije-laser`, `botoks-fileri`, `fotona-hairestart`,
+   `radiotalasna-hirurgija`, `krioterapija` are all marked 🟡 "čeka se fotografija" in the real doc
+   even though this session's earlier work had them as text-complete. **Photo-completeness is a
+   separate, currently untracked axis from text-completeness** — worth adding a second status
+   dimension (text ✅/🟡, photo ✅/🟡) if this doc structure is reused again, rather than one combined
+   status.
+3. **Two pages were downgraded, correctly**: `bradavice-papilomi-keratoze-moluske`,
+   `uklanjanje-papiloma-i-keratoza`, `kapilari-i-hemangiomi-laser`, `akne`, `pojacano-znojenje` kept
+   ✅ (real content, and apparently real photos already), but the user found several pages where the
+   current image is a recycled placeholder from old generic stock, not a real clinic-specific photo,
+   e.g. `strije-laser` ("ovde sam tekst napravio od starih informacija, takodje je i slika odatle") and
+   `gljivicna-oboljenja-laser` ("čeka se tekst i fotografija, trenutno je tekst i slika što sam našao
+   u starim dokumentima").
+4. **New open question surfaced**: the user added "DA LI UOPŠTE ŽELITE OVU STRANICU?" ("do you even
+   want this page?") directly on the Galerija tab, questioning whether the gallery page should exist
+   at all in its current form. Also added an "Ako treba dodati još jednu stranicu, dopišite ga ispod"
+   prompt under every category, and closed with a dedicated "Pitanja i komentari" tab for anything
+   that doesn't fit the page/section structure, neither was in the Claude draft.
+5. **Contact form question sharpened**: draft asked "functional form or keep current," the sent
+   version adds the third option Marta actually needs to consider: "ili da je sklonim" (remove it
+   entirely, contact-info-only).
+6. **Salutation changed** from "Poštovana Marta" to "Poštovana dr Terzić" in the final sent version,
+   more formal/professional register than the working draft used throughout this project internally.
+
+### Full sent content (verbatim, for the record)
+
+**Email subject/body:**
+
+> Poštovana dr Terzić,
+>
+> Kompletna struktura sajta i sav sadržaj koji ste mi do sada poslali uneti su u radnu verziju
+> sajta. To obuhvata sadržaj iz prvobitnog dokumenta, naknadne izmene koje ste poslali, biografiju
+> dr Biljane Petković, kao i nove tekstove za usluge.
+>
+> Radnu verziju sajta možete pogledati ovde: https://dr-terzic-site.vercel.app
+> Lozinka za pristup: admin
+>
+> Na sajtu su, između ostalog:
+> - usklađene Naslovna i stranica O nama prema Vašim poslednjim komentarima
+> - unete završne biografije dr Marte Terzić i dr Biljane Petković
+> - dopunjene i organizovane stranice usluga za koje ste dostavili tekst
+> - dodate posebne stranice za radiotalasnu hirurgiju, krioterapiju i Fotona HAIRestart
+> - dopunjene stranice za dermoskopiju, rozaceu, pojačano znojenje, vaskularne promene, opadanje
+>   kose, mezoterapiju i PRP
+> - ažurirana stranica Oprema, uključujući listu preparata i brendova koje koristite
+> - prilagođeni naslovi, boje i pojedini elementi dizajna prema Vašim poslednjim komentarima
+> - ažuriran uvodni video, favicon i slika koja se prikazuje prilikom deljenja linka sajta
+>
+> Tamo gde još nemamo konačan tekst ili odgovarajuću fotografiju, stranica je već napravljena i
+> jasno označena, kako biste mogli odmah da vidite šta još treba dopuniti.
+>
+> Za pregled sajta i dalje izmene napravio sam zajednički Google dokument:
+> https://docs.google.com/document/d/1Pfg3_K1wp9wnH0s7UCpKOVTD54B8ViaKCXsDbdNqYxA/edit?usp=sharing
+>
+> Dokument prati sajt stranicu po stranicu i sekciju po sekciju. Uz svaku uslugu nalazi se
+> direktan link ka odgovarajućoj stranici, kao i oznaka da li je sadržaj kompletan ili još čeka
+> tekst, fotografiju ili Vašu odluku. Molim Vas da ubuduće komentare, dopune i korekcije unosite
+> direktno u taj dokument, ispod odgovarajućeg naslova u polju "Napomene". Na kraju dokumenta
+> nalazi se i posebna stranica za dodatna "pitanja i komentari", gde možete upisati sve dodatne
+> komentare ili pitanja za mene. Tako ćemo sve izmene imati uredno organizovane na jednom mestu i
+> smanjiti mogućnost da nešto promakne.
+>
+> U ovom trenutku ostaje da, kada budete mogli, dopunite stavke koje su u dokumentu označene
+> žutom oznakom, prvenstveno nedostajuće tekstove i fotografije za pojedine usluge. Takođe su
+> otvorena pitanja u vezi sa nazivom aparata za krioterapiju, Kontakt stranicom, Dermapen/
+> mikronidling uslugom, Full Face fotografijom i povezivanjem postojećeg domena.
+>
+> Za povezivanje domena biće mi potreban podatak o tome kod kog provajdera je domen registrovan.
+> Domen ostaje u Vašem vlasništvu, a potrebno je samo da ga kasnije povežemo sa novim sajtom.
+>
+> Sajt možete pregledati kada Vam bude odgovaralo, bez žurbe. Sve korekcije koje unesete u
+> zajednički dokument pregledaću i postepeno preneti na sajt.
+>
+> Stojim Vam na raspolaganju za sva pitanja.
+>
+> Srdačan pozdrav,
+> Aleksandar Bogdanović
+
+**Google Doc structure sent** (tabs = site pages, headers = sections/services, each with a link and
+a "Napomene" note field): Uputstvo (instructions tab) → Naslovna (8 sections) → O nama (9 sections)
+→ Usluge overview → 7 category tabs, each listing every individual service with its live link and a
+✅/🟡 status (real photo-completeness findings from the user's manual pass, not just text-completeness)
+→ Oprema (4 sections, including the open cryo-device-name question) → Galerija (3 sections, plus the
+user's own open question about whether to keep this page) → Kontakt (4 sections, including the
+sharpened three-way contact-form question) → closing "Pitanja i komentari" free-form tab.
+
+### Status as of 2026-07-23: awaiting Marta's response
+
+This is a genuine waiting point, not a stalled task. Next session that touches this project should:
+1. Check the Google Doc (link above) for anything Marta has filled in under "Napomene" fields across
+   any tab, plus the "Pitanja i komentari" tab specifically for anything that doesn't map to an
+   existing page/section.
+2. Cross-reference her answers against the six standing open decisions from the email: cryo device
+   name, contact form (keep/build/remove), Dermapen page fate, fileri/botox split, domain registrar,
+   and now also **whether to keep the Galerija page** (new, user-raised).
+3. Treat missing photos as a distinct, first-class tracking axis going forward, not folded into
+   "pending text" status, per the gap identified above.
+
+---
 
 ## Current client-preview snapshot (2026-07-16)
 

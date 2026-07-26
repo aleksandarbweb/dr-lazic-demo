@@ -112,6 +112,86 @@ the single biggest lever has now mostly been pulled. The remaining M0 items
 M1. Next biggest lever is still Art direction/Typography/Content architecture
 (M1–M4), unchanged by this integrity-only session.
 
+> **Note (2026-07-23):** this table is stale, it predates the Jul 14-20 content
+> passes (real service-page copy, homepage rebuild pieces, doctor bios) that
+> moved Integrity/Content architecture further. It has not been re-scored
+> since 2026-07-10 despite the instruction above to re-score every milestone,
+> that discipline slipped across sessions. Don't trust the numbers, they're
+> directionally useful but not current. The Top 10 list below was built by
+> re-verifying claims directly against live code on 2026-07-23, not from this
+> table, see [[verify-against-live-code-not-docs]] in project memory for why
+> that mattered.
+
+### Top 10 priorities toward the €50k tier (re-audited 2026-07-23)
+
+Re-checked the 2026-07-10 diagnosis line by line against the current codebase before writing this,
+several items below turned out to still be exactly true, a couple of previously-diagnosed problems
+turned out to already be fixed (services marquee dead-string bug, partner logos, reduced-motion
+handling) and were dropped from this list. Ordered by impact-to-effort, highest leverage first.
+
+1. **Per-page SEO metadata + sitemap/robots/JSON-LD are entirely missing.** Verified 2026-07-23:
+   every route (`app/page.tsx`, `o-nama`, `usluge`, `oprema`, `galerija`, `kontakt`, all 33 service
+   pages' shared chrome) is a `"use client"` component with zero page-level `metadata` export, so
+   every page on the site shares one identical `<title>`/description from `layout.tsx`. Zero
+   `app/sitemap.ts`, zero `app/robots.ts`, zero JSON-LD anywhere (`LocalBusiness`/`MedicalClinic`
+   schema would directly power Google Maps/local-pack results, which matters enormously for a
+   Belgrade clinic). This is pillar 5 (invisible excellence) scoring near zero while everything
+   else has had real attention. Fix is cheap: a small server-component `layout.tsx` per top-level
+   route folder exporting `metadata`, plus the two Next.js file-convention routes for sitemap/robots,
+   plus one JSON-LD `<script>` in the root layout. High function value, low code cost, this is the
+   single best ROI item on this list.
+2. **Mobile hero has no image at all.** Verified 2026-07-23, `app/page.tsx`'s hero portrait is still
+   `hidden ... lg:block`, unchanged since the original audit. Most visitors to a medical practice
+   site are on mobile, and the single most important screen of the entire site is plain text on
+   cream for all of them. This is the loudest "template, not boutique" tell on the device that
+   matters most.
+3. **The gallery's "Pre i posle" (before/after) filter returns zero results.** Verified 2026-07-23,
+   the filter button exists in `app/galerija/page.tsx` but no image in the `images` array is tagged
+   with that category. Before/after results are typically the single highest-converting content
+   type for aesthetic/dermatology medicine, its total absence (not just weak presentation) is a
+   bigger miss than anything else on the Galerija page. This is also the concrete fix for
+   Aleksandar's own open question to himself in the Marta doc about whether to keep the page at
+   all, the answer is: make it worth keeping, don't cut it.
+4. **Most service-page and gallery imagery is reused generic stock, not clinic-specific photography.**
+   Root cause behind #2 and #3: many `/usluge/*` pages and most Galerija entries point at shared
+   files like `dermatology-treatment.jpg`, `laser-treatment.jpg` reused across a dozen unrelated
+   pages. A real, consistent, own-shot photo set (clinic interior, equipment in use, treatment
+   close-ups, real before/afters with consent) is what actually closes pillar 3 (editorial imagery),
+   no layout change fixes this without real assets behind it.
+5. **`/usluge` is a chip-wall, not a page.** Verified 2026-07-23, still exactly the diagnosed
+   "sitemap, not a page": 40+ identical bordered text rows with a chevron, no imagery, no
+   descriptions, no featured treatments, and it's fully hardcoded Serbian with a code comment
+   explicitly noting metadata was removed because the component went client-side. This is the
+   site's main services hub, likely the second-most-visited page after the homepage, and right now
+   it undersells everything else that's been built. The data (`lib/service-catalog.ts`) already has
+   `imageSrc` and `featured` per service, ready to power a real card grid.
+6. **The one genuinely distinctive moment (dark philosophy-quote section) hasn't spread.** Still
+   true per the original diagnosis: one editorial, art-directed section exists (grain texture,
+   italic serif, generous negative space) surrounded by ~30 repeats of the same
+   eyebrow-heading-underline pattern. This is pillar 2 (distinctive art direction), the biggest
+   single visual-craft lever in the whole plan. Don't redesign everything, pick 2-3 more sections
+   (candidates: the doctors section, the equipment page hero, the O nama story section) and give
+   them the same editorial treatment.
+7. **No design-token system, hardcoded hex everywhere.** Verified 2026-07-23, `#b91c1c`/`#faf9f7`/
+   `#6b6b6b`/`#e5e0da` etc. are still hardcoded per-file (hundreds of occurrences), `--radius: 0px`
+   sits unused in tokens while components hardcode radii, producing the two competing geometry
+   languages (pill buttons + rounded card frames on home/oprema vs. sharp chips/square fields on
+   usluge/galerija/kontakt) noted in the original audit. This is what makes every future
+   "Marta wants a different red" conversation a 40-file grep-and-pray instead of a one-line change,
+   worth doing specifically because client color/style feedback has already happened twice this
+   project and will keep happening.
+8. **Footer logo is still oversized.** Verified 2026-07-23, `components/footer.tsx` renders it at
+   `h-28` up to `h-40` responsive, on every single page. Small, cheap, high-visibility since it's
+   site-wide.
+9. **Scrollbars are hidden globally.** Verified 2026-07-23, `scrollbar-width: none` plus
+   `::-webkit-scrollbar { display: none }` on `html`/`body` in `app/globals.css`, removing all
+   scroll-position affordance sitewide for no visible benefit, arguably a usability regression, not
+   a feature. Cheap, one-line-per-rule fix.
+10. **Language switcher uses country-flag emoji.** Verified 2026-07-23,
+    `components/language-switcher.tsx` still maps sr/en/ru to 🇷🇸🇬🇧🇷🇺. Semantically imprecise
+    (flags represent countries, not languages) and renders inconsistently across platforms. Small,
+    cheap, easy win, lowest priority on this list because it's the least visible issue here.
+
 ---
 
 ## Audit Findings (2026-07-03, full source + live browser review)
@@ -1397,3 +1477,40 @@ Unchanged policy: raise with the client, don't build unprompted.
   - **Not done, out of scope**: no fabricated testimonial (see above); Dermapen service page not
     deleted (see above, flagged for Marta); full sitewide Title Case sweep of individual service page
     `<title>` metadata not performed (only shared UI chrome); no commit pushed.
+- 2026-07-26 — **Shipped top-10 items #1, #8, #9, #10** while waiting on Marta's reply to the
+  2026-07-23 handoff doc (content-dependent items #2–7 need her input or new photography, so these
+  four were the highest-leverage items workable without her).
+  - **#1 SEO metadata + sitemap/robots/JSON-LD (highest ROI item)**: every top-level route
+    (`o-nama`, `usluge`, `oprema`, `galerija`, `kontakt`) and all 33 flagship `/usluge/*` folders
+    now have a server-component `layout.tsx` exporting page-specific `<title>`/description
+    (`page.tsx` files stay `"use client"`, metadata lives in the sibling layout — the pattern the
+    existing `/usluge/[slug]` route already used). New `lib/service-metadata.ts` builds the
+    per-service metadata from `lib/service-catalog.ts` so all 33 stay in sync with one function.
+    Added `app/sitemap.ts` (39 URLs: 6 static + 33 unique service slugs from `serviceBySlug`) and
+    `app/robots.ts`, plus a `MedicalBusiness`/`Physician` JSON-LD block in the root layout (new
+    `lib/business-data.ts` holds address/phone/hours/socials as the single source, per the
+    2026-07-23 "Add" backlog item). **Important nuance caught during verification**: the site is
+    still behind the WIP password gate (`middleware.ts`), so `robots.ts` currently sets
+    `disallow: '/'` — shipping `allow: '/'` today would have sent crawlers into the lock-screen
+    HTML for every URL. Flip it to `allow` when the gate comes off at launch. Had to add
+    `sitemap\.xml|robots\.txt` to the middleware matcher's negative-lookahead so those two routes
+    bypass the gate and serve real content instead of lock-screen HTML. Verified live: fresh
+    `npm run build` (49 routes) and `npx tsc --noEmit` both clean; curled every route's `<title>`
+    post-unlock and confirmed each is unique; confirmed `/robots.txt` and `/sitemap.xml` serve
+    correctly unauthenticated while `/` still gates.
+  - **#8 oversized footer logo**: `components/footer.tsx` logo was `h-28` up to `h-40` (2–3x the
+    navbar's `h-12`/`h-14`); resized to `h-14 md:h-16 lg:h-20` and scaled the compensating negative
+    margin down to match. Verified visually via Playwright screenshot.
+  - **#9 globally hidden scrollbars**: removed `scrollbar-width: none` / hidden
+    `::-webkit-scrollbar` on `html`/`body` in `app/globals.css`; replaced with a thin styled
+    scrollbar (`#d6cfc4` track, red `#b91c1c` hover) matching the site palette. Left the
+    `.no-scrollbar` utility class alone since it's legitimately used elsewhere for horizontal
+    marquees/carousels. Verified via computed style in a live browser after finding and clearing a
+    stale Turbopack dev cache that was serving the pre-edit CSS.
+  - **#10 emoji flag language switcher**: `components/language-switcher.tsx` dropped the
+    🇷🇸/🇬🇧/🇷🇺 emoji, keeping only the existing text labels (SR/EN/RU) that were already rendered
+    alongside them — no new UI, just removed the redundant/imprecise flag icons.
+  - **Not done, deferred**: items #2–7 (mobile hero image, gallery before/after tagging, real
+    clinic photography, `/usluge` card-grid redesign, spreading the editorial dark-section
+    treatment, design tokens) — all either need Marta's content/photo decisions or are larger
+    visual-craft passes better done as their own session. No commit pushed yet.

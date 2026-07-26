@@ -66,20 +66,26 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: #d6cfc4 #faf9f7;
 }
 
-body {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+html::-webkit-scrollbar {
+  width: 10px;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
+html::-webkit-scrollbar-track {
+  background: #faf9f7;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #d6cfc4;
+  border-radius: 999px;
+  border: 2px solid #faf9f7;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #b91c1c;
 }
 
 /* Luxury typography enhancements */
