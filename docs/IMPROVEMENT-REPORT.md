@@ -1592,4 +1592,15 @@ Unchanged policy: raise with the client, don't build unprompted.
   hydration-mismatch cases (defer-and-swap-post-mount) actively breaks correct behavior here
   specifically because Motion's `initial` prop is a mount-time-only snapshot — don't attempt this
   fix again without a fundamentally different approach (e.g. `next/dynamic` with `ssr: false` for
-  the intro overlay specifically, untested).
+  the intro overlay specifically, untested). **Third item, Oprema → service cross-links,
+  investigated then explicitly skipped**: `app/oprema/page.tsx`'s per-device treatment lists are
+  freeform i18n prose (SR/EN/RU), not exact-string matches to `lib/service-catalog.ts` service
+  names (e.g. AvalancheLase lists "Epilacija laserom: trajno uklanjanje dlačica" vs. the catalog's
+  "Epilacija laserom – trajno uklanjanje dlačica"). 3 of 7 devices have one unambiguous dedicated
+  page each (Morpheus8 → `/usluge/morpheus8`, CryoPen → `/usluge/krioterapija`, DermLite →
+  `/usluge/dermoskopija`); the other 4 (SP Dynamis, Harmony XL Pro, Ellman, AvalancheLase) each
+  list 2-9 treatments that only partially/ambiguously correspond to real service pages — guessing
+  wrong here means asserting an incorrect medical claim on a live clinic site. Presented Aleksandar
+  the exact-match-only vs. manual-mapping vs. skip options; he chose to skip entirely for now.
+  Don't re-attempt without either an exact per-device slug mapping supplied by the client/Aleksandar,
+  or confirmation the fuzzy-match risk is acceptable.
