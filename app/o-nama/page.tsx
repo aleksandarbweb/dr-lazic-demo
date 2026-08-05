@@ -249,7 +249,7 @@ export default function ONamaPage() {
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="relative flex-shrink-0 h-16 w-16 overflow-hidden rounded-full border border-border bg-background">
                   <Image
-                    src="/images/people/snezanastojkovic.png"
+                    src="/images/people/snezanastojkovic-avatar.png"
                     alt={t.onama.snezana.name}
                     fill
                     className="object-cover"
