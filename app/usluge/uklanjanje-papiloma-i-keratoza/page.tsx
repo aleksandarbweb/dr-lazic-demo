@@ -31,19 +31,6 @@ const serviceData = {
     'Ablativni laser – Er:YAG laser',
     'Krioterapija',
   ],
-  howItWorks: [
-    'Dermatološki pregled i određivanje vrste promene (papilom ili keratoza).',
-    'Izbor odgovarajuće metode prema lokalizaciji, veličini i tipu promene: radiotalasna hirurgija, Er:YAG laser ili krioterapija.',
-    'Sprovođenje intervencije: kod Er:YAG lasera zahvat je gotovo bezbolan, što olakšava uklanjanje većeg broja promena u jednoj poseti.',
-    'Nega kože nakon intervencije: na mestu zahvata ostaje površna ranica na kojoj se stvara krastica.',
-    'Kontrolni pregled radi provere zarastanja i, po potrebi, dodatne intervencije.',
-  ],
-  idealCandidates: [
-    'Osobe sa papilomima (mekim fibromima) na licu, vratu, pazuhu ili u predelu prepona.',
-    'Osobe sa seboroičnim keratozama na licu, grudima ili leđima.',
-    'Pacijenti kod kojih promene predstavljaju estetski problem ili se nadražuju odećom i nakitom.',
-    'Osobe koje žele ukloniti promene pre nego što se uvećaju ili umnože.',
-  ],
   expectedResults: [
     'Intervencija je bezbolna ili minimalno bolna, posebno uz Er:YAG laser.',
     'Krastica na mestu intervencije otpada za 7 do 14 dana, uz mogućnost ožiljka svedenu na minimum.',

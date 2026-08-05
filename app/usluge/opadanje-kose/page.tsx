@@ -45,9 +45,6 @@ U našoj ordinaciji primenjujemo najsavremenije medicinske metode koje efikasno 
     'Terapija laserom: Fotona HAIRestart®, neinvazivan tretman laserom koji stimuliše folikule dlake na regeneraciju.',
     'Lokalna i sistemska medicinska terapija: propisivanje ciljanih losiona, lekova i suplemenata sa klinički dokazanim dejstvom.',
   ],
-  expectedResults: [
-    'Sve procedure u našoj ordinaciji su minimalno invazivne, brze i omogućavaju vam da se odmah vratite svakodnevnim aktivnostima.',
-  ],
   relatedServices: [
     { title: 'PRP tretman', href: '/usluge/prp' },
     { title: 'Mezoterapija koktelima za kosu', href: '/usluge/mezoterapija' },

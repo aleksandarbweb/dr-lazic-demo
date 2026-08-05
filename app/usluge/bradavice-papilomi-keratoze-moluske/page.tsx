@@ -45,23 +45,9 @@ const serviceData = {
     'Ablativni Er:YAG laser',
     'Lokalna terapija: izbor dermatovenerologa prema lokalizaciji i kliničkoj slici',
   ],
-  howItWorks: [
-    'Dermatološki pregled i određivanje vrste promene (bradavica, kondilom, moluska, papilom ili keratoza).',
-    'Izbor odgovarajuće metode prema lokalizaciji, veličini i tipu promene.',
-    'Sprovođenje intervencije: kod Er:YAG lasera zahvat je gotovo bezbolan, što olakšava uklanjanje većeg broja promena u jednoj poseti.',
-    'Nega kože nakon intervencije: na mestu zahvata ostaje površna ranica na kojoj se stvara krastica.',
-    'Kontrolni pregled radi provere zarastanja i, po potrebi, dodatne intervencije.',
-  ],
-  idealCandidates: [
-    'Osobe sa virusnim bradavicama na rukama, stopalima ili licu.',
-    'Pacijenti sa kondilomima ili moluskama koji žele uklanjanje pod medicinskim nadzorom.',
-    'Osobe koje žele sprečiti dalje širenje promena autoinokulacijom.',
-    'Pacijenti koji žele preciznu dijagnostiku pre uklanjanja, radi isključivanja ozbiljnijih promena na koži.',
-  ],
   expectedResults: [
     'Krastica na mestu intervencije otpada za 7 do 14 dana, uz mogućnost ožiljka svedenu na minimum.',
     'Smanjen rizik širenja virusnih promena na okolnu kožu uz pravovremeno uklanjanje.',
-    'Kod žena sa kondilomima redovna kolposkopska kontrola dodatno čuva zdravlje grlića materice.',
   ],
   faqs: [
     {

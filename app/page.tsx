@@ -410,12 +410,12 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           PHILOSOPHY / DR. QUOTE SECTION
           ════════════════════════════════════════════════════════════════════ */}
-      <section className="noise-overlay relative overflow-hidden bg-[#2a2420] py-16 md:py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-[#f2ece2] py-16 md:py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/4 top-0 h-full w-px bg-white/[0.03]" />
-          <div className="absolute right-1/4 top-0 h-full w-px bg-white/[0.03]" />
+          <div className="absolute left-1/4 top-0 h-full w-px bg-primary/[0.08]" />
+          <div className="absolute right-1/4 top-0 h-full w-px bg-primary/[0.08]" />
           {/* Soft radial glow behind quote */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-primary/[0.03] blur-[100px]" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-primary/[0.05] blur-[100px]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -427,21 +427,21 @@ export default function HomePage() {
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <p className="mb-8 text-xs font-semibold uppercase tracking-[0.4em] text-white/30">
+              <p className="mb-8 text-sm font-semibold uppercase tracking-[0.35em] text-primary">
                 {t.home.philosophy.title}
               </p>
             </FadeUp>
 
             <FadeUp delay={0.3}>
-              <h2 className="font-serif text-2xl leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+              <h2 className="font-serif text-2xl leading-tight text-[#241f1a] sm:text-3xl md:text-4xl lg:text-5xl">
                 &ldquo;{t.home.philosophy.quote.replace(/^["“]|["”]$/g, '')}&rdquo;
               </h2>
             </FadeUp>
-            
+
             <FadeUp delay={0.45}>
               <div className="mt-12 flex flex-col items-center">
-                <div className="mb-4 h-px w-12 bg-white/20" />
-                <p className="text-sm font-medium tracking-[0.2em] text-white/50">{t.home.philosophy.author}</p>
+                <div className="mb-4 h-px w-12 bg-primary/40" />
+                <p className="text-base font-medium tracking-[0.2em] text-[#4a423a]">{t.home.philosophy.author}</p>
               </div>
             </FadeUp>
           </div>

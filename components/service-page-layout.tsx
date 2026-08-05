@@ -87,22 +87,26 @@ export function ServicePageLayout({
                   <p className="text-sm text-amber-900 font-light leading-relaxed">{pendingNotice}</p>
                 </div>
               )}
-              <Link
-                href="/kontakt"
+              <a
+                href="#service-about"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('service-about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
                 className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] group"
               >
                 {t.servicePage.learnMore}
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-500 group-hover:-translate-y-[1px] group-hover:translate-x-1">
-                  <span aria-hidden="true" className="text-xs leading-none">→</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-500 group-hover:translate-y-[1px]">
+                  <span aria-hidden="true" className="text-xs leading-none">↓</span>
                 </span>
-              </Link>
+              </a>
             </div>
           </div>
         </FadeUp>
       </section>
 
       {/* What Is It Section */}
-      <section className="bg-white py-20 md:py-28">
+      <section id="service-about" className="scroll-mt-24 bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -370,22 +374,24 @@ export function ServicePageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-primary py-20">
-        <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
+      <section className="relative overflow-hidden bg-[#faf6f1] py-20 border-y border-[#e5ddd3]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.04]" />
+          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-primary/[0.04]" />
+        </div>
 
         <FadeUp>
           <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-            <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.ctaReadyLabel}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-white">
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.ctaReadyLabel}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#181512]">
               {title}: {t.servicePage.ctaTitle}
             </h2>
-            <p className="text-white/80 mt-5 font-light">
+            <p className="text-[#5e5953] mt-5 font-light">
               {t.servicePage.ctaDescription}
             </p>
             <Link
               href="/kontakt"
-              className="group inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-background hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
+              className="group inline-flex items-center justify-center gap-3 bg-primary text-white px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-[#9f1818] hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
             >
               {t.servicePage.contactUs}
               <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>

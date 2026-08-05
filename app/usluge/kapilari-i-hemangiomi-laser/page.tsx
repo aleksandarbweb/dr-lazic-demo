@@ -21,6 +21,7 @@ Hemangiomi kože su benigni tumori koji su posledica hiperplazije krvnih sudova.
         'Prošireni kapilari (teleangiektazije)',
         'Spider nevusi',
         'Hemangiomi / cherry angiomi',
+        'Venous lake (venska jezerca), najčešće na usnama',
       ],
     },
     {
@@ -43,6 +44,10 @@ Hemangiomi kože su benigni tumori koji su posledica hiperplazije krvnih sudova.
       body: 'Laserska energija se selektivno apsorbuje u hemoglobinu unutar krvnog suda. Toplotna energija dovodi do njegovog zatvaranja, nakon čega organizam prirodnim putem postepeno resorbuje tretirani krvni sud. Koža ostaje očuvana, bez rezova i oštećenja okolnog tkiva.',
     },
     {
+      heading: 'Tok tretmana',
+      body: 'Nakon pregleda i procene promene, laserski impulsi se usmeravaju direktno na krvni sud. Tokom tretmana može se osetiti kratkotrajan osećaj peckanja ili toplote, koji većina pacijenata dobro podnosi. U zavisnosti od veličine i broja promena, procedura traje od nekoliko minuta do oko 30 minuta. Broj potrebnih tretmana zavisi od vrste, veličine i lokalizacije vaskularne promene. Manji hemangiomi često se uklanjaju jednim tretmanom, dok je za izraženije telangiektazije ili promene na nogama obično potrebno više sesija, na 4 do 6 nedelja.',
+    },
+    {
       heading: 'Oporavak nakon tretmana',
       body: 'Nakon procedure može se javiti prolazno crvenilo, blagi otok ili osećaj toplote, koji uglavnom nestaju u roku od nekoliko sati do nekoliko dana. Kod tretmana hemangioma i većih telangiektazija moguće je prolazno potamnjenje tretirane promene pre njenog postepenog povlačenja. Neposredno nakon tretmana preporučuje se izbegavanje intenzivnog izlaganja suncu, saune, toplih kupki i intenzivne fizičke aktivnosti tokom nekoliko dana, kao i svakodnevna primena preparata sa visokim zaštitnim faktorom (SPF 50+).',
     },
@@ -53,10 +58,6 @@ Hemangiomi kože su benigni tumori koji su posledica hiperplazije krvnih sudova.
   ],
   methods: [
     'Nd:YAG laser, talasna dužina 1064 nm',
-  ],
-  howItWorks: [
-    'Nakon pregleda i procene promene, laserski impulsi se usmeravaju direktno na krvni sud. Tokom tretmana može se osetiti kratkotrajan osećaj peckanja ili toplote, koji većina pacijenata dobro podnosi. U zavisnosti od veličine i broja promena, procedura traje od nekoliko minuta do oko 30 minuta.',
-    'Broj potrebnih tretmana zavisi od vrste, veličine i lokalizacije vaskularne promene. Manji hemangiomi često se uklanjaju jednim tretmanom, dok je za izraženije telangiektazije ili promene na nogama obično potrebno više sesija, na 4 do 6 nedelja.',
   ],
   expectedResults: [
     'Precizno i selektivno delovanje na krvne sudove',

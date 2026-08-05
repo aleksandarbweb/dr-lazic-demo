@@ -1170,6 +1170,39 @@ This is a genuine waiting point, not a stalled task. Next session that touches t
 
 ---
 
+## 21. Summary of the 2026-08-05 Marta feedback implementation pass
+
+Marta's response to the 2026-07-23 handoff arrived as a dated, item-by-item feedback list covering
+the homepage (10 items), O nama, and 8 service pages, plus a required per-item status report. Full
+diff detail is logged in `docs/IMPROVEMENT-REPORT.md`'s 2026-08-05 changelog entry — this section
+tracks what it means for content-map tracking specifically.
+
+**Resolved from prior "waiting on Marta" list**: the philosophy quote replacement and the
+aesthetic-medicine patient review (both open since 2026-07-20, §19) — see the two struck-through
+items above.
+
+**New asset received this session**: `public/images/people/snezanastojkovic.png` — Snežana's real
+photo, added to her O nama spotlight card (previously a generic icon placeholder).
+
+**New asset confirmed stock/non-real and removed**: the `medicinska-dermatologija` service page's
+`imageSrc` (`lecenje-koznih-i-polnih-bolesti.png`) was visually inspected this session and is a
+generic stock photo of an unidentified doctor and patient — not clinic content. Removed; the page
+now shows the layout's pending-image placeholder instead of an unapproved photo.
+
+**Team roster change**: Marta asked to drop the 3 non-core team members (Milica Dobrić, Melissa
+Ćelović, Sonja Bubulj) from O nama "for now" pending upcoming team changes — the underlying
+`otherTeam` array is left in place in `sr.ts`/`en.ts`/`ru.ts` (unused, harmless) rather than deleted,
+in case Marta wants them back with a different roster later.
+
+**New open questions added** (see the "Known open questions" list above): the gljivicna-oboljenja
+4-vs-5-treatments inconsistency, and the akne "item 4" ambiguity that couldn't be resolved without
+inventing medical wording.
+
+**Status**: all resolvable items from this pass were shipped; the 2 ambiguous items above are the
+only ones still open. Awaiting Marta's next round of feedback via the shared Google Doc.
+
+---
+
 ## Current client-preview snapshot (2026-07-16)
 
 > **This section is the authoritative status summary for the current client-preview milestone.**
@@ -1305,9 +1338,18 @@ asked for.
 - **(added 2026-07-20, §19)** The exact model/brand name of the cryotherapy device ("javljam ime" per
   her note) — the equipment page currently still shows "CryoPro & CryoPen," unconfirmed whether that's
   correct or needs updating.
-- **(added 2026-07-20, §19)** A real patient quote about aesthetic medicine for the homepage reviews
-  carousel (we declined to invent one since that section is labeled as sourced from genuine public
-  reviews).
-- **(added 2026-07-20, §19)** The homepage philosophy quote itself ("Svaki pacijent zaslužuje
-  individualnu pažnju...") — she said she still needs to decide on a replacement sentence
-  ("Moram da razmislim koju ćemo rečenicu da ubacimo"); current quote left unchanged pending that.
+- ~~A real patient quote about aesthetic medicine for the homepage reviews carousel~~ —
+  **resolved 2026-08-05**: Marta supplied one aesthetic-medicine review (Marija) plus 3 rosacea
+  reviews from screenshots; added as 4 new cards, see §21.
+- ~~The homepage philosophy quote itself~~ — **resolved 2026-08-05**: Marta supplied the exact
+  replacement sentence ("Verujem da svaki pacijent zaslužuje pažnju, razumevanje i tretman
+  pažljivo prilagođen njegovim potrebama."); shipped, see §21.
+- **(added 2026-08-05, §21)** `gljivicna-oboljenja-laser`: Marta's supplied "Put do zdravog
+  nokta" paragraph says "serije od pet tretmana" but the page's stat card ("4 Tretmana") and FAQ
+  ("seriju od 4 tretmana") still say 4 — implemented her literal text as given without silently
+  changing the other two mentions; needs her confirmation on which number (4 or 5) is correct so
+  the page can be made internally consistent.
+- **(added 2026-08-05, §21)** `akne` page: instruction says item 4 should begin "Medicinski
+  higijenski tretmani i saveti o..." but neither the `methods` array item 4 (chemical peels) nor
+  the `howItWorks` array item 4 (diet advice) contains that phrase or a "saveti o" completion —
+  left unchanged, needs Marta to specify which list and the intended full sentence.

@@ -7,7 +7,6 @@ import {
   HeartHandshake,
   ShieldCheck,
   Award,
-  CircleUserRound,
   Stethoscope,
   ScanEye,
   Zap,
@@ -245,11 +244,16 @@ export default function ONamaPage() {
               {t.onama.otherTeamTitle}
             </p>
 
-            {/* Snežana — spotlight card */}
-            <div className="max-w-4xl mx-auto mb-12 border border-border bg-white p-8 md:p-10">
+            {/* Snežana — spotlight card, deliberately smaller than the Marta/Biljana profiles above */}
+            <div className="max-w-4xl mx-auto border border-border bg-white p-8 md:p-10">
               <div className="flex flex-col sm:flex-row gap-6">
-                <div className="flex-shrink-0 flex h-16 w-16 items-center justify-center rounded-full border border-border bg-background">
-                  <CircleUserRound size={30} className="text-primary" />
+                <div className="relative flex-shrink-0 h-16 w-16 overflow-hidden rounded-full border border-border bg-background">
+                  <Image
+                    src="/images/people/snezanastojkovic.png"
+                    alt={t.onama.snezana.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <h4 className="font-serif text-2xl text-foreground mb-1">{t.onama.snezana.name}</h4>
@@ -261,21 +265,6 @@ export default function ONamaPage() {
                   ))}
                 </div>
               </div>
-            </div>
-
-            {/* Rest of the cosmetologists */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
-              {t.onama.otherTeam.map((member) => (
-                <div key={member.name} className="flex flex-col items-center text-center gap-3">
-                  <div className="flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-white">
-                    <CircleUserRound size={22} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-foreground font-medium">{member.name}</p>
-                    <p className="text-muted-foreground text-xs uppercase tracking-[0.1em]">{member.title}</p>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>

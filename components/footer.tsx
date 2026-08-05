@@ -20,7 +20,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-foreground">
+    <footer className="bg-[#3d342c]">
       {/* Top Decorative Line */}
       <div className="h-1 bg-primary" />
 
@@ -37,7 +37,7 @@ export function Footer() {
                 className="mb-4 h-28 w-auto object-contain object-left md:h-32 lg:h-36 xl:h-40"
               />
             </Link>
-            <p className="mb-6 max-w-xs text-sm font-light leading-relaxed text-white/60">
+            <p className="mb-6 max-w-xs text-base font-light leading-relaxed text-white/70">
               {t.footer.description}
             </p>
             
@@ -65,7 +65,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-light text-white/60 transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                    className="text-base font-light text-white/70 transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                   >
                     {t.nav[link.translationKey]}
                   </Link>
@@ -82,7 +82,7 @@ export function Footer() {
             <ul className="space-y-5">
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-white/60 text-sm font-light">
+                <div className="text-white/70 text-base font-light">
                   <p>{businessData.addressDisplay}</p>
                   <div className="flex items-center gap-2 mt-1.5">
                     <a
@@ -93,7 +93,7 @@ export function Footer() {
                     >
                       Google Maps
                     </a>
-                    <span className="text-white/25">·</span>
+                    <span className="text-white/30">·</span>
                     <a
                       href={businessData.appleMapsUrl}
                       target="_blank"
@@ -109,7 +109,7 @@ export function Footer() {
                 <Phone size={18} className="text-primary flex-shrink-0" />
                 <a
                   href={`tel:${businessData.telephone}`}
-                  className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                  className="text-base font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
                   {businessData.phoneDisplay}
                 </a>
@@ -118,14 +118,14 @@ export function Footer() {
                 <Mail size={18} className="text-primary flex-shrink-0" />
                 <a
                   href={`mailto:${businessData.email}`}
-                  className="text-sm font-light text-white/60 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                  className="text-base font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 >
                   {businessData.email}
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <Clock size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-white/60 text-sm font-light">
+                <div className="text-white/70 text-base font-light">
                   <p>{t.footer.monFri} {businessData.openingHours.opens} - {businessData.openingHours.closes}</p>
                   <p>{t.footer.satSun}</p>
                 </div>
@@ -138,7 +138,7 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
-          <p className="text-white/40 text-sm text-center font-light tracking-wide">
+          <p className="text-white/50 text-sm text-center font-light tracking-wide">
             © 2026 Ordinacija Dr. Terzić. {t.footer.rights}
           </p>
         </div>

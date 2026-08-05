@@ -1604,3 +1604,61 @@ Unchanged policy: raise with the client, don't build unprompted.
   the exact-match-only vs. manual-mapping vs. skip options; he chose to skip entirely for now.
   Don't re-attempt without either an exact per-device slug mapping supplied by the client/Aleksandar,
   or confirmation the fuzzy-match risk is acceptable.
+- 2026-08-05 — **Full pass on Marta's dated feedback list (homepage items 1-10, O nama,
+  and 8 service pages), delivered verbatim in the working session.** All items implemented
+  except explicit asset/text blockers and one flagged ambiguity. Files changed:
+  `lib/i18n/translations/sr.ts`, `components/intro-overlay.tsx`, `components/footer.tsx`,
+  `components/service-page-layout.tsx`, `app/page.tsx`, `app/o-nama/page.tsx`, and the
+  `bradavice-papilomi-keratoze-moluske`, `uklanjanje-papiloma-i-keratoza`,
+  `kapilari-i-hemangiomi-laser`, `gljivicna-oboljenja-laser`, `opadanje-kose`,
+  `medicinska-dermatologija` service pages.
+  - **Homepage**: intro-overlay eyebrow/slogan resized and de-italicized into one consistent
+    line; "Naše usluge"/"Naši specijalisti"/"Iskustva pacijenata" switched to sentence case;
+    philosophy section rebuilt from a solid `#2a2420` block to a soft `#f2ece2` cream
+    treatment with larger "Moja filozofija"/"dr Marta Terzić" and Marta's exact new quote;
+    Marta's title → "CEO & specijalista dermatovenerologije"; 4 new verified review cards
+    (2 rosacea Instagram, Marija, 1 anonymous aesthetic) inserted at carousel positions 2-5
+    of 12, ahead of 6 pre-existing reviews; CTA subtitle "Spremni za promenu?" → "Javite nam se".
+  - **Footer**: background `bg-foreground` (near-black) → `#3d342c` soft charcoal; body/nav/
+    contact text bumped from `text-sm` to `text-base` with higher opacity for contrast.
+  - **O nama**: quotation marks removed around "bolesti" (x2); "Naše Vrednosti" → sentence
+    case; Marta specializations gained "Prevencija i rano otkrivanje malignih promena kože"
+    and "Opšta i dečija dermatologija" → "Opšta i pedijatrijska dermatologija"; Biljana gained
+    "Laserski tretmani"; the 3 other cosmetologists (Milica/Melissa/Sonja) removed from the
+    team section per Marta; Snežana's spotlight card now shows her real photo
+    (`public/images/people/snezanastojkovic.png`, client-supplied this session) at a
+    deliberately smaller size than the Marta/Biljana profiles.
+  - **Shared service-page layout** (`service-page-layout.tsx`, affects every data-driven
+    service page): `methodsTitle` "Metode i tehnologije" → "Metode lečenja"; hero
+    "Saznajte više" button no longer links to `/kontakt` — it smooth-scrolls to the page's
+    own "What is it" section (`#service-about`); bottom CTA rebuilt from solid `bg-primary`
+    to the same soft-cream treatment as the homepage CTA, with `ctaTitle` renamed
+    "Saznajte više" → "Zakažite pregled" so a contact link is never labeled "learn more".
+    Same hero-scroll and CTA-softening treatment hand-applied to `gljivicna-oboljenja-laser`
+    (custom-built page, doesn't use the shared layout).
+  - **Service pages**: removed "Proces/Kako funkcioniše" + "Idealni kandidati" sections from
+    `bradavice-papilomi-keratoze-moluske`, `uklanjanje-papiloma-i-keratoza`, and
+    `kapilari-i-hemangiomi-laser` (kept the treatment-course detail from the removed
+    `kapilari` how-it-works by folding it into a new "Tok tretmana" prose section instead of
+    deleting the information); removed the item 3 (women-specific) `expectedResults` bullet
+    from `bradavice-papilomi-keratoze-moluske`; added "Venous lake (venska jezerca), najčešće
+    na usnama" to the vascular-changes-treated list on `kapilari-i-hemangiomi-laser`;
+    `gljivicna-oboljenja-laser` de-italicized its title, sentence-cased all headings, updated
+    process items 4/5 and the "Put do zdravog nokta" paragraph verbatim per Marta's supplied
+    text; removed the `expectedResults` section from `opadanje-kose`; removed the
+    "text still pending" banner from `medicinska-dermatologija` and dropped its `imageSrc`
+    (confirmed by visual inspection to be a generic stock photo of an unrelated
+    doctor/patient, not real clinic content — falls back to the layout's "Slika tretmana"
+    pending placeholder instead).
+  - **Flagged, not changed**: `gljivicna-oboljenja-laser`'s supplied "Put do zdravog nokta"
+    paragraph says "serije od pet tretmana" while the page's stat card and FAQ still say 4
+    treatments — implemented Marta's literal text as given but did not silently change the
+    "4" elsewhere; `akne`'s "item 4 should begin 'Medicinski higijenski tretmani i saveti
+    o...'" instruction doesn't cleanly match either the `methods` or `howItWorks` array at
+    that index and has no given completion after "saveti o" — left unchanged pending
+    clarification from Marta on which list and what the sentence should say.
+  - **Verification**: `npx tsc --noEmit` clean, `npm run build` clean (49 pages, no new
+    warnings), Playwright checks at 1440×900 and 390×844 on `/`, `/o-nama`,
+    `/usluge/akne`, `/usluge/gljivicna-oboljenja-laser` — confirmed sentence-case headings,
+    merged non-italic slogan text via DOM query, hero "Saznajte više" scroll-not-navigate
+    behavior, softened CTA rendering, and Marta/Biljana specialization lists render in full.

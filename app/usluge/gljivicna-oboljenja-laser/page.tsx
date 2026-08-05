@@ -47,8 +47,8 @@ const processSteps = [
   'Konsultacija: pregled nokatnih ploča i potvrda gljivične infekcije.',
   'Priprema: nokat treba da bude očišćen od laka ili bilo kakvih premaza.',
   'Laserski tretman: aplikacija laserske svetlosti koja prodire kroz nokatnu ploču i uništava gljivice toplotom.',
-  'Nega nakon: saveti o higijeni stopala i obuće kako bi se sprečila reinfekcija.',
-  'Kontrola: detaljan pregled napretka rasta zdravog nokta nakon 2 meseca.'
+  'Nega nakon tretmana: savet o daljoj lokalnoj terapiji, higijeni stopala i obuće.',
+  'Laserski tretmani i kontrole na 2–4 nedelje do kompletnog izrastanja zdrave nokatne ploče.'
 ]
 
 export default function GljivicnaOboljenjaLaserPage() {
@@ -73,9 +73,9 @@ export default function GljivicnaOboljenjaLaserPage() {
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">Laserski tretmani</p>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
-              Infekcije Noktiju
+              Infekcije noktiju
               <br />
-              <span className="italic text-[#342f2a]">Laserska Terapija</span>
+              <span className="text-[#342f2a]">Laserska terapija</span>
             </h1>
             <div className="w-24 h-[2px] bg-primary mt-8" />
             <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed max-w-[56ch]">
@@ -87,24 +87,28 @@ export default function GljivicnaOboljenjaLaserPage() {
                 Tekst ispod opisuje laserski tretman u opštim crtama. Zvaničan klinički opis ove usluge od dr Terzić je i dalje u pripremi i biće dodat čim ga dostavi.
               </p>
             </div>
-            <Link
-              href="/kontakt"
+            <a
+              href="#service-about"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('service-about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
               className="mt-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
             >
               Saznajte više
-            </Link>
+            </a>
           </div>
         </div>
       </section>
 
       {/* What Is It Section */}
-      <section className="bg-white py-20 md:py-28">
+      <section id="service-about" className="scroll-mt-24 bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Savremena metoda</p>
               <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
-                Rešenje za Gljivice
+                Rešenje za gljivice
               </h2>
               <div className="w-16 h-[2px] bg-primary mb-8" />
               <div className="text-muted-foreground leading-relaxed font-light space-y-5">
@@ -153,7 +157,7 @@ export default function GljivicnaOboljenjaLaserPage() {
           <div className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Prednosti</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-              Zašto Odabrati Laser
+              Zašto odabrati laser
             </h2>
             <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
@@ -180,7 +184,7 @@ export default function GljivicnaOboljenjaLaserPage() {
           <div className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Proces lečenja</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-              Tok Terapije
+              Tok terapije
             </h2>
             <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
@@ -206,12 +210,12 @@ export default function GljivicnaOboljenjaLaserPage() {
              <div>
                 <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Očekivanja</p>
                 <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
-                  Put do Zdravog Nokta
+                  Put do zdravog nokta
                 </h2>
                 <div className="w-16 h-[2px] bg-primary mb-8" />
                 <div className="text-muted-foreground leading-relaxed font-light space-y-5">
                   <p>
-                    Nakon završene serije od 4 tretmana, nokat nastavlja da raste svojom uobičajenom brzinom. Kako novi, zdravi nokat izrasta, oboleli i promenjeni deo se postepeno pomera ka periferiji dok se potpuno ne ukloni sečenjem.
+                    Nakon završene serije od pet tretmana, laserski tretmani i kontrole ponavljaju se na 2–4 nedelje do kompletnog izrastanja zdrave nokatne ploče.
                   </p>
                   <div className="bg-white p-6 border border-[#e3dad1] rounded-2xl flex items-start gap-4">
                      <CheckCircle2 className="text-primary flex-shrink-0" />
@@ -239,7 +243,7 @@ export default function GljivicnaOboljenjaLaserPage() {
           <div className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">FAQ</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
-              Često Postavljana Pitanja
+              Često postavljana pitanja
             </h2>
             <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </div>
@@ -273,21 +277,23 @@ export default function GljivicnaOboljenjaLaserPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-primary py-20">
-        <div className="absolute left-0 top-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute right-0 bottom-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
-        
+      <section className="relative overflow-hidden bg-[#faf6f1] py-20 border-y border-[#e5ddd3]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.04]" />
+          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-primary/[0.04]" />
+        </div>
+
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Vratite zdravlje Vašim noktima</p>
-          <h2 className="font-serif text-3xl md:text-4xl text-white">
-            Rešite Gljivice Bezbedno
+          <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">Vratite zdravlje vašim noktima</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-[#181512]">
+            Rešite gljivice bezbedno
           </h2>
-          <p className="text-white/80 mt-5 font-light max-w-xl mx-auto">
+          <p className="text-[#5e5953] mt-5 font-light max-w-xl mx-auto">
             Saznajte više o laserskom tretmanu i rešite se uporne infekcije na savremen način.
           </p>
           <Link
             href="/kontakt"
-            className="mt-10 inline-flex rounded-full bg-white px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-primary transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:scale-[0.98]"
+            className="mt-10 inline-flex rounded-full bg-primary px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#9f1818] hover:shadow-xl hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
           >
             Kontaktirajte nas
           </Link>

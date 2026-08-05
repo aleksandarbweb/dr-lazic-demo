@@ -152,13 +152,11 @@ export function IntroOverlay() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-[#c6353d] sm:text-xs">
+          <p className="mb-5 text-[0.85rem] font-semibold uppercase tracking-[0.24em] text-[#e2555c] sm:text-base">
             {t.home.hero.sloganEyebrow || 'VIŠE OD 20 GODINA SA VAMA'}
           </p>
-          <p className="text-[clamp(1.9rem,4.6vw,4.15rem)] font-semibold leading-[1.06] text-[#fff8ef] lg:whitespace-nowrap">
-            {t.home.hero.sloganMain || 'Briga o zdravlju i lepoti'}
-          </p>
-          <p className="mt-2 text-[clamp(1.2rem,3.2vw,2.45rem)] italic leading-[1.14] text-[#eee0d2]">
+          <p className="text-[clamp(1.7rem,3.8vw,3.4rem)] font-semibold not-italic leading-[1.2] text-[#fff8ef]">
+            {t.home.hero.sloganMain || 'Briga o zdravlju i lepoti'}{' '}
             {t.home.hero.sloganItalic || 'na prirodan i bezbedan način.'}
           </p>
         </motion.div>
