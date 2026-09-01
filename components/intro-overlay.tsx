@@ -7,9 +7,8 @@ import { useTranslation } from '@/lib/i18n/LanguageContext'
 
 // Set to true if you want to temporarily remove the intro without touching the layout.
 const DISABLE_SITE_INTRO = false
-const INTRO_VIDEO_SRC = '/videos/dr-teric-video-intro-sofija.mp4'
-// Matches the source video's actual runtime (public/videos/dr-teric-video-intro-sofija.mp4 is ~4.968s)
-// so the overlay fades out right as the clip finishes instead of holding on a frozen/looped frame.
+const INTRO_VIDEO_SRC = '/videos/generic-derm-intro.mp4'
+// Hold matches the previous Sofija intro timing (~4.968s) so the overlay fades out at the same pace.
 const INTRO_HOLD_MS = 4968
 const REDUCED_MOTION_HOLD_MS = 1200
 const INTRO_FADE_SECONDS = 1.5
@@ -102,7 +101,7 @@ export function IntroOverlay() {
       }}
     >
       <video
-        className="absolute inset-0 h-full w-full object-cover object-[22%_center] md:object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center"
         src={INTRO_VIDEO_SRC}
         autoPlay
         muted
@@ -110,6 +109,8 @@ export function IntroOverlay() {
         loop
         preload="auto"
       />
+
+      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
 
       <motion.div
         className="relative z-10 flex w-[min(94vw,1180px)] flex-col items-center px-5 text-center"
