@@ -2,58 +2,50 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Lečenje pojačanog znojenja pazuha (aksilarne hiperhidroze) | Ordinacija Dr. Terzić',
-  description: 'Botulinum toksin tipa A za lečenje aksilarne hiperhidroze (pojačanog znojenja pazuha) u ordinaciji Dr. Terzić: bezbedan i efikasan tretman uz brz povratak svakodnevnim aktivnostima.',
+  title: 'Lečenje pojačanog znojenja (hiperhidroza) | Ordinacija Dr. Terzić',
+  description: 'Botulinski toksin za tretman hiperhidroze u ordinaciji Dr. Terzić: efikasno i ciljano smanjenje prekomernog znojenja uz brz oporavak i dugotrajan efekat.',
 }
 
 const serviceData = {
-  title: 'Lečenje pojačanog znojenja pazuha (aksilarne hiperhidroze)',
-  aboutHeading: 'Šta je aksilarna hiperhidroza?',
-  subtitle: 'Botulinum toksin tipa A za bezbedno, efikasno i dugotrajno smanjenje pojačanog znojenja pazuha',
-  description: 'Minimalno invazivan tretman aksilarne hiperhidroze uz brz oporavak i vidljive rezultate',
-  whatIsIt: `Aksilarna hiperhidroza predstavlja pojačano znojenje pazuha koje prevazilazi potrebe organizma za regulacijom telesne temperature. Osobe sa ovim problemom često imaju vidljive mokre fleke na odeći, neprijatan osećaj vlažnosti i značajno narušen kvalitet života, bez obzira na godišnje doba ili nivo fizičke aktivnosti.
-
-Primena botulinum toksina tipa A predstavlja jednu od najefikasnijih i naučno najispitivanijih metoda za lečenje aksilarne hiperhidroze. Tretman je minimalno invazivan, bezbedan i omogućava dugotrajno smanjenje znojenja uz brz povratak svakodnevnim aktivnostima.`,
+  title: 'Pojačano znojenje – hiperhidroza',
+  aboutHeading: 'Efikasno i ciljano smanjenje prekomernog znojenja',
+  subtitle: 'Botulinski toksin za bezbedno i dugotrajno smanjenje pojačanog znojenja',
+  description: 'Minimalno invazivan tretman hiperhidroze uz brz povratak svakodnevnim aktivnostima',
+  whatIsIt: `Hiperhidroza je stanje karakterisano prekomernim znojenjem koje prevazilazi fiziološke potrebe organizma i može značajno uticati na svakodnevni život, samopouzdanje i društvene aktivnosti. Najčešće se javlja u predelu pazuha, dlanova i tabana, a može biti prisutna i na drugim regijama tela.`,
   whatIsItSections: [
     {
-      heading: 'Kada se preporučuje?',
-      items: [
-        'Izraženo znojenje pazuha koje ometa svakodnevni život',
-        'Nedovoljan odgovor na antiperspirante i lokalnu terapiju',
-        'Potrebu za dugotrajnim i efikasnim smanjenjem znojenja',
-        'Pojačano znojenje koje utiče na profesionalne, društvene ili sportske aktivnosti',
-      ],
+      heading: 'Botulinski toksin',
+      body: 'Botulinski toksin predstavlja jednu od najefikasnijih bezbednih metoda za tretman hiperhidroze. Aplikacijom veoma malih količina botulinskog toksina u kožu, privremeno se blokira prenos nervnih impulsa do znojnih žlezda. Na taj način se smanjuje njihova aktivnost i količina proizvedenog znoja, dok se prirodni procesi termoregulacije organizma nastavljaju. Tretman je precizan i prilagođava se regiji koja se tretira.',
     },
     {
-      heading: 'Kako deluje botulinum toksin?',
-      body: 'Botulinum toksin privremeno blokira oslobađanje acetilholina, neurotransmitera koji aktivira ekrine znojne žlezde. Na taj način dolazi do značajnog smanjenja stvaranja znoja u tretiranom području, dok se sposobnost organizma da reguliše telesnu temperaturu ne narušava, jer ostale znojne žlezde nastavljaju normalno da funkcionišu.',
+      heading: 'Kome je tretman namenjen?',
+      body: 'Tretman je namenjen osobama kod kojih je prekomerno znojenje izraženo i predstavlja smetnju u svakodnevnom životu, naročito kod aksilarne (pazušne) hiperhidroze. Pre tretmana procenjuju se intenzitet i lokalizacija znojenja, kao i eventualni drugi uzroci pojačanog znojenja.',
     },
     {
-      heading: 'Kada se vide rezultati?',
-      body: 'Prvi efekti terapije najčešće se primećuju nakon 5 do 7 dana, dok se maksimalan efekat razvija u roku od oko dve nedelje. Kod većine pacijenata znojenje se smanjuje za više od 80 do 90%, što značajno poboljšava kvalitet života i svakodnevno funkcionisanje. Efekat tretmana traje u proseku 4 do 6 meseci, a kod pojedinih osoba i duže. Nakon postepenog vraćanja znojenja, terapija se može bezbedno ponoviti.',
+      heading: 'Koliko traje efekat?',
+      body: 'Smanjenje znojenja obično se primećuje tokom prvih nekoliko dana nakon tretmana, dok se puni efekat razvija u narednim danima. Efekat najčešće traje oko 4–6 meseci, nakon čega se aktivnost znojnih žlezda postepeno vraća. Tretman se tada može ponoviti. Trajanje efekta je individualno i može se razlikovati od osobe do osobe.',
     },
     {
-      heading: 'Priprema i plan lečenja',
-      body: 'Pre početka terapije obavlja se dermatološki pregled kako bi se potvrdila dijagnoza primarne aksilarne hiperhidroze i isključili mogući sekundarni uzroci pojačanog znojenja. Na osnovu kliničkog nalaza izrađujemo individualni plan lečenja i određujemo optimalnu dozu botulinum toksina, sa ciljem postizanja maksimalnog efekta uz očuvanje prirodne funkcije kože i visok nivo bezbednosti. Naš cilj je da pacijentima omogućimo dugotrajnu kontrolu pojačanog znojenja, veću sigurnost u svakodnevnim i profesionalnim aktivnostima i značajno bolji kvalitet života.',
+      heading: 'Oporavak',
+      body: 'Procedura je minimalno invazivna i nije potreban period oporavka. Neposredno nakon tretmana mogu se javiti sitna crvenila ili blagi otoci na mestima aplikacije, koji se najčešće brzo povlače. Nakon intervencije se 5 do 7 dana ne savetuje boravak u sauni, treniranje i upotreba antiperspiranata.',
     },
-  ],
-  howItWorks: [
-    'Nakon pregleda i određivanja zone pojačanog znojenja, botulinum toksin se aplikuje veoma tankom iglom u više površinskih tačaka u regiji pazuha.',
-    'Procedura traje približno 15 do 30 minuta. Većina pacijenata oseća samo blag osećaj peckanja, a po potrebi se može primeniti lokalna anestetička krema radi dodatnog komfora.',
-    'Po završetku tretmana pacijent se odmah vraća svojim svakodnevnim aktivnostima.',
+    {
+      heading: 'Naš pristup',
+      body: 'Kod hiperhidroze cilj nije potpuno zaustavljanje znojenja, već kontrolisano smanjenje prekomernog znojenja u regiji koja pacijentu predstavlja problem. Tretman planiramo individualno, sa preciznom aplikacijom botulinskog toksina i doziranjem prilagođenim regiji i intenzitetu hiperhidroze.',
+    },
   ],
   expectedResults: [
-    'Visoka efikasnost u smanjenju znojenja',
-    'Minimalno invazivna procedura',
-    'Brz tretman bez perioda oporavka',
-    'Dugotrajan efekat',
-    'Značajno poboljšanje kvaliteta života',
-    'Bezbedna i klinički dokazana metoda',
+    'Značajno smanjuje prekomerno znojenje',
+    'Deluje ciljano na tretiranu regiju',
+    'Procedura je brza i minimalno invazivna',
+    'Nema perioda oporavka',
+    'Efekat traje više meseci',
+    'Tretman se može bezbedno ponavljati',
   ],
   relatedServices: [
     { title: 'Botulinum toksin – botox', href: '/usluge/botoks-fileri' },
-    { title: 'Lečenje akni', href: '/usluge/akne' },
     { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },
+    { title: 'Lečenje akni', href: '/usluge/akne' },
   ],
 }
 

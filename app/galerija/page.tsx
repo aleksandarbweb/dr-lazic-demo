@@ -29,7 +29,7 @@ export default function GalerijaPage() {
     { src: '/images/Services/dermoscopy-treatment.jpg', category: 'Tretmani', alt: 'Dermoskopija' },
     { src: '/images/Services/dermatology-treatment.jpg', category: 'Tretmani', alt: 'Dermatološki pregled' },
     { src: '/images/people/Marta/drmartaterzicheadshot.png', category: 'Ordinacija', alt: 'dr Marta Terzić' },
-    { src: '/images/people/Biljana/drbiljanapetkovicheadshot.png', category: 'Ordinacija', alt: 'dr Biljana Petković' },
+    { src: '/images/people/Biljana/dr-biljana-petkovic.png', category: 'Ordinacija', alt: 'dr Biljana Petković' },
   ]
 
   const filteredImages = activeFilter === 'all'

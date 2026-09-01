@@ -203,7 +203,7 @@ export default function ONamaPage() {
               <div className="lg:col-span-1 lg:order-2">
                 <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/people/Biljana/drbiljanapetkovicheadshot.png"
+                    src="/images/people/Biljana/dr-biljana-petkovic.png"
                     alt="dr Biljana Petković"
                     fill
                     className="object-cover"

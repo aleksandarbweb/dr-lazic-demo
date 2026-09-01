@@ -21,6 +21,8 @@ interface WhatIsItSection {
   heading: string
   body?: string
   items?: string[]
+  imageSrc?: string
+  imageAlt?: string
 }
 
 interface ServicePageLayoutProps {
@@ -184,6 +186,28 @@ export function ServicePageLayout({
                         </li>
                       ))}
                     </ul>
+                  )}
+                  {section.imageSrc && (
+                    <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] border border-[#e4ddd4] bg-[#f4eee8] p-1 shadow-[0_20px_40px_-24px_rgba(44,31,20,0.35)]">
+                      <div className="relative h-full w-full overflow-hidden rounded-[calc(1.25rem-0.25rem)]">
+                        <Image
+                          src={section.imageSrc}
+                          alt={section.imageAlt || section.heading}
+                          fill
+                          className="object-contain bg-[#faf8f5]"
+                        />
+                        <div className="absolute bottom-3 right-3 w-20 md:w-24 opacity-80">
+                          <Image
+                            src="/images/Logos/dr terzic beli logo.png"
+                            alt=""
+                            aria-hidden="true"
+                            width={96}
+                            height={43}
+                            className="w-full h-auto drop-shadow-sm"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </StaggerItem>
               ))}

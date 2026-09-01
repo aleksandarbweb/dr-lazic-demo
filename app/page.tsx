@@ -45,7 +45,7 @@ const doctorsConfig = [
     profileHref: "/o-nama#marta-terzic",
   },
   {
-    imageSrc: "/images/people/Biljana/drbiljanapetkovicheadshot.png",
+    imageSrc: "/images/people/Biljana/dr-biljana-petkovic.png",
     profileHref: "/o-nama#biljana-petkovic",
     reversed: true
   }

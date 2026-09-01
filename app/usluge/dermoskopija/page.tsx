@@ -38,6 +38,8 @@ Svaki dermoskopski pregled u našoj ordinaciji podrazumeva detaljnu procenu svih
     {
       heading: 'ABCDE pravilo: kako prepoznati sumnjiv mladež?',
       body: 'Redovan samopregled kože predstavlja važan deo prevencije melanoma. Posebnu pažnju treba obratiti na promene koje ispunjavaju jedno ili više kriterijuma ABCDE pravila: A, Asymmetry (Asimetrija) - jedna polovina mladeža nije ista kao druga. B, Border (Ivice) - nepravilne, nazubljene ili nejasno ograničene ivice. C, Color (Boja) - više nijansi braon, crne, crvene, plave ili bele boje u istoj promeni. D, Diameter (Prečnik) - promena veća od približno 6 mm, naročito ako raste. E, Evolution (Evolucija) - svaka promena veličine, oblika, boje ili površine, kao i pojava svraba, krvarenja ili ranice. Pored ABCDE pravila, važno je obratiti pažnju i na takozvani "ružni pačić" (Ugly Duckling sign): mladež koji se izgledom razlikuje od svih ostalih na telu i zahteva dermatološku procenu.',
+      imageSrc: '/images/Services/dermoskopija/abcde-pravilo.png',
+      imageAlt: 'ABCDE pravilo za pregled mladeža',
     },
     {
       heading: 'Koliko često treba pregledati mladeže?',
