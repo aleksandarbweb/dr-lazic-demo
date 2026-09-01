@@ -40,8 +40,8 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
     id: 'estetska-dermatologija',
     services: [
       { name: 'Personalizovani Full Face tretmani by dr Marta Terzić', slug: 'full-face', category: 'Estetska dermatologija', imageSrc: '/images/Services/profhilo-treatment.jpg', featured: true },
-      { name: 'Hijaluronski fileri', slug: 'botoks-fileri', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
-      { name: 'Botulinum toksin – botox', slug: 'botoks-fileri', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
+      { name: 'Hijaluronski fileri', slug: 'hijaluronski-fileri', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
+      { name: 'Botulinum toksin – botox', slug: 'botulinum-toksin', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
       { name: 'Kolagen stimulatori', slug: 'kolagen-stimulatori', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },
       { name: 'Biorevitalizacije', slug: 'profhilo', category: 'Estetska dermatologija', imageSrc: '/images/Services/profhilo-treatment.jpg', featured: true },
       { name: 'Mezoterapija', slug: 'mezoterapija', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },

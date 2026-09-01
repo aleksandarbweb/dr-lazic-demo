@@ -43,7 +43,7 @@ const serviceData = {
     'Tretman se može bezbedno ponavljati',
   ],
   relatedServices: [
-    { title: 'Botulinum toksin – botox', href: '/usluge/botoks-fileri' },
+    { title: 'Botulinum toksin – botox', href: '/usluge/botulinum-toksin' },
     { title: 'Dijagnostika i lečenje kožnih i polnih bolesti', href: '/usluge/medicinska-dermatologija' },
     { title: 'Lečenje akni', href: '/usluge/akne' },
   ],

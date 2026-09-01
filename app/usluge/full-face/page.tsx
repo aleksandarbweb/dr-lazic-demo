@@ -2,12 +2,12 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Personalizovani Full Face Tretmani | Ordinacija Dr. Terzić',
-  description: 'Personalizovani full face pristup podmlađivanju lica dr Marte Terzić: MD Codes metodologija, individualna analiza lica, prirodan rezultat i dugoročna nega kože u Beogradu.',
+  title: 'Personalizovani full face tretmani by dr Marta Terzić | Ordinacija Dr. Terzić',
+  description: 'Personalizovani full face pristup podmlađivanju lica dr Marte Terzić: individualna analiza lica, multimodalni plan tretmana, prirodan rezultat i dugoročna nega kože u Beogradu.',
 }
 
 const serviceData = {
-  title: 'Personalizovani Full Face Tretmani',
+  title: 'Personalizovani full face tretmani by dr Marta Terzić',
   aboutHeading: 'Šta je Full Face tretman?',
   subtitle: 'Individualni estetski pristup dr Marte Terzić: harmonija celog lica za izbalansiran, prirodan i odmoran izgled',
   description: 'Dostojanstveno starenje uz umetnost prirodnog podmlađivanja',
@@ -16,15 +16,32 @@ const serviceData = {
 
 Najbolji estetski rezultat nije onaj koji se primećuje, već onaj zbog kojeg izgledate odmornije, svežije, negovanije i zadovoljnije sobom. Spojem medicine, iskustva i savremenih tehnologija kreiram tretmane prilagođene upravo vama.
 
-Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti: u svetu estetske medicine, anti-age sve više postaje age-well. Poenta estetskih i regenerativnih tretmana nije promena identiteta, već isticanje najboljih osobina svakog pacijenta.`,
+Poenta regenerativnih tretmana nije promena identiteta i borba protiv starenja, već isticanje najboljih osobina svakog pacijenta uz lepše i dostojanstveno starenje.`,
   whatIsItSections: [
     {
       heading: 'Svako lice ima svoju priču',
-      body: 'Različita anatomija, tip kože, genetika, navike i izloženost spoljašnjim faktorima utiču na to kako lice izgleda i stari, a sve njegove strukture su međusobno povezane, zbog čega je neophodno sagledati ga kao celinu. Strukturne promene nastaju na koštanim strukturama, mišićima, masnim jastučićima i ligamentima, što dovodi do opuštanja lica. Najviše se primete u srednjem delu lica, gde nastaju podočnjaci i umoran, tužan izraz. Bore između obrva i marionetske bore daju ljutit izraz, promene na čelu i oko očiju dodaju godine, dok se u donjoj trećini lica najčešće javlja opuštenost. Spuštanje spoljašnjih uglova očiju i krajeva obrva dodatno pojačava tužan izraz, a sve ove promene zajedno čine da lice izgleda iscrpljenije i starije nego što se pacijent zaista oseća, uz gubitak konturisanosti i harmonije.',
+      body: 'Različita anatomija, tip kože, genetika, navike i izloženost spoljašnjim faktorima utiču na to kako lice izgleda i stari, a sve njegove strukture su međusobno povezane, zbog čega je neophodno sagledati ga kao celinu. Strukturne promene nastaju na koštanim strukturama, mišićima, masnim jastučićima i ligamentima, što dovodi do opuštanja lica. Najviše se primete u srednjem delu lica, gde nastaju podočnjaci i umoran, tužan izraz. Bore između obrva i marionetske bore daju ljutit izraz, promene na čelu i oko očiju dodaju godine, dok se u donjoj trećini lica najčešće javlja opuštenost. Spuštanje spoljašnjih uglova očiju i krajeva obrva dodatno pojačava tužan izraz, a sve ove promene zajedno čine da lice izgleda iscrpljenije i starije nego što se pacijent zaista oseća, uz gubitak konturisanosti i harmonije. Često je kvalitet kože značajno promenjen. Od gubitka jedrine i nastanka bora, do pojave kapilara i pigmentacija, a neretko postoji i problematika vezana za adultne akne, kao i ožiljaka od ranijih akni.',
+    },
+    {
+      heading: 'Multimodalni plan Full Face tretmana',
+      body: 'Multimodalni plan Full Face tretmana podrazumeva kombinovanje tretmana:',
+      items: [
+        'botulinum toksinom',
+        'hijaluronskim filerima',
+        'kolagen stimulatorima',
+        'laserima i drugim energy-based procedurama',
+        'biorevitalizacijama',
+        'procedurama za tretiranje kapilara, pigmentacija, ožiljaka',
+        'odabirom adekvatne kućne nege',
+      ],
+    },
+    {
+      heading: 'Kombinovanje procedura u dugoročnom planu',
+      body: 'Kod pravilno odabranih pacijenata kombinovanje procedura je deo istog dugoročnog plana. Filer vraća strukturu. Kolagen stimulator podstiče kvalitet tkiva. Botulinum toksin kontroliše mišićnu aktivnost. Energy-based procedure dodatno utiču na kvalitet kože. Biorevitalizacija hidrira i revitalizuje kožu. Kombinacijom ovih principa moguće je postići mnogo prirodniji rezultat nego agresivnim tretiranjem samo jedne komponente starenja.',
     },
     {
       heading: 'Podmlađivanje za 5 do 10 godina',
-      body: 'Često čujem od pacijenata da su odmorni, a izgledaju iscrpljeno i umorno: upravo promene u strukturi lica dovode do toga. Savremeni tretmani hijaluronskim filerima i, po potrebi, injektovanjem botulinum toksina mogu ublažiti promene vezane za fiziologiju starenja i podmladiti lice za 5 do 10 godina, vraćajući mu svežinu i sjaj, a u isto vreme popraviti kvalitet kože.',
+      body: 'Često čujem od pacijenata da su odmorni, a izgledaju iscrpljeno i umorno: upravo promene u strukturi lica dovode do toga. Savremeni regenerativni tretmani mogu ublažiti promene vezane za fiziologiju starenja i podmladiti lice za 5–10 godina, vraćajući mu svežinu i sjaj, a u isto vreme popraviti kvalitet kože.',
     },
     {
       heading: 'Principi kojima se vodim',
@@ -37,8 +54,8 @@ Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti: u svetu est
       ],
     },
     {
-      heading: 'MD Codes™ metodologija',
-      body: 'Za korekciju strukturnih promena koristim metodologiju i injekcione tehnike MD Codes™, koje je osmislio dr Mauricio de Maio, brazilski plastični hirurg, inovator i vizionar u polju neinvazivne estetske medicine. Metodologija podrazumeva odlično poznavanje anatomije lica: injektovanje hijaluronskih filera na tačno određene tačke, botulinum toksina za gornju trećinu lica i kolagen stimulatora, nepogrešivo i na bezbedan način. Očuvanje zdravlja je uvek na prvom mestu, zbog čega biram najkvalitetnije i najbezbednije preparate: Juvederm hijaluronske filere i Botulinum toksin tipa A brenda Allergan.',
+      heading: 'Struktura lica',
+      body: 'Za korekciju strukturnih promena koristim injekcione tehnike zasnovane na odličnom poznavanju anatomije lica: preciznim injektovanjem hijaluronskih filera na tačno određene tačke i kolagen stimulatora, nepogrešivo i na bezbedan način. Očuvanje zdravlja je uvek na prvom mestu, zbog čega biram najkvalitetnije i najbezbednije preparate: Juvederm hijaluronske filere i botulinum toksin tipa A brenda Allergan.',
     },
     {
       heading: 'Nega i kvalitet kože',
@@ -70,7 +87,6 @@ Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti: u svetu est
     },
   ],
   methods: [
-    'MD Codes™ injekciona metodologija (dr Mauricio de Maio)',
     'Hijaluronski fileri: Juvederm (Allergan)',
     'Botulinum toksin tipa A: Allergan',
     'Kolagen stimulatori: HarmonyCa, Juvelook',
@@ -111,10 +127,6 @@ Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti: u svetu est
       answer: 'Ne. Cilj nije promena identiteta, već isticanje prirodnih osobina pacijenta i postizanje odmornijeg, svežijeg izgleda: dostojanstveno i kulturno starenje, bez promene crta lica.',
     },
     {
-      question: 'Šta je MD Codes™ metodologija?',
-      answer: 'MD Codes™ je injekciona metodologija koju je osmislio dr Mauricio de Maio, brazilski plastični hirurg i inovator u polju neinvazivne estetske medicine. Podrazumeva injektovanje hijaluronskih filera, botulinum toksina i kolagen stimulatora na tačno određene tačke lica, na osnovu detaljnog poznavanja anatomije.',
-    },
-    {
       question: 'Koje preparate i tehnologije koristite?',
       answer: 'U zavisnosti od procene, kombinujemo hijaluronske filere Juvederm i botulinum toksin tipa A brenda Allergan, kolagen stimulatore HarmonyCa i Juvelook, Morpheus8, laserske tretmane (Fotona 3D/4D/5D, Clear Skin, Clear Lift, Nd:YAG, Er:YAG), biorevitalizaciju Jalupro Super Hydro i Volite, kao i hemijske pilinge, PRP, polinukleotide i egzozome za kvalitet kože.',
     },
@@ -128,9 +140,9 @@ Cilj nije boriti se protiv starenja, već kvalitetno i lepo stariti: u svetu est
     },
   ],
   relatedServices: [
-    { title: 'Hijaluronski fileri – Botoks i fileri', href: '/usluge/botoks-fileri' },
-    { title: 'Morpheus 8', href: '/usluge/morpheus8' },
-    { title: 'Profhilo', href: '/usluge/profhilo' },
+    { title: 'Hijaluronski fileri', href: '/usluge/hijaluronski-fileri' },
+    { title: 'Botulinum toksin – botox', href: '/usluge/botulinum-toksin' },
+    { title: 'Kolagen stimulatori', href: '/usluge/kolagen-stimulatori' },
   ],
 }
 

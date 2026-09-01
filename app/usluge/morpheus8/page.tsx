@@ -62,7 +62,7 @@ Uređaj koristi specijalne igle koje prodiru u kožu na kontrolisanu dubinu (do 
     }
   ],
   relatedServices: [
-    { title: 'Botoks i Fileri', href: '/usluge/botoks-fileri' },
+    { title: 'Botulinum toksin – botox', href: '/usluge/botulinum-toksin' },
     { title: 'PRP tretman', href: '/usluge/prp' },
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' }
   ]
