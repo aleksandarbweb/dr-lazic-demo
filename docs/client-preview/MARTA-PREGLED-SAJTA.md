@@ -81,7 +81,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta
 - [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Uklanjanje ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) — Potrebna dopuna teksta
-- [Uklanjanje strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Potrebna dopuna teksta
+- [Uklanjanje strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Sadržaj unet
 - [Lasersko uklanjanje kapilara i hemangioma](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
 - [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) — Sadržaj unet (Zajednička stranica za povezane tretmane)
 - [Hemijski pilinzi](https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi) — Sadržaj unet, potrebna fotografija
@@ -94,7 +94,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Laserski tretmani rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Laserski tretmani ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Laserski tretmani strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Laserski tretmani strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
 - [Lasersko uklanjanje vaskularnih promena](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
 - [Lasersko uklanjanje pigmentnih promena: melasma, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) — Sadržaj unet (Zajednička stranica za povezane tretmane)
@@ -160,7 +160,6 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 - https://dr-terzic-site.vercel.app/usluge/laserska-epilacija
 - https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis
 - https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka
-- https://dr-terzic-site.vercel.app/usluge/strije-laser
 - https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica
 - https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica
 - https://dr-terzic-site.vercel.app/usluge/dermapen
