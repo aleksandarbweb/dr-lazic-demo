@@ -21,6 +21,8 @@ interface WhatIsItSection {
   heading: string
   body?: string
   items?: string[]
+  /** Optional closing sentence(s) rendered after the bullet list. */
+  outro?: string
   imageSrc?: string
   imageAlt?: string
 }
@@ -175,7 +177,7 @@ export function ServicePageLayout({
                   <h3 className="font-serif text-xl md:text-2xl text-foreground mb-4">{section.heading}</h3>
                   <div className="w-10 h-[2px] bg-primary/60 mb-5" />
                   {section.body && (
-                    <p className="text-muted-foreground leading-relaxed font-light">{section.body}</p>
+                    <p className="text-muted-foreground leading-relaxed font-light whitespace-pre-line">{section.body}</p>
                   )}
                   {section.items && section.items.length > 0 && (
                     <ul className="mt-4 space-y-4">
@@ -186,6 +188,9 @@ export function ServicePageLayout({
                         </li>
                       ))}
                     </ul>
+                  )}
+                  {section.outro && (
+                    <p className="mt-4 text-muted-foreground leading-relaxed font-light whitespace-pre-line">{section.outro}</p>
                   )}
                   {section.imageSrc && (
                     <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] border border-[#e4ddd4] bg-[#f4eee8] p-1 shadow-[0_20px_40px_-24px_rgba(44,31,20,0.35)]">

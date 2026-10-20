@@ -56,7 +56,6 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
       { name: 'Lasersko uklanjanje kapilara i hemangioma', slug: 'kapilari-i-hemangiomi-laser', category: 'Estetska dermatologija', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Lečenje akni', slug: 'akne', category: 'Estetska dermatologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
       { name: 'Hemijski pilinzi', slug: 'hemijski-pilinzi', category: 'Estetska dermatologija', imageSrc: '/images/Services/piling-treatment.jpg', featured: true },
-      { name: 'Laserski pilinzi', slug: 'laserski-piling', category: 'Estetska dermatologija', imageSrc: '/images/Services/piling-treatment.jpg' },
       { name: 'Uklanjanje pigmentnih promena: melasma, PIH, lentigo', slug: 'pigmentne-promene', category: 'Estetska dermatologija', imageSrc: '/images/Services/piling-treatment.jpg' },
     ],
   },

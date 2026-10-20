@@ -84,8 +84,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Uklanjanje strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Potrebna dopuna teksta
 - [Lasersko uklanjanje kapilara i hemangioma](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
 - [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Hemijski pilinzi](https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi) — Potrebna dopuna teksta
-- [Laserski pilinzi](https://dr-terzic-site.vercel.app/usluge/laserski-piling) — Potrebna dopuna teksta
+- [Hemijski pilinzi](https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi) — Sadržaj unet, potrebna fotografija
 - [Uklanjanje pigmentnih promena: melasma, PIH, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 
 ### 3. Laseri u dermatologiji
@@ -162,8 +161,6 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 - https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis
 - https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka
 - https://dr-terzic-site.vercel.app/usluge/strije-laser
-- https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi
-- https://dr-terzic-site.vercel.app/usluge/laserski-piling
 - https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica
 - https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica
 - https://dr-terzic-site.vercel.app/usluge/dermapen
@@ -171,10 +168,17 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 
 Najlakše je da mi pošaljete tekst redosledom kojim Vama najviše odgovara, ne morate sve odjednom.
 
+Stranica **Laserski pilinzi** uklonjena je sa sajta na Vaš zahtev. Stari link https://dr-terzic-site.vercel.app/usluge/laserski-piling sada automatski vodi na stranicu Hemijski pilinzi.
+
 ### 3. Fotografija za Full Face
 Tekst na ovoj stranici je kompletan i zvaničan, nedostaje samo fotografija koju ste najavili za ovu uslugu. Trenutno je prikazana privremena zamenska slika.
 
 Link: https://dr-terzic-site.vercel.app/usluge/full-face
+
+### 3a. Fotografija za Hemijski pilinzi
+Vaš tekst je unet u celini, pa stranica više ne prikazuje upozorenje da se tekst čeka. Nedostaje samo fotografija, i do tada je prikazana privremena zamenska slika.
+
+Link: https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi
 
 ### 4. Opcione nove/zamenske fotografije
 Ovo nije obavezno za trenutnu verziju sajta, ali ako želite, možemo zameniti:
