@@ -66,7 +66,7 @@ export const sr = {
       },
       {
         title: 'Estetska dermatologija',
-        description: 'Full Face by dr Marta Terzić, fileri, botoks, biorevitalizacije, PRP, Morpheus8 i lasersko podmlađivanje',
+        description: 'Full Face by dr Marta Terzić, fileri, botoks, biorevitalizacije, PRP i lasersko podmlađivanje',
       },
       {
         title: 'Laseri u dermatologiji',
@@ -223,7 +223,6 @@ export const sr = {
     successMessage: 'Hvala vam na poruci! Kontaktiraćemo vas u najkraćem mogućem roku.',
     services: [
       'Botoks i fileri',
-      'Morpheus8 RF Microneedling',
       'Laserska epilacija',
       'Hemijski pilinzi',
       'PRP tretman',
@@ -354,16 +353,6 @@ export const sr = {
           'Uklanjanje pigmentacija',
           'Lečenje akni',
           'Uklanjanje ožiljaka',
-        ],
-      },
-      morpheus8: {
-        subtitle: 'RF Microneedling',
-        description: 'Radiofrekventni mikronidling koji kombinuje mikroiglice i radiofrekventnu energiju za stimulaciju kolagena i zatezanje kože, uz preciznu kontrolu dubine tretmana.',
-        treatments: [
-          'Podmlađivanje kože',
-          'Zatezanje kože',
-          'Tretmani strija',
-          'Ciljano topljenje masnih naslaga',
         ],
       },
       ellman: {

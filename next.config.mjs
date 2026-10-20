@@ -11,6 +11,13 @@ const nextConfig = {
         destination: '/usluge/hemijski-pilinzi',
         permanent: true,
       },
+      {
+        // The Morpheus8 device was sold, so the treatment is no longer offered (2026-10-20).
+        // There is no equivalent service to point at, so the old URL lands on the service index.
+        source: '/usluge/morpheus8',
+        destination: '/usluge',
+        permanent: true,
+      },
     ]
   },
 }

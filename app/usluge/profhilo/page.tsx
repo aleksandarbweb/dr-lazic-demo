@@ -64,7 +64,7 @@ Jedinstvena formula kombinuje visoko i niskomolekularnu hijaluronsku kiselinu be
   relatedServices: [
     { title: 'Hijaluronski fileri', href: '/usluge/hijaluronski-fileri' },
     { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Morpheus8 RF Microneedling', href: '/usluge/morpheus8' }
+    { title: 'Kolagen stimulatori', href: '/usluge/kolagen-stimulatori' }
   ]
 }
 

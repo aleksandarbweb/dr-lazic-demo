@@ -75,7 +75,7 @@ Procedura počinje vađenjem male količine krvi koja se zatim centrifugira kako
     { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
     { title: 'Profhilo', href: '/usluge/profhilo' },
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
-    { title: 'Morpheus8 RF Microneedling', href: '/usluge/morpheus8' }
+    { title: 'Dermapen', href: '/usluge/dermapen' }
   ]
 }
 

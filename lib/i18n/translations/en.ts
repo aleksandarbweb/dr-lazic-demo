@@ -66,7 +66,7 @@ export const en = {
       },
       {
         title: 'Aesthetic Dermatology',
-        description: 'Full Face by Dr. Marta Terzić, fillers, botox, biorevitalization, PRP, Morpheus8 and laser rejuvenation',
+        description: 'Full Face by Dr. Marta Terzić, fillers, botox, biorevitalization, PRP and laser rejuvenation',
       },
       {
         title: 'Lasers in Dermatology',
@@ -207,7 +207,6 @@ export const en = {
     successMessage: 'Thank you for your message! We will contact you as soon as possible.',
     services: [
       'Botox and fillers',
-      'Morpheus8 RF Microneedling',
       'Laser hair removal',
       'Chemical peels',
       'PRP treatment',
@@ -338,16 +337,6 @@ export const en = {
           'Pigmentation removal',
           'Acne treatment',
           'Scar removal',
-        ],
-      },
-      morpheus8: {
-        subtitle: 'RF Microneedling',
-        description: 'Radiofrequency microneedling that combines microneedles with RF energy to stimulate collagen and tighten the skin, with precise control over treatment depth.',
-        treatments: [
-          'Skin rejuvenation',
-          'Skin tightening',
-          'Stretch mark treatments',
-          'Targeted reduction of localized fat',
         ],
       },
       ellman: {

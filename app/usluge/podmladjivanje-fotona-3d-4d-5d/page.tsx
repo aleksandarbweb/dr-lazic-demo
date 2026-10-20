@@ -352,7 +352,7 @@ export default function FotonaPage() {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
-              { title: 'Morpheus8 RF Microneedling', href: '/usluge/morpheus8' },
+              { title: 'Uklanjanje strija', href: '/usluge/strije-laser' },
               { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
               { title: 'PRP tretman', href: '/usluge/prp' }
             ].map((service) => (

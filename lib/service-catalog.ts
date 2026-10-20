@@ -47,7 +47,6 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
       { name: 'Mezoterapija', slug: 'mezoterapija', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },
       { name: 'PRP', slug: 'prp', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg', featured: true },
       { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Estetska dermatologija', imageSrc: '/images/Services/Fotona/fotonainfo.png', featured: true },
-      { name: 'Tretmani radiofrekventnim mikronidlingom – Morpheus8', slug: 'morpheus8', category: 'Estetska dermatologija', imageSrc: '/images/Services/morpheus8-treatment.jpg', featured: true },
       { name: 'Epilacija laserom – trajno uklanjanje dlačica', slug: 'laserska-epilacija', category: 'Estetska dermatologija', imageSrc: '/images/Services/Laserski tretmani/Epilacija-laserom-–-trajno-uklanjanje-dlacica.png', featured: true },
       { name: 'Laserski tretman problema uraslih dlačica (folikulitis)', slug: 'urastanje-dlaka-folikulitis', category: 'Estetska dermatologija', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Lečenje rozacee', slug: 'rozacea', category: 'Estetska dermatologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },

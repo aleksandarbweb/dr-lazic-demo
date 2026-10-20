@@ -21,7 +21,6 @@ export default function GalerijaPage() {
   const images = [
     { src: '/images/Services/clinic-interior.jpg', category: 'Ordinacija', alt: 'Unutrašnjost ordinacije' },
     { src: '/images/Services/botoks-treatment.jpg', category: 'Tretmani', alt: 'Botoks tretman' },
-    { src: '/images/Services/morpheus8-treatment.jpg', category: 'Tretmani', alt: 'Morpheus8 tretman' },
     { src: '/images/Services/laser-treatment.jpg', category: 'Tretmani', alt: 'Laserski tretman' },
     { src: '/images/Services/profhilo-treatment.jpg', category: 'Tretmani', alt: 'Profhilo tretman' },
     { src: '/images/Services/prp-treatment.jpg', category: 'Tretmani', alt: 'PRP tretman' },

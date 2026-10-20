@@ -76,7 +76,6 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) — Potrebna dopuna teksta
 - [PRP](https://dr-terzic-site.vercel.app/usluge/prp) — Sadržaj unet
 - [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna dopuna teksta
-- [Tretmani radiofrekventnim mikronidlingom – Morpheus8](https://dr-terzic-site.vercel.app/usluge/morpheus8) — Potrebna dopuna teksta
 - [Epilacija laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta
 - [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta
 - [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
@@ -156,7 +155,6 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 - https://dr-terzic-site.vercel.app/usluge/profhilo
 - https://dr-terzic-site.vercel.app/usluge/mezoterapija
 - https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d
-- https://dr-terzic-site.vercel.app/usluge/morpheus8
 - https://dr-terzic-site.vercel.app/usluge/laserska-epilacija
 - https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis
 - https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka
@@ -168,6 +166,8 @@ Sledeće stranice postoje i vidljivo su obeležene narandžastim upozorenjem da 
 Najlakše je da mi pošaljete tekst redosledom kojim Vama najviše odgovara, ne morate sve odjednom.
 
 Stranica **Laserski pilinzi** uklonjena je sa sajta na Vaš zahtev. Stari link https://dr-terzic-site.vercel.app/usluge/laserski-piling sada automatski vodi na stranicu Hemijski pilinzi.
+
+**Morpheus8** je uklonjen sa sajta u celosti, jer je aparat prodat: nema više stranice usluge, nema ga u listi usluga, u galeriji, u opisu opreme niti u kontakt formi. Stari link https://dr-terzic-site.vercel.app/usluge/morpheus8 vodi na pregled usluga.
 
 ### 3. Fotografija za Full Face
 Tekst na ovoj stranici je kompletan i zvaničan, nedostaje samo fotografija koju ste najavili za ovu uslugu. Trenutno je prikazana privremena zamenska slika.

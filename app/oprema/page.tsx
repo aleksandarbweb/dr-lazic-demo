@@ -14,7 +14,6 @@ const deviceConfig: Array<{
   { key: 'avalancheLase', name: 'AvalancheLase', manufacturer: 'Fotona', id: 'avalanchelase' },
   { key: 'spDynamis', name: 'SP Dynamis', manufacturer: 'Fotona', id: 'sp-dynamis' },
   { key: 'harmonyXL', name: 'Harmony XL Pro', manufacturer: 'Alma', id: 'harmony-xl-pro' },
-  { key: 'morpheus8', name: 'Morpheus 8', manufacturer: 'InMode', id: 'morpheus8' },
   { key: 'ellman', name: 'Ellman', manufacturer: 'Ellman', id: 'ellman' },
   { key: 'cryopen', name: 'CryoPro & CryoPen', manufacturer: 'Cortex / H&O', id: 'cryopen' },
   { key: 'dermlite', name: 'DermLite DL5 & Canfield D200EVO', manufacturer: 'DermLite / Canfield', id: 'dermlite' },

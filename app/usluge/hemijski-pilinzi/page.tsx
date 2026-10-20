@@ -97,7 +97,7 @@ Zdrava, ujednačena i negovana koža rezultat je pravilne dijagnoze, individualn
   relatedServices: [
     { title: 'Lečenje akni', href: '/usluge/akne' },
     { title: 'Uklanjanje pigmentnih promena', href: '/usluge/pigmentne-promene' },
-    { title: 'Morpheus8 RF microneedling', href: '/usluge/morpheus8' },
+    { title: 'Dermapen', href: '/usluge/dermapen' },
   ],
 }
 

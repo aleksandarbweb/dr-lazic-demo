@@ -25,8 +25,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dr-terzic-site.vercel.app'),
   title: 'Ordinacija Dr. Terzić | Specijalistička Dermatovenerološka Ordinacija',
-  description: 'Specijalistička dermatovenerološka ordinacija u Beogradu. Više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Botoks, fileri, laserski tretmani, Morpheus8.',
-  keywords: 'dermatolog, dermatovenerolog, Beograd, botoks, fileri, laserska epilacija, Morpheus8, PRP, dermoskopija, akne',
+  description: 'Specijalistička dermatovenerološka ordinacija u Beogradu. Više od 20 godina iskustva u medicinskoj i estetskoj dermatologiji. Botoks, fileri, laserski tretmani.',
+  keywords: 'dermatolog, dermatovenerolog, Beograd, botoks, fileri, laserska epilacija, PRP, dermoskopija, akne',
 }
 
 const jsonLd = {

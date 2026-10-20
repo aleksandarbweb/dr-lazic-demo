@@ -16,7 +16,7 @@ const serviceData = {
   relatedServices: [
     { title: 'Uklanjanje strija', href: '/usluge/strije-laser' },
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
-    { title: 'Morpheus8 RF Microneedling', href: '/usluge/morpheus8' },
+    { title: 'Lečenje akni', href: '/usluge/akne' },
   ],
 }
 
