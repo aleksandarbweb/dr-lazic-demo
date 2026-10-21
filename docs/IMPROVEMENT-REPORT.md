@@ -1662,3 +1662,44 @@ Unchanged policy: raise with the client, don't build unprompted.
     `/usluge/akne`, `/usluge/gljivicna-oboljenja-laser` — confirmed sentence-case headings,
     merged non-italic slogan text via DOM query, hero "Saznajte više" scroll-not-navigate
     behavior, softened CTA rendering, and Marta/Biljana specialization lists render in full.
+- 2026-10-21 — **`podmladjivanje-fotona-3d-4d-5d` rebuilt from Dr Terzić's final text, with
+  real product/brand imagery.** This page had been a stub pointing at two image paths that
+  never existed (`/images/Services/Fotona/fotonalogo.png`, `…/fotonainfo.png`) and carried a
+  "tekst u pripremi" banner. It is now a full hand-built page (does not use
+  `ServicePageLayout`), following the editorial patterns already established on
+  `strije-laser` / `gljivicna-oboljenja-laser` / `hemijski-pilinzi` pages.
+  - **Copy**: implemented her text with only typographic corrections (`Nd : YAG` / `Nd;YAG` →
+    `Nd:YAG`, `Er : YAG` → `Er:YAG`, `poravak` → `oporavak`, `dobijanju` → `dobijaju`, capital
+    `I` → `i`, stray `\` and blank lines removed). Duplicated ClearSkin bullet block in her
+    source collapsed to one. No new medical claims; FAQ answers are assembled only from
+    sentences already present in her text.
+  - **Structure**: hero with Fotona logo lockup + treatment zones (lice/vrat/dekolte/šake) and
+    the Fotona treatment-zone infographic; intro ("Prava tehnologija za vašu kožu") paired with
+    a six-row "Modaliteti koje koristimo" index (Nd:YAG, Er:YAG, Q-Switch, frakcioni Er:YAG,
+    IPL, IR) derived from her wording; "Tehnologije koje primenjujemo" chapter head; Fotona
+    section with 3D/4D/5D cards; dedicated Fotona 4D block pairing the Serbian 4-step
+    infographic with the four steps as real HTML text (SmoothLiftin™, FRAC3®, PIANO®,
+    SupErficial™) for SEO/screen readers; treatment + recovery prose; the "Jer lepo
+    podmlađena koža…" pull-quote; Alma Harmony section with four alternating technology rows
+    (ClearLift, ClearSkin, DVL/Dye-VL, NIR), each with a product shot, "Koristi se za" bullets
+    and protocol/aftercare cards; laser-course + aftercare split; dermatological-expertise
+    closing card; FAQ; related services; CTA with both brand logos.
+  - **Images**: converted from `/Users/aleks/Downloads` to WebP q80, never upscaled —
+    `public/images/usluge/lasers/fotona-4d-protokol.webp` (1536×1023, 76 KB) plus four Alma
+    handpiece shots at 800 px / 750 px wide (8–14 KB each). `alma-clearskin.webp`'s true
+    background is `#f8f8f8` (not white), so that row's card is tinted to exactly `#f8f8f8` —
+    no visible grey rectangle. All via `next/image` with Serbian alt text; hero image
+    `priority`, everything else lazy.
+  - **Metadata**: the route `layout.tsx` now sets an explicit title
+    ("Podmlađivanje laserom — Fotona 3D, 4D, 5D i Alma Harmony | Dr. Terzić") and description
+    instead of `buildServiceMetadata`, whose catalog-name template was too long for SERPs.
+    Also fixed the `<h1>`, which previously concatenated to "Personalizovanopodmlađivanje".
+  - `lib/service-catalog.ts`: the service's `imageSrc` pointed at the non-existent
+    `/images/Services/Fotona/fotonainfo.png`; now `/images/Logos/fotona-info.png`.
+  - Client preview doc (`docs/client-preview/MARTA-PREGLED-SAJTA.md` / `.html`): status for this
+    page moved from "Potrebna dopuna teksta" to "Potrebna fotografija" (only the real treatment
+    photo is still missing).
+  - **Verification**: `npx tsc --noEmit` clean, `npm run build` clean (49 static pages),
+    production build served at 1440×950 and 390×844 — all five new WebP images return 200
+    through `/_next/image`, hero/4D/Alma sections inspected visually, single `H1` with correct
+    accessible text, no console errors beyond the pre-existing local Vercel-analytics 404.

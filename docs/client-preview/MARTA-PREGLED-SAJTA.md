@@ -75,7 +75,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Biorevitalizacije](https://dr-terzic-site.vercel.app/usluge/profhilo) — Potrebna dopuna teksta
 - [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) — Potrebna dopuna teksta
 - [PRP](https://dr-terzic-site.vercel.app/usluge/prp) — Sadržaj unet
-- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna dopuna teksta
+- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna fotografija
 - [Epilacija laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta
 - [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta
 - [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
@@ -90,7 +90,7 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 
 - [Epilacija medicinskim laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna fotografija (Zajednička stranica za povezane tretmane)
 - [Laserski tretmani rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Laserski tretmani ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Laserski tretmani strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)

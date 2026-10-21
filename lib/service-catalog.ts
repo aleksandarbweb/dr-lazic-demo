@@ -46,7 +46,7 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
       { name: 'Biorevitalizacije', slug: 'profhilo', category: 'Estetska dermatologija', imageSrc: '/images/Services/profhilo-treatment.jpg', featured: true },
       { name: 'Mezoterapija', slug: 'mezoterapija', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },
       { name: 'PRP', slug: 'prp', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg', featured: true },
-      { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Estetska dermatologija', imageSrc: '/images/Services/Fotona/fotonainfo.png', featured: true },
+      { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Estetska dermatologija', imageSrc: '/images/Logos/fotona-info.png', featured: true },
       { name: 'Epilacija laserom – trajno uklanjanje dlačica', slug: 'laserska-epilacija', category: 'Estetska dermatologija', imageSrc: '/images/Services/Laserski tretmani/Epilacija-laserom-–-trajno-uklanjanje-dlacica.png', featured: true },
       { name: 'Laserski tretman problema uraslih dlačica (folikulitis)', slug: 'urastanje-dlaka-folikulitis', category: 'Estetska dermatologija', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Lečenje rozacee', slug: 'rozacea', category: 'Estetska dermatologija', imageSrc: '/images/Services/dermatology-treatment.jpg' },
@@ -64,7 +64,7 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
     services: [
       { name: 'Epilacija medicinskim laserom – trajno uklanjanje dlačica', slug: 'laserska-epilacija', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/Laserski tretmani/Epilacija-laserom-–-trajno-uklanjanje-dlacica.png', featured: true },
       { name: 'Laserski tretman problema uraslih dlačica (folikulitis)', slug: 'urastanje-dlaka-folikulitis', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/laser-treatment.jpg' },
-      { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/Fotona/fotonainfo.png', featured: true },
+      { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Laseri u dermatologiji', imageSrc: '/images/Logos/fotona-info.png', featured: true },
       { name: 'Laserski tretmani rozacee', slug: 'rozacea', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Laserski tretmani ožiljaka', slug: 'uklanjanje-oziljaka', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/laser-treatment.jpg' },
       { name: 'Laserski tretmani strija', slug: 'strije-laser', category: 'Laseri u dermatologiji', imageSrc: '/images/Services/Laserski tretmani/laserski tretmani strija.png' },
