@@ -15,14 +15,14 @@ const INTRO_FADE_SECONDS = 1.5
 const REDUCED_MOTION_FADE_SECONDS = 0.28
 // sessionStorage (not a module-level variable) so "already seen" survives a
 // hard reload/direct link within the same tab session, but replays in a new
-// tab/session — a module-level flag resets on every full page load.
+// tab/session; a module-level flag resets on every full page load.
 const INTRO_SESSION_KEY = 'dt_intro_seen'
 
 function markIntroSeen() {
   try {
     window.sessionStorage.setItem(INTRO_SESSION_KEY, '1')
   } catch {
-    // sessionStorage unavailable (e.g. private browsing) — nothing to persist.
+    // sessionStorage unavailable (e.g. private browsing), nothing to persist.
   }
 }
 
@@ -42,7 +42,7 @@ export function IntroOverlay() {
         setMounted(false)
       }
     } catch {
-      // sessionStorage unavailable — fall back to showing the intro once.
+      // sessionStorage unavailable, fall back to showing the intro once.
     }
   }, [])
 

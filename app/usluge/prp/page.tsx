@@ -73,7 +73,7 @@ Procedura počinje vađenjem male količine krvi koja se zatim centrifugira kako
   ],
   relatedServices: [
     { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
-    { title: 'Profhilo', href: '/usluge/profhilo' },
+    { title: 'Biorevitalizacija kože', href: '/usluge/profhilo' },
     { title: 'Hemijski pilinzi', href: '/usluge/hemijski-pilinzi' },
     { title: 'Dermapen', href: '/usluge/dermapen' }
   ]

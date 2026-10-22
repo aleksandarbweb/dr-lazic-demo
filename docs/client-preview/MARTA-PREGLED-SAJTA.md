@@ -72,8 +72,8 @@ Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija,
 - [Hijaluronski fileri](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Botulinum toksin – botox](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 - [Kolagen stimulatori](https://dr-terzic-site.vercel.app/usluge/kolagen-stimulatori) — Potrebna dopuna teksta
-- [Biorevitalizacije](https://dr-terzic-site.vercel.app/usluge/profhilo) — Potrebna dopuna teksta
-- [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) — Potrebna dopuna teksta
+- [Biorevitalizacija kože](https://dr-terzic-site.vercel.app/usluge/profhilo) — Potrebna fotografija
+- [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) — Potrebna fotografija
 - [PRP](https://dr-terzic-site.vercel.app/usluge/prp) — Sadržaj unet
 - [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna fotografija
 - [Epilacija laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta

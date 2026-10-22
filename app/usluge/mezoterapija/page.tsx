@@ -2,29 +2,37 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mezoterapija koktelima za kosu | Ordinacija Dr. Terzić',
-  description: 'Mezoterapija koktelima za kosu: unos sterilnih koktela vitamina, minerala i aminokiselina direktno oko folikula dlake, u seriji od 5 tretmana, u ordinaciji Dr. Terzić.',
+  title: 'Mezoterapija | Ordinacija Dr. Terzić',
+  description:
+    'Mezoterapija: dermatolog mikro-iglicama unosi sterilne koktele vitamina, minerala i aminokiselina u srednji sloj kože, radi kvaliteta kože, regeneracije i ujednačenijeg tena.',
 }
 
 const serviceData = {
-  title: 'Mezoterapija koktelima za kosu',
-  aboutHeading: 'Šta je mezoterapija za kosu?',
-  subtitle: 'Unos sterilnih koktela vitamina, minerala i aminokiselina direktno oko folikula dlake',
-  description: 'Brz, komforan tretman koji hrani koren dlake i podstiče zdrav rast kose',
-  whatIsIt: 'Mezoterapija koktelima za kosu je tretman kojim dermatolog, pomoću mikro-iglica, unosi sterilne koktele vitamina, minerala i aminokiselina u srednji sloj kože, direktno oko folikula dlake. Tretman je komforan, traje oko 20 do 30 minuta, a ubodi su brzi i površinski.',
+  title: 'Mezoterapija',
+  aboutHeading: 'Šta je mezoterapija?',
+  subtitle:
+    'Unos sterilnih koktela vitamina, minerala i aminokiselina mikro-iglicama direktno u kožu radi poboljšanja njenog kvaliteta, stimulacije regeneracije i ujednačavanja tena.',
+  description: 'Aktivne supstance se unose tamo gde koži trebaju, uz kratak i komforan tretman.',
+  pendingNotice:
+    'Fotografija za ovu uslugu još uvek nije dostavljena, pa je na njenom mestu prikazan okvir za sliku. Tekst na stranici je kompletan i zvaničan.',
+  whatIsIt:
+    'Mezoterapija je tretman kojim dermatolog, pomoću mikro-iglica, unosi sterilne koktele vitamina, minerala i aminokiselina u srednji sloj kože. Tretman je komforan, traje oko 20-30 minuta.',
   whatIsItSections: [
     {
       heading: 'Protokol i oporavak',
-      body: 'Tretman se radi u seriji od 5 tretmana, u razmaku od 7 do 14 dana. Ne ostavlja nikakve vidljive tragove na koži glave, tako da odmah nakon izlaska iz ordinacije možete nastaviti sa svojim obavezama. Preporučuje se da kosu ne perete narednih 24 sata kako bi aktivne supstance iz koktela u potpunosti delovale.',
+      body: 'Ne ostavlja vidljive tragove na koži. Ne savetuje se šminkanje do sutradan.',
     },
   ],
   relatedServices: [
-    { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
-    { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Fotona HAIRestart®: laserska stimulacija rasta kose', href: '/usluge/fotona-hairestart' },
+    { title: 'Biorevitalizacija kože', href: '/usluge/profhilo' },
+    { title: 'Kolagen stimulatori', href: '/usluge/kolagen-stimulatori' },
+    { title: 'Uklanjanje pigmentnih promena', href: '/usluge/pigmentne-promene' },
   ],
 }
 
+// No imageSrc on purpose: the only stock photo available here shows a PRP blood draw
+// (centrifuge and blood tubes), which would misrepresent a mesotherapy treatment.
+// The shared layout's "photo pending" placeholder is shown instead.
 export default function MezoterapijaPage() {
-  return <ServicePageLayout {...serviceData} imageSrc="/images/Services/prp-treatment.jpg" />
+  return <ServicePageLayout {...serviceData} />
 }

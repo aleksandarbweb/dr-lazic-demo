@@ -11,7 +11,7 @@ const serviceData = {
   aboutHeading: 'Suptilna korekcija, očuvanje prirodnih proporcija i podrška kvalitetu tkiva',
   subtitle: 'Precizno oblikovanje i harmonizacija lica uz prirodan, nenametljiv rezultat',
   description: 'Savremeni pristup filerima zasnovan na analizi lica kao celine',
-  pendingNotice: 'Fotografija za ovu uslugu još uvek nije dostavljena — trenutno je prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
+  pendingNotice: 'Fotografija za ovu uslugu još uvek nije dostavljena, pa je trenutno prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
   whatIsIt: `Hijaluronski fileri su jedan od najčešće korišćenih tretmana u savremenoj estetskoj medicini. Njihova primena danas se ne zasniva samo na „popunjavanju bora“, već na preciznom oblikovanju, nadoknadi izgubljenog volumena, podršci tkivima i harmonizaciji proporcija lica.
 
 Savremeni pristup filerima podrazumeva da se ne tretira samo ono što pacijent vidi u ogledalu, već da se analizira lice kao celina – njegove proporcije, struktura, kvalitet kože, gubitak volumena i promene koje nastaju procesom starenja. Zato je detaljna konsultacija i pregled pre tretmana od ključnog značaja.`,
@@ -57,7 +57,7 @@ Savremeni pristup filerima podrazumeva da se ne tretira samo ono što pacijent v
     },
     {
       heading: 'Šta pre tretmana?',
-      body: 'Pre aplikacije je važno obavestiti lekara o svim lekovima i suplementima koje koristite, prethodnim estetskim tretmanima, eventualnim alergijama ili ranijim reakcijama, postojanju aktivne infekcije, upale ili herpesa u regiji koja se tretira, kao i prethodno aplikovanim filerima, posebno ako su rađeni u drugoj ordinaciji. Ukoliko je moguće, nekoliko dana pre tretmana treba izbegavati nepotrebnu upotrebu lekova i suplemenata koji povećavaju sklonost ka krvarenju ili stvaranju modrica — isključivo uz prethodni dogovor sa lekarom i nikada samostalnim prekidanjem propisane terapije. Na dan tretmana preporučuje se da koža bude čista i bez aktivne iritacije.',
+      body: 'Pre aplikacije je važno obavestiti lekara o svim lekovima i suplementima koje koristite, prethodnim estetskim tretmanima, eventualnim alergijama ili ranijim reakcijama, postojanju aktivne infekcije, upale ili herpesa u regiji koja se tretira, kao i prethodno aplikovanim filerima, posebno ako su rađeni u drugoj ordinaciji. Ukoliko je moguće, nekoliko dana pre tretmana treba izbegavati nepotrebnu upotrebu lekova i suplemenata koji povećavaju sklonost ka krvarenju ili stvaranju modrica, isključivo uz prethodni dogovor sa lekarom i nikada samostalnim prekidanjem propisane terapije. Na dan tretmana preporučuje se da koža bude čista i bez aktivne iritacije.',
     },
     {
       heading: 'Šta posle tretmana?',

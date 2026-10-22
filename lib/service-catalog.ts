@@ -8,12 +8,12 @@ export type ServiceCatalogItem = {
 
 // Note on duplicate `slug` values below: the SAME service intentionally appears under multiple
 // categories (e.g. "Lečenje akni" is listed under Opšta dermatovenerologija, Estetska
-// dermatologija, and Laseri u dermatologiji) and those entries correctly share one slug/page —
-// that's the same content viewed through a different category lens, not a bug.
+// dermatologija, and Laseri u dermatologiji) and those entries correctly share one slug/page; that's
+// the same content viewed through a different category lens, not a bug.
 // Within a SINGLE category, however, every bullet must resolve to its own distinct page. Two
 // different services silently sharing one slug inside the same category is a content bug (it
 // happened once with "Uklanjanje papiloma i keratoza" briefly sharing
-// bradavice-papilomi-keratoze-moluske before it got its own dedicated page) — check for this
+// bradavice-papilomi-keratoze-moluske before it got its own dedicated page), so check for this
 // before reusing a slug across two different-named bullets in the same category array below.
 export const serviceCategories: { title: string; id: string; subtitle?: string; services: ServiceCatalogItem[] }[] = [
   {
@@ -43,7 +43,7 @@ export const serviceCategories: { title: string; id: string; subtitle?: string; 
       { name: 'Hijaluronski fileri', slug: 'hijaluronski-fileri', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
       { name: 'Botulinum toksin – botox', slug: 'botulinum-toksin', category: 'Estetska dermatologija', imageSrc: '/images/Services/botoks-treatment.jpg', featured: true },
       { name: 'Kolagen stimulatori', slug: 'kolagen-stimulatori', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },
-      { name: 'Biorevitalizacije', slug: 'profhilo', category: 'Estetska dermatologija', imageSrc: '/images/Services/profhilo-treatment.jpg', featured: true },
+      { name: 'Biorevitalizacija kože', slug: 'profhilo', category: 'Estetska dermatologija', imageSrc: '/images/Services/profhilo-treatment.jpg', featured: true },
       { name: 'Mezoterapija', slug: 'mezoterapija', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg' },
       { name: 'PRP', slug: 'prp', category: 'Estetska dermatologija', imageSrc: '/images/Services/prp-treatment.jpg', featured: true },
       { name: 'Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka', slug: 'podmladjivanje-fotona-3d-4d-5d', category: 'Estetska dermatologija', imageSrc: '/images/Logos/fotona-info.png', featured: true },

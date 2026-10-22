@@ -14,7 +14,7 @@ const serviceData = {
   whatIsIt: 'Sadržaj za ovu uslugu je u pripremi. Detaljan opis, tok tretmana i najčešća pitanja biće dodati čim ih dr Terzić dostavi.',
   pendingNotice: 'Čeka se zvanična informacija od dr Terzić za ovu uslugu. Stranica će biti dopunjena čim je dostavi.',
   relatedServices: [
-    { title: 'Profhilo', href: '/usluge/profhilo' },
+    { title: 'Biorevitalizacija kože', href: '/usluge/profhilo' },
     { title: 'Medicinski higijenski tretmani lica', href: '/usluge/medicinski-higijenski-tretmani-lica' },
     { title: 'PRP tretman', href: '/usluge/prp' },
   ],

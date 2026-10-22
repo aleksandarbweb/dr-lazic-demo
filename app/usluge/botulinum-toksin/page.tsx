@@ -11,7 +11,7 @@ const serviceData = {
   aboutHeading: 'Precizna terapija za prirodan, odmoran i svež izgled',
   subtitle: 'Minimalno invazivan tretman dinamičkih bora uz očuvanje prirodne mimike',
   description: 'Jedan od najbolje proučenih estetskih tretmana sa dugogodišnjim iskustvom u primeni',
-  pendingNotice: 'Fotografija za ovu uslugu još uvek nije dostavljena — trenutno je prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
+  pendingNotice: 'Fotografija za ovu uslugu još uvek nije dostavljena, pa je trenutno prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
   whatIsIt: `Botulinum toksin je biološki lek koji se u dermatologiji i estetskoj medicini koristi više decenija. U estetskim indikacijama primenjuje se u veoma malim, precizno doziranim količinama kako bi se privremeno smanjila aktivnost određenih mišića.
 
 Kada se pravilno aplikuje, omogućava smanjenje dinamičkih bora uz očuvanje prirodne mimike. Cilj savremene primene nije „zamrznuto lice“, već odmorniji i svežiji izgled.

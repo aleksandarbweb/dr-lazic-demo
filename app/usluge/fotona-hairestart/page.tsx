@@ -44,7 +44,6 @@ const serviceData = {
   relatedServices: [
     { title: 'Lečenje opadanja kose (alopecije)', href: '/usluge/opadanje-kose' },
     { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Mezoterapija koktelima za kosu', href: '/usluge/mezoterapija' },
   ],
 }
 

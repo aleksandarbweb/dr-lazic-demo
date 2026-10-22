@@ -53,7 +53,7 @@ export default function KontaktPage() {
                 {t.kontakt.formInterimMessage}
               </div>
 
-              {/* Direct contact actions — the real, working path until the form has a backend. */}
+              {/* Direct contact actions: the real, working path until the form has a backend. */}
               <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href={`tel:${businessData.telephone}`}
@@ -80,7 +80,7 @@ export default function KontaktPage() {
                 </a>
               </div>
 
-              {/* Form preview, visually disabled — not wired to a backend yet (Future Door). */}
+              {/* Form preview, visually disabled, not wired to a backend yet (Future Door). */}
               <fieldset disabled aria-disabled="true" className="space-y-6 opacity-50 cursor-not-allowed">
                 <legend className="sr-only">{t.kontakt.formInterimMessage}</legend>
                 <div>

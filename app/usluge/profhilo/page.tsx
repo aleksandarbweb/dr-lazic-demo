@@ -2,72 +2,42 @@ import { ServicePageLayout } from '@/components/service-page-layout'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Profhilo | Ordinacija Dr. Terzić',
-  description: 'Profhilo bioremodeling tretman za dubinsku hidrataciju i podmlađivanje kože. Inovativni anti-aging tretman u ordinaciji Dr. Terzić u Beogradu.',
+  title: 'Biorevitalizacija kože | Ordinacija Dr. Terzić',
+  description:
+    'Biorevitalizacija kože: preparati na bazi hijaluronske kiseline, aminokiselina i peptida za hidrataciju, elastičnost i kvalitet kože, uz svega nekoliko uboda. Ordinacija Dr. Terzić, Beograd.',
 }
 
 const serviceData = {
-  title: 'Profhilo',
-  aboutHeading: 'Šta je Profhilo?',
-  subtitle: 'Bioremodeling lica, vrata i tela - nova dimenzija hijaluronske terapije',
-  description: 'Revolucionarni tretman za dubinsku hidrataciju i prirodno podmlađivanje',
-  pendingNotice: 'Zvaničan tekst za ovu uslugu od dr Terzić je i dalje u pripremi. Sadržaj ispod je opšti opis tretmana i biće zamenjen/dopunjen kada ga dostavi.',
-  whatIsIt: `Profhilo je inovativni injekcioni tretman koji koristi jednu od najčistijih formi hijaluronske kiseline na tržištu. Za razliku od klasičnih filera, Profhilo nije namenjen popunjavanju bora ili volumena, već bioremodeling-u kože - dubinskoj hidrataciji i stimulaciji produkcije kolagena i elastina.
-
-Jedinstvena formula kombinuje visoko i niskomolekularnu hijaluronsku kiselinu bez hemijskih povezivača (crosslinking agenasa), što omogućava ravnomerno širenje preparata kroz kožu i stimulaciju svih slojeva derma. Profhilo je posebno efikasan za tretiranje zone lica, vrata, dekoltea i ruku.`,
-  howItWorks: [
-    'Konsultacija - analiza kvaliteta kože, stepena hidratacije i starenja, te kreiranje individualnog plana tretmana.',
-    'Priprema - čišćenje i dezinfekcija tretirane zone. Anestetička krema obično nije potrebna.',
-    'Aplikacija - preparat se ubrizgava tehnikom BAP (Bio Aesthetic Points) na 5 strateških tačaka sa svake strane lica.',
-    'Završetak - blaga masaža tretirane zone i uputstva za negu kod kuće.',
-    'Drugi tretman - za optimalne rezultate potrebna su 2 tretmana u razmaku od 4 nedelje.'
-  ],
-  idealCandidates: [
-    'Osobe sa dehidriranom, tankom ili mlohavom kožom',
-    'Osobe sa gubitkom elastičnosti i tonusa kože',
-    'Osobe koje primećuju znake starenja na vratu i dekolteu',
-    'Osobe koje žele preventivni anti-aging tretman',
-    'Osobe sa starosnim promenama na rukama',
-    'Osobe koje žele prirodan rezultat bez efekta "punjenja"'
-  ],
-  expectedResults: [
-    'Dubinska hidratacija kože koja traje mesecima',
-    'Poboljšana elastičnost i čvrstina kože',
-    'Prirodniji i svežiji izgled bez efekta filera',
-    'Poboljšana tekstura i sjaj kože',
-    'Blago zatezanje i lifting kože',
-    'Rezultati se razvijaju tokom 2-3 meseca',
-    'Efekti traju do 6 meseci'
-  ],
-  faqs: [
+  title: 'Biorevitalizacija kože',
+  aboutHeading: 'Šta je biorevitalizacija?',
+  subtitle:
+    'Hidratacija, elastičnost, tonus i kvalitet kože, uz svega nekoliko uboda i minimalnu traumu.',
+  description: 'Minimalno invazivna injekciona procedura za kožu kojoj treba više od površinske nege.',
+  pendingNotice:
+    'Fotografija za ovu uslugu još uvek nije dostavljena, pa je trenutno prikazana privremena zamenska slika. Tekst na stranici je kompletan i zvaničan.',
+  whatIsIt:
+    'Biorevitalizacija je minimalno invazivna injekciona procedura kojom se poboljšavaju hidratacija, elastičnost, tonus i kvalitet kože. Tretman se izvodi primenom preparata na bazi hijaluronske kiseline, aminokiselina i peptida, uz svega nekoliko uboda, čime se aktivne supstance unose u kožu uz minimalnu traumu.',
+  whatIsItSections: [
     {
-      question: 'Po čemu se Profhilo razlikuje od filera?',
-      answer: 'Fileri popunjavaju bore i dodaju volumen na specifičnim mestima. Profhilo deluje na celu tretiranu zonu, hidratizuje sve slojeve kože i stimuliše produkciju kolagena i elastina. Ne stvara volumen već poboljšava kvalitet kože.'
+      heading: 'Šta tretman postiže',
+      body: 'Preparati doprinose intenzivnoj hidrataciji, podržavaju procese regeneracije i poboljšavaju teksturu i svežinu kože. Tretman je namenjen koži kojoj su potrebni dodatna hidratacija, bolji tonus i blistavost, kao i ublažavanje prvih znakova starenja. Posebno može biti koristan kod osetljive, dehidrirane kože i kože sklone rozacei, uz pažljiv izbor preparata i individualno prilagođen pristup.',
     },
     {
-      question: 'Da li je tretman bolan?',
-      answer: 'Profhilo se aplikuje veoma tankim iglama, a sam preparat je tečan i lako se širi kroz tkivo. Većina pacijenata oseća samo blagu nelagodnost. Tretman traje svega 15-20 minuta.'
+      heading: 'Kombinovanje sa laserskim tretmanima',
+      body: 'Odlični rezultati postižu se kombinovanjem biorevitalizacije sa laserskim tretmanima, čime se komplementarnim delovanjem može dodatno unaprediti kvalitet kože, njena tekstura i svežina. Kod kože sa rozaceom, kombinacija se pažljivo planira u skladu sa stanjem kože i njenom tolerancijom.',
     },
     {
-      question: 'Koliko tretmana je potrebno?',
-      answer: 'Standardni protokol podrazumeva 2 tretmana u razmaku od 4 nedelje. Za održavanje rezultata preporučuje se tretman svakih 6 meseci.'
+      heading: 'Protokol tretmana',
+      body: 'Preporučujemo seriju od tri tretmana, u razmacima od mesec dana, nakon čega se, u zavisnosti od stanja kože i korišćenog preparata, savetuje tretman održavanja na svakih 3–6 meseci.',
     },
-    {
-      question: 'Kada se vide rezultati?',
-      answer: 'Hidratacija je primetna već nakon prvog tretmana. Puni efekti - poboljšana elastičnost i čvrstina - razvijaju se tokom 2-3 meseca kako se odvija proces remodelinga kože.'
-    },
-    {
-      question: 'Da li postoji period oporavka?',
-      answer: 'Oporavak je minimalan. Mogu se javiti male kvržice na mestima uboda koje nestaju za 24-48 sati. Moguće je blago crvenilo koje prolazi u toku dana.'
-    }
   ],
   relatedServices: [
-    { title: 'Hijaluronski fileri', href: '/usluge/hijaluronski-fileri' },
-    { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Kolagen stimulatori', href: '/usluge/kolagen-stimulatori' }
-  ]
+    { title: 'Mezoterapija', href: '/usluge/mezoterapija' },
+    { title: 'Kolagen stimulatori', href: '/usluge/kolagen-stimulatori' },
+    { title: 'Personalizovano podmlađivanje laserom', href: '/usluge/podmladjivanje-fotona-3d-4d-5d' },
+  ],
 }
 
-export default function ProfhiloPage() {
+export default function BiorevitalizacijaPage() {
   return <ServicePageLayout {...serviceData} imageSrc="/images/Services/profhilo-treatment.jpg" />
 }

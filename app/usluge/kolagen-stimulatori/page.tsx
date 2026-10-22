@@ -69,7 +69,7 @@ Kolagen stimulatori predstavljaju savremeni pristup regeneraciji kože. Za razli
   relatedServices: [
     { title: 'Hijaluronski fileri', href: '/usluge/hijaluronski-fileri' },
     { title: 'Personalizovani Full Face tretmani', href: '/usluge/full-face' },
-    { title: 'Biorevitalizacije (Profhilo)', href: '/usluge/profhilo' },
+    { title: 'Biorevitalizacija kože', href: '/usluge/profhilo' },
   ],
 }
 

@@ -74,7 +74,7 @@ export default function OpremaPage() {
                   className={`scroll-mt-32 ${index > 0 ? 'pt-12 md:pt-16 border-t border-border' : ''}`}
                 >
                   <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start ${isReversed ? 'lg:direction-rtl' : ''}`}>
-                    {/* Device Info — 2 cols */}
+                    {/* Device Info: 2 cols */}
                     <div className={`lg:col-span-2 ${isReversed ? 'lg:order-2' : ''}`}>
                       <div className="rounded-[1.75rem] border border-[#e3dad1] bg-background p-1.5">
                         <div className="rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb] p-8 md:p-10">
@@ -93,7 +93,7 @@ export default function OpremaPage() {
                       </div>
                     </div>
 
-                    {/* Treatments List — 3 cols */}
+                    {/* Treatments List: 3 cols */}
                     <div className={`lg:col-span-3 ${isReversed ? 'lg:order-1' : ''}`}>
                       <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary mb-5">
                         {t.oprema.treatmentsLabel}

@@ -244,7 +244,7 @@ export default function ONamaPage() {
               {t.onama.otherTeamTitle}
             </p>
 
-            {/* Snežana — spotlight card, deliberately smaller than the Marta/Biljana profiles above */}
+            {/* Snežana: spotlight card, deliberately smaller than the Marta/Biljana profiles above */}
             <div className="max-w-4xl mx-auto border border-border bg-white p-8 md:p-10">
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="relative flex-shrink-0 h-16 w-16 overflow-hidden rounded-full border border-border bg-background">

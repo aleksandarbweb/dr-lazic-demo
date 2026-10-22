@@ -61,7 +61,7 @@ export default function HomePage() {
 
   const [partnersPaused, setPartnersPaused] = useState(false)
   const [reviewsPaused, setReviewsPaused] = useState(false)
-  // Mobile gets plain native touch scrolling instead of the JS-driven marquee —
+  // Mobile gets plain native touch scrolling instead of the JS-driven marquee. This
   // matches Tailwind's `md` breakpoint (768px) used everywhere else on this page.
   const [isMobile, setIsMobile] = useState(false)
 
@@ -87,21 +87,21 @@ export default function HomePage() {
     ctaLabel: t.home.doctorsSection.viewProfileLabel,
   }))
 
-  // ── Auto-scrolling Marquees (Equipment & Reviews) — desktop only. Mobile
+  // ── Auto-scrolling Marquees (Equipment & Reviews), desktop only. Mobile
   // relies entirely on native touch scrolling; no RAF loop runs there at all.
   // Also respects prefers-reduced-motion (shouldReduce).
   useEffect(() => {
     if (isMobile || shouldReduce) return
 
     const containers = [
-      // Doubled lists — reset once we've scrolled exactly one copy's width.
+      // Doubled lists: reset once we've scrolled exactly one copy's width.
       { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused, resetFraction: 0.5 },
       { ref: reviewsCarouselRef, speed: 0.008, paused: reviewsPaused, resetFraction: 0.5 },
     ]
 
     // A cancelled flag (not a stored frame id) is what actually stops the loop:
     // `tick` reschedules itself every frame via a recursive `requestAnimationFrame`
-    // call, so only the very first frame id was ever capturable up front — trying
+    // call, so only the very first frame id was ever capturable up front. Trying
     // to cancel by id after the fact silently cancels nothing, and the loop leaks
     // forever, ignoring all future pause state. This was a pre-existing bug,
     // confirmed via instrumentation: hovering set `paused` correctly, but a
@@ -153,7 +153,7 @@ export default function HomePage() {
 
   const loopingEquipment = [...equipmentBrands, ...equipmentBrands]
   const doubledReviews = [...t.home.reviewsList, ...t.home.reviewsList]
-  // Mobile: plain, single-copy lists with native touch scroll — no JS position
+  // Mobile: plain, single-copy lists with native touch scroll, with no JS position
   // manipulation, so there's nothing to teleport/jump while the user drags.
   // Desktop: doubled lists feed the RAF marquee above.
   const mobileServicesList = services
@@ -518,7 +518,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          PATIENT REVIEWS SECTION — real, curated excerpts from public reviews,
+          PATIENT REVIEWS SECTION: real, curated excerpts from public reviews,
           in a self-scrolling marquee that also supports manual drag/swipe.
           ════════════════════════════════════════════════════════════════════ */}
       <section className="bg-white py-16 md:py-32">
@@ -562,7 +562,7 @@ export default function HomePage() {
           CTA SECTION
           ════════════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#faf6f1] py-20 md:py-32 border-y border-[#e5ddd3]">
-        {/* Layered Decorative Elements — soft, not solid red */}
+        {/* Layered Decorative Elements: soft, not solid red */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.04]" />
           <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-primary/[0.04]" />

@@ -1,5 +1,5 @@
 // Simple shared-password gate for the work-in-progress site.
-// This is a soft access gate so the client can preview the WIP — not hardened
+// This is a soft access gate so the client can preview the WIP, not hardened
 // security. The password defaults to a baked-in value but can be overridden in
 // production by setting the SITE_PASSWORD environment variable in Vercel.
 

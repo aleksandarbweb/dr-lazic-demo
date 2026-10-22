@@ -41,13 +41,12 @@ U našoj ordinaciji primenjujemo najsavremenije medicinske metode koje efikasno 
   howItWorks: [
     'Detaljna dermatološka dijagnostika: anamneza (razgovor o istoriji bolesti, genetici, načinu života i stresu), trihoskopija (dermoskopski pregled kože glave pod velikim uvećanjem kojim analiziramo stanje folikula, gustinu dlake i zdravlje vlasišta) i, po potrebi, laboratorijske analize krvi (status gvožđa, hormoni štitne žlezde, polni hormoni, vitamini).',
     'PRP tretman (plazma bogata trombocitima): potpuno prirodna metoda ubrizgavanja sopstvene plazme bogate faktorima rasta, koja regeneriše folikule i budi "uspavanu" kosu.',
-    'Mezoterapija koktelima: direktno unošenje sterilisanih koktela vitamina, minerala, aminokiselina i vazodilatatora u koren dlake.',
+    'Mezoterapija koktelima za kosu: direktno unošenje sterilisanih koktela vitamina, minerala, aminokiselina i vazodilatatora u koren dlake. Radi se u seriji od 5 tretmana, u razmaku od 7 do 14 dana; kožu glave ne treba prati narednih 24 sata kako bi aktivne supstance u potpunosti delovale.',
     'Terapija laserom: Fotona HAIRestart®, neinvazivan tretman laserom koji stimuliše folikule dlake na regeneraciju.',
     'Lokalna i sistemska medicinska terapija: propisivanje ciljanih losiona, lekova i suplemenata sa klinički dokazanim dejstvom.',
   ],
   relatedServices: [
     { title: 'PRP tretman', href: '/usluge/prp' },
-    { title: 'Mezoterapija koktelima za kosu', href: '/usluge/mezoterapija' },
     { title: 'Fotona HAIRestart®: laserska stimulacija rasta kose', href: '/usluge/fotona-hairestart' },
   ],
 }

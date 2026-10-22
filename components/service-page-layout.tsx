@@ -160,7 +160,7 @@ export function ServicePageLayout({
         </div>
       </section>
 
-      {/* Detailed Sections — only rendered when a service needs more than one flowing "what is it" paragraph */}
+      {/* Detailed Sections: only rendered when a service needs more than one flowing "what is it" paragraph */}
       {whatIsItSections && whatIsItSections.length > 0 && (
         <section className="bg-background py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -221,7 +221,7 @@ export function ServicePageLayout({
         </section>
       )}
 
-      {/* Methods / Technologies Section — only rendered when the service has real, distinct modalities */}
+      {/* Methods / Technologies Section: only rendered when the service has real, distinct modalities */}
       {methods && methods.length > 0 && (
         <section className="bg-white py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -380,7 +380,10 @@ export function ServicePageLayout({
             </h2>
             <div className="w-16 h-[2px] bg-primary mx-auto mt-6" />
           </FadeUp>
-          <StaggerChildren className="grid grid-cols-1 gap-6 md:grid-cols-3" staggerDelay={0.1}>
+          <StaggerChildren
+            className={`grid grid-cols-1 gap-6 ${relatedServices.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}
+            staggerDelay={0.1}
+          >
             {relatedServices.map((service) => (
               <StaggerItem key={service.href}>
                 <Link

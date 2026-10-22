@@ -56,9 +56,10 @@
 
 - **No em dash ("—" / `&mdash;`) in rendered site copy.** Replace with a comma,
   colon, parentheses, ordinary hyphen, or a sentence break, whichever reads best
-  grammatically. This applies to visible text only (JSX strings, `sr.ts`/`en.ts`/
-  `ru.ts` values, page metadata) — code comments are exempt since they aren't
-  rendered. Legitimate en dashes ("–") used for numeric ranges (e.g. "1–3
+  grammatically. Applies to JSX strings, `sr.ts`/`en.ts`/`ru.ts` values, page
+  metadata, alt text, pending notices and code comments alike: a repo-wide grep
+  for the character in `app/`, `components/` and `lib/` must come back empty.
+  Legitimate en dashes ("–") used for numeric ranges (e.g. "1–3
   sessions") or as an established label/detail separator (e.g. "Allergan –
   National Trainer") are **not** em dashes and should be left alone. Never touch
   URL slugs even if they contain a dash-like pattern. A repo-wide scan for this
@@ -1703,3 +1704,36 @@ Unchanged policy: raise with the client, don't build unprompted.
     production build served at 1440×950 and 390×844 — all five new WebP images return 200
     through `/_next/image`, hero/4D/Alma sections inspected visually, single `H1` with correct
     accessible text, no console errors beyond the pre-existing local Vercel-analytics 404.
+- 2026-10-21 (later session): **Em dash sweep across all rendered copy, plus two more service pages
+  from Dr Terzić's notes.**
+  - **Em dashes in visible copy**: removed every em dash from rendered text, metadata, alt text and
+    pending notices across `app/` and `lib/`. Replacements use colons, commas or sentence breaks per
+    the standing rule. Code comments were cleaned up as well, so a repo-wide grep for the
+    character now returns nothing in `app/`, `components/` and `lib/`.
+    Verified against the built output: 0 em dashes in the HTML of `/`, `/usluge`, all 32
+    `/usluge/*` pages, `/o-nama`, `/oprema`, `/galerija`, `/kontakt`. `sr.ts`/`en.ts`/`ru.ts`
+    contained none.
+  - **`/usluge/mezoterapija`** rebuilt for skin mesotherapy. The page had been entirely about
+    hair mesotherapy ("kokteli za kosu", follicle targeting, no hair washing for 24h). It now uses
+    her new copy: sterile vitamin/mineral/amino-acid cocktails delivered into the mid-dermis,
+    ~20–30 min, no visible marks, "Ne savetuje se šminkanje do sutradan". The hair-mesotherapy
+    content moved to `/usluge/opadanje-kose` as a step with its protocol detail (5 treatments,
+    7–14 days, no washing for 24h). Both hair pages no longer link to `/usluge/mezoterapija` as
+    "Mezoterapija koktelima za kosu"; they now show two related services, and
+    `ServicePageLayout` picks `md:grid-cols-2` when exactly two related items are passed.
+    `imageSrc` intentionally removed: the only available stock image was the PRP blood-draw shot
+    (centrifuge + blood tubes), which misrepresents mesotherapy; the layout's photo placeholder is
+    used instead.
+  - **`/usluge/profhilo`** rebuilt as **Biorevitalizacija kože** from her supplied text
+    (HA + amino acids + peptides, few injections, hydration/elasticity/tone, laser combinations,
+    3 treatments one month apart then maintenance every 3–6 months). All invented Profhilo-brand
+    claims, the "5 BAP points" detail, the 2-treatment protocol and the five FAQs were removed
+    because her text does not support them. Slug stays `profhilo` to avoid breaking links; catalog
+    name changed `Biorevitalizacije` → `Biorevitalizacija kože`; related-link labels on `prp`,
+    `dermapen` and `kolagen-stimulatori` updated to match. Both pages carry a "photo pending"
+    notice (photo still missing, text is now final).
+  - Client preview doc status for both pages: "Potrebna dopuna teksta" → "Potrebna fotografija".
+  - **Verification**: `npx tsc --noEmit` clean, `npm run build` clean (49 static pages), local
+    production build inspected at 1440×950 for `/usluge/mezoterapija`, `/usluge/profhilo`,
+    `/usluge/opadanje-kose`, `/usluge/fotona-hairestart`; hair-mesotherapy step and both related
+    grids confirmed in the DOM.

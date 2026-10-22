@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-// The site sits behind a WIP password gate (see middleware.ts) until launch —
+// The site sits behind a WIP password gate (see middleware.ts) until launch, so
 // disallow crawling for now so nothing indexes the lock screen instead of the
 // real pages. Flip `disallow` to `allow` here once the gate comes off.
 export default function robots(): MetadataRoute.Robots {

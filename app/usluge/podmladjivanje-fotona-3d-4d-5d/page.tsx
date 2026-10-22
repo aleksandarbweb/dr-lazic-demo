@@ -6,16 +6,16 @@ import { useState } from 'react'
 import { ChevronDown, ChevronRight, Sparkles } from 'lucide-react'
 
 /* ────────────────────────────────────────────────────────────────────────────
-   Sadržaj — tekst dr Terzić, uz ispravljene očigledne tipografske greške
+   Sadržaj: tekst dr Terzić, uz ispravljene očigledne tipografske greške
    (Nd : YAG → Nd:YAG, poravak → oporavak, veliko "I" → "i", dvostruki razmaci).
    ──────────────────────────────────────────────────────────────────────────── */
 
 const zones = ['Lice', 'Vrat', 'Dekolte', 'Šake']
 
-// Kratki opisi modaliteta — izvedeni iz teksta dr Terzić, bez dodavanja novih tvrdnji.
+// Kratki opisi modaliteta: izvedeni iz teksta dr Terzić, bez dodavanja novih tvrdnji.
 const modalities = [
-  { name: 'Nd:YAG', note: 'Dublji slojevi kože — čvrstina i tonus' },
-  { name: 'Er:YAG', note: 'Površinski piling — tekstura i sjaj' },
+  { name: 'Nd:YAG', note: 'Dublji slojevi kože, čvrstina i tonus' },
+  { name: 'Er:YAG', note: 'Površinski piling, tekstura i sjaj' },
   { name: 'Q-Switch Nd:YAG', note: 'Neablativno, bez uklanjanja površinskog sloja' },
   { name: 'Frakcioni Er:YAG', note: 'Kontrolisano zagrevanje i remodelovanje' },
   { name: 'IPL (Dye-VL)', note: 'Vaskularne i pigmentne promene' },
@@ -104,7 +104,7 @@ const almaTechnologies = [
     alt: 'Alma Harmony ClearSkin frakcioni Er:YAG aplikator',
     width: 800,
     height: 800,
-    // Slika ima svetlo sivu pozadinu (#f8f8f8) — kartica koristi istu boju
+    // Slika ima svetlo sivu pozadinu (#f8f8f8); kartica koristi istu boju
     // kako se pozadina slike ne bi videla kao zaseban pravougaonik.
     background: '#f8f8f8',
     intro: [
@@ -183,7 +183,7 @@ const faqs = [
   {
     question: 'Koliko traje oporavak?',
     answer:
-      'Nakon neablativnih tretmana — ClearLift, ClearSkin, DVL, NIR i Nd:YAG — najčešće se javlja blago i prolazno crvenilo, bez značajnog perioda oporavka. Kod intenzivnijih tretmana Er:YAG laserom crvenilo i osećaj žarenja mogu biti izraženiji, pa se tokom prva dva dana savetuje izbegavanje šminkanja i fizičkih aktivnosti.',
+      'Nakon neablativnih tretmana, kao što su ClearLift, ClearSkin, DVL, NIR i Nd:YAG, najčešće se javlja blago i prolazno crvenilo, bez značajnog perioda oporavka. Kod intenzivnijih tretmana Er:YAG laserom crvenilo i osećaj žarenja mogu biti izraženiji, pa se tokom prva dva dana savetuje izbegavanje šminkanja i fizičkih aktivnosti.',
   },
   {
     question: 'Koja je razlika između Fotona 3D, 4D i 5D protokola?',
@@ -198,7 +198,7 @@ const faqs = [
   {
     question: 'Šta znači „Cinderella” tretman?',
     answer:
-      '„Cinderella” je popularni naziv za NIR tretman, jer je dobar izbor pred neki važan događaj — moguće je prolazno crvenilo, dok duži oporavak uglavnom nije potreban.',
+      '„Cinderella” je popularni naziv za NIR tretman, jer je dobar izbor pred neki važan događaj: moguće je prolazno crvenilo, dok duži oporavak uglavnom nije potreban.',
   },
   {
     question: 'Da li su tretmani unapred definisani paketi?',
@@ -279,7 +279,7 @@ export default function FotonaPage() {
               href="/kontakt"
               className="mt-10 inline-flex rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98]"
             >
-              Saznajte više
+              Zakažite pregled
             </Link>
           </div>
 
@@ -289,7 +289,7 @@ export default function FotonaPage() {
                 <div className="relative h-full w-full overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-white">
                   <Image
                     src="/images/Logos/fotona-info.png"
-                    alt="Fotona infografika: laserski tretmani prema regijama lica — Fotona 4D, SmoothEye®, VectorLift®, LipLase®, HAIReStart®, Skin Resurfacing"
+                    alt="Fotona infografika: laserski tretmani prema regijama lica, Fotona 4D, SmoothEye®, VectorLift®, LipLase®, HAIReStart®, Skin Resurfacing"
                     fill
                     priority
                     sizes="(max-width: 1024px) 92vw, 34vw"
@@ -328,7 +328,7 @@ export default function FotonaPage() {
                 </p>
 
                 <h3 className="font-serif text-xl md:text-2xl text-foreground pt-3">
-                  Individualni pristup — prava tehnologija za vašu kožu
+                  Individualni pristup: prava tehnologija za vašu kožu
                 </h3>
 
                 <p>
@@ -398,7 +398,7 @@ export default function FotonaPage() {
                 className="h-10 w-auto md:h-12"
               />
               <h2 className="mt-6 font-serif text-3xl md:text-4xl text-foreground">
-                Fotona — Nd:YAG i Er:YAG laseri
+                Fotona: Nd:YAG i Er:YAG laseri
               </h2>
               <p className="mt-4 max-w-[62ch] text-muted-foreground leading-relaxed font-light">
                 Personalizovano lasersko podmlađivanje kože lica uz primenu Nd:YAG i Er:YAG
@@ -502,7 +502,7 @@ export default function FotonaPage() {
               <div className="relative overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-white">
                 <Image
                   src="/images/usluge/lasers/fotona-4d-protokol.webp"
-                  alt="Fotona 4D protokol: četiri koraka laserskog podmlađivanja — SmoothLiftin™, FRAC3®, PIANO® i SupErficial™"
+                  alt="Fotona 4D protokol: četiri koraka laserskog podmlađivanja, SmoothLiftin™, FRAC3®, PIANO® i SupErficial™"
                   width={1536}
                   height={1023}
                   sizes="(max-width: 1024px) 100vw, 58vw"
@@ -790,7 +790,7 @@ export default function FotonaPage() {
               <p>
                 U ordinaciji dr Terzić laserske procedure nisu unapred definisani paketi, već deo
                 individualno osmišljenog dermatološkog plana. Pažljiv izbor tehnologije omogućava da
-                se tretman usmeri na konkretan problem kože — od akni i rozacee do pigmentacija,
+                se tretman usmeri na konkretan problem kože, od akni i rozacee do pigmentacija,
                 nepravilne teksture i znakova starenja.
               </p>
               <p className="text-[#3d3832]">
