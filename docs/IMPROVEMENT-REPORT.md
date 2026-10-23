@@ -1738,3 +1738,10 @@ Unchanged policy: raise with the client, don't build unprompted.
     production build inspected at 1440×950 for `/usluge/mezoterapija`, `/usluge/profhilo`,
     `/usluge/opadanje-kose`, `/usluge/fotona-hairestart`; hair-mesotherapy step and both related
     grids confirmed in the DOM.
+  - **Docs sweep, same rule applied to Markdown**: this report, `client-content-map-2026-07-09.md`
+    and the client-facing `client-preview/MARTA-PREGLED-SAJTA.md` still used the long dash as a
+    separator (604 occurrences). All of them now use the shorter en dash, matching the project's
+    existing style for ranges and label/detail pairs. The standing rule above was also reworded so
+    it names the character (U+2014) instead of printing it, which keeps the ban literal.
+  - Production check after deploy: `/`, `/usluge`, `/kontakt`, `/galerija`, `/oprema` and the four
+    edited service pages all return 200 through the gate cookie with zero em dashes in the HTML.

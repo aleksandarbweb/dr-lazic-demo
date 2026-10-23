@@ -1255,8 +1255,8 @@ invented depth. Routes repeated across categories are intentional (§13) and mar
 | Hijaluronski fileri | `/usluge/botoks-fileri` | 🟡 Pending (kept) (shared with Botulinum toksin) |
 | Botulinum toksin – botox | `/usluge/botoks-fileri` | 🟡 Pending (kept) (shared) |
 | Kolagen stimulatori | `/usluge/kolagen-stimulatori` | 🟡 Pending (minimal) |
-| Biorevitalizacije | `/usluge/profhilo` | 🟡 Pending (kept) |
-| Mezoterapija | `/usluge/mezoterapija` | 🟡 Pending (minimal) |
+| Biorevitalizacije | `/usluge/profhilo` | ✅ Real (image pending); page now titled Biorevitalizacija kože |
+| Mezoterapija | `/usluge/mezoterapija` | ✅ Real, skin mesotherapy (image pending); hair mesotherapy moved to `/usluge/opadanje-kose` |
 | PRP | `/usluge/prp` | ✅ Real |
 | Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka | `/usluge/podmladjivanje-fotona-3d-4d-5d` | 🟡 Pending (kept) |
 | Tretmani radiofrekventnim mikronidlingom – Morpheus8 | `/usluge/morpheus8` | 🟡 Pending (kept) |
