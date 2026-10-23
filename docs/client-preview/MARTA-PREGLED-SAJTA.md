@@ -40,95 +40,95 @@ Sajt je trenutno zaštićen lozinkom jer još nije javno objavljen. Kada otvorit
 
 ---
 
-## Usluge — po kategorijama
+## Usluge – po kategorijama
 
 Ispod su sve usluge, grupisane po Vašoj finalnoj strukturi od sedam kategorija, istim redosledom kao na sajtu. Svaka stavka je klikabilan link. Status pored svake stavke Vam pokazuje da li je sadržaj već unet ili je potrebna dopuna.
 
 **Objašnjenje statusa:**
-- **Sadržaj unet** — tekst koji ste poslali je već na sajtu.
-- **Potrebna dopuna teksta** — stranica postoji, ali čeka Vaš zvaničan tekst (na sajtu je jasno obeležena narandžastim upozorenjem).
-- **Potrebna fotografija** — tekst je kompletan, nedostaje samo fotografija.
-- **Zajednička stranica za povezane tretmane** — nekoliko srodnih tretmana iz različitih kategorija namerno vodi na istu stranicu, umesto da se dupliraju.
+- **Sadržaj unet** – tekst koji ste poslali je već na sajtu.
+- **Potrebna dopuna teksta** – stranica postoji, ali čeka Vaš zvaničan tekst (na sajtu je jasno obeležena narandžastim upozorenjem).
+- **Potrebna fotografija** – tekst je kompletan, nedostaje samo fotografija.
+- **Zajednička stranica za povezane tretmane** – nekoliko srodnih tretmana iz različitih kategorija namerno vodi na istu stranicu, umesto da se dupliraju.
 
 ### 1. Opšta dermatovenerologija
 *Dermatologija za celu porodicu*
 
-- [Dijagnostika i lečenje kožnih i polnih bolesti](https://dr-terzic-site.vercel.app/usluge/medicinska-dermatologija) — Potrebna dopuna teksta
-- [Uklanjanje virusnih bradavica, kondiloma i moluski](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) — Sadržaj unet
-- [Uklanjanje papiloma i keratoza](https://dr-terzic-site.vercel.app/usluge/uklanjanje-papiloma-i-keratoza) — Sadržaj unet
-- [Uklanjanje vaskularnih promena – kapilari i hemangiomi](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet
-- [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta
-- [Dermoskopski pregled mladeža](https://dr-terzic-site.vercel.app/usluge/dermoskopija) — Potrebna dopuna teksta
-- [Lečenje opadanja kose](https://dr-terzic-site.vercel.app/usluge/opadanje-kose) — Potrebna dopuna teksta
-- [Lečenje gljivičnih oboljenja noktiju](https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser) — Potrebna dopuna teksta
-- [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) — Sadržaj unet
-- [Uklanjanje pigmentnih promena](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) — Potrebna dopuna teksta
-- [Lečenje pojačanog znojenja](https://dr-terzic-site.vercel.app/usluge/pojacano-znojenje) — Potrebna dopuna teksta
-- [Hirurško uklanjanje mladeža sa PH dijagnostikom](https://dr-terzic-site.vercel.app/usluge/hirursko-uklanjanje-mladeza) — Potrebna dopuna teksta
+- [Dijagnostika i lečenje kožnih i polnih bolesti](https://dr-terzic-site.vercel.app/usluge/medicinska-dermatologija) – Potrebna dopuna teksta
+- [Uklanjanje virusnih bradavica, kondiloma i moluski](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) – Sadržaj unet
+- [Uklanjanje papiloma i keratoza](https://dr-terzic-site.vercel.app/usluge/uklanjanje-papiloma-i-keratoza) – Sadržaj unet
+- [Uklanjanje vaskularnih promena – kapilari i hemangiomi](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) – Sadržaj unet
+- [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) – Potrebna dopuna teksta
+- [Dermoskopski pregled mladeža](https://dr-terzic-site.vercel.app/usluge/dermoskopija) – Potrebna dopuna teksta
+- [Lečenje opadanja kose](https://dr-terzic-site.vercel.app/usluge/opadanje-kose) – Potrebna dopuna teksta
+- [Lečenje gljivičnih oboljenja noktiju](https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser) – Potrebna dopuna teksta
+- [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) – Sadržaj unet
+- [Uklanjanje pigmentnih promena](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) – Potrebna dopuna teksta
+- [Lečenje pojačanog znojenja](https://dr-terzic-site.vercel.app/usluge/pojacano-znojenje) – Potrebna dopuna teksta
+- [Hirurško uklanjanje mladeža sa PH dijagnostikom](https://dr-terzic-site.vercel.app/usluge/hirursko-uklanjanje-mladeza) – Potrebna dopuna teksta
 
 ### 2. Estetska dermatologija
 
-- [Personalizovani Full Face tretmani by dr Marta Terzić](https://dr-terzic-site.vercel.app/usluge/full-face) — Sadržaj unet, potrebna fotografija
-- [Hijaluronski fileri](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Botulinum toksin – botox](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Kolagen stimulatori](https://dr-terzic-site.vercel.app/usluge/kolagen-stimulatori) — Potrebna dopuna teksta
-- [Biorevitalizacija kože](https://dr-terzic-site.vercel.app/usluge/profhilo) — Potrebna fotografija
-- [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) — Potrebna fotografija
-- [PRP](https://dr-terzic-site.vercel.app/usluge/prp) — Sadržaj unet
-- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna fotografija
-- [Epilacija laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta
-- [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta
-- [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Uklanjanje ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) — Potrebna dopuna teksta
-- [Uklanjanje strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Sadržaj unet
-- [Lasersko uklanjanje kapilara i hemangioma](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Hemijski pilinzi](https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi) — Sadržaj unet, potrebna fotografija
-- [Uklanjanje pigmentnih promena: melasma, PIH, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Personalizovani Full Face tretmani by dr Marta Terzić](https://dr-terzic-site.vercel.app/usluge/full-face) – Sadržaj unet, potrebna fotografija
+- [Hijaluronski fileri](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Botulinum toksin – botox](https://dr-terzic-site.vercel.app/usluge/botoks-fileri) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Kolagen stimulatori](https://dr-terzic-site.vercel.app/usluge/kolagen-stimulatori) – Potrebna dopuna teksta
+- [Biorevitalizacija kože](https://dr-terzic-site.vercel.app/usluge/profhilo) – Potrebna fotografija
+- [Mezoterapija](https://dr-terzic-site.vercel.app/usluge/mezoterapija) – Potrebna fotografija
+- [PRP](https://dr-terzic-site.vercel.app/usluge/prp) – Sadržaj unet
+- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) – Potrebna fotografija
+- [Epilacija laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) – Potrebna dopuna teksta
+- [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) – Potrebna dopuna teksta
+- [Lečenje rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Uklanjanje ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) – Potrebna dopuna teksta
+- [Uklanjanje strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) – Sadržaj unet
+- [Lasersko uklanjanje kapilara i hemangioma](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) – Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Lečenje akni](https://dr-terzic-site.vercel.app/usluge/akne) – Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Hemijski pilinzi](https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi) – Sadržaj unet, potrebna fotografija
+- [Uklanjanje pigmentnih promena: melasma, PIH, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 
 ### 3. Laseri u dermatologiji
 
-- [Epilacija medicinskim laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) — Potrebna fotografija (Zajednička stranica za povezane tretmane)
-- [Laserski tretmani rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Laserski tretmani ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Laserski tretmani strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Lasersko uklanjanje vaskularnih promena](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Lasersko uklanjanje pigmentnih promena: melasma, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) — Sadržaj unet (Zajednička stranica za povezane tretmane)
-- [Laserski tretman gljivičnih infekcija nokatne regije](https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
-- [Laserski tretman akni](https://dr-terzic-site.vercel.app/usluge/akne) — Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Epilacija medicinskim laserom – trajno uklanjanje dlačica](https://dr-terzic-site.vercel.app/usluge/laserska-epilacija) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Laserski tretman problema uraslih dlačica (folikulitis)](https://dr-terzic-site.vercel.app/usluge/urastanje-dlaka-folikulitis) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Personalizovano podmlađivanje laserom: lica, vrata, dekoltea i šaka](https://dr-terzic-site.vercel.app/usluge/podmladjivanje-fotona-3d-4d-5d) – Potrebna fotografija (Zajednička stranica za povezane tretmane)
+- [Laserski tretmani rozacee](https://dr-terzic-site.vercel.app/usluge/rozacea) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Laserski tretmani ožiljaka](https://dr-terzic-site.vercel.app/usluge/uklanjanje-oziljaka) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Laserski tretmani strija](https://dr-terzic-site.vercel.app/usluge/strije-laser) – Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Lasersko uklanjanje vaskularnih promena](https://dr-terzic-site.vercel.app/usluge/kapilari-i-hemangiomi-laser) – Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Lasersko uklanjanje pigmentnih promena: melasma, lentigo](https://dr-terzic-site.vercel.app/usluge/pigmentne-promene) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Lasersko uklanjanje benignih promena: keratoze, papilomi, bradavice](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) – Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Laserski tretman gljivičnih infekcija nokatne regije](https://dr-terzic-site.vercel.app/usluge/gljivicna-oboljenja-laser) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Laserski tretman akni](https://dr-terzic-site.vercel.app/usluge/akne) – Sadržaj unet (Zajednička stranica za povezane tretmane)
 
 ### 4. Radiotalasna hirurgija
 
-- [Uklanjanje benignih promena: keratoze, papilomi, bradavice](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) — Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Uklanjanje benignih promena: keratoze, papilomi, bradavice](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) – Sadržaj unet (Zajednička stranica za povezane tretmane)
 
 ### 5. Kriohirurgija – terapija tečnim azotom
 
-- [Uklanjanje virusnih bradavica i keratoza](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) — Sadržaj unet (Zajednička stranica za povezane tretmane)
+- [Uklanjanje virusnih bradavica i keratoza](https://dr-terzic-site.vercel.app/usluge/bradavice-papilomi-keratoze-moluske) – Sadržaj unet (Zajednička stranica za povezane tretmane)
 
 ### 6. Kompjuterizovana dermoskopija
 
-- [Pregled mladeža](https://dr-terzic-site.vercel.app/usluge/dermoskopija) — Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
+- [Pregled mladeža](https://dr-terzic-site.vercel.app/usluge/dermoskopija) – Potrebna dopuna teksta (Zajednička stranica za povezane tretmane)
 
 ### 7. Kozmetologija
 
-- [Medicinski higijenski tretmani lica](https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica) — Potrebna dopuna teksta
-- [Biološki tretmani lica](https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica) — Potrebna dopuna teksta
-- [Dermapen](https://dr-terzic-site.vercel.app/usluge/dermapen) — Potrebna dopuna teksta
-- [Savetovanje za negu lica](https://dr-terzic-site.vercel.app/usluge/savetovanje-za-negu-lica) — Potrebna dopuna teksta
+- [Medicinski higijenski tretmani lica](https://dr-terzic-site.vercel.app/usluge/medicinski-higijenski-tretmani-lica) – Potrebna dopuna teksta
+- [Biološki tretmani lica](https://dr-terzic-site.vercel.app/usluge/bioloski-tretmani-lica) – Potrebna dopuna teksta
+- [Dermapen](https://dr-terzic-site.vercel.app/usluge/dermapen) – Potrebna dopuna teksta
+- [Savetovanje za negu lica](https://dr-terzic-site.vercel.app/usluge/savetovanje-za-negu-lica) – Potrebna dopuna teksta
 
 ---
 
 ## Šta je već gotovo
 
-- **Naslovna** — Vaše pozicioniranje, statistika ordinacije, sedam kategorija usluga, predstavljanje doktora, oprema i utisci pacijenata.
-- **O nama** — priča o ordinaciji, Vaša kompletna biografija, biografija Snežane Stojković, struktura tima i oblasti kojima se bavimo.
-- **Usluge** — finalna struktura od sedam kategorija, tačno onim redosledom koji ste odredili.
+- **Naslovna** – Vaše pozicioniranje, statistika ordinacije, sedam kategorija usluga, predstavljanje doktora, oprema i utisci pacijenata.
+- **O nama** – priča o ordinaciji, Vaša kompletna biografija, biografija Snežane Stojković, struktura tima i oblasti kojima se bavimo.
+- **Usluge** – finalna struktura od sedam kategorija, tačno onim redosledom koji ste odredili.
 - **Detaljne stranice sa Vašim tekstom**, uključujući: Full Face, akne, vaskularne promene (kapilari i hemangiomi), bradavice/kondilomi/moluske, papilomi i keratoze, i opštu dermatovenerologiju.
-- **Oprema** — kompletna, finalna lista opreme koju ste poslali.
-- **Kontakt i Galerija** — trenutno u radnoj verziji, spremni za Vaš pregled.
+- **Oprema** – kompletna, finalna lista opreme koju ste poslali.
+- **Kontakt i Galerija** – trenutno u radnoj verziji, spremni za Vaš pregled.
 
 ---
 
@@ -181,7 +181,7 @@ Link: https://dr-terzic-site.vercel.app/usluge/hemijski-pilinzi
 
 ### 4. Opcione nove/zamenske fotografije
 Ovo nije obavezno za trenutnu verziju sajta, ali ako želite, možemo zameniti:
-- fotografije za članove tima koji trenutno nemaju fotografiju (Snežana Stojković, Milica Dobrić, Melissa Ćelović, Sonja Bubulj) — https://dr-terzic-site.vercel.app/o-nama
+- fotografije za članove tima koji trenutno nemaju fotografiju (Snežana Stojković, Milica Dobrić, Melissa Ćelović, Sonja Bubulj) – https://dr-terzic-site.vercel.app/o-nama
 - eventualno noviju fotografiju ordinacije za stranicu O nama
 - bilo koju postojeću fotografiju usluge za koju smatrate da ne odgovara sadržaju
 
