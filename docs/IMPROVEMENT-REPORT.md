@@ -1745,3 +1745,8 @@ Unchanged policy: raise with the client, don't build unprompted.
     it names the character (U+2014) instead of printing it, which keeps the ban literal.
   - Production check after deploy: `/`, `/usluge`, `/kontakt`, `/galerija`, `/oprema` and the four
     edited service pages all return 200 through the gate cookie with zero em dashes in the HTML.
+- 2026-10-23: **Footer tone corrected.** The 2026-07 redesign had moved the footer from near-black
+  to `#3d342c`, a mid warm brown that reads as a muddy panel under the cream sections. It is now
+  `#171310`, a near-black with the same warm cast, so the footer stays warm rather than neutral
+  black but no longer looks like a tinted photograph. Everything else in the footer (red top rule,
+  `border-white/10` divider, white/70 body text) is unchanged and its contrast only improves.

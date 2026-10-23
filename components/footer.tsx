@@ -20,7 +20,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#3d342c]">
+    <footer className="bg-[#171310]">
       {/* Top Decorative Line */}
       <div className="h-1 bg-primary" />
 
