@@ -21,6 +21,12 @@ tsconfig.tsbuildinfo
 
 # Local Claude / Playwright temp files
 .playwright-mcp/
+screenshots/
+.freebuff/
+
+# Local agent skill links (not needed for deploy)
+.agent/
+.agents/
 
 # Client raw input files
 docs/client-input/*.docx

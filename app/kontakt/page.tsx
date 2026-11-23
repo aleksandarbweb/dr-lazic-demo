@@ -4,17 +4,6 @@ import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 import { businessData } from '@/lib/business-data'
 
-const workDayHours = `${businessData.openingHours.opens} - ${businessData.openingHours.closes}`
-const workingHoursData = [
-  workDayHours,
-  workDayHours,
-  workDayHours,
-  workDayHours,
-  workDayHours,
-  null,
-  null,
-]
-
 export default function KontaktPage() {
   const { t } = useTranslation()
 
@@ -57,7 +46,7 @@ export default function KontaktPage() {
               <div className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href={`tel:${businessData.telephone}`}
-                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#991b1b] transition-colors"
+                  className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#0a5a61] transition-colors"
                 >
                   <Phone size={16} />
                   {t.kontakt.callCta}
@@ -225,15 +214,10 @@ export default function KontaktPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-foreground font-medium mb-4">{t.kontakt.hoursLabel}</h3>
-                    <div className="space-y-2">
-                      {t.kontakt.workingDays.map((day, i) => (
-                        <div key={day} className="flex justify-between text-sm">
-                          <span className="text-muted-foreground font-light">{day}</span>
-                          <span className={workingHoursData[i] === null ? 'text-primary' : 'text-foreground'}>
-                            {workingHoursData[i] ?? t.kontakt.closed}
-                          </span>
-                        </div>
-                      ))}
+                    <div className="space-y-1.5 text-muted-foreground font-light">
+                      <p>{t.kontakt.hoursWeekdays}</p>
+                      <p>{t.kontakt.hoursSaturday}</p>
+                      <p>{t.kontakt.hoursSunday}</p>
                     </div>
                   </div>
                 </div>
@@ -243,14 +227,14 @@ export default function KontaktPage() {
               <div className="mt-12 aspect-video w-full overflow-hidden rounded-[1.5rem] border border-[#e5ddd3] bg-[#f5f3f0] p-1.5 shadow-lg">
                 <div className="h-full w-full overflow-hidden rounded-[calc(1.5rem-0.375rem)] border border-[#efe7dd]">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.4903897087634!2d20.465245076415652!3d44.81157337107071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aadeeb46a91%3A0x758c96041e4f1d68!2sDr%20Terzic!5e0!3m2!1sen!2srs!4v1782281143179!5m2!1sen!2srs"
+                    src={businessData.mapEmbedUrl}
                     width="100%"
                     height="100%"
-                    style={{ border: 0, filter: 'grayscale(0.35) sepia(0.2) saturate(0.85) hue-rotate(-10deg) contrast(0.92)' }}
+                    style={{ border: 0, filter: 'grayscale(0.2) saturate(0.9) contrast(0.95)' }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Lokacija ordinacije Dr. Terzić"
+                    title="Lokacija Dental Clinic Dr Vesna Lazić"
                   />
                 </div>
               </div>

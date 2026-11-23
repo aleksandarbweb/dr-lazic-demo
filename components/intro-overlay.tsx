@@ -3,38 +3,28 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import Image from 'next/image'
-import { useTranslation } from '@/lib/i18n/LanguageContext'
 
-// Set to true if you want to temporarily remove the intro without touching the layout.
 const DISABLE_SITE_INTRO = false
-const INTRO_VIDEO_SRC = '/videos/generic-derm-intro.mp4'
-// Hold matches the previous Sofija intro timing (~4.968s) so the overlay fades out at the same pace.
-const INTRO_HOLD_MS = 4968
-const REDUCED_MOTION_HOLD_MS = 1200
-const INTRO_FADE_SECONDS = 1.5
-const REDUCED_MOTION_FADE_SECONDS = 0.28
-// sessionStorage (not a module-level variable) so "already seen" survives a
-// hard reload/direct link within the same tab session, but replays in a new
-// tab/session; a module-level flag resets on every full page load.
-const INTRO_SESSION_KEY = 'dt_intro_seen'
+const INTRO_HOLD_MS = 3000
+const REDUCED_MOTION_HOLD_MS = 900
+const INTRO_FADE_SECONDS = 0.65
+const REDUCED_MOTION_FADE_SECONDS = 0.22
+const INTRO_SESSION_KEY = 'dl_intro_seen'
+const EASE = [0.22, 1, 0.36, 1] as const
 
 function markIntroSeen() {
   try {
     window.sessionStorage.setItem(INTRO_SESSION_KEY, '1')
   } catch {
-    // sessionStorage unavailable (e.g. private browsing), nothing to persist.
+    // sessionStorage unavailable
   }
 }
 
 export function IntroOverlay() {
-  const { t } = useTranslation()
   const reduceMotion = useReducedMotion()
   const [mounted, setMounted] = useState(!DISABLE_SITE_INTRO)
   const [active, setActive] = useState(true)
 
-  // useLayoutEffect runs synchronously before the browser paints, so a
-  // returning visitor within the same session never sees the intro flash in
-  // before this hides it.
   useLayoutEffect(() => {
     if (DISABLE_SITE_INTRO) return
     try {
@@ -42,7 +32,7 @@ export function IntroOverlay() {
         setMounted(false)
       }
     } catch {
-      // sessionStorage unavailable, fall back to showing the intro once.
+      // show intro once
     }
   }, [])
 
@@ -80,16 +70,15 @@ export function IntroOverlay() {
 
   if (!mounted) return null
 
+  const fadeDuration = reduceMotion ? REDUCED_MOTION_FADE_SECONDS : INTRO_FADE_SECONDS
+
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-[#070505] text-white cursor-pointer"
+      className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-[#12100e] text-white cursor-pointer"
       initial={{ opacity: 1 }}
       animate={{ opacity: active ? 1 : 0 }}
-      transition={{
-        duration: reduceMotion ? REDUCED_MOTION_FADE_SECONDS : INTRO_FADE_SECONDS,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      transition={{ duration: fadeDuration, ease: EASE }}
       style={{ pointerEvents: active ? 'auto' : 'none' }}
       onClick={finishIntro}
       onAnimationComplete={() => {
@@ -100,68 +89,97 @@ export function IntroOverlay() {
         }
       }}
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        src={INTRO_VIDEO_SRC}
-        autoPlay
-        muted
-        playsInline
-        loop
-        preload="auto"
+      {/* Soft stage atmosphere */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 45% at 50% 42%, rgba(0,128,138,0.14) 0%, transparent 70%)',
+        }}
       />
 
-      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
-
-      <motion.div
-        className="relative z-10 flex w-[min(94vw,1180px)] flex-col items-center px-5 text-center"
-        initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.985, filter: 'blur(10px)' }}
-        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-        transition={{
-          delay: reduceMotion ? 0 : 0.3,
-          duration: reduceMotion ? 0.12 : 0.8,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-      >
+      <div className="relative z-10 flex w-[min(92vw,420px)] flex-col items-center px-5 text-center">
+        {/* Beat 1: emblem reveal */}
         <motion.div
-          className="relative w-full"
-          initial={reduceMotion ? false : { opacity: 0, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          className="relative"
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.86 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{
-            delay: reduceMotion ? 0 : 0.3,
-            duration: reduceMotion ? 0.12 : 0.8,
-            ease: [0.22, 1, 0.36, 1],
+            delay: reduceMotion ? 0 : 0.12,
+            duration: reduceMotion ? 0.15 : 0.75,
+            ease: EASE,
           }}
         >
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(12,110,118,0.28) 0%, transparent 68%)',
+            }}
+          />
           <Image
-            src="/images/Logos/dr terzic beli logo.png"
-            alt="Dr Terzić"
-            width={680}
-            height={200}
+            src="/images/Logos/dr-lazic-emblem.png"
+            alt="Dental Clinic Dr Vesna Lazić"
+            width={727}
+            height={727}
             priority
-            className="relative mx-auto h-auto w-full max-w-[680px] object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.48)]"
+            className="relative mx-auto h-auto w-[min(52vw,220px)] object-contain sm:w-[240px]"
           />
         </motion.div>
 
+        {/* Beat 2: divider */}
         <motion.div
-          className="mt-5 w-full max-w-[1040px] sm:mt-7"
-          style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          className="mt-7 h-px origin-center bg-[#0c6e76]/70 sm:mt-8"
+          initial={reduceMotion ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{
+            delay: reduceMotion ? 0 : 0.78,
+            duration: reduceMotion ? 0.12 : 0.45,
+            ease: EASE,
+          }}
+          style={{ width: 'min(42vw, 148px)' }}
+        />
+
+        {/* Beat 3: wordmark */}
+        <motion.div
+          className="mt-5 flex flex-col items-center gap-1.5 sm:mt-6"
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            delay: reduceMotion ? 0.04 : 0.62,
-            duration: reduceMotion ? 0.12 : 0.55,
-            ease: [0.22, 1, 0.36, 1],
+            delay: reduceMotion ? 0.02 : 1.05,
+            duration: reduceMotion ? 0.12 : 0.5,
+            ease: EASE,
           }}
         >
-          <p className="mb-5 text-[0.85rem] font-semibold uppercase tracking-[0.24em] text-[#e2555c] sm:text-base">
-            {t.home.hero.sloganEyebrow || 'VIŠE OD 20 GODINA SA VAMA'}
+          <p
+            className="text-[0.68rem] font-medium uppercase tracking-[0.32em] text-[#00808a] sm:text-[0.72rem]"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+          >
+            Dental Clinic
           </p>
-          <p className="text-[clamp(1.7rem,3.8vw,3.4rem)] font-semibold not-italic leading-[1.2] text-[#fff8ef]">
-            {t.home.hero.sloganMain || 'Briga o zdravlju i lepoti'}{' '}
-            {t.home.hero.sloganItalic || 'na prirodan i bezbedan način.'}
+          <p
+            className="text-[1.05rem] font-medium uppercase tracking-[0.14em] text-[#c8d0d1] sm:text-[1.15rem]"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+          >
+            Dr Vesna Lazić
           </p>
         </motion.div>
-      </motion.div>
+
+        {/* Beat 4: sparse Serbian line */}
+        <motion.p
+          className="mt-4 text-[0.7rem] font-normal tracking-[0.18em] text-[#8a9190] sm:mt-5 sm:text-[0.72rem]"
+          style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: reduceMotion ? 0.04 : 1.4,
+            duration: reduceMotion ? 0.1 : 0.4,
+            ease: EASE,
+          }}
+        >
+          Od 1998 · prvi pregled besplatan
+        </motion.p>
+      </div>
 
       <button
         type="button"
@@ -170,7 +188,7 @@ export function IntroOverlay() {
           e.stopPropagation()
           finishIntro()
         }}
-        className="absolute bottom-6 right-6 z-20 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white/60 transition-colors duration-300 hover:text-white sm:bottom-8 sm:right-8"
+        className="absolute bottom-6 right-6 z-20 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-white/45 transition-colors duration-300 hover:text-white/85 sm:bottom-8 sm:right-8"
       >
         Preskoči
       </button>

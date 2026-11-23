@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Instagram, Youtube, Facebook } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
 import { navItems } from '@/lib/nav'
 import { businessData } from '@/lib/business-data'
@@ -20,7 +20,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#171310]">
+    <footer className="bg-[#12100e]">
       {/* Top Decorative Line */}
       <div className="h-1 bg-primary" />
 
@@ -28,39 +28,65 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:gap-16 md:grid-cols-3">
           {/* Logo & Tagline */}
           <div className="flex flex-col items-start">
-            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 -ml-4 md:-ml-6 lg:-ml-8">
+            <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
               <Image
-                src="/images/Logos/dr terzic beli logo.png"
-                alt="Dr Terzić"
-                width={500}
-                height={200}
-                className="mb-4 h-28 w-auto object-contain object-left md:h-32 lg:h-36 xl:h-40"
+                src="/images/Logos/dr-lazic-full-logo.png"
+                alt="Dental Clinic Dr Vesna Lazić"
+                width={360}
+                height={120}
+                className="mb-5 h-16 w-auto object-contain object-left sm:h-20 md:h-24"
               />
             </Link>
             <p className="mb-6 max-w-xs text-base font-light leading-relaxed text-white/70">
               {t.footer.description}
             </p>
             
-            <a
-              href={businessData.instagram}
-              target="_blank"
-              rel="noopener noreferrer" 
-              className="group flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-sm"
-              title="Pratite nas na Instagramu"
-            >
-              <div className="flex items-center justify-center p-2 rounded-full border border-white/20 group-hover:border-primary transition-colors duration-400">
-                <Instagram size={14} strokeWidth={2} />
-              </div>
-              <span className="text-[11px] font-medium tracking-[0.2em] uppercase">@dr.terzic</span>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={businessData.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                title="Instagram"
+                aria-label="Instagram"
+              >
+                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
+                  <Instagram size={14} strokeWidth={2} />
+                </div>
+              </a>
+              <a
+                href={businessData.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                title="YouTube"
+                aria-label="YouTube"
+              >
+                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
+                  <Youtube size={14} strokeWidth={2} />
+                </div>
+              </a>
+              <a
+                href={businessData.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                title="Facebook"
+                aria-label="Facebook"
+              >
+                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
+                  <Facebook size={14} strokeWidth={2} />
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-white font-medium text-sm tracking-[0.2em] uppercase mb-8">
+            <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-white">
               {t.footer.navigation}
             </h3>
-            <ul className="space-y-4">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3.5">
               {navLinksData.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -125,9 +151,10 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-4">
                 <Clock size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-white/70 text-base font-light">
-                  <p>{t.footer.monFri} {businessData.openingHours.opens} - {businessData.openingHours.closes}</p>
-                  <p>{t.footer.satSun}</p>
+                <div className="text-white/70 text-base font-light space-y-1">
+                  <p>{t.footer.hoursWeekdays}</p>
+                  <p>{t.footer.hoursSaturday}</p>
+                  <p>{t.footer.hoursSunday}</p>
                 </div>
               </li>
             </ul>
@@ -139,7 +166,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
           <p className="text-white/50 text-sm text-center font-light tracking-wide">
-            © 2026 Ordinacija Dr. Terzić. {t.footer.rights}
+            © 2026 Dental Clinic Dr Vesna Lazić. {t.footer.rights}
           </p>
         </div>
       </div>

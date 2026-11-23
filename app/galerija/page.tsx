@@ -1,41 +1,55 @@
-"use client"
+'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import { X } from 'lucide-react'
+import { BeforeAfterSlider } from '@/components/before-after-slider'
+import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primitives'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
+import { beforeAfterCases } from '@/lib/reviews'
+
+const PLACEHOLDER_SRC: Record<string, string> = {
+  ordinacija: '/images/gallery/ordinacija.webp',
+  prijem: '/images/gallery/prijem.webp',
+  tim: '/images/gallery/tim.webp',
+  'cad-cam': '/images/gallery/cad-cam.webp',
+  implantologija: '/images/gallery/implantologija.webp',
+  sterilizacija: '/images/gallery/sterilizacija.webp',
+}
+
+type GalleryFilter = 'all' | 'Ordinacija' | 'Tim' | 'Tehnologija' | 'Pre i posle'
 
 export default function GalerijaPage() {
   const { t } = useTranslation()
-  const [activeFilter, setActiveFilter] = useState<string>('all')
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const g = t.galerija
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>('all')
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
 
-  const filters = [
-    { key: 'all', label: t.galerija.filterAll },
-    { key: 'Ordinacija', label: t.galerija.filterClinic },
-    { key: 'Tretmani', label: t.galerija.filterTreatments },
-    { key: 'Pre i posle', label: t.galerija.filterBeforeAfter },
+  const filters: { key: GalleryFilter; label: string }[] = [
+    { key: 'all', label: g.filterAll },
+    { key: 'Pre i posle', label: g.filterBeforeAfter },
+    { key: 'Ordinacija', label: g.filterClinic },
+    { key: 'Tim', label: g.filterTeam },
+    { key: 'Tehnologija', label: g.filterTech },
   ]
 
-  const images = [
-    { src: '/images/Services/clinic-interior.jpg', category: 'Ordinacija', alt: 'Unutrašnjost ordinacije' },
-    { src: '/images/Services/botoks-treatment.jpg', category: 'Tretmani', alt: 'Botoks tretman' },
-    { src: '/images/Services/laser-treatment.jpg', category: 'Tretmani', alt: 'Laserski tretman' },
-    { src: '/images/Services/profhilo-treatment.jpg', category: 'Tretmani', alt: 'Profhilo tretman' },
-    { src: '/images/Services/prp-treatment.jpg', category: 'Tretmani', alt: 'PRP tretman' },
-    { src: '/images/Services/piling-treatment.jpg', category: 'Tretmani', alt: 'Hemijski piling' },
-    { src: '/images/Services/dermoscopy-treatment.jpg', category: 'Tretmani', alt: 'Dermoskopija' },
-    { src: '/images/Services/dermatology-treatment.jpg', category: 'Tretmani', alt: 'Dermatološki pregled' },
-    { src: '/images/people/Marta/drmartaterzicheadshot.png', category: 'Ordinacija', alt: 'dr Marta Terzić' },
-    { src: '/images/people/Biljana/dr-biljana-petkovic.png', category: 'Ordinacija', alt: 'dr Biljana Petković' },
-  ]
+  const atmosphereItems = useMemo(
+    () =>
+      g.items.map((item) => ({
+        ...item,
+        src: PLACEHOLDER_SRC[item.id] ?? PLACEHOLDER_SRC.ordinacija,
+      })),
+    [g.items]
+  )
 
-  const filteredImages = activeFilter === 'all'
-    ? images
-    : images.filter(img => img.category === activeFilter)
+  const showBeforeAfter = activeFilter === 'all' || activeFilter === 'Pre i posle'
+  const showAtmosphere = activeFilter !== 'Pre i posle'
+  const filteredAtmosphere =
+    activeFilter === 'all' || activeFilter === 'Pre i posle'
+      ? atmosphereItems
+      : atmosphereItems.filter((item) => item.category === activeFilter)
 
-  // Escape key and focus management for lightbox
   useEffect(() => {
     if (!lightboxImage) return
 
@@ -50,36 +64,41 @@ export default function GalerijaPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-background pt-36 pb-20">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
-            {t.galerija.eyebrow}
-          </p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
-            {t.galerija.title}
-          </h1>
-          <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
-          <p className="text-muted-foreground mt-8 max-w-xl mx-auto font-light">
-            {t.galerija.subtitle}
-          </p>
+      <section className="relative bg-[#f7f4ef] pt-36 pb-16 md:pb-20">
+        <div className="pointer-events-none absolute left-8 top-1/3 hidden h-32 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent md:block" />
+        <div className="mx-auto max-w-7xl px-6 text-center sm:px-8 lg:px-12">
+          <FadeUp>
+            <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-primary">
+              {g.eyebrow}
+            </p>
+            <h1 className="font-serif text-5xl text-[#1c1a17] md:text-6xl lg:text-7xl">
+              {g.title}
+            </h1>
+            <div className="mx-auto mt-8 h-[2px] w-24 bg-primary" />
+            <p className="mx-auto mt-8 max-w-2xl font-light text-[#6b6560]">
+              {g.subtitle}
+            </p>
+          </FadeUp>
         </div>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-wrap justify-center gap-3 py-8" role="group" aria-label="Filteri galerije">
+      <section className="border-y border-[#ddd6cc] bg-[#fffcf8]">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div
+            className="flex flex-wrap justify-center gap-3 py-8"
+            role="group"
+            aria-label={g.title}
+          >
             {filters.map((filter) => (
               <button
                 key={filter.key}
+                type="button"
                 onClick={() => setActiveFilter(filter.key)}
                 aria-pressed={activeFilter === filter.key}
-                className={`px-8 py-3 text-sm font-medium tracking-[0.15em] uppercase transition-all duration-300 ${
+                className={`px-7 py-3 text-sm font-medium uppercase tracking-[0.15em] transition-all duration-300 ${
                   activeFilter === filter.key
                     ? 'bg-primary text-white shadow-lg'
-                    : 'bg-transparent text-muted-foreground hover:text-foreground border border-border hover:border-primary'
+                    : 'border border-[#ddd6cc] bg-transparent text-[#6b6560] hover:border-primary hover:text-[#1c1a17]'
                 }`}
               >
                 {filter.label}
@@ -89,68 +108,152 @@ export default function GalerijaPage() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
-      <section className="bg-background py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {filteredImages.map((image, index) => (
-              <div
-                key={index}
-                className="break-inside-avoid group cursor-pointer"
-                onClick={() => setLightboxImage(image.src)}
-              >
-                <div className="relative overflow-hidden border border-border hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500 flex items-center justify-center">
-                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm tracking-wide font-light">
-                      {image.alt}
-                    </span>
-                  </div>
-                  <div className="absolute top-0 left-0 w-12 h-12 border-l-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 right-0 w-12 h-12 border-r-2 border-b-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-              </div>
-            ))}
+      {showBeforeAfter && (
+        <section className="bg-[#f7f4ef] py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+            <FadeUp>
+              <p className="mb-4 text-center text-sm uppercase tracking-[0.2em] text-primary">
+                {g.beforeAfterEyebrow}
+              </p>
+              <h2 className="text-center font-serif text-3xl text-[#1c1a17] md:text-4xl lg:text-5xl">
+                {g.beforeAfterTitle}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-base text-[#6b6560]">
+                {g.beforeAfterSubtitle}
+              </p>
+              <p className="mt-3 text-center text-[11px] uppercase tracking-[0.16em] text-[#9b948c]">
+                {g.dragHint}
+              </p>
+            </FadeUp>
+
+            <StaggerChildren
+              className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2"
+              staggerDelay={0.07}
+            >
+              {beforeAfterCases.map((c, index) => {
+                const caseCopy = g.cases[index]
+                return (
+                  <StaggerItem key={c.id}>
+                    <article className="overflow-hidden border border-[#ddd6cc] bg-[#fffcf8]">
+                      <BeforeAfterSlider
+                        beforeSrc={c.before}
+                        afterSrc={c.after}
+                        beforeLabel={g.before}
+                        afterLabel={g.after}
+                        alt={`${g.caseLabel} ${index + 1}: ${caseCopy?.title ?? ''}`}
+                      />
+                      <div className="border-t border-[#ddd6cc] px-5 py-4">
+                        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+                          {g.caseLabel} {index + 1}
+                        </p>
+                        <h3 className="mt-2 font-serif text-xl text-[#1c1a17]">
+                          {caseCopy?.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#6b6560]">
+                          {caseCopy?.description}
+                        </p>
+                      </div>
+                    </article>
+                  </StaggerItem>
+                )
+              })}
+            </StaggerChildren>
           </div>
+        </section>
+      )}
 
-          {filteredImages.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-muted-foreground font-light">{t.galerija.emptyState}</p>
-            </div>
-          )}
-        </div>
-      </section>
+      {showAtmosphere && (
+        <section className="border-t border-[#ddd6cc] bg-[#fffcf8] py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+            {(activeFilter === 'all' || filteredAtmosphere.length > 0) && (
+              <FadeUp>
+                <p className="mb-4 text-center text-sm uppercase tracking-[0.2em] text-primary">
+                  {g.atmosphereEyebrow}
+                </p>
+                <h2 className="text-center font-serif text-3xl text-[#1c1a17] md:text-4xl">
+                  {g.atmosphereTitle}
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-center text-base text-[#6b6560]">
+                  {g.atmosphereSubtitle}
+                </p>
+              </FadeUp>
+            )}
 
-      {/* Lightbox */}
+            {filteredAtmosphere.length > 0 ? (
+              <StaggerChildren
+                className="mt-12 columns-1 gap-6 space-y-6 sm:columns-2 lg:columns-3"
+                staggerDelay={0.05}
+              >
+                {filteredAtmosphere.map((item) => (
+                  <StaggerItem key={item.id} className="break-inside-avoid">
+                    <button
+                      type="button"
+                      className="group w-full cursor-pointer text-left"
+                      onClick={() => setLightboxImage({ src: item.src, alt: item.title })}
+                    >
+                      <div className="relative overflow-hidden border border-[#ddd6cc] shadow-sm transition-all duration-500 hover:border-primary hover:shadow-xl">
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          width={600}
+                          height={450}
+                          className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 flex items-end bg-gradient-to-t from-[#12100e]/70 via-[#12100e]/10 to-transparent opacity-90 transition-opacity duration-500">
+                          <div className="p-5">
+                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/70">
+                              {item.category === 'Ordinacija'
+                                ? g.filterClinic
+                                : item.category === 'Tim'
+                                  ? g.filterTeam
+                                  : g.filterTech}
+                            </p>
+                            <p className="mt-1 font-serif text-xl text-white">{item.title}</p>
+                            <p className="mt-1 max-w-[32ch] text-sm font-light text-white/80">
+                              {item.caption}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="absolute left-0 top-0 h-12 w-12 border-l-2 border-t-2 border-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="absolute bottom-0 right-0 h-12 w-12 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      </div>
+                    </button>
+                  </StaggerItem>
+                ))}
+              </StaggerChildren>
+            ) : (
+              <div className="py-20 text-center">
+                <p className="font-light text-[#6b6560]">{g.emptyState}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {lightboxImage && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Pregled slike"
-          className="fixed inset-0 bg-foreground/95 z-50 flex items-center justify-center p-4"
+          aria-label={g.lightboxLabel}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#12100e]/95 p-4"
           onClick={() => setLightboxImage(null)}
         >
           <button
             ref={closeButtonRef}
+            type="button"
             onClick={() => setLightboxImage(null)}
-            aria-label="Zatvori pregled"
-            className="absolute top-6 right-6 text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
+            aria-label={g.lightboxClose}
+            className="absolute right-6 top-6 rounded-sm text-white transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <X size={32} />
           </button>
-          <div className="relative max-w-5xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-h-[90vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <Image
-              src={lightboxImage}
-              alt="Uvećana slika galerije"
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
               width={1200}
-              height={800}
-              className="max-w-full max-h-[90vh] object-contain"
+              height={900}
+              className="max-h-[90vh] max-w-full object-contain"
             />
           </div>
         </div>

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'O nama | Ordinacija Dr. Terzić',
-  description: 'Upoznajte dr Martu Terzić i dr Biljanu Petković, specijaliste dermatovenerologije u Beogradu sa dugogodišnjim iskustvom u medicinskoj i estetskoj dermatologiji.',
+  title: 'O nama | Dental Clinic Dr Vesna Lazić',
+  description:
+    'Stomatološka ordinacija Dental Clinic od 1998. godine. Upoznajte dr Vesnu Lazić, prof. dr Zorana Lazića i tim, protetika, implantologija, oralna hirurgija. Prvi pregled je besplatan.',
 }
 
 export default function ONamaLayout({ children }: { children: React.ReactNode }) {

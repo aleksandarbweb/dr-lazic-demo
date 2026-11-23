@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
+import { businessData } from '@/lib/business-data'
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Ordinacija Dr. Terzić',
-  description: 'Zakažite pregled u ordinaciji Dr. Terzić. Adresa: Kosovska 51, Beograd. Telefon: +381 62 841 29 09. Radno vreme, mapa i direktan kontakt.',
+  title: 'Kontakt | Dental Clinic Dr Vesna Lazić',
+  description: `Zakažite pregled u Dental Clinic Dr Vesna Lazić. Adresa: ${businessData.addressDisplay}. Telefon: ${businessData.phoneDisplay}. ${businessData.hoursDisplay}.`,
 }
 
-export default function KontaktLayout({ children }: { children: React.ReactNode }) {
+export default function KontaktLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return children
 }

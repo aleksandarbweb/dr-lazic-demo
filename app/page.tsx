@@ -2,255 +2,200 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
-import { motion, useReducedMotion } from "motion/react"
+import { motion, useReducedMotion } from 'motion/react'
 import {
-  Stethoscope,
+  ClipboardList,
   Sparkles,
+  Paintbrush,
+  Sun,
+  Cpu,
+  Smile,
+  Gem,
+  Scissors,
+  Crown,
+  HeartPulse,
+  CircleDot,
+  AlignCenter,
   Zap,
-  Waves,
-  Microscope,
-  HandHeart
 } from 'lucide-react'
-import { ServiceCard } from '@/components/service-card'
-import { DoctorCard } from '@/components/doctor-card'
-import { TestimonialCard } from '@/components/testimonial-card'
+import type { LucideIcon } from 'lucide-react'
 import { SectionTitle } from '@/components/section-title'
-import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primitives'
+import { FadeUp } from '@/components/motion-primitives'
+import { PriceComparison } from '@/components/price-comparison'
+import { WhyClinicSection } from '@/components/why-clinic-section'
+import { ReviewsSection } from '@/components/reviews-section'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
+import { businessData } from '@/lib/business-data'
 
-const servicesConfig = [
-  { icon: Stethoscope, href: '/usluge#opsta-dermatovenerologija' },
-  { icon: Sparkles, href: '/usluge#estetska-dermatologija' },
-  { icon: Zap, href: '/usluge#laseri-u-dermatologiji' },
-  { icon: Waves, href: '/usluge#radiotalasna-hirurgija' },
-  { icon: Microscope, href: '/usluge#kompjuterizovana-dermoskopija' },
-  { icon: HandHeart, href: '/usluge#kozmetologija' },
+const servicesConfig: { icon: LucideIcon; href: string }[] = [
+  { icon: ClipboardList, href: '/usluge/stomatoloski-pregled-i-konsultacije' },
+  { icon: Sparkles, href: '/usluge/estetska-stomatologija' },
+  { icon: Paintbrush, href: '/usluge/estetski-ispuni' },
+  { icon: Sun, href: '/usluge/beljenje-zuba' },
+  { icon: Cpu, href: '/usluge/cad-cam' },
+  { icon: Smile, href: '/usluge/fasete' },
+  { icon: Gem, href: '/usluge/implantologija' },
+  { icon: Scissors, href: '/usluge/oralna-hirurgija' },
+  { icon: Crown, href: '/usluge/protetika' },
+  { icon: HeartPulse, href: '/usluge/parodontologija' },
+  { icon: CircleDot, href: '/usluge/endodoncija' },
+  { icon: AlignCenter, href: '/usluge/ortodoncija' },
+  { icon: Zap, href: '/usluge/terapija-laserom' },
 ]
 
-const equipmentBrands = [
-  { name: 'Fotona', logo: '/images/Logos/fotona-logo.png' },
-  { name: 'Alma', logo: '/images/Logos/alma-logo.png' },
-  { name: 'InMode', logo: '/images/Logos/inmode-logo.png' },
-  { name: 'Ellman', logo: '/images/Logos/ellman-logo.png' },
-  { name: 'Cortex', logo: '/images/Logos/cortex-logo.png' },
-  { name: 'H&O', logo: '/images/Logos/ho-logo.png' },
-  { name: 'Canfield', logo: '/images/Logos/canfield-logo.png' },
-  { name: 'Dermapen', logo: '/images/Logos/dermapen-logo.png' },
-]
+function ServiceMarqueeCard({
+  icon: Icon,
+  title,
+  description,
+  href,
+  learnMore,
+  decorative = false,
+}: {
+  icon: LucideIcon
+  title: string
+  description: string
+  href: string
+  learnMore: string
+  decorative?: boolean
+}) {
+  const className =
+    'group flex w-[280px] shrink-0 flex-col border border-[#ddd6cc] bg-[#fffcf8] p-5 transition-colors hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-[300px]'
 
-const doctorsConfig = [
-  {
-    imageSrc: "/images/people/Marta/marta new in labcoat 1.png",
-    profileHref: "/o-nama#marta-terzic",
-  },
-  {
-    imageSrc: "/images/people/Biljana/dr-biljana-petkovic.png",
-    profileHref: "/o-nama#biljana-petkovic",
-    reversed: true
-  }
-]
+  const inner = (
+    <>
+      <div className="mb-4 flex h-10 w-10 items-center justify-center border border-[#ddd6cc] transition-colors group-hover:border-primary/30 group-hover:bg-primary/5">
+        <Icon size={20} className="text-primary" />
+      </div>
+      <h3 className="font-serif text-lg text-[#1c1a17]">{title}</h3>
+      <p className="mt-2 line-clamp-2 flex-1 text-sm font-light leading-relaxed text-[#6b6560]">
+        {description}
+      </p>
+      <span className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-primary">
+        {learnMore}
+        <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
+          →
+        </span>
+      </span>
+    </>
+  )
 
-
-export default function HomePage() {
-  const { t, language } = useTranslation()
-  const mobileServicesRef = useRef<HTMLDivElement>(null)
-  const partnersCarouselRef = useRef<HTMLAnchorElement>(null)
-  const reviewsCarouselRef = useRef<HTMLDivElement>(null)
-  const shouldReduce = useReducedMotion()
-
-  const [partnersPaused, setPartnersPaused] = useState(false)
-  const [reviewsPaused, setReviewsPaused] = useState(false)
-  // Mobile gets plain native touch scrolling instead of the JS-driven marquee. This
-  // matches Tailwind's `md` breakpoint (768px) used everywhere else on this page.
-  const [isMobile, setIsMobile] = useState(false)
-
-  const reviewsResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const partnersResumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  useEffect(() => {
-    const mql = window.matchMedia('(max-width: 767px)')
-    const update = () => setIsMobile(mql.matches)
-    update()
-    mql.addEventListener('change', update)
-    return () => mql.removeEventListener('change', update)
-  }, [])
-
-  const services = t.home.servicesList.map((service, index) => ({
-    ...service,
-    ...servicesConfig[index]
-  }))
-
-  const doctors = t.home.doctorsList.map((doc, index) => ({
-    ...doc,
-    ...doctorsConfig[index],
-    ctaLabel: t.home.doctorsSection.viewProfileLabel,
-  }))
-
-  // ── Auto-scrolling Marquees (Equipment & Reviews), desktop only. Mobile
-  // relies entirely on native touch scrolling; no RAF loop runs there at all.
-  // Also respects prefers-reduced-motion (shouldReduce).
-  useEffect(() => {
-    if (isMobile || shouldReduce) return
-
-    const containers = [
-      // Doubled lists: reset once we've scrolled exactly one copy's width.
-      { ref: partnersCarouselRef, speed: 0.01, paused: partnersPaused, resetFraction: 0.5 },
-      { ref: reviewsCarouselRef, speed: 0.008, paused: reviewsPaused, resetFraction: 0.5 },
-    ]
-
-    // A cancelled flag (not a stored frame id) is what actually stops the loop:
-    // `tick` reschedules itself every frame via a recursive `requestAnimationFrame`
-    // call, so only the very first frame id was ever capturable up front. Trying
-    // to cancel by id after the fact silently cancels nothing, and the loop leaks
-    // forever, ignoring all future pause state. This was a pre-existing bug,
-    // confirmed via instrumentation: hovering set `paused` correctly, but a
-    // leaked earlier loop kept writing scrollLeft in parallel regardless.
-    let cancelled = false
-
-    containers.forEach(({ ref, speed, paused, resetFraction }) => {
-      const container = ref.current
-      if (!container) return
-
-      let lastTs = 0
-      // Track position in a float; container.scrollLeft rounds to an integer on
-      // read, so accumulating via `container.scrollLeft += tinyDelta` silently
-      // drops sub-pixel increments and the marquee never actually moves.
-      let position = container.scrollLeft
-      let lastSetValue = position
-
-      const tick = (ts: number) => {
-        if (cancelled) return
-        if (paused) {
-          lastTs = ts
-          requestAnimationFrame(tick)
-          return
-        }
-        if (lastTs === 0) lastTs = ts
-        const delta = ts - lastTs
-        lastTs = ts
-
-        // If the user (or the edge-jump effect) moved scrollLeft since our last
-        // write, resync so auto-scroll continues from there instead of fighting it.
-        if (Math.abs(container.scrollLeft - lastSetValue) > 1) {
-          position = container.scrollLeft
-        }
-
-        position += delta * speed
-        if (resetFraction !== null && position >= container.scrollWidth * resetFraction) {
-          position = 0
-        }
-        container.scrollLeft = position
-        lastSetValue = container.scrollLeft
-        requestAnimationFrame(tick)
-      }
-
-      requestAnimationFrame(tick)
-    })
-
-    return () => { cancelled = true }
-  }, [partnersPaused, reviewsPaused, isMobile, shouldReduce])
-
-  const loopingEquipment = [...equipmentBrands, ...equipmentBrands]
-  const doubledReviews = [...t.home.reviewsList, ...t.home.reviewsList]
-  // Mobile: plain, single-copy lists with native touch scroll, with no JS position
-  // manipulation, so there's nothing to teleport/jump while the user drags.
-  // Desktop: doubled lists feed the RAF marquee above.
-  const mobileServicesList = services
-  const equipmentItems = isMobile ? equipmentBrands : loopingEquipment
-  const reviewsItems = isMobile ? t.home.reviewsList : doubledReviews
-
-  const pauseReviews = () => {
-    if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
-    setReviewsPaused(true)
-  }
-  const resumeReviews = () => {
-    if (reviewsResumeTimeout.current) clearTimeout(reviewsResumeTimeout.current)
-    reviewsResumeTimeout.current = setTimeout(() => setReviewsPaused(false), 1200)
-  }
-  const pausePartners = () => {
-    if (partnersResumeTimeout.current) clearTimeout(partnersResumeTimeout.current)
-    setPartnersPaused(true)
-  }
-  const resumePartners = () => {
-    if (partnersResumeTimeout.current) clearTimeout(partnersResumeTimeout.current)
-    partnersResumeTimeout.current = setTimeout(() => setPartnersPaused(false), 1200)
+  if (decorative) {
+    return (
+      <div className={className} aria-hidden="true">
+        {inner}
+      </div>
+    )
   }
 
   return (
+    <Link href={href} className={className}>
+      {inner}
+    </Link>
+  )
+}
+
+export default function HomePage() {
+  const { t, language } = useTranslation()
+  const shouldReduce = useReducedMotion()
+
+  const services = t.home.servicesList
+    .map((service, index) => {
+      const config = servicesConfig[index]
+      if (!config?.icon) return null
+      return { ...service, ...config }
+    })
+    .filter((s): s is NonNullable<typeof s> => s !== null)
+
+  return (
     <>
-      {/* ════════════════════════════════════════════════════════════════════
-          HERO SECTION
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[100dvh] overflow-hidden bg-[#faf9f6]">
-        {/* Abstract Background Elements */}
+      {/* HERO */}
+      <section className="relative min-h-[100dvh] overflow-hidden bg-[#f7f4ef]">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-[5%] top-[15%] h-64 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
-          <div className="absolute right-[10%] top-[20%] h-96 w-px bg-gradient-to-b from-transparent via-primary/15 to-transparent" />
-          <div className="absolute left-[20%] top-[10%] h-[1px] w-48 bg-gradient-to-r from-transparent via-[#d6cec4] to-transparent" />
-          <div className="absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/[0.02] blur-3xl" />
+          <div className="absolute left-[6%] top-[18%] h-64 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
+          <div className="absolute right-[12%] top-[22%] h-80 w-px bg-gradient-to-b from-transparent via-[#ddd6cc] to-transparent" />
+          <div className="absolute left-[18%] top-[12%] h-px w-40 bg-gradient-to-r from-transparent via-[#ddd6cc] to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-7xl items-center px-6 pb-16 pt-32 sm:px-8 lg:px-12 lg:pt-36">
-          <div className="grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
-            {/* Left Content */}
+        <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-7xl items-center px-6 pb-16 pt-28 sm:px-8 lg:px-12 lg:pt-32">
+          <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="min-w-0 max-w-2xl text-center lg:text-left">
               <motion.p
-                initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+                initial={shouldReduce ? false : { opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mb-6 inline-flex rounded-full border border-primary/20 bg-white/80 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-primary"
+                transition={{ duration: 0.5, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+                className="mb-5 font-serif text-3xl tracking-tight text-[#12100e] sm:text-4xl md:text-5xl"
+              >
+                {t.home.hero.brand}
+              </motion.p>
+
+              <motion.p
+                initial={shouldReduce ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.12, ease: [0.25, 0.1, 0.25, 1] }}
+                className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-primary"
               >
                 {t.home.hero.badge}
               </motion.p>
+
               <motion.h1
-                initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+                initial={shouldReduce ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className={`text-5xl font-serif leading-[1.05] text-[#181512] sm:text-6xl md:text-7xl ${language === 'ru' ? 'lg:text-5xl xl:text-6xl' : 'lg:text-6xl xl:text-7xl'}`}
+                transition={{ duration: 0.55, delay: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
+                className={`text-4xl font-serif leading-[1.08] text-[#1c1a17] sm:text-5xl md:text-6xl ${
+                  language === 'ru' ? 'lg:text-5xl xl:text-6xl' : 'lg:text-6xl'
+                }`}
               >
                 {t.home.hero.titleLine1}
                 <br />
-                <span className="text-[#342f2a]">{t.home.hero.titleLine2}</span>
+                <span className="text-[#3a3530]">{t.home.hero.titleLine2}</span>
               </motion.h1>
+
               <motion.p
-                initial={shouldReduce ? false : { opacity: 0, y: 18 }}
+                initial={shouldReduce ? false : { opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mt-8 max-w-[50ch] text-base leading-relaxed text-[#5e5953] md:text-lg lg:mx-0 mx-auto"
+                transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="mx-auto mt-7 max-w-[48ch] text-base leading-relaxed text-[#6b6560] md:text-lg lg:mx-0"
               >
                 {t.home.hero.description}
               </motion.p>
+
               <motion.div
-                initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+                initial={shouldReduce ? false : { opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
+                transition={{ duration: 0.5, delay: 0.42, ease: [0.25, 0.1, 0.25, 1] }}
+                className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
               >
                 <Link
                   href="/kontakt"
-                  className="group inline-flex items-center justify-center gap-3 pl-5 pr-2.5 py-2.5 rounded-full bg-primary text-xs font-medium uppercase tracking-[0.16em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
+                  className="group inline-flex items-center justify-center gap-3 rounded-full bg-primary py-2.5 pl-5 pr-2.5 text-xs font-medium uppercase tracking-[0.16em] text-white transition-all duration-500 hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ef] active:scale-[0.98]"
                 >
                   <span>{t.home.hero.ctaPrimary}</span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0.5">
                     <span aria-hidden="true" className="text-sm leading-none">
                       →
                     </span>
                   </span>
                 </Link>
-                <Link
-                  href="/usluge"
-                  className="inline-flex items-center justify-center rounded-full border border-[#27221d]/20 px-6 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none"
+                <a
+                  href={businessData.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-[#1c1a17]/20 px-6 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-[#1c1a17] transition-all duration-500 hover:border-[#1c1a17] hover:bg-[#1c1a17] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1c1a17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ef] active:scale-[0.98]"
                 >
-                  {t.home.hero.ctaSecondary}
+                  {t.home.hero.ctaWhatsApp}
+                </a>
+                <Link
+                  href="/usluge/stomatoloski-pregled-i-konsultacije"
+                  className="inline-flex items-center justify-center rounded-full px-2 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-primary underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ef]"
+                >
+                  {t.home.hero.ctaFreeExam}
                 </Link>
               </motion.div>
 
-              {/* Trust micro-indicators */}
               <motion.div
                 initial={shouldReduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.5, delay: 0.55 }}
                 className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
               >
                 {t.home.hero.trustItems.map((item, i) => (
@@ -258,7 +203,11 @@ export default function HomePage() {
                     key={item}
                     className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#7a756f]"
                   >
-                    {i > 0 && <span className="text-[#d6cec4]" aria-hidden="true">·</span>}
+                    {i > 0 && (
+                      <span className="text-[#ddd6cc]" aria-hidden="true">
+                        ·
+                      </span>
+                    )}
                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/40" />
                     {item}
                   </span>
@@ -266,80 +215,51 @@ export default function HomePage() {
               </motion.div>
             </div>
 
-            {/* Right Image with Frame */}
             <motion.div
-              initial={shouldReduce ? false : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative hidden aspect-[4/5] w-full max-w-[500px] lg:block justify-self-end"
+              initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative mx-auto w-full max-w-[420px] lg:mx-0 lg:justify-self-end"
             >
-              <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] border-[12px] border-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)]">
+              <div
+                className="relative aspect-[4/5] w-full overflow-hidden bg-[#f7f4ef]"
+                style={{
+                  WebkitMaskImage:
+                    'radial-gradient(ellipse 92% 88% at 50% 42%, #000 58%, transparent 100%), linear-gradient(to bottom, #000 70%, transparent 100%)',
+                  maskImage:
+                    'radial-gradient(ellipse 92% 88% at 50% 42%, #000 58%, transparent 100%), linear-gradient(to bottom, #000 70%, transparent 100%)',
+                  WebkitMaskComposite: 'source-in',
+                  maskComposite: 'intersect',
+                }}
+              >
                 <Image
-                  src="/images/people/Marta/marta new 1.png"
-                  alt="dr Marta Terzić"
+                  src="/images/people/dr-vesna-lazic.jpg"
+                  alt="dr Vesna Lazić"
                   fill
                   priority
-                  className="object-cover object-[42%_35%] transition-transform duration-1000 ease-out hover:scale-105"
+                  sizes="(max-width: 1024px) 90vw, 420px"
+                  className="scale-[1.08] object-cover object-[50%_16%]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#f7f4ef] via-[#f7f4ef]/25 to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[#f7f4ef] to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[#f7f4ef] to-transparent" />
               </div>
-              {/* Decorative Frame Accents */}
-              <motion.div
-                initial={shouldReduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute -left-6 -top-6 h-24 w-24 border-l-2 border-t-2 border-primary/30"
-              />
-              <motion.div
-                initial={shouldReduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                className="absolute -bottom-6 -right-6 h-24 w-24 border-b-2 border-r-2 border-primary/30"
-              />
+              <p className="mt-4 text-center text-sm uppercase tracking-[0.18em] text-[#6b6560] lg:text-left">
+                dr Vesna Lazić
+              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          TRUST BAR / STATS
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <FadeUp>
-            <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary md:mb-12">
-              {t.home.trustEyebrow}
-            </p>
-          </FadeUp>
-          <StaggerChildren className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10" staggerDelay={0.1}>
-            {t.home.stats.map((stat, index) => (
-              <StaggerItem key={stat.label}>
-                <div
-                  className={`relative text-center ${
-                    index < t.home.stats.length - 1 ? 'md:border-r md:border-border' : ''
-                  }`}
-                >
-                  <div className="mx-auto mb-4 h-[2px] w-6 bg-primary/30" />
-                  <p className="font-serif text-5xl tabular-nums text-primary md:text-6xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-3 text-sm font-light leading-relaxed tracking-wide text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
+      {/* 1. Trust / why clinic */}
+      <WhyClinicSection />
 
-      {/* ════════════════════════════════════════════════════════════════════
-          SERVICES SECTION
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#f7f4ee] py-12 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* 2. Services marquee */}
+      <section className="overflow-hidden bg-[#f7f4ef] py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-4 text-center text-sm tracking-[0.2em] uppercase text-primary">
+            <p className="mb-4 text-center text-sm uppercase tracking-[0.2em] text-primary">
               {t.home.servicesSection.eyebrow}
             </p>
             <SectionTitle
@@ -347,261 +267,150 @@ export default function HomePage() {
               subtitle={t.home.servicesSection.subtitle}
             />
           </FadeUp>
-          {/* Mobile Carousel / Desktop Grid */}
-          <div className="relative">
-            <div 
-              ref={mobileServicesRef}
-              className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-8 md:hidden"
-            >
-              {mobileServicesList.map((service, index) => (
-                <div
-                  key={`${service.title}-${index}`}
-                  className="min-w-[85vw] snap-center rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5"
-                >
-                  <div className="h-full overflow-hidden rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb]">
-                    <ServiceCard {...service} learnMoreText={t.home.servicesSection.learnMore} />
-                  </div>
-                </div>
-              ))}
-            </div>
+        </div>
 
-            <StaggerChildren className="hidden flex-wrap justify-center gap-5 md:flex" staggerDelay={0.08}>
+        {shouldReduce ? (
+          <div className="mx-auto mt-10 max-w-7xl px-6 sm:px-8 lg:px-12">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
-                <StaggerItem
-                  key={service.title}
-                  className="w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
-                >
-                  <div
-                    className="h-full rounded-[1.75rem] border border-[#e3dad1] bg-white p-1.5 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_40px_-24px_rgba(65,45,30,0.35)] motion-reduce:transform-none motion-reduce:transition-none"
-                  >
-                    <div className="h-full overflow-hidden rounded-[calc(1.75rem-0.375rem)] border border-[#f2ece5] bg-[#fffdfb]">
-                      <ServiceCard {...service} learnMoreText={t.home.servicesSection.learnMore} />
-                    </div>
-                  </div>
-                </StaggerItem>
+                <li key={service.href}>
+                  <ServiceMarqueeCard
+                    icon={service.icon}
+                    title={service.title}
+                    description={service.description}
+                    href={service.href}
+                    learnMore={t.home.servicesSection.learnMore}
+                  />
+                </li>
               ))}
-            </StaggerChildren>
-
-            {/* Swipe hint for mobile */}
-            <div className="mt-3 flex flex-col items-center gap-2 md:hidden">
-              <div className="flex justify-center gap-1.5">
-                <div className="h-1 w-8 rounded-full bg-primary/20" />
-                <div className="h-1 w-1.5 rounded-full bg-primary/10" />
-                <div className="h-1 w-1.5 rounded-full bg-primary/10" />
-              </div>
-              <p className="text-[11px] uppercase tracking-[0.15em] text-[#9b948c]">
-                {t.home.servicesSection.swipeMobile}
-              </p>
-            </div>
+            </ul>
           </div>
-          <FadeUp delay={0.2}>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/usluge"
-                className="inline-flex items-center justify-center rounded-full border border-[#27221d]/30 px-8 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee]"
-              >
-                {t.home.servicesSection.viewAll}
-              </Link>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          PHILOSOPHY / DR. QUOTE SECTION
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#f2ece2] py-16 md:py-24 lg:py-32">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/4 top-0 h-full w-px bg-primary/[0.08]" />
-          <div className="absolute right-1/4 top-0 h-full w-px bg-primary/[0.08]" />
-          {/* Soft radial glow behind quote */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-primary/[0.05] blur-[100px]" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-2xl text-center">
-            <FadeUp delay={0}>
-              <div className="mb-10 flex justify-center">
-                <div className="h-12 w-[1px] bg-primary" />
-              </div>
-            </FadeUp>
-
-            <FadeUp delay={0.15}>
-              <p className="mb-8 text-sm font-semibold uppercase tracking-[0.35em] text-primary">
-                {t.home.philosophy.title}
-              </p>
-            </FadeUp>
-
-            <FadeUp delay={0.3}>
-              <h2 className="font-serif text-2xl leading-tight text-[#241f1a] sm:text-3xl md:text-4xl lg:text-5xl">
-                &ldquo;{t.home.philosophy.quote.replace(/^["“]|["”]$/g, '')}&rdquo;
-              </h2>
-            </FadeUp>
-
-            <FadeUp delay={0.45}>
-              <div className="mt-12 flex flex-col items-center">
-                <div className="mb-4 h-px w-12 bg-primary/40" />
-                <p className="text-base font-medium tracking-[0.2em] text-[#4a423a]">{t.home.philosophy.author}</p>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          DOCTORS SECTION
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#f5f2ec] py-16 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <FadeUp>
-            <SectionTitle title={t.home.doctorsSection.title} />
-          </FadeUp>
-          <div className="space-y-16 md:space-y-24">
-              {doctors.map((doctor, index) => (
-                <DoctorCard key={index} {...doctor} />
-              ))}
-          </div>
-          <FadeUp delay={0.1}>
-            <div className="mt-16 flex justify-center md:mt-20">
-              <Link
-                href="/o-nama#nas-tim"
-                className="inline-flex items-center justify-center rounded-full border border-[#27221d]/30 px-8 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#27221d] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:border-[#27221d] hover:bg-[#27221d] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#27221d] focus-visible:ring-offset-2"
-              >
-                {t.home.doctorsSection.viewTeamLabel}
-              </Link>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          EQUIPMENT SECTION (Infinite Marquee, links to /oprema)
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="border-y border-[#e5ddd3] bg-white py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <FadeUp>
-            <p className="mb-10 text-center text-sm uppercase tracking-[0.2em] text-muted-foreground">{t.home.equipmentTitle}</p>
-          </FadeUp>
-          <Link
-            href="/oprema"
-            ref={partnersCarouselRef}
-            className="no-scrollbar flex items-center gap-14 overflow-x-auto snap-x snap-mandatory px-6 -mx-6 md:snap-none md:gap-20 md:px-0 md:mx-0"
-            onMouseEnter={pausePartners}
-            onMouseLeave={resumePartners}
-            onFocus={pausePartners}
-            onBlur={resumePartners}
-            onTouchStart={pausePartners}
-            onTouchEnd={resumePartners}
-            onPointerDown={pausePartners}
-            onPointerUp={resumePartners}
-            aria-label={t.home.equipmentTitle}
-          >
-            {equipmentItems.map((brand, index) => (
-              <span
-                key={`${brand.name}-${index}`}
-                className="relative h-9 w-28 flex-shrink-0 snap-center grayscale opacity-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-100 hover:grayscale-0 md:h-10 md:w-32"
-              >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  fill
-                  sizes="128px"
-                  className="object-contain"
+        ) : (
+          <div className="group/marquee relative mt-10" aria-label={t.home.servicesSection.title}>
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#f7f4ef] to-transparent sm:w-16" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#f7f4ef] to-transparent sm:w-16" />
+            <div className="flex animate-marquee gap-4 pl-4 will-change-transform">
+              {services.map((service) => (
+                <ServiceMarqueeCard
+                  key={`a-${service.href}`}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  href={service.href}
+                  learnMore={t.home.servicesSection.learnMore}
                 />
-              </span>
-            ))}
-          </Link>
-          <p className="mt-4 text-center text-[11px] uppercase tracking-[0.15em] text-[#9b948c] md:hidden">
-            {t.home.swipeHint}
-          </p>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          PATIENT REVIEWS SECTION: real, curated excerpts from public reviews,
-          in a self-scrolling marquee that also supports manual drag/swipe.
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <FadeUp>
-            <SectionTitle title={t.home.reviewsSection.title} subtitle={t.home.reviewsSection.subtitle} />
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div
-              ref={reviewsCarouselRef}
-              className="no-scrollbar -mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8 md:snap-none lg:-mx-12 lg:px-12"
-              onMouseEnter={pauseReviews}
-              onMouseLeave={resumeReviews}
-              onTouchStart={pauseReviews}
-              onTouchEnd={resumeReviews}
-              onPointerDown={pauseReviews}
-              onPointerUp={resumeReviews}
-            >
-              {reviewsItems.map((item, index) => (
-                <div key={index} className="w-[280px] flex-shrink-0 snap-center sm:w-[340px]">
-                  <TestimonialCard quote={item.quote} author={item.author} />
-                </div>
+              ))}
+              {services.map((service) => (
+                <ServiceMarqueeCard
+                  key={`b-${service.href}`}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  href={service.href}
+                  learnMore={t.home.servicesSection.learnMore}
+                  decorative
+                />
               ))}
             </div>
-          </FadeUp>
+          </div>
+        )}
 
-          <p className="mt-4 text-center text-[11px] uppercase tracking-[0.15em] text-[#9b948c] md:hidden">
-            {t.home.swipeHint}
-          </p>
+        <FadeUp delay={0.1}>
+          <div className="mt-10 flex justify-center px-6">
+            <Link
+              href="/usluge"
+              className="inline-flex items-center justify-center rounded-full border border-[#1c1a17]/30 px-8 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1c1a17] transition-all duration-500 hover:border-[#1c1a17] hover:bg-[#1c1a17] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1c1a17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ef]"
+            >
+              {t.home.servicesSection.viewAll}
+            </Link>
+          </div>
+        </FadeUp>
+      </section>
 
-          <FadeUp delay={0.2}>
-            <p className="mt-6 text-center text-xs uppercase tracking-[0.15em] text-[#9b948c] md:mt-10">
-              {t.home.reviewsSource}
-            </p>
-          </FadeUp>
+      {/* 3. Meet the doctor */}
+      <section className="border-y border-[#ddd6cc] bg-[#f7f4ef] py-16 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <FadeUp className="lg:col-span-5">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-[360px] overflow-hidden bg-[#f7f4ef] lg:mx-0">
+                <Image
+                  src="/images/people/dr-vesna-lazic.jpg"
+                  alt="dr Vesna Lazić"
+                  fill
+                  sizes="360px"
+                  className="scale-[1.06] object-cover object-[50%_16%]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#f7f4ef]/55 via-transparent to-transparent" />
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.1} className="lg:col-span-7">
+              <p className="mb-4 text-sm uppercase tracking-[0.22em] text-primary">
+                {t.home.doctorSection.eyebrow}
+              </p>
+              <h2 className="font-serif text-4xl text-[#1c1a17] md:text-5xl">
+                {t.home.doctorSection.title}
+              </h2>
+              <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-[#6b6560]">
+                {t.home.doctorSection.role}
+              </p>
+              <p className="mt-8 max-w-[55ch] text-base leading-relaxed text-[#5e5953] md:text-lg">
+                {t.home.doctorSection.bio}
+              </p>
+              <Link
+                href="/o-nama"
+                className="mt-10 inline-flex items-center justify-center rounded-full border border-[#1c1a17]/30 px-8 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1c1a17] transition-all duration-500 hover:border-[#1c1a17] hover:bg-[#1c1a17] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1c1a17] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ef]"
+              >
+                {t.home.doctorSection.cta}
+              </Link>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          CTA SECTION
-          ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#faf6f1] py-20 md:py-32 border-y border-[#e5ddd3]">
-        {/* Layered Decorative Elements: soft, not solid red */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.04]" />
-          <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-primary/[0.04]" />
-          <div className="absolute left-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary/[0.02]" />
-        </div>
+      {/* 4. Pricing after value is established */}
+      <PriceComparison />
 
-        <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      {/* 5. Compact reviews near the end */}
+      <ReviewsSection />
+
+      {/* 6. Merged closing: free consult + final CTA */}
+      <section className="bg-[#12100e] py-20 md:py-28">
+        <div className="mx-auto max-w-4xl px-6 text-center sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6">{t.home.cta.subtitle}</p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#181512] tracking-wide">
-              {t.home.cta.title}
+            <p className="mb-5 text-sm uppercase tracking-[0.28em] text-primary">
+              {t.home.highlight.eyebrow}
+            </p>
+            <h2 className="font-serif text-3xl text-white md:text-5xl">
+              {t.home.highlight.title}
             </h2>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-[#5e5953] text-lg mt-6 max-w-2xl mx-auto font-light">
-              {t.home.cta.description}
+            <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-white/70 md:text-lg">
+              {t.home.highlight.description}
             </p>
           </FadeUp>
-          <FadeUp delay={0.3}>
-            <motion.div
-              className="mt-10 inline-block"
-              whileHover={shouldReduce ? {} : { scale: 1.03 }}
-              whileTap={shouldReduce ? {} : { scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-            >
+          <FadeUp delay={0.1}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href={businessData.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#12100e]"
+              >
+                {t.home.highlight.ctaWhatsApp}
+              </a>
               <Link
                 href="/kontakt"
-                className="group mx-auto inline-flex items-center justify-between rounded-full bg-primary px-3 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf6f1] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:gap-5 sm:pl-8 sm:pr-3"
+                className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/25 px-8 py-3.5 text-sm font-medium uppercase tracking-[0.15em] text-white transition-colors hover:border-white hover:bg-white hover:text-[#12100e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#12100e]"
               >
                 <span>{t.home.cta.button}</span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none">
-                  <span aria-hidden="true" className="text-base leading-none">
-                    →
-                  </span>
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
+                  →
                 </span>
               </Link>
-            </motion.div>
+            </div>
+            <p className="mx-auto mt-6 max-w-lg text-sm font-light text-white/45">
+              {t.home.cta.description}
+            </p>
           </FadeUp>
         </div>
       </section>

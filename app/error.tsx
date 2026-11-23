@@ -31,7 +31,7 @@ export default function Error({
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={reset}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-white transition-all duration-500 hover:bg-[#9f1818] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-white transition-all duration-500 hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             Pokušaj ponovo
           </button>

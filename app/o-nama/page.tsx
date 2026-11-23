@@ -1,36 +1,21 @@
 "use client"
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { SectionTitle } from '@/components/section-title'
-import { ExpandableBio } from '@/components/expandable-bio'
-import {
-  HeartHandshake,
-  ShieldCheck,
-  Award,
-  Stethoscope,
-  ScanEye,
-  Zap,
-  Radio,
-  Sparkles,
-  Hourglass,
-  Droplets,
-} from 'lucide-react'
 import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primitives'
 import { useTranslation } from '@/lib/i18n/LanguageContext'
-
-const valueIcons = [HeartHandshake, ShieldCheck, Award]
-const bavimoSeIcons = [Stethoscope, ScanEye, Zap, Radio, Sparkles, Hourglass, Droplets]
 
 export default function ONamaPage() {
   const { t } = useTranslation()
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-background pt-36 pb-20">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
+      {/* Hero */}
+      <section className="relative bg-background pt-36 pb-16 md:pb-20">
+        <div className="hidden md:block absolute left-8 top-1/3 w-px h-32 bg-primary/30" />
         <FadeUp>
-          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
             <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               {t.onama.eyebrow}
             </p>
@@ -38,60 +23,67 @@ export default function ONamaPage() {
               {t.onama.title}
             </h1>
             <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
-            <p className="text-muted-foreground mt-8 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-muted-foreground mt-8 max-w-2xl mx-auto font-light leading-relaxed text-base md:text-lg">
               {t.onama.heroIntro}
             </p>
           </div>
         </FadeUp>
       </section>
 
-      {/* Clinic Story Section */}
+      {/* Clinic story: 1998 */}
       <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <FadeUp delay={0.1}>
-                <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.onama.storyEyebrow}</p>
-                <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
-                  {t.onama.storyTitle}
-                </h2>
-                <div className="w-16 h-[2px] bg-primary mb-8" />
-              </FadeUp>
-              <FadeUp delay={0.2}>
-                <p className="text-muted-foreground leading-relaxed mb-5 font-light">
-                  {t.onama.storyP1}
-                </p>
-                <p className="text-muted-foreground leading-relaxed font-light">
-                  {t.onama.storyP2}
-                </p>
-              </FadeUp>
-            </div>
-            <FadeUp delay={0.3} className="relative aspect-[4/3] w-full overflow-hidden shadow-2xl">
-              <Image
-                src="/images/Services/ordinacijaonama.png"
-                alt="Unutrašnjost ordinacije Dr. Terzić"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary" />
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-12 lg:gap-20 items-start">
+            <FadeUp>
+              <p className="font-serif text-[5.5rem] md:text-[7rem] leading-none text-primary/15 select-none tabular-nums">
+                1998
+              </p>
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mt-2 mb-4">
+                {t.onama.storyEyebrow}
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground">
+                {t.onama.storyTitle}
+              </h2>
+              <div className="w-16 h-[2px] bg-primary mt-6" />
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <p className="text-muted-foreground leading-relaxed font-light text-base md:text-lg mb-6">
+                {t.onama.storyP1}
+              </p>
+              <p className="text-muted-foreground leading-relaxed font-light text-base md:text-lg mb-10">
+                {t.onama.storyP2}
+              </p>
+              <p className="text-primary text-xs tracking-[0.18em] uppercase mb-4 font-medium">
+                {t.onama.storyServicesLabel}
+              </p>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+                {t.onama.storyServices.map((service) => (
+                  <li
+                    key={service}
+                    className="text-sm text-foreground/80 font-light border-b border-primary/20 pb-0.5"
+                  >
+                    {service}
+                  </li>
+                ))}
+              </ul>
             </FadeUp>
           </div>
         </div>
       </section>
 
-      {/* Tagline Banner */}
-      <section className="bg-foreground py-12 md:py-14">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Tagline */}
+      <section className="bg-foreground py-11 md:py-14">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-8">
               {t.onama.tagline.map((word, index) => (
-                <span key={word} className="flex items-center gap-x-5 sm:gap-x-7">
+                <span key={word} className="flex items-center gap-x-5 sm:gap-x-8">
                   <span className="font-serif text-lg sm:text-xl text-white/90 tracking-wide text-center">
                     {word}
                   </span>
                   {index < t.onama.tagline.length - 1 && (
-                    <span className="w-1.5 h-1.5 bg-primary" />
+                    <span className="w-1.5 h-1.5 bg-primary" aria-hidden="true" />
                   )}
                 </span>
               ))}
@@ -100,202 +92,155 @@ export default function ONamaPage() {
         </div>
       </section>
 
-      {/* Approach Section */}
-      <section className="bg-background py-20 md:py-28">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <FadeUp>
-            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.onama.approachEyebrow}</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
-              {t.onama.approachTitle}
-            </h2>
-            <div className="w-16 h-[2px] bg-primary mx-auto mb-8" />
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="text-muted-foreground leading-relaxed mb-5 font-light">
-              {t.onama.storyP3}
-            </p>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              {t.onama.storyP4}
-            </p>
-          </FadeUp>
+      {/* Dr Vesna Lazić: warm stone + soft off-white headshot */}
+      <section
+        id="dr-vesna-lazic"
+        className="bg-background py-20 md:py-28 scroll-mt-24"
+      >
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div className="relative mx-auto w-full max-w-[420px]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <Image
+                    src="/images/people/dr-vesna-lazic.jpg"
+                    alt={t.onama.vesna.name}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 90vw, 420px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-24 h-24 border-r border-b border-primary/40 pointer-events-none" />
+                <div className="absolute -top-3 -left-3 w-16 h-16 border-l border-t border-primary/40 pointer-events-none" />
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
+                {t.onama.vesna.eyebrow}
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">
+                {t.onama.vesna.name}
+              </h2>
+              <p className="text-primary font-medium text-sm tracking-[0.12em] uppercase mb-8">
+                {t.onama.vesna.title}
+              </p>
+              {t.onama.vesna.bio.map((paragraph, index) => (
+                <p
+                  key={paragraph.slice(0, 32)}
+                  className={
+                    index === 0
+                      ? 'text-foreground/80 leading-relaxed text-base md:text-[1.05rem] mb-6'
+                      : 'text-muted-foreground leading-relaxed font-light mb-5 last:mb-8'
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {t.onama.vesna.focus.map((item) => (
+                  <li
+                    key={item}
+                    className="text-sm text-foreground/85 font-light flex items-start gap-3"
+                  >
+                    <span className="mt-2 w-1.5 h-1.5 bg-primary shrink-0" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      {/* Bavimo Se Section */}
-      <section className="bg-white py-20 md:py-28">
+      {/* Prof. dr Zoran Lazić: scannable credentials */}
+      <section
+        id="prof-zoran-lazic"
+        className="bg-white py-20 md:py-28 scroll-mt-24"
+      >
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <FadeUp>
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
+              {t.onama.zoran.eyebrow}
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">
+              {t.onama.zoran.name}
+            </h2>
+            <p className="text-primary font-medium text-sm tracking-[0.12em] uppercase mb-8">
+              {t.onama.zoran.title}
+            </p>
+            <div className="w-16 h-[2px] bg-primary mb-8" />
+            <p className="text-muted-foreground leading-relaxed font-light text-base md:text-lg max-w-3xl mb-12">
+              {t.onama.zoran.intro}
+            </p>
+          </FadeUp>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0 border-t border-border">
+            {t.onama.zoran.credentials.map((item, index) => (
+              <StaggerItem key={item}>
+                <div className="flex gap-5 py-5 border-b border-border">
+                  <span className="font-serif text-sm text-primary/70 tabular-nums pt-0.5 shrink-0 w-7">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="text-foreground/90 font-light leading-snug text-[15px] md:text-base">
+                    {item}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section id="nas-tim" className="bg-background py-20 md:py-28 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 text-center">{t.onama.bavimoSeEyebrow}</p>
-          </FadeUp>
-          <FadeUp delay={0.05}>
-            <SectionTitle title={t.onama.bavimoSeTitle} />
-          </FadeUp>
-          <StaggerChildren className="flex flex-wrap justify-center gap-6">
-            {t.onama.bavimoSeItems.map((item, index) => {
-              const Icon = bavimoSeIcons[index]
-              return (
-                <StaggerItem
-                  key={item}
-                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-                >
-                  <div className="group h-full flex flex-col items-center text-center gap-4 border border-border bg-background px-6 py-10 transition-all duration-500 hover:border-primary/40 hover:-translate-y-1 hover:shadow-lg">
-                    <div className="w-14 h-14 flex items-center justify-center border border-primary/30 text-primary transition-all duration-500 group-hover:bg-primary/5 group-hover:scale-110">
-                      <Icon size={26} strokeWidth={1.75} />
-                    </div>
-                    <p className="text-foreground font-light leading-snug">{item}</p>
-                  </div>
-                </StaggerItem>
-              )
-            })}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* Doctors Section */}
-      <section id="nas-tim" className="bg-[#f5f3f0] py-20 md:py-28 scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <SectionTitle title={t.onama.specialistsTitle} />
-
-          {/* dr Marta Terzić */}
-          <div id="marta-terzic" className="mb-24 scroll-mt-28">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
-              <div className="lg:col-span-1">
-                <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/people/Marta/marta new in labcoat 1.png"
-                    alt="dr Marta Terzić"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary" />
-                </div>
-              </div>
-              <div className="lg:col-span-2 border-l-2 border-primary pl-8">
-                <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
-                  dr Marta Terzić
-                </h3>
-                <p className="text-primary font-medium text-sm tracking-[0.15em] uppercase mb-6">
-                  {t.onama.marta.title}
-                </p>
-                <ExpandableBio
-                  paragraphs={t.onama.marta.bio}
-                  readMoreLabel={t.onama.readMoreLabel}
-                  readLessLabel={t.onama.readLessLabel}
-                />
-                <div className="mt-8">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {t.onama.marta.specializations.map((spec) => (
-                      <li key={spec} className="text-muted-foreground text-sm flex items-center gap-3 font-light">
-                        <span className="w-2 h-2 bg-primary" />
-                        {spec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* dr Biljana Petković */}
-          <div id="biljana-petkovic" className="scroll-mt-28 mb-24">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
-              <div className="lg:col-span-1 lg:order-2">
-                <div className="relative aspect-[3/4] w-full max-w-[400px] mx-auto overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/people/Biljana/dr-biljana-petkovic.png"
-                    alt="dr Biljana Petković"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary" />
-                </div>
-              </div>
-              <div className="lg:col-span-2 lg:order-1 border-r-2 border-primary pr-8 lg:text-right">
-                <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
-                  dr Biljana Petković
-                </h3>
-                <p className="text-primary font-medium text-sm tracking-[0.15em] uppercase mb-8">
-                  {t.home.doctorsList[1].title}
-                </p>
-                <ExpandableBio
-                  paragraphs={t.onama.biljana.bio}
-                  readMoreLabel={t.onama.readMoreLabel}
-                  readLessLabel={t.onama.readLessLabel}
-                />
-                <div className="mt-8">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {t.onama.biljana.specializations.map((spec) => (
-                      <li key={spec} className="text-muted-foreground text-sm flex items-center lg:flex-row-reverse gap-3 font-light">
-                        <span className="w-2 h-2 bg-primary" />
-                        {spec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Rest of the team */}
-          <div className="pt-16 border-t border-border">
-            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-10 text-center">
-              {t.onama.otherTeamTitle}
+            <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 text-center font-medium">
+              {t.onama.teamEyebrow}
             </p>
+            <SectionTitle title={t.onama.teamTitle} />
+          </FadeUp>
 
-            {/* Snežana: spotlight card, deliberately smaller than the Marta/Biljana profiles above */}
-            <div className="max-w-4xl mx-auto border border-border bg-white p-8 md:p-10">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="relative flex-shrink-0 h-16 w-16 overflow-hidden rounded-full border border-border bg-background">
-                  <Image
-                    src="/images/people/snezanastojkovic-avatar.png"
-                    alt={t.onama.snezana.name}
-                    fill
-                    className="object-cover"
-                  />
+          <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border/80 mt-4">
+            {t.onama.team.map((member) => (
+              <StaggerItem key={member.name}>
+                <div className="bg-background px-7 py-9 h-full">
+                  <h3 className="font-serif text-xl md:text-2xl text-foreground mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary text-xs font-medium tracking-[0.12em] uppercase leading-relaxed">
+                    {member.title}
+                  </p>
                 </div>
-                <div>
-                  <h4 className="font-serif text-2xl text-foreground mb-1">{t.onama.snezana.name}</h4>
-                  <p className="text-primary text-xs font-medium tracking-[0.1em] uppercase mb-4">{t.onama.snezana.title}</p>
-                  {t.onama.snezana.bio.map((p, i) => (
-                    <p key={i} className="text-muted-foreground text-sm leading-relaxed font-light mb-3 last:mb-0">
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Free first exam CTA */}
+      <section className="bg-white py-20 md:py-24">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <FadeUp>
-            <SectionTitle title={t.onama.valuesTitle} />
+            <p className="text-primary text-sm tracking-[0.28em] uppercase mb-5 font-medium">
+              {t.onama.ctaEyebrow}
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
+              {t.onama.ctaTitle}
+            </h2>
+            <div className="w-16 h-[2px] bg-primary mx-auto mb-8" />
+            <p className="text-muted-foreground font-light leading-relaxed mb-10 max-w-xl mx-auto">
+              {t.onama.ctaDescription}
+            </p>
+            <Link
+              href="/kontakt"
+              className="inline-flex items-center justify-center bg-primary px-9 py-3.5 text-sm font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              {t.onama.ctaButton}
+            </Link>
           </FadeUp>
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
-            {t.onama.values.map((value, index) => {
-              const Icon = valueIcons[index]
-              return (
-                <StaggerItem key={value.title}>
-                  <div className="text-center group">
-                    <div className="w-20 h-20 mx-auto mb-8 flex items-center justify-center border border-border transition-all duration-500 group-hover:border-primary/40 group-hover:bg-primary/5 group-hover:-translate-y-1">
-                      <Icon size={36} className="text-primary transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-[-3deg]" />
-                    </div>
-                    <h3 className="font-serif text-2xl text-foreground mb-4 transition-colors duration-300 group-hover:text-primary">
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed font-light">
-                      {value.description}
-                    </p>
-                  </div>
-                </StaggerItem>
-              )
-            })}
-          </StaggerChildren>
         </div>
       </section>
     </>

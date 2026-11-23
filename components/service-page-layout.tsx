@@ -97,7 +97,7 @@ export function ServicePageLayout({
                   e.preventDefault()
                   document.getElementById('service-about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#991b1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] group"
+                className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] group"
               >
                 {t.servicePage.learnMore}
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-500 group-hover:translate-y-[1px]">
@@ -137,7 +137,7 @@ export function ServicePageLayout({
                     />
                     <div className="absolute bottom-4 right-4 w-24 md:w-32 opacity-80">
                       <Image
-                        src="/images/Logos/dr terzic beli logo.png"
+                        src="/images/Logos/dr-lazic-full-logo.png"
                         alt=""
                         aria-hidden="true"
                         width={128}
@@ -147,8 +147,21 @@ export function ServicePageLayout({
                     </div>
                   </>
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-[#f5f3f0]">
-                    <span className="text-muted-foreground">Slika tretmana</span>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-gradient-to-br from-[#f7f2ec] via-[#f0ebe4] to-[#e8e2da] px-8 text-center">
+                    <div className="relative">
+                      <Image
+                        src="/images/Logos/dr-lazic-emblem.png"
+                        alt=""
+                        aria-hidden="true"
+                        width={88}
+                        height={88}
+                        className="h-20 w-20 object-contain opacity-90"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-serif text-2xl md:text-3xl text-[#2c1f14] leading-snug">{title}</p>
+                      <p className="mt-3 text-xs tracking-[0.22em] uppercase text-primary">Dental Clinic Dr Vesna Lazić</p>
+                    </div>
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#24160f]/15 via-transparent to-transparent" />
@@ -203,7 +216,7 @@ export function ServicePageLayout({
                         />
                         <div className="absolute bottom-3 right-3 w-20 md:w-24 opacity-80">
                           <Image
-                            src="/images/Logos/dr terzic beli logo.png"
+                            src="/images/Logos/dr-lazic-full-logo.png"
                             alt=""
                             aria-hidden="true"
                             width={96}
@@ -421,13 +434,23 @@ export function ServicePageLayout({
             <p className="text-[#5e5953] mt-5 font-light">
               {t.servicePage.ctaDescription}
             </p>
-            <Link
-              href="/kontakt"
-              className="group inline-flex items-center justify-center gap-3 bg-primary text-white px-10 py-4 mt-10 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-[#9f1818] hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
-            >
-              {t.servicePage.contactUs}
-              <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
-            </Link>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/kontakt"
+                className="group inline-flex items-center justify-center gap-3 bg-primary text-white px-10 py-4 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:bg-[#0a5a61] hover:shadow-xl hover:-translate-y-1 active:scale-95 rounded-full"
+              >
+                {t.servicePage.contactUs}
+                <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
+              </Link>
+              <a
+                href="https://api.whatsapp.com/send/?phone=38163283087&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 border border-primary/40 bg-white text-primary px-10 py-4 text-sm font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:border-primary hover:shadow-lg hover:-translate-y-1 active:scale-95 rounded-full"
+              >
+                {t.servicePage.whatsappCta}
+              </a>
+            </div>
           </div>
         </FadeUp>
       </section>

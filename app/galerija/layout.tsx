@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Galerija | Ordinacija Dr. Terzić',
-  description: 'Pogledajte fotografije ordinacije, opreme i tretmana u ordinaciji Dr. Terzić u Beogradu.',
+  title: 'Galerija | Dental Clinic Dr Vesna Lazić',
+  description:
+    'Pre i posle transformacije, atmosfera ordinacije i digitalni stomatološki workflow u Dental Clinic Dr Vesna Lazić.',
 }
 
 export default function GalerijaLayout({ children }: { children: React.ReactNode }) {

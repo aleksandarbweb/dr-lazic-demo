@@ -1,11 +1,17 @@
 export type CategoryKey =
-  | 'generalDermatovenereology'
-  | 'aestheticDermatology'
-  | 'lasersInDermatology'
-  | 'radiowaveSurgery'
-  | 'cryosurgery'
-  | 'computerizedDermoscopy'
-  | 'cosmetology'
+  | 'examination'
+  | 'aestheticDentistry'
+  | 'aestheticFillings'
+  | 'teethWhitening'
+  | 'cadCam'
+  | 'veneers'
+  | 'implantology'
+  | 'oralSurgery'
+  | 'prosthetics'
+  | 'periodontology'
+  | 'endodontics'
+  | 'orthodontics'
+  | 'laserTherapy'
 
 export type NavDropdownItem = {
   categoryKey: CategoryKey
@@ -14,7 +20,14 @@ export type NavDropdownItem = {
 
 export type NavItem = {
   href: string
-  translationKey: 'home' | 'about' | 'services' | 'equipment' | 'gallery' | 'contact'
+  translationKey:
+    | 'home'
+    | 'about'
+    | 'services'
+    | 'gallery'
+    | 'dentalTourism'
+    | 'career'
+    | 'contact'
   dropdown?: NavDropdownItem[]
 }
 
@@ -25,16 +38,23 @@ export const navItems: NavItem[] = [
     href: '/usluge',
     translationKey: 'services',
     dropdown: [
-      { categoryKey: 'generalDermatovenereology', href: '/usluge#opsta-dermatovenerologija' },
-      { categoryKey: 'aestheticDermatology', href: '/usluge#estetska-dermatologija' },
-      { categoryKey: 'lasersInDermatology', href: '/usluge#laseri-u-dermatologiji' },
-      { categoryKey: 'radiowaveSurgery', href: '/usluge#radiotalasna-hirurgija' },
-      { categoryKey: 'cryosurgery', href: '/usluge#kriohirurgija' },
-      { categoryKey: 'computerizedDermoscopy', href: '/usluge#kompjuterizovana-dermoskopija' },
-      { categoryKey: 'cosmetology', href: '/usluge#kozmetologija' },
+      { categoryKey: 'examination', href: '/usluge/stomatoloski-pregled-i-konsultacije' },
+      { categoryKey: 'aestheticDentistry', href: '/usluge/estetska-stomatologija' },
+      { categoryKey: 'aestheticFillings', href: '/usluge/estetski-ispuni' },
+      { categoryKey: 'teethWhitening', href: '/usluge/beljenje-zuba' },
+      { categoryKey: 'cadCam', href: '/usluge/cad-cam' },
+      { categoryKey: 'veneers', href: '/usluge/fasete' },
+      { categoryKey: 'implantology', href: '/usluge/implantologija' },
+      { categoryKey: 'oralSurgery', href: '/usluge/oralna-hirurgija' },
+      { categoryKey: 'prosthetics', href: '/usluge/protetika' },
+      { categoryKey: 'periodontology', href: '/usluge/parodontologija' },
+      { categoryKey: 'endodontics', href: '/usluge/endodoncija' },
+      { categoryKey: 'orthodontics', href: '/usluge/ortodoncija' },
+      { categoryKey: 'laserTherapy', href: '/usluge/terapija-laserom' },
     ],
   },
-  { href: '/oprema', translationKey: 'equipment' },
   { href: '/galerija', translationKey: 'gallery' },
+  { href: '/dentalni-turizam', translationKey: 'dentalTourism' },
+  { href: '/karijera', translationKey: 'career' },
   { href: '/kontakt', translationKey: 'contact' },
 ]
