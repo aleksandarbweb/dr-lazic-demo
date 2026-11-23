@@ -14,7 +14,7 @@ export function LanguageSwitcher() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-sm font-medium transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
+      <DropdownMenuTrigger className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-border bg-white px-3 text-sm font-medium transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
         <span className="uppercase text-[11px] tracking-wider text-muted-foreground">{language}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[4rem] rounded-xl border-border p-1">

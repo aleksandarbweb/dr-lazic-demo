@@ -32,7 +32,7 @@ export default function OpremaPage() {
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
             {t.oprema.eyebrow}
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
             {t.oprema.title}
           </h1>
           <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />

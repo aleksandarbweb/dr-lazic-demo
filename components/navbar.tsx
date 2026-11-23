@@ -27,11 +27,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Focus trap for mobile menu
+  // Focus trap + scroll lock for mobile menu
   useEffect(() => {
     if (!isMobileMenuOpen) return
     const menu = menuRef.current
     if (!menu) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
 
     const focusables = menu.querySelectorAll<HTMLElement>(
       'a[href], button:not([disabled])'
@@ -60,7 +63,10 @@ export function Navbar() {
 
     first?.focus()
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
   }, [isMobileMenuOpen])
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -84,9 +90,9 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="flex h-[5.5rem] items-center gap-3 lg:gap-4">
+        <div className="flex h-16 items-center gap-2 sm:h-[5.5rem] sm:gap-3 lg:gap-4">
           {/* Logo & Instagram */}
-          <div className="flex flex-shrink-0 flex-col items-start gap-0.5">
+          <div className="flex min-w-0 flex-shrink flex-col items-start gap-0.5">
             <Link
               href="/"
               onClick={handleLogoClick}
@@ -98,19 +104,19 @@ export function Navbar() {
                 width={240}
                 height={78}
                 priority
-                className="h-12 w-auto rounded-sm sm:h-14"
+                className="h-10 w-auto max-w-[min(52vw,200px)] rounded-sm object-contain object-left sm:h-14 sm:max-w-none"
               />
             </Link>
             <a
               href={businessData.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-[2px] flex items-center gap-1.5 rounded-sm text-[#6b6560] transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="ml-[2px] flex min-h-8 items-center gap-1.5 rounded-sm py-0.5 text-[#6b6560] transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               title="Pratite nas na Instagramu"
               aria-label="Instagram"
             >
-              <Instagram size={10} strokeWidth={2.5} />
-              <span className="text-[8px] font-semibold uppercase tracking-[0.15em]">
+              <Instagram size={12} strokeWidth={2.5} className="shrink-0" />
+              <span className="truncate text-[9px] font-semibold uppercase tracking-[0.12em] sm:text-[10px]">
                 {businessData.instagramHandle}
               </span>
             </a>
@@ -175,10 +181,10 @@ export function Navbar() {
           </div>
 
           {/* Mobile Actions */}
-          <div className="ml-auto flex items-center gap-3 lg:hidden">
+          <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
             <LanguageSwitcher />
             <button
-              className="p-2 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
               aria-expanded={isMobileMenuOpen}
@@ -198,14 +204,14 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigacioni meni"
-          className="max-h-[80vh] overflow-y-auto border-t border-border bg-white/98 backdrop-blur-md lg:hidden"
+          className="absolute inset-x-0 top-full h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-[#f7f4ef] sm:h-[calc(100dvh-5.5rem)] lg:hidden"
         >
-          <div className="space-y-5 px-6 py-8">
+          <div className="space-y-1 px-5 py-5 sm:px-6 sm:py-6">
             {navLinksData.map((link) => (
               <div key={link.href}>
                 {link.dropdown ? (
                   <button
-                    className={`flex w-full items-center justify-between py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
+                    className={`flex min-h-11 w-full items-center justify-between py-2.5 text-[15px] font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
                       pathname === link.href ? 'text-primary' : 'text-foreground'
                     }`}
                     aria-expanded={openMobileDropdown === link.href}
@@ -226,7 +232,7 @@ export function Navbar() {
                 ) : (
                   <Link
                     href={link.href}
-                    className={`flex items-center justify-between py-2 text-base font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
+                    className={`flex min-h-11 items-center justify-between py-2.5 text-[15px] font-medium uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 ${
                       pathname === link.href ? 'text-primary' : 'text-foreground'
                     }`}
                     onClick={closeMobileMenu}
@@ -236,10 +242,10 @@ export function Navbar() {
                 )}
 
                 {link.dropdown && openMobileDropdown === link.href && (
-                  <div className="mt-2 space-y-4 border-l-2 border-border/50 py-2 pl-4">
+                  <div className="mt-1 max-h-[40vh] space-y-0 overflow-y-auto border-l-2 border-border/50 py-1 pl-3">
                     <Link
                       href={link.href}
-                      className="block text-xs font-semibold uppercase tracking-wider text-primary transition-colors"
+                      className="flex min-h-10 items-center text-xs font-semibold uppercase tracking-wider text-primary transition-colors"
                       onClick={closeMobileMenu}
                     >
                       {t.nav[link.translationKey]} →
@@ -248,7 +254,7 @@ export function Navbar() {
                       <Link
                         key={subLink.href}
                         href={subLink.href}
-                        className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
+                        className="flex min-h-10 items-center text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
                         onClick={closeMobileMenu}
                       >
                         {t.nav.categoriesDropdown[subLink.categoryKey]}
@@ -260,7 +266,7 @@ export function Navbar() {
             ))}
             <Link
               href="/kontakt"
-              className="mt-6 block rounded-full bg-primary px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white"
+              className="mt-4 flex min-h-12 items-center justify-center rounded-full bg-primary px-6 py-3.5 text-center text-sm font-medium uppercase tracking-[0.1em] text-white"
               onClick={closeMobileMenu}
             >
               {t.nav.bookAppointment}

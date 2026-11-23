@@ -13,7 +13,7 @@ import { businessData } from '@/lib/business-data'
 // (@vercel/turbopack-next/internal/font/google/font resolve failure → HTTP 500).
 // Load Inter / Playfair via CSS instead so the demo can boot.
 export const metadata: Metadata = {
-  metadataBase: new URL('https://drlazic.demo'),
+  metadataBase: new URL('https://dr-lazic-demo.vercel.app'),
   title: {
     default: 'Dental Clinic Dr Vesna Lazić | Stomatološka ordinacija Beograd',
     template: '%s | Dental Clinic Dr Vesna Lazić',

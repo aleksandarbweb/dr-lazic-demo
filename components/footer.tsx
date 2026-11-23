@@ -24,8 +24,8 @@ export function Footer() {
       {/* Top Decorative Line */}
       <div className="h-1 bg-primary" />
 
-      <div className="max-w-7xl mx-auto px-6 py-16 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 gap-12 md:gap-16 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-16">
           {/* Logo & Tagline */}
           <div className="flex flex-col items-start">
             <Link href="/" onClick={handleLogoClick} className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
@@ -34,64 +34,64 @@ export function Footer() {
                 alt="Dental Clinic Dr Vesna Lazić"
                 width={360}
                 height={120}
-                className="mb-5 h-16 w-auto object-contain object-left sm:h-20 md:h-24"
+                className="mb-4 h-14 w-auto object-contain object-left sm:mb-5 sm:h-20 md:h-24"
               />
             </Link>
-            <p className="mb-6 max-w-xs text-base font-light leading-relaxed text-white/70">
+            <p className="mb-5 max-w-xs text-[15px] font-light leading-relaxed text-white/70 sm:mb-6 sm:text-base">
               {t.footer.description}
             </p>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <a
                 href={businessData.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                className="group inline-flex h-11 w-11 items-center justify-center rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 title="Instagram"
                 aria-label="Instagram"
               >
-                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
-                  <Instagram size={14} strokeWidth={2} />
-                </div>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors duration-400 group-hover:border-primary">
+                  <Instagram size={16} strokeWidth={2} />
+                </span>
               </a>
               <a
                 href={businessData.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                className="group inline-flex h-11 w-11 items-center justify-center rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 title="YouTube"
                 aria-label="YouTube"
               >
-                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
-                  <Youtube size={14} strokeWidth={2} />
-                </div>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors duration-400 group-hover:border-primary">
+                  <Youtube size={16} strokeWidth={2} />
+                </span>
               </a>
               <a
                 href={businessData.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                className="group inline-flex h-11 w-11 items-center justify-center rounded-sm text-white/60 transition-colors duration-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                 title="Facebook"
                 aria-label="Facebook"
               >
-                <div className="flex items-center justify-center rounded-full border border-white/20 p-2 transition-colors duration-400 group-hover:border-primary">
-                  <Facebook size={14} strokeWidth={2} />
-                </div>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors duration-400 group-hover:border-primary">
+                  <Facebook size={16} strokeWidth={2} />
+                </span>
               </a>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-white">
+            <h3 className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-white sm:mb-8">
               {t.footer.navigation}
             </h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-3.5">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1 sm:gap-x-6 sm:gap-y-2">
               {navLinksData.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-base font-light text-white/70 transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                    className="inline-flex min-h-10 items-center text-[15px] font-light text-white/70 transition-colors duration-300 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 sm:text-base"
                   >
                     {t.nav[link.translationKey]}
                   </Link>
@@ -102,20 +102,20 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-medium text-sm tracking-[0.2em] uppercase mb-8">
+            <h3 className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-white sm:mb-8">
               {t.footer.contact}
             </h3>
-            <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <MapPin size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                <div className="text-white/70 text-base font-light">
+            <ul className="space-y-4 sm:space-y-5">
+              <li className="flex items-start gap-3 sm:gap-4">
+                <MapPin size={18} className="mt-0.5 flex-shrink-0 text-primary" />
+                <div className="text-[15px] font-light text-white/70 sm:text-base">
                   <p>{businessData.addressDisplay}</p>
-                  <div className="flex items-center gap-2 mt-1.5">
+                  <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                     <a
                       href={businessData.googleMapsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                      className="inline-flex min-h-10 items-center transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                     >
                       Google Maps
                     </a>
@@ -124,27 +124,27 @@ export function Footer() {
                       href={businessData.appleMapsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                      className="inline-flex min-h-10 items-center transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                     >
                       Apple Maps
                     </a>
                   </div>
                 </div>
               </li>
-              <li className="flex items-center gap-4">
-                <Phone size={18} className="text-primary flex-shrink-0" />
+              <li className="flex items-center gap-3 sm:gap-4">
+                <Phone size={18} className="flex-shrink-0 text-primary" />
                 <a
                   href={`tel:${businessData.telephone}`}
-                  className="text-base font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                  className="inline-flex min-h-10 items-center text-[15px] font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 sm:text-base"
                 >
                   {businessData.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-center gap-4">
-                <Mail size={18} className="text-primary flex-shrink-0" />
+              <li className="flex items-center gap-3 sm:gap-4">
+                <Mail size={18} className="flex-shrink-0 text-primary" />
                 <a
                   href={`mailto:${businessData.email}`}
-                  className="text-base font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                  className="inline-flex min-h-10 items-center break-all text-[15px] font-light text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 sm:text-base"
                 >
                   {businessData.email}
                 </a>

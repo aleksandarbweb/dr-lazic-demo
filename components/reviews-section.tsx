@@ -11,8 +11,8 @@ export function ReviewsSection() {
   const r = t.home.reviewsSection
 
   return (
-    <section className="border-y border-[#ddd6cc] bg-white py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <section className="border-y border-[#ddd6cc] bg-white py-10 md:py-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <FadeUp>
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div className="max-w-xl">
@@ -60,7 +60,7 @@ export function ReviewsSection() {
         </FadeUp>
 
         <div
-          className="no-scrollbar -mx-6 mt-8 flex gap-4 overflow-x-auto px-6 pb-2 scroll-smooth snap-x snap-mandatory md:mx-0 md:px-0"
+          className="no-scrollbar -mx-5 mt-8 flex gap-4 overflow-x-auto px-5 pb-2 scroll-smooth snap-x snap-mandatory sm:-mx-8 sm:px-8 md:mx-0 md:px-0"
           role="list"
           aria-label={r.title}
         >

@@ -12,14 +12,14 @@ export default function ONamaPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-background pt-36 pb-16 md:pb-20">
+      <section className="relative bg-background pb-12 pt-28 sm:pb-16 sm:pt-36 md:pb-20">
         <div className="hidden md:block absolute left-8 top-1/3 w-px h-32 bg-primary/30" />
         <FadeUp>
-          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               {t.onama.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
               {t.onama.title}
             </h1>
             <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
@@ -31,8 +31,8 @@ export default function ONamaPage() {
       </section>
 
       {/* Clinic story: 1998 */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-12 lg:gap-20 items-start">
             <FadeUp>
               <p className="font-serif text-[5.5rem] md:text-[7rem] leading-none text-primary/15 select-none tabular-nums">
@@ -74,7 +74,7 @@ export default function ONamaPage() {
 
       {/* Tagline */}
       <section className="bg-foreground py-11 md:py-14">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-8">
               {t.onama.tagline.map((word, index) => (
@@ -95,9 +95,9 @@ export default function ONamaPage() {
       {/* Dr Vesna Lazić: warm stone + soft off-white headshot */}
       <section
         id="dr-vesna-lazic"
-        className="bg-background py-20 md:py-28 scroll-mt-24"
+        className="bg-background py-12 md:py-28 scroll-mt-24"
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 lg:gap-16 items-center">
             <FadeUp>
               <div className="relative mx-auto w-full max-w-[420px]">
@@ -157,9 +157,9 @@ export default function ONamaPage() {
       {/* Prof. dr Zoran Lazić: scannable credentials */}
       <section
         id="prof-zoran-lazic"
-        className="bg-white py-20 md:py-28 scroll-mt-24"
+        className="bg-white py-12 md:py-28 scroll-mt-24"
       >
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
               {t.onama.zoran.eyebrow}
@@ -194,8 +194,8 @@ export default function ONamaPage() {
       </section>
 
       {/* Team */}
-      <section id="nas-tim" className="bg-background py-20 md:py-28 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="nas-tim" className="bg-background py-12 md:py-28 scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 text-center font-medium">
               {t.onama.teamEyebrow}
@@ -222,7 +222,7 @@ export default function ONamaPage() {
 
       {/* Free first exam CTA */}
       <section className="bg-white py-20 md:py-24">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <FadeUp>
             <p className="text-primary text-sm tracking-[0.28em] uppercase mb-5 font-medium">
               {t.onama.ctaEyebrow}

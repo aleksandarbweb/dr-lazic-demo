@@ -8,23 +8,23 @@ import { FadeUp, StaggerChildren, StaggerItem } from '@/components/motion-primit
 export default function UslugePage() {
   return (
     <>
-      <section className="relative bg-background pt-36 pb-20 overflow-hidden">
+      <section className="relative overflow-hidden bg-background pb-12 pt-28 sm:pb-20 sm:pt-36">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-0 top-0 h-72 w-72 -translate-x-1/3 -translate-y-1/4 rounded-full bg-primary/[0.04]" />
           <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/4 translate-y-1/4 rounded-full bg-[#c4a574]/[0.08]" />
         </div>
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
-        <div className="hidden md:block absolute right-8 top-1/4 w-[1px] h-48 bg-primary/30" />
+        <div className="absolute left-8 top-1/3 hidden h-32 w-[1px] bg-primary/30 md:block" />
+        <div className="absolute right-8 top-1/4 hidden h-48 w-[1px] bg-primary/30 md:block" />
         <FadeUp>
-          <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-            <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
+          <div className="relative mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-12">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-primary sm:mb-6">
               Naša ponuda
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
+            <h1 className="font-serif text-4xl text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               Usluge
             </h1>
-            <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
-            <p className="text-muted-foreground mt-8 max-w-3xl mx-auto font-light leading-relaxed text-base md:text-lg">
+            <div className="mx-auto mt-6 h-[2px] w-24 bg-primary sm:mt-8" />
+            <p className="mx-auto mt-6 max-w-3xl text-base font-light leading-relaxed text-muted-foreground sm:mt-8 md:text-lg">
               Sve savremene stomatološke usluge, terapija laserom, estetski ispuni, beljenje zuba,
               CAD/CAM, fasete, implantologija, oralna hirurgija, protetika, parodontologija,
               ortodoncija i endodoncija, uz najbolje materijale i individualan plan terapije.
@@ -34,13 +34,13 @@ export default function UslugePage() {
         </FadeUp>
       </section>
 
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           {serviceCategories.map((category, categoryIndex) => (
             <div
               key={category.title}
               id={category.id}
-              className={`scroll-mt-32 ${categoryIndex > 0 ? 'mt-20 pt-20 border-t border-border' : ''}`}
+              className={`scroll-mt-32 ${categoryIndex > 0 ? 'mt-12 border-t border-border pt-12 sm:mt-20 sm:pt-20' : ''}`}
             >
               <FadeUp delay={0.1}>
                 <h2 className={`font-serif text-3xl md:text-4xl text-primary ${category.subtitle ? '' : 'mb-10'}`}>

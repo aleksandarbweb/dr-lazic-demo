@@ -50,9 +50,10 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full touch-none overflow-hidden border border-[#ddd6cc] bg-[#1c1a17] select-none"
+      className="relative aspect-[4/3] w-full touch-pan-y overflow-hidden border border-[#ddd6cc] bg-[#1c1a17] select-none"
       onPointerDown={(e) => {
         dragging.current = true
+        ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
         updateFromClientX(e.clientX)
       }}
       role="img"
@@ -96,7 +97,7 @@ export function BeforeAfterSlider({
         className="pointer-events-none absolute inset-y-0 z-10 w-px bg-white/90"
         style={{ left: `${position}%` }}
       >
-        <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-primary text-white shadow-md">
+        <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-primary text-white shadow-md">
           <span className="flex gap-0.5 text-[10px] leading-none" aria-hidden="true">
             <span>◀</span>
             <span>▶</span>
@@ -110,8 +111,9 @@ export function BeforeAfterSlider({
         max={98}
         value={position}
         onChange={(e) => setPosition(Number(e.target.value))}
-        className="absolute inset-x-0 bottom-2 z-20 mx-auto h-6 w-[calc(100%-1.5rem)] cursor-ew-resize opacity-0"
+        className="absolute inset-0 z-20 h-full w-full cursor-ew-resize appearance-none opacity-0"
         aria-label={alt}
+        style={{ touchAction: 'none' }}
       />
     </div>
   )

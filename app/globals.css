@@ -77,6 +77,11 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #cfc6ba #f7f4ef;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 html::-webkit-scrollbar {

@@ -66,23 +66,23 @@ export function ServicePageLayout({
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-background pt-36 pb-24">
-        <div className="hidden md:block absolute left-8 top-1/3 w-[1px] h-32 bg-primary/30" />
+      <section className="relative bg-background pb-14 pt-28 sm:pb-24 sm:pt-36">
+        <div className="absolute left-8 top-1/3 hidden h-32 w-[1px] bg-primary/30 md:block" />
         <FadeUp>
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="max-w-3xl">
               <Link
                 href="/usluge"
-                className="inline-flex items-center text-muted-foreground text-sm hover:text-primary transition-colors mb-8 tracking-wide group"
+                className="group mb-6 inline-flex min-h-11 items-center tracking-wide text-muted-foreground transition-colors hover:text-primary sm:mb-8"
               >
-                <ChevronRight size={16} className="rotate-180 mr-2 transition-transform group-hover:-translate-x-1" />
-                {t.servicePage.backToServices}
+                <ChevronRight size={16} className="mr-2 rotate-180 transition-transform group-hover:-translate-x-1" />
+                <span className="text-sm">{t.servicePage.backToServices}</span>
               </Link>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
+              <h1 className="font-serif text-3xl text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                 {title}
               </h1>
-              <div className="w-24 h-[2px] bg-primary mt-8" />
-              <p className="text-muted-foreground text-lg mt-8 font-light leading-relaxed">
+              <div className="mt-6 h-[2px] w-24 bg-primary sm:mt-8" />
+              <p className="mt-6 text-base font-light leading-relaxed text-muted-foreground sm:mt-8 sm:text-lg">
                 {subtitle}
               </p>
               {pendingNotice && (
@@ -97,7 +97,7 @@ export function ServicePageLayout({
                   e.preventDefault()
                   document.getElementById('service-about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] group"
+                className="group mt-8 inline-flex min-h-11 items-center justify-center gap-3 rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-white transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-[#0a5a61] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] sm:mt-10"
               >
                 {t.servicePage.learnMore}
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-500 group-hover:translate-y-[1px]">
@@ -110,8 +110,8 @@ export function ServicePageLayout({
       </section>
 
       {/* What Is It Section */}
-      <section id="service-about" className="scroll-mt-24 bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="service-about" className="scroll-mt-24 bg-white py-12 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeUp delay={0.1}>
@@ -175,8 +175,8 @@ export function ServicePageLayout({
 
       {/* Detailed Sections: only rendered when a service needs more than one flowing "what is it" paragraph */}
       {whatIsItSections && whatIsItSections.length > 0 && (
-        <section className="bg-background py-20 md:py-28">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <section className="bg-background py-12 md:py-28">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <FadeUp className="text-center mb-16">
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.detailsLabel}</p>
               <h2 className="font-serif text-3xl md:text-4xl text-foreground">
@@ -236,8 +236,8 @@ export function ServicePageLayout({
 
       {/* Methods / Technologies Section: only rendered when the service has real, distinct modalities */}
       {methods && methods.length > 0 && (
-        <section className="bg-white py-20 md:py-28">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <section className="bg-white py-12 md:py-28">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
             <FadeUp className="text-center mb-16">
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.methodsLabel}</p>
               <h2 className="font-serif text-3xl md:text-4xl text-foreground">
@@ -260,8 +260,8 @@ export function ServicePageLayout({
 
       {/* How It Works Section */}
       {howItWorks && howItWorks.length > 0 && (
-      <section className="bg-background py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-background py-12 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.processLabel}</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
@@ -289,8 +289,8 @@ export function ServicePageLayout({
 
       {/* Ideal Candidates & Results Section */}
       {((idealCandidates && idealCandidates.length > 0) || (expectedResults && expectedResults.length > 0)) && (
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {idealCandidates && idealCandidates.length > 0 && (
             <div>
@@ -341,8 +341,8 @@ export function ServicePageLayout({
 
       {/* FAQ Section */}
       {faqs && faqs.length > 0 && (
-      <section className="bg-background py-20 md:py-28">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-background py-12 md:py-28">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.faqLabel}</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
@@ -384,8 +384,8 @@ export function ServicePageLayout({
       )}
 
       {/* Related Services Section */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp className="text-center mb-16">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.exploreLabel}</p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">
@@ -426,7 +426,7 @@ export function ServicePageLayout({
         </div>
 
         <FadeUp>
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="relative max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4">{t.servicePage.ctaReadyLabel}</p>
             <h2 className="font-serif text-3xl md:text-4xl text-[#181512]">
               {title}: {t.servicePage.ctaTitle}

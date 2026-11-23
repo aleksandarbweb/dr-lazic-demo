@@ -12,7 +12,7 @@ export default function KarijeraPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-background pt-36 pb-20 md:pb-28">
+      <section className="relative overflow-hidden bg-background pt-28 pb-12 sm:pt-36 sm:pb-20 md:pb-28">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.35]"
           aria-hidden="true"
@@ -25,11 +25,11 @@ export default function KarijeraPage() {
         <div className="hidden md:block absolute right-10 top-1/4 w-px h-48 bg-primary/20" />
 
         <FadeUp>
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="relative max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               {k.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight text-balance">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight text-balance">
               {k.title}
             </h1>
             <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
@@ -57,8 +57,8 @@ export default function KarijeraPage() {
       </section>
 
       {/* Why learn here */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-14 lg:gap-20 items-start">
             <FadeUp>
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
@@ -101,8 +101,8 @@ export default function KarijeraPage() {
       </section>
 
       {/* Course cards */}
-      <section id="kursevi" className="bg-background py-20 md:py-28 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="kursevi" className="bg-background py-12 md:py-28 scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
@@ -158,7 +158,7 @@ export default function KarijeraPage() {
 
       {/* Audience */}
       <section className="bg-white py-20 md:py-24">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
@@ -203,7 +203,7 @@ export default function KarijeraPage() {
         />
 
         <FadeUp>
-          <div className="relative max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="relative max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">
               {k.cta.eyebrow}
             </p>

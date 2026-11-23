@@ -64,18 +64,18 @@ export default function GalerijaPage() {
 
   return (
     <>
-      <section className="relative bg-[#f7f4ef] pt-36 pb-16 md:pb-20">
+      <section className="relative bg-[#f7f4ef] pb-10 pt-28 sm:pb-16 sm:pt-36 md:pb-20">
         <div className="pointer-events-none absolute left-8 top-1/3 hidden h-32 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent md:block" />
-        <div className="mx-auto max-w-7xl px-6 text-center sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-12">
           <FadeUp>
-            <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-primary">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-primary sm:mb-6">
               {g.eyebrow}
             </p>
-            <h1 className="font-serif text-5xl text-[#1c1a17] md:text-6xl lg:text-7xl">
+            <h1 className="font-serif text-4xl text-[#1c1a17] sm:text-5xl md:text-6xl lg:text-7xl">
               {g.title}
             </h1>
-            <div className="mx-auto mt-8 h-[2px] w-24 bg-primary" />
-            <p className="mx-auto mt-8 max-w-2xl font-light text-[#6b6560]">
+            <div className="mx-auto mt-6 h-[2px] w-24 bg-primary sm:mt-8" />
+            <p className="mx-auto mt-6 max-w-2xl font-light text-[#6b6560] sm:mt-8">
               {g.subtitle}
             </p>
           </FadeUp>
@@ -83,9 +83,9 @@ export default function GalerijaPage() {
       </section>
 
       <section className="border-y border-[#ddd6cc] bg-[#fffcf8]">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl sm:px-8 lg:px-12">
           <div
-            className="flex flex-wrap justify-center gap-3 py-8"
+            className="no-scrollbar flex gap-2.5 overflow-x-auto px-5 py-5 scroll-smooth snap-x snap-mandatory sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-visible sm:px-0 sm:py-8 sm:snap-none"
             role="group"
             aria-label={g.title}
           >
@@ -95,7 +95,7 @@ export default function GalerijaPage() {
                 type="button"
                 onClick={() => setActiveFilter(filter.key)}
                 aria-pressed={activeFilter === filter.key}
-                className={`px-7 py-3 text-sm font-medium uppercase tracking-[0.15em] transition-all duration-300 ${
+                className={`min-h-11 shrink-0 snap-start px-5 py-2.5 text-xs font-medium uppercase tracking-[0.15em] transition-all duration-300 sm:px-7 sm:py-3 sm:text-sm ${
                   activeFilter === filter.key
                     ? 'bg-primary text-white shadow-lg'
                     : 'border border-[#ddd6cc] bg-transparent text-[#6b6560] hover:border-primary hover:text-[#1c1a17]'
@@ -109,8 +109,8 @@ export default function GalerijaPage() {
       </section>
 
       {showBeforeAfter && (
-        <section className="bg-[#f7f4ef] py-16 md:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <section className="bg-[#f7f4ef] py-12 md:py-24">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <FadeUp>
               <p className="mb-4 text-center text-sm uppercase tracking-[0.2em] text-primary">
                 {g.beforeAfterEyebrow}

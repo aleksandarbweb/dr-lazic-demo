@@ -25,7 +25,7 @@ export function FadeUp({
   once = true,
 }: FadeUpProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once, margin: "-60px" })
+  const isInView = useInView(ref, { once, margin: "0px 0px -10% 0px" })
   const shouldReduce = useReducedMotion()
 
   return (

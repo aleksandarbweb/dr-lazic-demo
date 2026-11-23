@@ -21,7 +21,7 @@ export default function DentalniTurizamPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-background pt-36 pb-20 md:pb-28">
+      <section className="relative overflow-hidden bg-background pt-28 pb-12 sm:pt-36 sm:pb-20 md:pb-28">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.4]"
           aria-hidden="true"
@@ -34,11 +34,11 @@ export default function DentalniTurizamPage() {
         <div className="hidden md:block absolute right-12 top-1/4 w-px h-52 bg-primary/15" />
 
         <FadeUp>
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="relative max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
               {d.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight text-balance">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight text-balance">
               {d.title}
             </h1>
             <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
@@ -67,7 +67,7 @@ export default function DentalniTurizamPage() {
 
       {/* Journey intro + step rail */}
       <section className="bg-white py-16 md:py-20 border-y border-border">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <FadeUp>
             <div className="max-w-2xl mb-12 md:mb-14">
               <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
@@ -83,17 +83,17 @@ export default function DentalniTurizamPage() {
             </div>
           </FadeUp>
 
-          <StaggerChildren className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 md:gap-4">
+          <StaggerChildren className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-2 scroll-smooth snap-x snap-mandatory sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-8">
             {d.steps.map((step) => (
-              <StaggerItem key={step.number}>
+              <StaggerItem key={step.number} className="w-[42vw] shrink-0 snap-start sm:w-auto sm:shrink">
                 <a
                   href={`#korak-${step.number}`}
-                  className="group block border-t border-primary/25 pt-3 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  className="group block min-h-[5.5rem] border-t border-primary/25 pt-3 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 >
-                  <span className="font-serif text-primary/70 text-sm tabular-nums group-hover:text-primary">
+                  <span className="font-serif text-sm tabular-nums text-primary/70 group-hover:text-primary">
                     {step.number}
                   </span>
-                  <p className="mt-2 text-[12px] md:text-[13px] leading-snug text-foreground/75 font-light line-clamp-3 group-hover:text-foreground">
+                  <p className="mt-2 line-clamp-3 text-[12px] font-light leading-snug text-foreground/75 group-hover:text-foreground md:text-[13px]">
                     {step.title}
                   </p>
                 </a>
@@ -104,8 +104,8 @@ export default function DentalniTurizamPage() {
       </section>
 
       {/* Narrative journey */}
-      <section className="bg-background py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-background py-12 md:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <ol className="relative space-y-0">
             <div
               className="pointer-events-none absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-primary/40 via-primary/15 to-transparent md:left-[19px]"
@@ -216,7 +216,7 @@ export default function DentalniTurizamPage() {
 
       {/* Languages */}
       <section className="bg-white py-16 md:py-20 border-y border-border">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <FadeUp>
             <p className="text-primary text-sm tracking-[0.2em] uppercase mb-4 font-medium">
               {d.languages.eyebrow}
@@ -244,7 +244,7 @@ export default function DentalniTurizamPage() {
         />
 
         <FadeUp>
-          <div className="relative max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="relative max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
             <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">
               {d.cta.eyebrow}
             </p>

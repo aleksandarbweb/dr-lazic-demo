@@ -10,13 +10,13 @@ export default function KontaktPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-background pt-36 pb-20">
+      <section className="relative bg-background pt-28 pb-12 sm:pt-36 sm:pb-20">
         <div className="hidden md:block absolute right-8 top-1/3 w-[1px] h-32 bg-primary/30" />
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <p className="text-primary text-sm tracking-[0.3em] uppercase mb-6 font-medium">
             {t.kontakt.eyebrow}
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground">
+          <h1 className="font-serif text-4xl text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             {t.kontakt.title}
           </h1>
           <div className="w-24 h-[2px] bg-primary mx-auto mt-8" />
@@ -27,8 +27,8 @@ export default function KontaktPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-white py-12 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
