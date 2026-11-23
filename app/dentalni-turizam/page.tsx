@@ -83,9 +83,9 @@ export default function DentalniTurizamPage() {
             </div>
           </FadeUp>
 
-          <StaggerChildren className="no-scrollbar -mx-6 flex gap-3 overflow-x-auto px-6 pb-2 scroll-smooth snap-x snap-mandatory sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-8">
+          <StaggerChildren className="no-scrollbar -mx-5 flex gap-3 overflow-x-auto px-5 pb-2 scroll-smooth snap-x snap-mandatory overscroll-x-contain sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-8">
             {d.steps.map((step) => (
-              <StaggerItem key={step.number} className="w-[42vw] shrink-0 snap-start sm:w-auto sm:shrink">
+              <StaggerItem key={step.number} className="w-[42vw] max-w-[160px] shrink-0 snap-start sm:w-auto sm:max-w-none sm:shrink">
                 <a
                   href={`#korak-${step.number}`}
                   className="group block min-h-[5.5rem] border-t border-primary/25 pt-3 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
